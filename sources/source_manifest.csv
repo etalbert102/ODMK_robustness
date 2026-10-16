@@ -1,0 +1,27 @@
+source_id,file_or_link,sha256,provenance,role,access_note
+hints_bundle,HINTS5_Cycle2_STATA_20240507.zip,f204a161868056e243a3583ec343e3f4e4eb0b430a100e4d0e61996551a8b6ea,https://hints.cancer.gov/dataset/HINTS-5_Cycle2_STATA_20240507.zip,Canonical public-use data and documentation bundle,Downloaded 2026-10-13; NCI bundle dated 2024-05-07
+hints_data,../data_raw/hints5_cycle2_public.dta,a727f1b7a56f293dc2212bb9cc8705cacdc4e57d6d8e5505012b713ecfd1531f,Extracted from hints_bundle,Canonical source data,Unmodified archive member
+hints_codebook,HINTS 5 Cycle 2 Public Codebook.pdf,e17016ff10117a2fc549f3ffe8ff3729b6c0916c9f4a4486a1fa3d3974f7130a,Extracted from hints_bundle,Variable definitions and frequencies,Canonical archive member
+hints_instrument_en,HINTS5_Cycle2_Annotated_Instrument_English.pdf,57197d419b8943e7e20a55bb437ec11ad27d6fbd4ce61b2741a8ce6fffce98b4,Extracted from hints_bundle,Question wording and skip logic,Canonical archive member
+hints_instrument_es,HINTS5_Cycle2_Annotated_Instrument_Spanish.pdf,c4dc3eeb4629bec3de43e37d3f63adea432da880d027687a10b2ac851ed5e377,Extracted from hints_bundle,Spanish question wording,Canonical archive member
+hints_methodology,HINTS5 Cycle 2_Methodology Report.pdf,91cad9cb515816c90c1c8be3db51a8f25f05a34881b9883778c51dd7f050a1c7,Extracted from hints_bundle,Sampling weighting and JK1 methodology,Canonical archive member
+hints_analytics,HINTS 5 Cycle 2 Analytics Recommendation.pdf,929d94e626d0dedeb7fb932bee0604c9d95b4a670e884bb9913c98a09f3b1649,Extracted from hints_bundle,Official analysis and variance guidance,Canonical archive member
+hints_history,HINTS 5 Cycle 2 History Document.pdf,0c77b04970c765814effe2957e8571702eb6d9624d3b9d7d5683b2fc5488d553,Extracted from hints_bundle,Derived-variable and remediation history,Canonical archive member
+hints_methodology_direct,HINTS5_Cycle2_Methodology_Report.pdf,bed54f588b0b09992305826375641f2106043f167b3426dd32d2369d3348e199,https://hints.cancer.gov/docs/methodologyreports/HINTS5_Cycle_2_Methodology_Report.pdf,Official direct-download copy,Retained for URL provenance; archive copy is canonical
+odmk_pubmed,ODMK_PubMed_record.txt,5f8261489c171445fe3d86ef7a42eb93097a276fb1276e7d6fdcaf9d36f815ff,https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=33899688&rettype=medline&retmode=text,Citation and abstract metadata,Downloaded 2026-10-13
+odmk_doi,https://doi.org/10.1080/10810730.2021.1919248,,Publisher landing page,Version of record,Link only; publisher copy closed
+odmk_author_fulltext,https://www.researchgate.net/publication/351109589_RacialEthnic_Disparities_in_Patient-Provider_Communication_and_the_Role_of_E-Health_Use,,Author-uploaded full-text page,Tables methods footnotes and references inspected,Link only; no access-controlled PDF copied
+pcc_validation,Moser_2022_PCC_scale_validation.pdf,f02dde1d2683b72e335db3e1dd3af559a5ef8946320c6ae848d8e0616c81977c,https://doi.org/10.1371/journal.pone.0279725,Same-cycle seven-item PCC psychometric validation,Open-access CC0 copy
+cos_score_supplement,COS_SCORE_Robustness_2026_Supplement.pdf,d9555b5435708a55f4f31206937b2677852512570cb11b5349dfd2fe9aedf0eb,https://doi.org/10.1038/s41586-025-09844-9,Context for COS analytical-robustness approach,Supplement to Aczel et al. 2026
+cos_benchmark_page,https://www.cos.io/benchmarking-llm-agents-on-scientific-tasks,,Center for Open Science,Current benchmark overview,Link only; exact ODMK protocol/template not public at time checked
+cos_top_guidelines,https://www.cos.io/initiatives/top-guidelines,,Center for Open Science,Multiverse/preregistration context,Link only
+hints_data_page,https://hints.cancer.gov/data/download-data.aspx,,National Cancer Institute,Official public data portal,Link only
+hints_materials_page,https://hints.cancer.gov/data/survey-instruments.aspx,,National Cancer Institute,Official instrument/methodology portal,Link only
+hints_remediation_page,https://hints.cancer.gov/data/data-remediation.aspx,,National Cancer Institute,Documents post-release data remediation,Link only
+python_31316,https://www.python.org/downloads/release/python-31316/,,Python Software Foundation,Official Python 3.13.16 release used for proposed multiverse environment,Link only
+statsmodels_0150,https://www.statsmodels.org/stable/,,statsmodels project,Official statsmodels 0.15.0 documentation for proposed multiverse environment,Link only
+survey_mi_design,https://pubmed.ncbi.nlm.nih.gov/28781418/,,Zhou et al. 2016,"Methodological support for representing complex-survey design information in imputation; the registered bounded implementation uses log weight and stratum",Link only
+barnard_rubin_1999,https://doi.org/10.1093/biomet/86.4.948,,Barnard and Rubin 1999,Primary source for small-sample multiple-imputation degrees of freedom,Link only
+papke_wooldridge_1996,https://doi.org/10.1002/(SICI)1099-1255(199611)11:6%3C619::AID-JAE418%3E3.0.CO;2-1,,Papke and Wooldridge 1996,Primary source for fractional-response logit mean modeling,Link only
+eortc_scoring_manual_2001,https://www.eortc.org/app/uploads/sites/2/2018/02/SCmanual.pdf,,EORTC Quality of Life Group / Fayers et al. 2001,"Pre-ODMK general precedent for scoring a multi-item scale from answered items when at least half are complete; not PPPCQ-specific validation",Link only
+statsmodels_glm_weight_semantics,https://www.statsmodels.org/stable/_modules/statsmodels/genmod/generalized_linear_model.html,,statsmodels project,Official definitions of GLM frequency and variance weights,Link only

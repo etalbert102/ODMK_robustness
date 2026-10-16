@@ -1,0 +1,1667 @@
+Encuesta Nacional de Tendencias
+
+Sobre Información
+de la Salud
+
+
+
+en español
+
+                                    Institutos Nacionales de la Salud
+                                    Departamento de Salud y Servicios Humanos
+                                    de los Estados Unidos
+
+
+
+
+H5–C2                             Annotated Form
+                                  Cycle 2, Full-Content, Spanish Version
+COMENZAR
+  AQUI:
+
+    Instrucciones
+     Por favor use una pluma con tinta negra o azul para completar este formulario.
+     Marque X para indicar su respuesta.
+     Si quiere cambiar alguna respuesta, marque con una X la respuesta incorrecta.
+
+
+
+
+   1.    ¿Hay más de una persona mayor de 18 años viviendo en este hogar?
+                   AdultsInHH
+         1   Sí
+         2   No   VAYA A LA PREGUNTA A1 en la próxima página
+
+
+   2.    ¿Incluyéndose a usted, cuántas personas mayores de 18 años viven en este hogar?
+                   MailHHAdults
+
+
+
+
+   3.    El adulto con la próxima fecha de cumpleaños debe completar el
+         cuestionario. Así, en todos los hogares, HINTS incluirá respuestas de
+         adultos de todas las edades.
+
+
+   4.    Por favor escriba el primer nombre, apodo, o iniciales del adulto que va a
+         cumplir años mas próximamente en este hogar. Esta es la persona que debe
+         completar el cuestionario.
+
+
+
+
+        If you prefer to receive the survey in English, please call 1-888-738-6805
+
+
+
+
+                                                                                       39611
+
+                                            1
+                                           A: Buscando Información Sobre Salud
+
+A1.   ¿Ha buscado alguna vez información acerca de temas de salud o de medicina en algún
+      lugar? SeekHealthInfo
+      1    Sí
+      2    No       VAYA A LA PREGUNTA A6 en la próxima página
+
+
+A2.   La última vez que buscó información sobre temas de salud, ¿dónde buscó primero?
+      Marque sólo una de las siguientes opciones.
+                                                                             WhereSeekHealthInfo
+      1    Libros
+      2    Folletos, hojas volantes, etc.
+      3    Organizaciones del cáncer
+      4    Familia
+      5    Amigos/Compañeros de trabajo
+      6    Médico o proveedor de cuidado de la salud
+      7    Internet
+      8    Biblioteca
+      9 Revistas
+      10 Periódicos
+      11 Número de información telefónica
+      12 Practicante de medicina complementaria, alternativa o no convencional
+                             WhereSeekHealthInfo_IMP
+
+A3.   La última vez que buscó información acerca de temas de salud o de medicina, ¿para
+      quién era? WhoLookingFor
+      1 Para mí
+      2 Para otra persona
+      3 Para otra persona y para mí
+
+
+A4.   ¿Ha buscado alguna vez información sobre el cáncer en algún lugar?
+                        SeekCancerInfo
+      1    Sí
+      2    No       VAYA A LA PREGUNTA A6 en la próxima página
+
+
+A5.   Basándose en los resultados de su búsqueda de información más reciente acerca de
+      cáncer, ¿cuánto está de acuerdo o en desacuerdo con cada una de las siguientes frases?
+                                                                                       Totalmente   Algo de     Algo en  Totalmente en
+                                                                                       de acuerdo   acuerdo   desacuerdo desacuerdo
+
+      a. Tomó mucho trabajo conseguir la información que
+         necesitaba......................................................................   1         2           3            4
+           CancerLotOfEffort
+      b. Se sintió frustrado buscando información.....................                      1         2           3            4
+           CancerFrustrated
+      c. Le preocupaba la calidad de la información................                         1         2           3            4
+           CancerConcernedQuality
+      d. La información que encontró era difícil de entender.....                           1         2           3            4
+           CancerTooHardUnderstand
+                                                                                                                                   39611
+
+                                                                              2
+A6.   En general, ¿cuánto confía usted en que podría obtener consejos o información del cáncer
+      si lo necesita? CancerConfidentGetHealthInf
+       1   Confío completamente
+       2 Confío mucho
+       3   Confío parcialmente
+       4   Confío un poco
+       5   No confío en absoluto
+
+
+A7.   En general, ¿cuánto confiaría obtener información acerca de cáncer del cada una de las
+      siguientes fuentes?
+                                                                                                  Nada en
+                                                                                                  absoluto   Un poco   Algo   Mucho
+
+      a. Un médico.........................................................................          4          3       2       1
+           CancerTrustDoctor
+      b. Familia o amigos...............................................................             4          3       2       1
+           CancerTrustFamily
+      c. Periódicos o revistas.........................................................              4          3       2       1
+           CancerTrustNewsMag
+      d. Radio.................................................................................      4          3       2       1
+           CancerTrustRadio
+      e. Internet..............................................................................      4          3       2       1
+           CancerTrustInternet
+      f. Televisión..........................................................................        4          3       2       1
+           CancerTrustTelevison
+      g. Agencias gubernamentales de salud...............................                            4          3       2       1
+           CancerTrustGov
+      h. Organizaciones de caridad...............................................                    4          3       2       1
+           CancerTrustCharities
+      i.   Organizaciones y líderes religiosos..................................                     4          3       2       1
+           CancerTrustReligiousOrgs
+
+
+A8.   Imagínese que tuviera mucha necesidad de conseguir información acerca del cáncer.
+      ¿Dónde buscaría primero? StrongNeedCancerInfo
+      Marque sólo una de las siguientes opciones.
+       1   Libros
+       2   Folletos, panfletos, etc.
+       3   Organización del cáncer
+       4   Familia
+       5 Amigos/Compañeros de trabajo
+       6   Médico o proveedor de cuidados de la salud
+       7   Internet
+       8   Biblioteca
+       9   Revistas
+      10 Periódicos
+      11 Número de información telefónica
+      12 Practicante de medicina complementaria, alternativa o no convencional
+      91 Otro-Especifique                    StrongNeedCancerInfo_OS
+
+                                             StrongNeedCancerInfo_IMP
+
+                                                                                                                                    39611
+
+                                                                                   3
+                                     B: Utilizando el Internet para hallar información
+
+B1.   ¿Alguna vez usa el Internet para conectarse a la Red o para enviar y recibir correo
+      electrónico? UseInternet
+      1    Sí
+      2    No         VAYA A LA PREGUNTA B5 más abajo
+
+
+B2.   Cuando usted usa el Internet, obtiene acceso a través de...
+                                                                                                                                Sí     No
+
+      a. Una línea telefónica................................................................................................   1       2
+           Internet_DialUp
+      b. Banda ancha tal como DSL, cable o FiOS............................................................                     1       2
+           Internet_BroadBnd
+      c. Una red celular (p.ej., teléfono, 3G/4G).................................................................              1       2
+            Internet_Cell
+      d. Una red inalámbrica (WiFi).....................................................................................        1       2
+            Internet_WiFi
+
+B3.   En los últimos 12 meses, ¿ha usado el Internet para buscar información del cáncer para
+      usted? InternetCancerInfoSelf
+      1    Sí
+      2    No
+
+
+B4.   ¿Con qué frecuencia se conecta usted al Internet por medio de cada uno de los siguientes?
+                                                                                                     A diario   A veces     Nunca    No aplica
+
+      a. Computadora en casa.............................................................                1         2            3       4
+           WhereUseInternet_Home
+      b. Computadora en el trabajo......................................................                 1         2            3        4
+           WhereUseInternet_Work
+      c. Computadora en un lugar público (biblioteca, centro
+         comunitario, otro).....................................................................         1         2            3        4
+           WhereUseInternet_PublicPlace
+      d. En un dispositivo móvil (teléfono celular / smartphone /
+         tableta).....................................................................................   1         2            3        4
+           WhereUseInternet_MobileDevice
+
+
+B5.   En los últimos 12 meses, ¿ha usado usted una computadora, un teléfono inteligente u
+      otro medio electrónico para hacer alguna de las siguientes cosas?
+                                                                                                                                Sí     No
+
+      a.    Buscar información médica o de salud para usted mismo...................................                            1       2
+            Electronic_SelfHealthInfo
+      b.    Buscar información médica o de salud para otra persona...................................                           1       2
+            Electronic_HealthInfoSE
+      c.    Comprar medicamentos o vitaminas utilizando el Internet...................................                          1       2
+            Electronic_BuyMedicine
+      d.    Buscar asistencia para el cuidado que usted provee a otra persona..................                                 1       2
+            Electronic_LookedAssistance
+      e.    Utilizar correo electrónico o el Internet para comunicarme con un médico o
+            con un consultorio médico.....................................................................................      1       2
+            Electronic_TalkDoctor
+      f.    Mantenerse informado de los cargos y costos del cuidado de la salud...............                                  1       2
+            Electronic_TrackedHealthCosts
+      g.    Ver los resultados de pruebas que le hayan hecho..............................................                      1       2
+            Electronic_TestResults
+                                                                                                                                                 39611
+
+                                                                                  4
+B6.   Por favor indique si usted tiene alguno de los siguientes:
+      Marque todos los que apliquen.
+      1   Tableta computarizada (por ejemplo, iPad, Samsung Galaxy, Motorola Xoom o Kindle Fire)
+          HaveDevice_Tablet
+      1   Teléfono inteligente (por ejemplo: iPhone, Android, Blackberry o teléfono Windows)
+          HaveDevice_SmartPh
+      1   Teléfono celular básico solamente
+          HaveDevice_CellPh                              VAYA A B9 más abajo
+      1   No tengo ninguno de los anteriores
+          HaveDevice_None
+          HaveDevice_Cat
+B7.   ¿Tiene usted en su tableta o teléfono inteligente alguna aplicación relacionada con la salud
+      y el bienestar? TabletHealthWellnessApps
+      1   Sí
+      2   No
+      3   No sé
+
+
+B8.   ¿Le ha ayudado su tableta o su teléfono inteligente...
+                                                                                                                   Sí   No
+
+      a. a medir su progreso hacia un objetivo relacionado con la salud, como dejar
+         de fumar o aumentar su actividad física?...............................................................   1    2
+          Tablet_AchieveGoal
+      b. a tomar una decisión acerca de cómo tratar una enfermedad o condición?.........                           1    2
+          Tablet_MakeDecision
+      c. en conversaciones con su proveedor de cuidado de la salud?.............................                   1    2
+          Tablet_DiscussionsHCP
+
+
+B9.   ¿Ha usado usted un dispositivo electrónico que no sea una tableta o un teléfono inteligente
+      para monitorear o mantenerse al tanto del estado de su salud durante los últimos 12 meses?
+      Algunos ejemplos son Fitbit, medidores de glucosa en la sangre y monitores de la presión
+      de la sangre. OtherDevTrackHealth
+      1   Sí
+      2   No
+
+
+B10. ¿Ha compartido información acerca de su salud con un profesional de la salud usando un
+     dispositivo de monitoreo electrónico o un teléfono inteligente en los últimos 12 meses?
+                         SharedHealthDeviceInfo
+      1   Sí
+      2   No
+      3   No aplica
+
+
+
+
+                                                                                                                             39611
+
+                                                                      5
+B11. A veces la gente utiliza el Internet para conectarse con otras personas en línea por
+     redes sociales como Facebook o Twitter. Esto a menudo se llama “medios sociales.”
+     En los últimos 12 meses, ¿ha usado el Internet por alguna de las siguientes razones?
+                                                                                                                                Sí   No
+
+      a.   Visitar sitios de una red social, como Facebook o LinkedIn.................................                          1    2
+           IntRsn_VisitedSocNet
+      b.   Compartir información sobre la salud en un sitio de redes sociales como
+           Facebook o Twitter................................................................................................   1    2
+           IntRsn_SharedSocNet
+      c.   Escribir en un diario cibernético o blog (es decir Diario Web)..............................                         1    2
+           IntRsn_WroteBlog
+      d.   Participar en un foro en línea o grupo de apoyo para personas con
+           problemas de salud o problemas médicos similares............................................                         1    2
+           IntRsn_SupportGroup
+      e.   Ver un video relacionado con la salud en YouTube.............................................                        1    2
+           IntRsn_YouTube
+
+
+B12. ¿Ha enviado o recibido algún mensaje de texto a o de un médico u otro profesional de la
+     salud en los últimos 12 meses? TextFromDoctor
+      1    Sí
+      2    No
+      3 No sé
+
+
+
+
+                                                         C: Su cuidado de salud
+
+C1. ¿Sin incluir psiquiatras y otros profesionales de la salud mental, hay algún médico,
+    enfermera, u otro profesional de la salud en particular que usted visite más a menudo?
+                                RegularProvider
+      1 Sí
+      2    No
+
+
+C2. Aproximadamente, ¿hace cuánto tiempo tuvo su última visita a un médico para un examen de
+    rutina? Un examen de rutina es un examen físico general y no un examen para una lesión,
+    enfermedad o condición específica. MostRecentCheckup2
+      1    Durante el último año
+      2    De 1 a 2 años atrás
+      3 De 3 a 5 años atrás
+      4 Hace más de 5 años
+      5    Nunca
+      6    No sé
+
+
+
+
+                                                                                                                                          39611
+
+                                                                              6
+C3. En los últimos 12 meses, sin contar las veces que fué a emergencia, ¿cuántas veces fué al
+    médico, enfermera u otro profesional de la salud para su propio cuidado?
+      0    Ninguna           VAYA A LA PREGUNTA C7 en la próxima página FreqGoProvider
+      1    1 vez
+      2    2 veces
+      3    3 veces
+      4    4 veces
+      5    5-9 veces
+      6    10 o más veces
+
+
+C4. Las siguientes preguntas son acerca de su comunicación con todos los médicos, enfermeras
+    u otros profesionales del cuidado de salud que usted vio durante los últimos 12 meses.
+                                                                                                                          Por lo
+     ¿Con qué frecuencia hicieron lo siguiente?                                                        Siempre           general         A veces        Nunca
+
+      a.   ¿Le dieron la oportunidad de hacer todas las preguntas
+           que usted tenía sobre su salud?...............................................                  1                 2               3            4
+                                                     ChanceAskQuestions
+      b.   ¿Le dieron la atención necesaria a sus emociones y
+           sentimientos?............................................................................       1                 2                3          4
+                                                     FeelingsAddressed
+      c.   ¿Le involucraron en decisiones sobre su salud tanto
+           como usted quiso?....................................................................           1                2                 3          4
+                                                     InvolvedDecisions
+      d.   ¿Se cercioraron de que usted comprendía todo lo que
+           tiene que hacer para cuidar su salud?......................................                     1                 2               3           4
+                                                            UnderstoodNextSteps
+      e.   ¿Le explicaron las cosas de una manera que usted
+           podía comprender?...................................................................            1                 2                3           4
+                                                            ExplainedClearly
+      f.   ¿Le dedicaron suficiente tiempo?.............................................                   1                 2                3          4
+                                                            SpentEnoughTime
+      g.   ¿Le ayudaron a manejar sus sentimientos de
+           incertidumbre acerca de su salud y cuidado médico?..............                                1                 2                3          4
+                                                            HelpUncertainty
+
+
+C5. En general, ¿cómo calificaría la calidad del cuidado de la salud que ha recibido durante
+    los últimos 12 meses? QualityCare
+      1    Excelente
+      2    Muy bueno
+      3    Bueno
+      4    Aceptable
+      5    Malo
+
+
+C6. En los últimos 12 meses, cuando estaba recibiendo cuidado por un problema médico,
+    ¿tuvo usted que hacer lo siguiente en alguna ocasión?
+                                                                                                                                             Sí    No
+
+      a.   Traer placas de rayos X, un MRI u otro tipo de resultado de una prueba a la cita?....                                             1     2
+           ProbCare_BringTest
+      b.   Esperar más tiempo del que usted considera razonable por los resultados de
+           una prueba?...................................................................................................................    1     2
+           ProbCare_WaitLong
+      c.   Repetir una prueba o procedimiento porque los resultados de la prueba anterior
+           no estaban disponibles?................................................................................................           1     2
+           ProbCare_RedoTest
+      d.   Proporcionar de nuevo su historial médico porque no podían encontrar su
+           información?...................................................................................................................   1     2
+           ProbCare_ProvideHist
+                                                                                                                                                         39611
+
+                                                                                 7
+C7. ¿Está usted cubierto actualmente por cualquiera de los tipos siguientes de seguro de
+    salud o planes de cobertura de la salud?
+                                                                                                                                           Sí   No
+
+      a.   Seguro mediante un empleador actual o pasado o sindicato..................................... 1                                      2
+           HealthIns_InsuranceEmp
+      b.   Seguro comprado directamente de una compañía de seguros.................................. 1                                          2
+            HealthIns_InsurancePriv
+      c.   Medicare, para personas de 65 años o más o personas con ciertas
+           discapacidades............................................................................................................. 1        2
+           HealthIns_Medicare
+      d.   Medicaid, Asistencia Médica o cualquier plan de asistencia del gobierno para
+           personas con ingresos bajos o con alguna discapacidad........................................... 1                                   2
+           HealthIns_Medicaid
+      e.   TRICARE u otro cuidado de la salud para los militares y sus familias.......................                                     1    2
+            HealthIns_Tricare
+      f.   VA (incluyendo aquellos que nunca han usado ni se han inscrito para el cuidado
+           de la salud VA).............................................................................................................    1    2
+           HealthIns_VA
+      g.   Servicio de la Salud para los Indígenas (Indian Health Service)................................ 1                                    2
+           HealthIns_IHS
+      h.   Cualquier otro tipo de seguro de salud o plan de cobertura de la salud
+                          HealthIns_Other
+           (Especifique)................................................................................................................   1    2
+
+                                    HealthIns_Other_OS
+
+
+
+
+                                                              D: Informes médico
+
+A continuación, vamos a hacerle unas preguntas acerca de su registro médico. El registro
+médico se define como el historial médico, el cual incluye los resultados de sus pruebas de
+laboratorio, las notas clínicas y la lista actualizada de medicamentos.
+
+D1. ¿Mantienen alguno de sus médicos u otros proveedores de cuidados de la salud su registro
+    médico en un sistema computarizado? ProviderMaintainEMR2
+      1    Sí
+      2    No
+      3    No sé
+
+D2. ¿Qué seguridad siente usted de que exista protección (incluyendo el uso de tecnología) para
+    proteger su registro médico de ser visto por personas que no estén permitidas para hacerlo?
+                                                                            ConfidentInfoSafe
+      1    Mucha seguridad
+      2    Algo de seguridad
+      3    Ninguna seguridad
+
+
+D3. ¿Alguna vez ha dejado de darle información a su proveedor de cuidado de la salud porque
+    le preocupa la privacidad o seguridad de su historial clínico?
+                                                                           WithheldInfoPrivacy
+      1    Sí
+      2    No
+
+
+
+
+                                                                                                                                                     39611
+
+                                                                                 8
+D4. ¿Le han ofrecido alguna vez su proveedor de cuidado médico o su aseguradora de salud
+    acceso por Internet a sus registros médicos?
+                                                 EverOfferedAccessRec
+      1   Sí
+      2   No       VAYA A LA PREGUNTA E1 en la página 11
+      3   No sé         VAYA A LA PREGUNTA E1 en la página 11
+
+
+D5. ¿Quién le ofreció acceso a sus registros médicos por Internet?
+     Marque todos los que apliquen.
+      1   Proveedor de servicios de salud WhoOffered_HCP
+      1   Seguro de salud WhoOffered_Insurer
+                                                         WhoOffered_Other
+      1   Alguien más (Especifique)                      WhoOffered_Other_OS
+                                WhoOffered_Cat
+D6. ¿Cuántas veces tuvo usted acceso a su registro médico en Internet en los últimos 12 meses?
+                                                                         AccessOnlineRecord
+      0   0      VAYA A LA PREGUNTA D7 más abajo
+      1 1 a 2 veces
+      2   3 a 5 veces
+                                       VAYA A LA PREGUNTA D8 en la próxima página
+      3   6 a 9 veces
+      4   10 o más veces
+
+
+D7. ¿Por qué no ha tenido usted acceso a su registro médico por Internet? ¿Es porque…
+                                                                                                                                  Sí   No
+
+     a. usted prefiere hablar directamente con su proveedor de cuidado de la salud?.....                                          1    2
+          NotAccessed_SpeakDirectly
+     b. usted no tiene manera de acceder al sitio Web?.....................................................                       1    2
+          NotAccessed_NoInternet
+     c. usted no tiene necesidad de usar su registro médico en Internet?.........................                                 1    2
+          NotAccessed_NoNeed
+     d. a usted le preocupaba la privacidad o la seguridad del sitio Web que contenía
+        su registro médico?................................................................................................... 1       2
+          NotAccessed_ConcernedPrivacy
+     e. usted no tiene un registro médico en Internet?........................................................                    1    2
+          NotAccessed_NoRecord
+     f. Otra (Especifique).....................................................................................................   1    2
+                                 NotAccessed_Other
+                                 NotAccessed_Other_OS
+
+
+
+
+  Si no tuvo usted acceso a su registro médico
+      por Internet en los últimos 12 meses,
+     VAYA A LA PREGUNTA E1 en página 11.
+
+ Por lo demás, VAYA A LA PREGUNTA D8 en la
+                próxima página
+                                                                                                                                            39611
+
+                                                                               9
+D8. En los últimos 12 meses, ¿ha usado usted su registro médico en Internet para…
+                                                                                                                                           Sí      No
+
+      a.    pedir que renueven una receta médica?.................................................................                         1           2
+            RecordsOnline_RefillMeds
+      b.    llenar formularios o documentos relacionados con el cuidado de su salud?...........                                            1           2
+            RecordsOnline_Paperwork
+      c.    pedir que corrijan información incorrecta?............................................................                         1           2
+            RecordsOnline_RequestCorrection
+      d.    enviar mensajes de forma segura a su proveedor y al personal de cuidado de
+            la salud (por ej., por correo electrónico)?................................................................... 1                           2
+            RecordsOnline_MessageHCP
+      e.    descargar información sobre su salud a su computadora o dispositivo móvil,
+            como un teléfono celular o una tableta?.................................................................... 1                              2
+            RecordsOnline_DownloadHealth
+      f.    añadir información sobre su salud para compartirla con su proveedor de
+            cuidado de la salud, como preocupaciones relacionadas con su salud,
+            síntomas y efectos secundarios?...............................................................................                 1           2
+            RecordsOnline_AddHealthInfo
+      g.    obtener ayuda para tomar una decisión acerca de cómo tratar una enfermedad
+            o condición?................................................................................................................   1           2
+            RecordsOnline_MakeDecision
+
+
+D9. ¿Incluye alguno de sus informes médicos en Internet los siguientes tipos de información
+    médica?
+                                                                                                                                                No estoy
+                                                                                                                        Sí         No           seguro/a
+
+      a. Lista de problemas de salud/médicos...................................................... 1                                2              3
+           RecordsOnline_HealthProbs
+      b. Lista de alergias........................................................................................ 1                2              3
+           RecordsOnline_Allergies
+      c. Resúmenes de sus visitas al consultorio.................................................. 1                                2              3
+           RecordsOnline_VisitSummary
+      d. Notas clínicas............................................................................................ 1               2              3
+           RecordsOnline_ClinNotes
+      e. Historial de inmunizaciones o vacunas.................................................... 1                                2              3
+           RecordsOnline_Immunizations
+
+
+D10. ¿Ha enviado su información médica electrónicamente a…
+                                                                                                                                           Sí      No
+
+      a.    otro proveedor de cuidado de la salud?.....................................................................                    1           2
+            ESent_AnotherHCP
+      b.    un miembro de la familia u otra persona involucrada en su cuidado?......................                                       1           2
+            ESent_Family
+      c.    un servicio o aplicación que puede ayudar a manejar y almacenar su
+            información sobre la salud?........................................................................................ 1                      2
+            ESent_HealthApp
+
+
+D11. En general, ¿qué tan útil es su registro médico en Internet para monitorear su salud?
+                                            UsefulOnlineMedRec
+      1 Muy útil
+      2    Algo útil
+      3    No muy útil
+      4 Nunca es útil
+      5    No uso mi registro médico en Internet para monitorear mi salud
+
+
+                                                                                                                                                           39611
+
+                                                                                  10
+                                                    E: Cuidar
+
+E1.   ¿Está usted actualmente cuidando o tomando decisiones acerca del cuidado de la salud de
+      alguien que tiene una condición médica, de conducta, discapacidad, u otra condición?
+      Marque todos los que apliquen.
+      1   Sí, uno o varios hijos Caregiving_Child
+      1   Sí, un cónyuge o pareja Caregiving_Spouse
+      1   Sí, mi padre, mi madre o ambos Caregiving_Parent
+      1   Sí, a otro miembro de la familia Caregiving_AnotherFam
+      1   Sí, un amigo/a u otra persona que no es de la familia Caregiving_Friend
+      1 No      VAYA A E11 en la página 13 Caregiving_No
+                                              CaregivingWho_Cat
+
+E2.   ¿Provee usted algo de este cuidado profesionalmente como parte de su empleo (por
+      ejemplo, como enfermera o asistente profesional para el cuidado de la salud en el hogar)?
+                       Caregiving_Professional
+      1   Sí
+      2   No
+
+
+E3.   Por favor, piense en la persona a la que usted actualmente provee el mayor cuidado.
+      Por favor, escoja todas las condiciones para las cuales ha proporcionado usted cuidados para
+      esta persona.
+      Marque todos los que apliquen.
+      1   Cáncer Caregiving_Cancer
+      1   Alzheimer, confusión, demencia, pérdida de memoria Caregiving_Alzheimers
+      1   Problemas ortopédicos/musculoesqueléticos (por ejemplo: problemas de la espalda, fracturas de
+          huesos, artritis, problemas de movilidad, no puede desplazarse, debilidad, inestabilidad, caídas)
+                                                                                          Caregiving_OrthoMusc
+      1   Problemas mentales/de comportamiento/abuso de sustancias (por ejemplo: problemas
+          emocionales, depresión, ansiedad, abuso de sustancias, de drogas o de alcohol) Caregiving_MentalHealth
+      1   Condiciones crónicas (por ejemplo: presión alta o hipertensión, diabetes, enfermedad del corazón,
+          ataque al corazón, enfermedad pulmonar, enfisema; Enfermedad Pulmonar Obstructiva Crónica (COPD);
+          Parkinson) Caregiving_ChronicCond
+      1 Problemas neurológicos o de desarrollo (por ejemplo: daños o lesión al cerebro; trastorno en el
+        desarrollo o trastorno intelectual; retraso mental; síndrome de Down; derrame cerebral) Caregiving_NeuroDev
+      1 Condiciones graves (por ejemplo: cirugía, heridas o lesiones) Caregiving_AcuteCond
+      1   Envejecimiento o problemas relacionados con el envejecimiento Caregiving_Aging
+                              Caregiving_Other
+      1   Otras (Especifique)  Caregiving_Other_OS
+      1 No estoy seguro/a, No sé Caregiving_NotSure
+                                    CaregivingCond_Cat
+
+E4.   Piense en la persona a la que usted actualmente provee el mayor cuidado. En una semana
+      típica, ¿aproximadamente cuántas horas a la semana pasa usted dando cuidado?
+                                          Caregiving_HoursPerWeek2
+                   Horas dedicadas a ofrecer cuidado por semana
+
+                                                                                                       39611
+
+                                                        11
+E5.   Piense en la persona a la que usted actualmente provee el mayor cuidado.
+      ¿Cuánto tiempo lleva cuidando a esta persona? Su mejor estimado está bien.
+                                          Caregiving_HowLong
+      1   Menos de 30 días
+      2 De 1 a 6 meses
+      3   De 7 meses a 2 años
+      4   De 3 a 5 años
+      5   Más de 5 años
+
+
+E6.   Piense en la persona a la que usted actualmente provee el mayor cuidado.
+      ¿Dónde vive actualmente la persona que recibe su cuidado?
+                                          Caregiving_Reside
+      1   En su casa
+      2   A 20 minutos de su casa
+      3   De 20 a 59 minutos de su casa
+      4   De 1 a 2 horas de su casa
+      5   Más de 2 horas de su casa
+
+
+E7.   Piense en la persona a la que usted actualmente provee el mayor cuidado. ¿Ayuda usted
+      a la persona que recibe su cuidado con alguna de las siguientes actividades?
+      Marque todos los que apliquen.
+      1   Levantarse y acostarse en la cama o sentarse y levantarse de una silla
+          Caregiving_BedsChairs
+      1   Vestirse
+        Caregiving_Dressing
+      1 Sentarse y levantarse del inodoro
+        Caregiving_Toilet
+      1 Lidiar con incontinencia o pañales
+        Caregiving_Incontinence
+      1 Bañarse/Cuidado personal
+        Caregiving_Bathing
+      1 Preparar comidas
+        Caregiving_MealPrep
+      1 Alimentarlo
+        Caregiving_Feeding
+      1 Administrar las finanzas, como pagar facturas o completar rellenar reclamaciones de seguro
+        Caregiving_Finances
+      1 Compras de supermercado u otras compras
+        Caregiving_Shopping
+      1 Tareas domésticas
+        Caregiving_Housework
+      1 Transporte (conducirlo/la u organizar el transporte)
+        Caregiving_Transportation
+        CaregivingActivities_Cat
+E8.   Piense en la persona a la que usted actualmente provee el mayor cuidado. ¿Ayuda usted
+      a la persona que recibe su cuidado con alguna de las siguientes actividades?
+      Marque todos los que apliquen.
+      1 Realizando tareas médicas/de enfermería (por ejemplo, administrando medicamentos, cambiando
+          vendas, tratar los efectos secundarios o los síntomas)
+          Caregiving_MedTasks
+      1   Comunicándose con profesionales de cuidado de la salud como médicos, enfermeras o trabajadores
+          sociales sobre el cuidado de la persona
+          Caregiving_CommunicateHCP
+      1   Coordinando con servicios externos, como enfermeras, asistentes de atención domiciliaria, comidas a
+          domicilio u otros servicios comunitarios
+          Caregiving_ArrangeSvcs
+      1   Pasando tiempo con la persona y proporcionándole compañía y apoyo emocional
+          Caregiving_SpendTime                                                                          39611
+          CaregivingMedAct_Cat
+                                                         12
+E9.   Piense en la persona a la cual actualmente proporciona el mayor cuidado. ¿Cuántas
+      veces tuvo usted acceso al registro médico en Internet de la persona que cuida en los
+      últimos 12 meses? Caregiving_AccessMedRec
+       0    Ninguna
+      1     De 1 a 2 veces
+      2     De 3 a 5 veces
+      3     De 6 a 9 veces
+       4 10 o más veces
+
+
+
+E10. Las siguientes preguntas son sobre usted como proveedor de cuidado. ¿Alguna vez ha
+     necesitado y/o recibido alguno de los siguientes servicios de apoyo?
+                                                                                                                                              He
+                                                                                                                                          necesitado
+                                                                                                                    No he         He        y no he
+                                                                                                                  necesitado   recibido    recibido
+
+      a. Capacitación sobre cómo realizar tareas médicas/de enfermería
+         (por ejemplo, administrar medicamentos, cambiar vendas, tratar
+         los efectos secundarios o los síntomas).................................................                      1          2           3
+           Caregiver_MedTrain
+      b. Ayuda para obtener acceso a servicios tales como enfermeras,
+         asistentes de atención domiciliaria, comidas a domicilio u otros
+         servicios comunitarios.............................................................................           1          2           3
+           Caregiver_AccessHelp
+      c. Descanso a corto o largo plazo para los proveedores de cuidados
+         (Cuidado de relevo).................................................................................          1          2           3
+           Caregiver_RespiteCare
+      d. Grupos de apoyo para proveedores de cuidados..................................                                1          2           3
+           Caregiver_SupportGroup
+      e. Asesoramiento individual para ayudar a afrontar el suministro de
+         cuidado....................................................................................................   1          2           3
+           Caregiver_Counseling
+
+
+
+E11. Las tareas médicas/de enfermería incluyen actividades como administrar medicamentos,
+     cambiar vendas o tratar los efectos secundarios o los síntomas.
+      Si tuviera que aprender cómo hacer una tarea médica/de enfermería para ayudar a alguien,
+      ¿cómo preferiría aprender?
+      Marque todos los que apliquen.
+      1     Instrucción en persona
+            CaregiverTraining_InPerson
+      1 Línea de soporte o número de teléfono de 24 horas de asistencia para llamar con preguntas
+        CaregiverTraining_Hotline
+      1 Material de lectura: folleto o libro
+        CaregiverTraining_ReadingMat
+      1 Video de instrucción en línea
+        CaregiverTraining_OnlineVideo
+      1 Virtual: tener una persona calificada que me proporcione instrucciones en vivo a través del internet
+        CaregiverTraining_Virtual
+        CaregiverTraining_Cat
+
+
+
+
+                                                                                                                                                  39611
+
+                                                                                   13
+                                                              F: Cuidados Paliativos
+
+F1.   ¿Cómo describiría su nivel de conocimiento sobre cuidados paliativos?
+                                             KnowledgePalliativeCare
+      1    Nunca he oído hablar de eso                VAYA A G1 en la próxima página
+      2    Sé un poco sobre cuidados paliativos
+      3    Sé lo que es cuidado paliativo y podría explicarlo a otra persona
+
+
+F2.   Para mí, el objetivo de los cuidados paliativos es...
+                                                                                                                     Totalmente
+                                                                                 Totalmente   Algo de     Algo en        en
+                                                                                 de acuerdo   acuerdo   desacuerdo   desacuerdo   No sé
+
+      a.   Ayudar a amigos y familiares a sobrellevar
+           la enfermedad del paciente................................                   1       2           3            4          5
+           PCGoal_HelpFamCope
+      b.   Ofrecer apoyo social y emocional......................                       1        2          3            4          5
+           PCGoal_SocEmotSupport
+      c.   Tratar el dolor y otros síntomas físicos..............                       1        2          3            4          5
+           PCGoal_ManageSymptoms
+      d.   Prolongar la vida del paciente en sus últimos
+           días......................................................................   1        2          3            4          5
+           PCGoal_MoreTime
+
+
+F3.   Suponga que tiene una gran necesidad de obtener información sobre cuidados paliativos.
+      ¿Dónde iría primero para obtener información?
+      Marque sólo una de las siguientes opciones. PCStrongNeedInfo
+      1    Materiales impresos (por ejemplo, periódicos, revistas)
+       2   Proveedor de servicios de salud (médico, enfermera, trabajador social)
+       3   Conversaciones con personas de confianza (amigos, parientes o compañeros de trabajo)
+       4   Internet (Google u otro motor de búsqueda, WebMD u otro sitio web médico)
+      5    Redes sociales (Facebook, Instagram, Twitter)
+           PCStrongNeedInfo_IMP
+
+F4.   Suponga que tiene gran necesidad de obtener información sobre cuidados paliativos. ¿En
+      cuál de las siguientes fuentes confiaría más como fuente de información sobre cuidados
+      paliativos?
+      Marque sólo una de las siguientes opciones. PCTrustInfo
+      1    Materiales impresos (por ejemplo, periódicos, revistas)
+       2   Proveedor de servicios de salud (médico, enfermera, trabajador social)
+      3    Conversaciones con personas de confianza (amigos, parientes o compañeros de trabajo)
+      4    Internet (Google u otro motor de búsqueda, WebMD u otro sitio web médico)
+      5    Redes sociales (Facebook, Instagram, Twitter)
+           PCTrustInfo_IMP
+
+
+
+
+                                                                                                                                        39611
+
+                                                                                    14
+F5.   ¿Qué tanto está o no de acuerdo con las siguientes declaraciones?
+                                                                                                                                 Totalmente
+                                                                             Totalmente         Algo de          Algo en             en
+                                                                             de acuerdo         acuerdo        desacuerdo        desacuerdo        No sé
+
+      a. Aceptar cuidados paliativos significa darse
+         por vencido...........................................................     1                2               3                    4          5
+           PCMeansGivingUp
+      b. Es obligación del médico informar a todos los
+         pacientes con cáncer sobre la opción de los
+         cuidados paliativos...............................................         1                2                3                   4          5
+           PCObligatedToInform
+      c. Si acepta cuidados paliativos, debe suspender
+         otros tratamientos................................................. 1                      2                 3                   4          5
+           PCStopTreatments
+      d. El cuidado paliativo es lo mismo que el
+         cuidado de enfermos terminales.......................... 1                                 2                 3                   4          5
+           PCHospiceCare
+      e. Cuando pienso en "cuidados paliativos",
+         automáticamente pienso en la muerte................. 1                                     2                 3                   4          5
+           PCThinkDeath
+
+
+
+                                                           G: Su salud en general
+
+G1. En general, ¿diría usted que su salud es...
+                                                              GeneralHealth
+       1   Excelente,
+       2   Muy buena,
+       3   Buena,
+       4   Aceptable, o
+       5   Mala
+
+
+G2. En general, ¿cuánto confía en su capacidad para tomar buen cuidado de su salud?
+       1 Confío completamente                                OwnAbilityTakeCareHealth
+
+       2   Confío mucho
+       3   Confío bastante
+       4   Confío un poco
+       5 No confío
+
+
+
+G3. ¿Alguna vez un médico u otro profesional de la salud le ha dicho que tenía alguna de las
+    siguientes condiciones médicas?
+                                                                                                                                              Sí   No
+
+      a.     ¿Diabetes o alto contenido de azúcar en la sangre?....................................................                           1     2
+               MedConditions_Diabetes
+      b.     ¿Presión alta de la sangre o hipertensión?...................................................................                    1     2
+               MedConditions_HighBP
+      c.     ¿Una condición del corazón como ataque cardíaco, angina de pecho o fallo
+             cardiaco congestivo?......................................................................................................       1     2
+               MedConditions_HeartCondition
+      d.     ¿Enfermedad crónica del pulmón, asma, enfisema o bronquitis crónica?...................                                          1     2
+               MedConditions_LungDisease
+      e.     ¿Artritis o reumatismo?..................................................................................................        1     2
+               MedConditions_Arthritis
+      f.     ¿Depresión o trastornos de ansiedad?.........................................................................                    1     2
+               MedConditions_Depression
+                                                                                                                                                         39611
+
+                                                                                15
+G4. ¿Cuál es su estatura sin zapatos?
+
+            Pies         y                   Pulgadas
+
+     Height_Feet; Height_Inches
+
+G5. ¿Cuál es su peso en libras, sin zapatos?
+
+                        Libras       Weight
+
+
+
+
+G6. En las últimas 2 semanas, ¿con qué frecuencia se ha visto afectado por cualquiera de los
+    siguientes problemas?
+                                                                                                                La mayoría
+                                                                                                   Casi           de los     Varios   Ningún
+                                                                                                 a diario          días       días      día
+
+      a. Poco interés o placer por hacer cosas.....................................                 1               2          3        4
+          LittleInterest
+      b. Se ha sentido decaído, deprimido o desesperanzado.............                             1               2          3        4
+          Hopeless
+      c. Se ha sentido nervioso, ansioso o en ascuas..........................                      1               2          3        4
+          Nervous
+      d. No ha sido capaz de controlar o parar la preocupación...........                           1               2          3        4
+          Worrying
+
+
+G7. Ahora le estamos preguntando acerca de otras personas en su vida. Por favor responda
+    a cada punto marcando un cuadro por fila.
+                                                                                           Nunca     Raramente A veces Generalmente Siempre
+
+     a. ¿Hay alguna persona con quien pueda contar para
+        darle apoyo emocional cuando lo necesite - como
+        para hablar sobre problemas o para ayudarle a
+        tomar decisiones difíciles?................................................          1              2           3       4       5
+           EmotionalSupport2
+     b. ¿Tiene amigos o parientes con quienes pueda hablar
+        sobre su salud?.................................................................     1              2           3       4       5
+           TalkHealthFriends2
+     c. ¿Tiene alguien para preparar sus comidas si no puede
+        hacerlo usted mismo?.......................................................          1              2           3       4       5
+           HelpPreparingMeals
+     d. ¿Tiene alguien que lo lleve al médico si lo necesita?......                          1              2           3       4       5
+            HelpTransportDoctor
+     e. ¿Tiene alguien que le ayude con sus tareas diarias
+        si está enfermo?................................................................     1              2           3       4       5
+            HelpDailyChores2
+     f. ¿Tiene alguien para hacer mandados si lo necesita?......                             1              2           3       4       5
+            HelpRunErrands
+
+
+G8. ¿Es usted sordo/a o tiene graves dificultades para oír?
+                                  Deaf
+      1   Sí
+      2   No
+
+
+
+
+                                                                                                                                        39611
+
+                                                                            16
+                                                            H: Salud y nutrición
+
+
+H1. ¿Cuánto cree que cada uno de los siguientes puede influir en si una persona
+    desarrollará o no cáncer?
+                                                                                        Mucho             Poco              Nada   No sé
+
+      a. Tener sobrepeso u obesidad..........................................               1                2               3       4
+          InfluenceCancer_Obesity
+      b. Comer alimentos saludables...........................................              1                2               3       4
+          InfluenceCancer_EatingHealthy
+      c. Hacer ejercicio regularmente...........................................            1                2               3       4
+          InfluenceCancer_RegExercise
+
+
+H2. Piense en la última vez que ordenó comida en un restaurante de comida rápida o en
+    restaurante de servicio en la mesa, ¿notó la información de calorías que figura al lado de
+    la comida en el menú o en el tablero del menú?
+                                                              NoticeCalorieInfoOnMenu
+      1    Sí
+      2    No       VAYA A H5 más abajo
+
+
+H3. Pensando en la última vez que notó la información sobre calorías en el menú o en el
+    tablero del menú, ¿qué tan fácil o difícil le fue entender la información calórica?
+                                                              UnderstandCalorieInfo
+      1    Muy fácil
+      2    Algo fácil
+      3    Algo difícil
+      4    Muy difícil
+
+
+H4. Pensando en la última vez que notó la información sobre calorías en el menú o en el tablero
+    del menú, ¿de qué manera la información de calorías le hizo cambiar lo que pensaba pedir?
+                                                                                                                             Sí     No
+
+      a. Pedí algo con menos calorías..............................................................................          1      2
+          CalorieInfo_FewerCalories
+      b. Pedí algo con más calorías..................................................................................        1      2
+          CalorieInfo_MoreCalories
+      c. Pedí menos alimentos..........................................................................................      1      2
+          CalorieInfo_FewerItems
+      d. Pedí porciones más pequeñas.............................................................................            1      2
+          CalorieInfo_SmallerSizes
+      e. Pedí más alimentos..............................................................................................    1      2
+          CalorieInfo_MoreItems
+      f. Pedí porciones más grandes................................................................................          1      2
+          CalorieInfo_LargerSizes
+
+
+H5. ¿Aproximadamente cuántas calorías cree usted que un hombre/una mujer de su edad y
+    actividad física necesita consumir al día para mantener su peso actual?
+                                                                                                AverageCaloriesPerDay
+
+                                 Calorías                                                       AverageCaloriesPerDay_DK
+
+
+      8    No sé
+                                                                                                                                           39611
+
+                                                                              17
+H6. Estos son ejemplos de un solo trago de alcohol:
+
+
+
+
+      Durante los últimos 30 días, ¿cuántos días a la semana tomó por lo menos un solo trago
+      de cualquier bebida alcohólica? DrinkDaysPerWeek
+
+           Días por semana
+
+             Si 0   VAYA A I1 más abajo
+
+
+H7. Durante los últimos 30 días, en los días en que bebió alcohol, ¿aproximadamente cuántos
+    tragos tomó promedio? DrinksPerDay
+
+               Tragos en promedio por día
+
+
+
+
+                    I: Actividad física, ejercicio y exposición a los rayos UV
+
+I1.   En una semana típica, ¿cuántos días realiza alguna actividad física o hace ejercicio de al
+      menos moderada intensidad, tales como caminar de prisa, montar en bicicleta y nadar a
+      ritmo normal (no incluya levantamiento de pesas)?
+      0   Ninguno    VAYA A LA PREGUNTA I3 en la próxima página
+      1   1 día por semana                       TimesModerateExercise
+
+      2   2 días por semana
+      3   3 días por semana
+      4   4 días por semana
+      5   5 días por semana
+      6   6 días por semana
+      7   7 días por semana
+
+
+
+I2.   En los días en los que usted hace algún tipo de actividad o ejercicio físico de intensidad
+      por lo menos moderada, ¿por cuánto tiempo suele hacer estas actividades?
+
+                    Minutos por día
+                    HowLongModerateExerciseMinutes
+                                                                                            39611
+
+                                                 18
+I3.   En una semana típica, aparte de su trabajo o del trabajo en casa, ¿cuántos días hace
+      actividades físicas en su tiempo libre diseñadas específicamente para fortalecer sus músculos,
+      como levantamiento de pesas o entrenamiento en circuitos? No incluya ejercicios
+      cardiovasculares tales como caminar, montar bicicleta o nadar.
+      0   Ninguno                     TimesStrengthTraining
+
+      1   1 día por semana
+      2   2 días por semana
+      3   3 días por semana
+      4   4 días por semana
+      5 5 días por semana
+      6   6 días por semana
+      7   7 días por semana
+
+
+I4.   Durante los últimos 7 días, ¿en un día típico cuánto tiempo pasó sentado en casa o en el
+      trabajo? Incluído el tiempo que pasa sentado en un escritorio, visitando amigos, leyendo,
+      conduciendo o viajando en un automóvil, o sentado o acostado viendo televisión.
+                                      AverageTimeSitting
+               Horas por día
+
+
+
+I5.   En los últimos 12 meses, ¿cuántas veces ha usado una cama o una cabina bronceadora?
+                                      TimesUsedTanningBed
+                      Veces
+
+
+
+I6.   En días cálidos y soleados, ¿con qué frecuencia pasa tiempo bajo el sol para broncearse?
+      1   Frecuentemente              SpendTimeInSunTanning
+      2   A veces
+      3   Raramente
+      4   Nunca
+      5   No salgo en días soleados
+
+
+I7.   Durante los últimos 12 meses, ¿ha hablado con un médico u otro proveedor de cuidados
+      médicos acerca de reducir su exposición al sol o a los aparatos de bronceado en interiores,
+      como las lámparas solares, las camas o las cabinas de bronceado para reducir el riesgo de
+      cáncer de piel?               HCPAdvisedLimitingSun
+      1   Sí
+      2   No
+
+
+
+
+                                                                                          39611
+
+                                                 19
+I8.   Después de varios meses de no estar mucho tiempo al sol, si saliera al sol durante una
+      hora sin protector solar, sombrero o ropa protectora, ¿cuál de estos describe mejor lo qué
+      le sucedería a su piel? SunEffectAfter1Hour
+      1   Sufriría quemaduras graves y ampollas
+      2   Sufriría quemaduras moderadas y se me despellejaría la piel
+      3   Me quemaría levemente con algo o nada de bronceado
+      4   Se me oscurecería la piel sin quemaduras
+      5   No le pasaría
+
+
+
+
+                                         J: Productos de tabaco
+
+J1.   ¿Ha fumado al menos 100 cigarrillos en toda su vida?
+                                                  Smoke100
+      1   Sí
+      2   No      VAYA A LA PREGUNTA J3 más abajo
+
+
+J2.   ¿Con que frecuencia fuma usted cigarrillos ahora?
+                                                  SmokeNow
+      1   Todos los días
+      2   Algunos días
+      3   Nunca
+
+
+J3.   Ahora se dispone de tipos nuevos de cigarrillos llamados cigarrillos electrónicos (conocidos
+      también como e-cigarrillos o vaporizadores personales). Estos productos liberan nicotina
+      mediante un vapor. Comparado con fumar cigarrillos, diría usted que los cigarrillos
+      electrónicos son…                    ElecCigLessHarm
+
+      1   Mucho menos perjudiciales
+      2 Menos perjudiciales
+      3   Igual de perjudiciales
+      4   Más perjudiciales
+      5   Mucho más perjudiciales
+      7   No sé
+
+
+J4.   ¿Ha usado alguna vez un cigarrillo electrónico, aunque solo sea una o dos veces?
+                                                  UsedECigEver
+      1   Sí
+      2   No      VAYA A LA PREGUNTA J6 en la próxima página
+
+
+J5.   ¿Actualmente usa un cigarrillo electrónico todos los días, algunos días o nunca?
+                                                  UseECigNow
+      1   Todos los días
+      2   Algunos días
+      3   Nunca
+
+                                                                                           39611
+
+                                                       20
+J6.   ¿Durante los últimos 6 meses, ha visto usted mensajes en periódicos o en la televisión
+      diciendo que una Corte Federal ha ordenado a las compañías tabacaleras a hacer
+      pronunciamientos acerca de los peligros de fumar cigarrillos?
+                                                               SeenFederalCourtTobaccoMessages
+      1   Sí
+      2   No    VAYA A LA PREGUNTA K1 más abajo
+
+
+J7.   ¿Cuál de los siguientes mensajes ha visto usted?
+      Marque todos los que apliquen.
+      1   Que una Corte Federal ha ordenado a las compañías tabacaleras a hacer pronunciamientos acerca
+          de los efectos de fumar en la salud. TobaccoMessages_HESmoking
+      1   Que una Corte Federal ha ordenado a las compañías tabacaleras a hacer pronunciamientos acerca
+          de los efectos de ser fumador pasivo. TobaccoMessages_HESecondhand
+      1   Que una Corte Federal ha ordenado a las compañías tabacaleras a hacer pronunciamientos acerca
+          de qué tan adictivo es fumar y la nicotina. TobaccoMessages_Addictiveness
+      1   Que una Corte Federal ha ordenado a las compañías tabacaleras a hacer pronunciamientos acerca
+          de cómo los cigarrillos están diseñados para optimizar la entrega de nicotina.
+                                                                          TobaccoMessages_EnhanceDelivery
+      1   Que una Corte Federal ha ordenado a las compañías tabacaleras a hacer pronunciamientos acerca
+          cómo los cigarrillos suaves y bajos en alquitrán son tan perjudiciales como los cigarrillos regulares.
+                                                                           TobaccoMessages_LowTarLight
+                                                                           TobaccoMessages_Cat
+
+                                         K: Exploración del cáncer
+
+K1.   ¿Es usted de sexo masculino o femenino? GenderC
+      1   Masculino      VAYA A LA PREGUNTA K4 en la próxima página
+      2   Femenino
+
+
+K2.   ¿Hace cuánto tiempo se hizo la prueba de Papanicolaou más reciente para detectar el
+      cáncer cervical? WhenPapTest
+      1   Hace un año o menos
+      2   Más de 1 año hasta 2 años
+      3   Más de 2 hasta 3 años
+      4   Más de 3 hasta 5 años
+      5   Más de 5 años
+      6   Nunca me han hecho una prueba de Papanicolaou
+
+
+K3.   ¿Cuándo tuvo su última mamografía para detectar el cáncer de mama, si alguna vez la
+      ha tenido? WhenMammogram
+      1   Hace un año o menos
+      2   Más de 1 año hasta 2 años
+      3   Más de 2 hasta 3 años
+      4   Más de 3 hasta 5 años
+      5   Más de 5 años
+      6   Nunca me han hecho una mamografía
+                                                                                                             39611
+
+                                                          21
+K4.   Existen diferentes exámenes para detectar el cáncer de colon. Entre estos se incluyen:
+      Una colonoscopia – Para esta prueba se inserta un tubo en el recto y le dan un
+      medicamento que puede hacerle sentir sueño. Después del procedimiento, necesitará
+      que alguien lo conduzca a su casa.
+      Una sigmoidoscopia – Para este examen, usted estará despierto cuando le insertan el
+      tubo en el recto. Después del examen usted puede conducir solo a casa.
+      Una prueba de sangre en la materia fecal – Para esta prueba, se colecta una muestra
+      de heces en casa y después se envía a un médico o laboratorio para su análisis.
+
+      ¿Se ha hecho alguna vez uno de estos exámenes para detectar cáncer de colon?
+                                                            EverTestedColonCa
+      1    Sí
+      2    No
+
+
+
+
+                            L: Conocimiento del HPV (Virus del Papiloma Humano)
+
+L1.   ¿Ha oído hablar alguna vez del VPH? Las iniciales VPH significan Virus del Papiloma
+      Humano. Esto no es SIDA, HSV o herpes. HeardHPV
+      1    Sí
+      2    No        VAYA A LA PREGUNTA L3 más abajo
+
+
+L2.   ¿Cree usted que el VPH puede causar…
+                                                                                                                                  No estoy
+                                                                                                                        Sí   No   seguro/a
+
+      a.   cáncer cervical?.......................................................................................      1    2       3
+           HPVCauseCancer_Cervical
+      b.   cáncer del pene?......................................................................................       1    2       3
+           HPVCauseCancer_Penile
+      c.   cáncer anal?.............................................................................................    1    2       3
+           HPVCauseCancer_Anal
+      d.   cáncer oral?..............................................................................................   1    2       3
+           HPVCauseCancer_Oral
+
+
+L3.   Existe una vacuna para prevenir la infección VPH (HPV, en inglés) que se llama inyección
+      VPH (HPV, en inglés), vacuna contra el cáncer cervical, GARDASIL® o Cervarix®.
+
+      Antes de hoy, ¿había oído hablar alguna vez de la vacuna contra el cáncer cervical o
+      inyección VPH? HeardHPVVaccine2
+      1    Sí
+      2    No
+
+
+
+
+                                                                                                                                             39611
+
+                                                                                22
+L4.   Incluyéndose a usted mismo/a, ¿hay alguien en su familia inmediata entre las edades
+      de 9 y 27 años de edad? FamBetween9and27
+      1   Sí
+      2   No     VAYA A LA PREGUNTA M1 más abajo
+
+
+L5.   En los últimos 12 meses, ¿le ha recomendado un médico o un profesional de la salud a
+      usted o a un miembro de su familia inmediata que se ponga una inyección o vacuna contra
+      el VPH?                  RecommendHPVShot
+
+      1   Sí
+      2   No
+      3   No estoy seguro/a
+
+
+
+                                         M: Su historial de cáncer
+
+M1. ¿Le han diagnosticado un cáncer alguna vez? EverHadCancer
+      1   Sí
+      2   No      VAYA A LA PREGUNTA N1 en la próxima página
+
+
+M2. ¿Qué tipo de cáncer tuvo usted?
+      Marque todos los que apliquen.
+      1   Cáncer cervical (cáncer del cuello uterino) CaBladder
+      1 Cáncer de colon CaColon
+      1 Cáncer de estómago CaStomach
+      1 Cáncer de la cabeza y del cuello CaHeadNeck
+      1 Cáncer de la faringe (garganta) CaPharyngeal
+      1 Cáncer de la piel, no Melanoma CaSkin
+      1 Cáncer de los huesos CaBone
+      1 Cáncer de próstata CaProstate
+      1 Cáncer de seno CaBreast
+      1 Cáncer del vejiga CaBladder
+      1 Cáncer del hígado CaLiver
+      1 Cáncer del pulmón CaLung
+      1 Cáncer endometrial (cáncer del útero) CaEndometrial
+      1 Cáncer oral CaOral
+      1 Cáncer ovárico CaOvarian
+      1   Cáncer pancreático CaPancreatic
+      1   Cáncer rectal CaRectal
+      1   Cáncer renal (riñón) CaRenal
+      1   Leucemia (cáncer de la sangre) CaLeukemia
+      1   Linfoma (de Hodgkin) CaHodgkins
+      1 Linfoma (no Hodgkin) CaNonHodgkin
+                 CaMelanoma
+      1 Melanoma
+                             CaOther
+      1 Otro-Especifique     CaOther_OS
+               Cancer_Cat
+                                                                                       39611
+
+                                                        23
+M3. ¿A qué edad le dijeron por primera vez que tenía cáncer?
+                                   WhenDiagnosedCancer
+                       Edad
+
+
+
+M4. ¿Cuánto le preocupa que usted vaya desarrollar cáncer de nuevo?
+                                   FreqWorryCancerAgain
+      1   Nada
+      2   Un poco
+      3   Algo
+     4    Moderadamente
+     5    Mucho
+
+
+M5. ¿Qué tan fácil es para usted imaginarse a sí mismo desarrollando cáncer nuevamente
+    en el futuro?             ImagineCancerAgain
+
+      1   Extremadamente difícil
+      2 Algo difícil
+      3   Ni difícil ni fácil
+      4   Algo fácil
+      5   Extremadamente fácil
+
+
+
+
+ Si ha sido diagnosticado con cáncer alguna
+     vez en su vida, por favor VAYA A N3
+            en la próxima página.
+
+
+
+
+                                   N: Creencias respecto al cáncer
+
+     Piense acerca del cáncer en general al contestar las preguntas de esta sección.
+
+N1. ¿Cuánto le preocupa que usted vaya desarrollar cáncer?
+                                               FreqWorryCancer
+      1   Nada
+      2   Un poco
+      3   Algo
+      4   Moderadamente
+      5   Mucho
+
+
+
+
+                                                                                       39611
+
+                                                   24
+N2. ¿Qué tan fácil es para usted imaginarse a sí mismo desarrollando cáncer en el futuro?
+                                                                          ImagineCancer
+      1    Extremadamente difícil
+      2    Algo difícil
+      3    Ni difícil ni fácil
+      4    Algo fácil
+      5    Extremadamente fácil
+
+
+N3. ¿Cuánto está usted de acuerdo o en desacuerdo con cada una de las siguientes frases?
+                                                                                            Muy de    Algo de     Algo en      Muy en
+                                                                                            acuerdo   acuerdo   desacuerdo   desacuerdo
+
+
+      a.    Parece que todo causa cáncer.......................................                  1      2           3            4
+            EverythingCauseCancer
+      b.    No hay mucho que uno pueda hacer para disminuir
+            las probabilidades de contraer cáncer............................ 1                         2           3            4
+            PreventNotPossible
+      c.    Hay tantas diferentes recomendaciones sobre la
+            prevención del cáncer que es difícil saber cuáles
+            seguir............................................................................... 1     2           3            4
+            TooManyRecommendations
+
+
+N4. Las siguientes preguntas son acerca del conocimiento sobre cáncer en su familia. Con
+    respecto a familia nos referimos a sus parientes biológicos de primer y segundo grado; es
+    decir, sus abuelos, padres, hermanos y hermanas, hijos, tías y tíos, sobrinas y sobrinos.
+     Un historial de cáncer familiar es un registro de los cánceres en su familia. Esto incluye
+     saber si no tiene antecedentes de cáncer en su familia.
+     ¿Qué tan bien conoce la historia de cáncer de su familia?
+                                                       FamiliarFamilyCancer
+      1    Muy bien
+      2    Bien
+      3    Algo
+      4    Un poco
+      5    Para nada
+
+
+N5. ¿Alguna vez ha hablado sobre el historial de cáncer de su familia con cualquiera de las
+    siguientes personas? Si no hay un historial de cáncer en su familia, y usted ha hablado
+    sobre esto, por favor indíquelo.
+    Marque todos los que apliquen.
+      1    Su madre biológica FamilyCancer_Mother
+      1    Su padre biológico FamilyCancer_Father
+      1    Su (s) hermana (s) biológica (s) FamilyCancer_Sister
+      1    Su (s) hermano (s) biológico (s) FamilyCancer_Brother
+      1    Sus hijos biológicos FamilyCancer_Children
+      1    Otros miembros biológicos de la familia FamilyCancer_OthFam
+      1    Un proveedor de servicios de salud FamilyCancer_HCP
+      1    No he tenido conversaciones con ninguna de estas personas FamilyCancer_None
+                                                              FamilyCancer_Cat                                                       39611
+
+                                                                                 25
+N6. Muchos formularios médicos le hacen preguntas sobre el cáncer en su familia. ¿Qué tan
+    seguro está de poder completar un resumen de su historial familiar de cáncer en un
+    formulario médico? ConfidentFamilyHistory
+      1   Confío completamente
+      2   Confío mucho
+      3   Confío parcialmente
+      4   Confío un poco
+      5   No confío en absoluto
+
+
+N7. ¿Ha tenido cáncer algún miembro de su familia?
+                              FamilyEverHadCancer
+      1   Sí
+      2   No
+      4   No estoy seguro/a
+
+
+
+
+                                             O: Usted y su hogar
+
+O1. ¿Qué edad tiene usted?
+
+                    Años        Age
+
+
+
+
+O2. ¿Cuál es su situación laboral actual?
+     Marque solo una de las siguientes opciones.
+                                                OccupationStatus
+      1   Empleado Employed
+      2   Desempleado Unemployed
+      3   Ama de casa Homemaker
+      4 Estudiante Student
+      5   Retirado Retired
+      6   Discapacitado Disabled
+     91 Otro-Especifique          OccupationStatus_OS
+
+                                  OtherOcc
+                                  MultiOcc
+
+
+
+
+                                                                                     39611
+
+                                                        26
+O3. ¿Ha prestado usted alguna vez servicio activo en las fuerzas armadas, en la Reserva
+    militar o en la Guardia Nacional de los EE.UU.? Servicio activo no incluye entrenamiento
+    en las Reservas o en la Guardia Nacional, pero INCLUYE la activación, por ejemplo, para
+    la guerra del Golfo Pérsico.                  ActiveDutyArmedForces
+
+      1   Sí, ahora estoy en servicio activo
+      2   Sí, estuve en servicio activo durante los últimos 12 meses pero no ahora
+      3   Sí, estuve en servicio activo en el pasado pero no durante los últimos 12 meses
+      4   No, solamente entrenamiento para la Reserva o la Guardia Nacional     VAYA A LA PREGUNTA O5
+      5 No, nunca presté servicio militar                                              más abajo
+
+
+O4. En los últimos 12 meses, ¿ha recibido parte o todo su cuidado de la salud de un hospital
+    o clínica para veteranos (VA, por sus siglas en inglés)? ReceivedCareVA
+      1   Sí, todo mi cuidado de salud
+      2   Sí, parte de mi cuidado de salud
+      3   No, ningún cuidado de salud por parte del VA
+
+
+O5. ¿Cuál es su estado civil? MaritalStatus
+     Marque solo una de las siguientes opciones.
+      1   Casado/a
+      2   Unión libre
+      3   Divorciado/a
+      4   Viudo/a
+      5   Separado/a
+      6   Soltero/a, nunca he estado casado/a
+
+
+O6. ¿Cuál es el grado o nivel más alto de educación que ha completado?
+                                               Education
+      1   Menos de 8 años
+      2   De 8 a 11 años
+      3   12 años o escuela secundaria completa
+      4   Formación después de la escuela secundaria, diferente de la universidad (vocacional o técnica)
+      5   Algún tiempo en la universidad
+      6   Graduado de la universidad
+      7   Postgraduado
+
+
+O7. ¿Nació en los Estados Unidos? BornInUSA
+      1   Sí    VAYA A LA PREGUNTA O9 en la próxima página
+      2   No
+
+
+O8. ¿En qué año vino a vivir a los Estados Unidos?
+                                     YearCameToUSA
+                         Año
+
+                                                                                                           39611
+
+                                                           27
+O9. ¿Cuán bien habla usted inglés?
+                                 SpeakEnglish
+      1   Muy bien
+      2   Bien
+      3   No muy bien
+     4    Nada en lo absoluto
+
+
+O10. ¿Es usted de origen hispano/a, latino/a o español? Una categoría o más pueden ser
+     seleccionadas.
+     Marque todos los que apliquen.
+      1   No, ni hispano/a, latino/a, ni de origen español NotHisp
+      1   Sí, mexicano/a, mexicano/a americano/a, chicano/a Mexican
+      1   Sí, portorriqueño/a PuertoRican
+      1   Sí, cubano/a Cuban
+      1   Sí, de otro origen hispano/a, latino/a o español OtherHisp
+                                              Hisp_Cat
+
+O11. ¿Cuál es su raza? Una o más categorías pueden ser seleccionadas.
+     Marque todos los que apliquen.
+      1 Blanca White
+      1   Negra o afro-americana Black
+      1   India Americana o nativa de Alaska AmerInd
+      1   India asiática AsInd
+      1 China Chinese
+      1 Filipina Filipino
+      1   Japonesa Japanese
+      1   Coreana Korean
+      1   Vietnamita Vietnamese
+      1 Otra raza asiática OthAsian
+      1 Nativa de Hawái Hawaiian
+      1   Guameña o chamorra Guamanian
+      1   Samoana Samoan
+      1   Otra raza de las islas del Pacífico OthPacIsl
+                                      Race_Cat2
+
+O12. Se considera usted… SexualOrientation
+      1   Heterosexual
+      2   Homosexual o gay o lesbiana
+      3   Bisexual
+     91 Otra cosa – Especifique         SexualOrientation_OS
+
+                                        SexualOrientation_I
+O13. Incluyéndose usted, ¿cuántas personas viven en su hogar?
+                                                   TotalHousehold
+                 Número de personas
+                                                                                         39611
+
+                                                          28
+O14. Empezando con usted, marque el sexo y escriba la edad y mes de nacimiento de cada
+     adulto de 18 años de edad o mayor que viva en esta dirección.
+                                                                Mes de
+                                                               nacimiento
+                           Sexo               Edad              (01-12)
+
+          USTED          1 Masculino           SelfAge          SelfMOB
+          MISMO/A        2 Femenino
+      SelfGender
+                         1 Masculino        HHAdultAge2         HHAdultMOB2
+          Adulto 2
+                         2 Femenino
+   HHAdultGender2
+                         1 Masculino        HHAdultAge3         HHAdultMOB3
+          Adulto 3
+                         2 Femenino
+   HHAdultGender3
+                         1 Masculino        HHAdultAge4         HHAdultMOB4
+          Adulto 4
+                         2 Femenino
+   HHAdultGender4
+                         1 Masculino        HHAdultAge5         HHAdultMOB5
+          Adulto 5
+                         2 Femenino
+   HHAdultGender5
+
+
+
+O15. ¿Cuántos niños menores de 18 años de edad viven en su hogar?
+                                       ChildrenInHH
+                   Número de niños menores de 18 años de edad
+
+
+
+O16. Actualmente, ¿usted renta o es dueño de su propia casa?
+                                       RentOrOwn
+      1    Casa propia
+      2    Renta
+      3    Ocupa un lugar sin pagar renta
+
+
+O17. Pensando en los miembros de su familia que viven en este hogar, ¿cuál es su ingreso
+     anual combinado, es decir, los ingresos totales antes de impuestos de todas las fuentes
+     de ganancia en el último año? IncomeRanges
+      1    $0 a $9,999
+      2    $10,000 a $14,999
+      3    $15,000 a $19,999
+      4    $20,000 a $34,999
+      5    $35,000 a $49,999
+      6    $50,000 a $74,999
+      7    $75,000 a $99,999
+      8    $100,000 a $199,999
+      9    $200,000 o más
+
+
+
+
+                                                                                        39611
+
+                                                          29
+O18. ¿Cuánto tiempo le tomó completar la encuesta?
+     Escriba el número de minutos u horas usando las casillas.
+
+               Minutos                Horas
+
+     MailSurveyTimeMin
+     MailSurveyTimeHrs
+O19. ¿En cuál de los siguientes tipos de direcciones recibe su hogar actualmente el correo?
+     Marque todos los que apliquen.
+      1   El nombre de una calle con un número de la casa o el edificio
+          TypeOfAddressA
+      1   Una dirección con un número de ruta rural
+          TypeOfAddressB
+      1   Una casilla postal del correo de EE.UU. (P.O. Box)
+          TypeOfAddressC
+      1   Una casilla postal de un establecimiento comercial (como Mailboxes R Us, Mail Boxes Etc.® )
+          TypeOfAddressD
+
+
+
+
+                                                 ¡Gracias!
+
+    Por favor devuelva este cuestionario dentro del sobre con la estampilla pagada en un
+    plazo de 2 semanas.
+
+    Si se le ha perdido el sobre, mande su cuestionario completado a:
+
+     HINTS Study, TC 1046F
+     Westat
+     1600 Research Boulevard
+     Rockville, MD 20850
+
+
+
+
+                                                                                                        39611
+
+                                                        30
+

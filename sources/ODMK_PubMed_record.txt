@@ -1,0 +1,76 @@
+
+PMID- 33899688
+OWN - NLM
+STAT- MEDLINE
+DCOM- 20211015
+LR  - 20211204
+IS  - 1087-0415 (Electronic)
+IS  - 1081-0730 (Linking)
+VI  - 26
+IP  - 3
+DP  - 2021 Mar 4
+TI  - Racial/Ethnic Disparities in Patient-Provider Communication and the Role of 
+      E-Health Use.
+PG  - 194-203
+LID - 10.1080/10810730.2021.1919248 [doi]
+AB  - Although the health care industry has strived to address racial/ethnic 
+      disparities in health communication, several gaps remain. Previous findings 
+      suggest that communication technology might help narrow the gaps; however, they 
+      do not provide a comprehensive picture of how or why. To answer these questions, 
+      we examined the potential role of communication technology in mitigating the 
+      racial/ethnic disparities in patient-provider communication. Data analysis of the 
+      2018 Health Information National Trends Survey (N= 3,504) revealed that the 
+      levels of perceived quality of communication with health care providers were 
+      lower among Asians and Hispanics than non-Hispanic Whites while no difference 
+      emerged between Blacks and non-Hispanic Whites. Although the adoption of 
+      communication technology was relatively high across minority groups, its use 
+      appeared to play different roles in different racial/ethnic populations. The 
+      Internet and patient portals showed no particular associations with 
+      patient-provider communication except for Black Internet users, who reported 
+      poorer experiences with patient-provider communication than non-users. Among 
+      Asians and Hispanics, social media and mobile communication appeared to play 
+      different roles in impacting communication experiences with health care 
+      providers. The findings suggest that communication technologies need to be 
+      strategically utilized and tailored to better meet the communication needs of 
+      racial/ethnic minorities.
+FAU - Kim, Hyang-Sook
+AU  - Kim HS
+AUID- ORCID: 0000-0002-5650-5505
+AD  - Department of Mass Communication, Towson University, Towson, Maryland, USA.
+FAU - Kim, Hee Jun
+AU  - Kim HJ
+AD  - College of Nursing, Ajou University, Suwon-si, Gyeonggi-do, Republic of Korea.
+FAU - Juon, Hee-Soon
+AU  - Juon HS
+AD  - Department of Oncology, Thomas Jefferson University, Philadelphia, Pennsylvania, 
+      USA.
+LA  - eng
+PT  - Journal Article
+DEP - 20210426
+PL  - United States
+TA  - J Health Commun
+JT  - Journal of health communication
+JID - 9604100
+MH  - *Communication
+MH  - Ethnicity/*psychology/statistics & numerical data
+MH  - Female
+MH  - Health Care Surveys
+MH  - Healthcare Disparities/*ethnology
+MH  - Humans
+MH  - Male
+MH  - Middle Aged
+MH  - Minority Groups/*psychology/statistics & numerical data
+MH  - *Physician-Patient Relations
+MH  - Racial Groups/*psychology/statistics & numerical data
+MH  - Telemedicine/*statistics & numerical data
+MH  - United States
+EDAT- 2021/04/27 06:00
+MHDA- 2021/10/16 06:00
+CRDT- 2021/04/26 08:52
+PHST- 2021/04/27 06:00 [pubmed]
+PHST- 2021/10/16 06:00 [medline]
+PHST- 2021/04/26 08:52 [entrez]
+AID - 10.1080/10810730.2021.1919248 [doi]
+PST - ppublish
+SO  - J Health Commun. 2021 Mar 4;26(3):194-203. doi: 10.1080/10810730.2021.1919248. 
+      Epub 2021 Apr 26.

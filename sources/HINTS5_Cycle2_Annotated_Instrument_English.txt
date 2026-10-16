@@ -1,0 +1,1315 @@
+Health
+Information
+National Trends Survey
+
+
+
+
+                           National Institutes of Health
+                           U.S. Department of Health and Human Services
+
+
+
+
+H5–C2                    Annotated Form
+                         Cycle 2, Full-Content, English Version
+START HERE:
+
+
+     Instructions
+      Please use a black or blue pen to complete this form.
+      Mark X to indicate your answer.
+      If you want to change your answer, mark X on the wrong answer.
+
+
+
+
+    1.   Is there more than one person age 18 or older living in this household?
+                  AdultsInHH
+         1    Yes
+         2    No GO TO A1 on the next page
+
+
+    2.   Including yourself, how many people age 18 or older live in this household?
+                  MailHHAdults
+
+
+
+
+    3.   The adult with the next birthday should complete this questionnaire. This
+         way, across all households, HINTS will include responses from adults of all
+         ages.
+
+
+    4.   Please write the first name, nickname, or initials of the adult with the next
+         birthday. This is the person who should complete the questionnaire.
+
+
+
+
+     Si prefiere recibir la encuesta en español, por favor llame 1-888-738-6812
+
+
+
+
+                                                                                         55346
+
+
+                                             1
+        A: Looking For Health Information
+
+A1. Have you ever looked for information about             A4. Have you ever looked for information about
+    health or medical topics from any source?                  cancer from any source? SeekCancerInfo
+                   SeekHealthInfo
+     1 Yes                                                      1   Yes
+    2    No       GO TO A6 in the next column                   2 No        GO TO A6 below
+
+
+A2. The most recent time you looked for                    A5. Based on the results of your most recent
+    information about health or medical topics,                search for information about cancer, how
+    where did you go first? WhereSeekHealthInfo                much do you agree or disagree with each
+    Mark only one.                                             of the following statements?
+
+    1    Books
+     2 Brochures, pamphlets, etc.
+    3    Cancer organization
+    4    Family                                             a. It took a lot of effort to get the
+    5    Friend/Co-worker                                      information you needed.............      1   2     3     4
+                                                                CancerLotOfEffort
+    6    Doctor or health care provider                     b. You felt frustrated during your
+    7    Internet                                              search for the information.........      1   2     3     4
+                                                                CancerFrustrated
+    8    Library                                            c. You were concerned about the
+    9 Magazines                                                quality of the information...........    1   2     3     4
+                                                                CancerConcernedQuality
+    10 Newspapers                                           d. The information you found was
+    11 Telephone information number
+                                                               hard to understand....................   1   2     3     4
+                                                                CancerTooHardUnderstand
+    12 Complementary, alternative, or unconventional
+         practitioner
+                                                           A6. Overall, how confident are you that you could
+         WhereSeekHealthInfo_IMP
+                                                               get advice or information about cancer if you
+A3. The most recent time you looked for                        needed it? CancerConfidentGetHealthInf
+    information about health or medical topics,                 1   Completely confident
+    who was it for? WhoLookingFor
+                                                                2 Very confident
+    1    Myself                                                 3   Somewhat confident
+    2    Someone else                                           4   A little confident
+    3 Both myself and someone else                              5   Not confident at all
+
+
+
+
+                                                                                                                55346
+
+
+                                                       2
+                                                                           B: Using the Internet to Find Information
+
+A7. In general, how much would you trust                                 B1. Do you ever go on-line to access the Internet
+    information about cancer from each of the                                or World Wide Web, or to send and receive
+    following?                                                               e-mail? UseInternet
+                                                                               1    Yes
+                                                                               2    No       GO TO B5 on the next page
+
+ a. A doctor...................................      4   3   2   1
+      CancerTrustDoctor                                                  B2. When you use the Internet, do you access it
+ b. Family or friends......................          4   3   2   1
+      CancerTrustFamily                                                      through...
+ c. Newspapers or magazines......                    4   3   2   1
+      CancerTrustNewsMag                                                                                                               Yes    No
+ d. Radio........................................    4   3   2   1
+    CancerTrustRadio
+ e. Internet.....................................    4   3   2   1
+                                                                          a. A regular dial-up telephone line.................... 1           2
+      CancerTrustInternet                                                     Internet_DialUp
+ f. Television.................................      4   3   2   1
+                                                                          b. Broadband such as DSL, cable, or FiOS.....                 1     2
+      CancerTrustTelevison                                                    Internet_BroadBnd
+ g. Government health agencies...                    4   3   2   1
+      CancerTrustGov                                                      c. A cellular network (i.e., phone, 3G/4G)........            1     2
+ h. Charitable organizations..........               4   3   2   1            Internet_Cell
+      CancerTrustCharities                                                d. A wireless network (Wi-Fi)............................ 1         2
+ i.   Religious organizations and                                             Internet_WiFi
+      leaders.....................................   4   3   2   1
+      CancerTrustReligiousOrgs
+                                                                         B3. In the past 12 months, have you used the
+                                                                             Internet to look for information about cancer
+A8. Imagine that you had a strong need to get
+                                                                             for yourself? InternetCancerInfoSelf
+    information about cancer. Where would you
+    go first? StrongNeedCancerInfo                                             1    Yes
+                                                                               2    No
+      Mark only one.
+       1 Books
+       2    Brochures, pamphlets, etc.                                   B4. How often do you access the Internet
+       3    Cancer organization                                              through each of the following?
+       4    Family
+       5    Friend/Co-worker
+       6    Doctor or health care provider
+       7    Internet                                                      a. Computer at home...................... 1             2    3      4
+                                                                               WhereUseInternet_Home
+       8    Library                                                       b. Computer at work....................... 1            2    3      4
+                                                                               WhereUseInternet_Work
+       9    Magazines                                                     c. Computer in a public place
+      10 Newspapers                                                          (library, community center,
+      11 Telephone information number                                        other).......................................... 1   2    3      4
+                                                                               WhereUseInternet_PublicPlace
+      12 Complementary, alternative, or unconventional                    d. On a mobile device (cell
+                                                                             phone/smart phone/tablet)......... 1                 2    3      4
+            practitioner
+                                                                               WhereUseInternet_MobileDevice
+      91 Other – Specify               StrongNeedCancerInfo_OS
+
+                                       StrongNeedCancerInfo_IMP
+
+
+
+
+                                                                                                                                      55346
+
+
+                                                                     3
+B5. In the past 12 months, have you used a                                     B8. Has your tablet or smartphone…
+    computer, smartphone, or other electronic
+    means to do any of the following?                                                                                                          Yes   No
+
+                                                               Yes    No
+                                                                                a. Helped you track progress on a
+                                                                                   health-related goal such as quitting
+ a. Looked for health or medical                                                   smoking, losing weight, or increasing
+    information for yourself.............................. 1          2            physical activity?.......................................   1       2
+     Electronic_SelfHealthInfo                                                      Tablet_AchieveGoal
+ b. Looked for health or medical                                                b. Helped you make a decision about how
+    information for someone else....................             1    2            to treat an illness or condition?................. 1                2
+     Electronic_HealthInfoSE                                                        Tablet_MakeDecision
+ c. Bought medicine or vitamins online..........                 1    2         c. Helped you in discussions with your
+     Electronic_BuyMedicine
+ d. Looked for assistance for the care                                             health care provider?................................       1       2
+                                                                                    Tablet_DiscussionsHCP
+    that you provide for someone else...........                 1    2
+     Electronic_LookedAssistance
+ e. Used e-mail or the Internet to
+    communicate with a doctor or a
+                                                                               B9. Other than a tablet or smartphone, have you
+    doctor’s office.............................................. 1   2            used an electronic device to monitor or track
+     Electronic_TalkDoctor                                                         your health within the last 12 months?
+ f. Tracked health care charges and costs..... 1                      2
+     Electronic_TrackedHealthCosts                                                 Examples include Fitbit, blood glucose
+ g. Looked up medical test results.................. 1                2            meters, and blood pressure monitors.
+     Electronic_TestResults                                                                       OtherDevTrackHealth
+                                                                                     1    Yes
+                                                                                     2    No
+B6. Please indicate if you have each of the
+    following.
+                                                                               B10. Have you shared health information from
+     Mark all that apply.                                                           either an electronic monitoring device or
+      1   Tablet computer (for example, an iPad,                                    smartphone with a health professional within
+          Samsung Galaxy, Motorola Xoom, or                                         the last 12 months? SharedHealthDeviceInfo
+          Kindle Fire) HaveDevice_Tablet
+                                                                                     1 Yes
+      1 Smartphone (for example, an iPhone, Android,
+           Blackberry, or Windows phone)                                             2 No
+           HaveDevice_SmartPh
+      1 Basic cell phone only                          GO TO B9                      3 Not Applicable
+        HaveDevice_CellPh                              in the next
+      1 I do not have any of the above
+        HaveDevice_None                                  column
+        HaveDevice_Cat
+B7. On your tablet or smartphone, do you have
+    any "apps" related to health and wellness?
+                          TabletHealthWellnessApps
+      1 Yes
+      2   No
+      3 Don't know
+
+
+
+
+                                                                                                                                               55346
+
+
+                                                                           4
+                                                                                                          C: Your Health Care
+
+B11. Sometimes people use the Internet to                                               C1. Not including psychiatrists and other
+     connect with other people online through                                               mental health professionals, is there a
+     social networks like Facebook or Twitter.                                              particular doctor, nurse, or other health
+     This is often called “social media”.                                                   professional that you see most often?
+                                                                                                                        RegularProvider
+                                                                                             1   Yes
+       In the past 12 months, have you used the
+       Internet for any of the following reasons?                                            2   No
+
+                                                                         Yes   No
+                                                                                        C2. About how long has it been since you last
+ a. To visit a social networking site, such as
+    Facebook or LinkedIn...................................              1     2            visited a doctor for a routine checkup? A
+      IntRsn_VisitedSocNet                                                                  routine checkup is a general physical
+ b. To share health information on social
+    networking sites, such as Facebook or
+                                                                                            exam, not an exam for a specific injury,
+    Twitter...........................................................   1     2            illness, or condition. MostRecentCheckup2
+      IntRsn_SharedSocNet
+ c. To write in an online diary or blog (i.e.,                                               1   Within the past year
+    Web log)........................................................ 1         2
+                                                                                             2   1-2 years ago
+      IntRsn_WroteBlog
+ d. To participate in an online forum or                                                     3   3-5 years ago
+    support group for people with a similar
+                                                                               2             4   More than 5 years ago
+    health or medical issue................................. 1
+      IntRsn_SupportGroup                                                                    5   Never
+ e. To watch a health-related video on
+    YouTube.......................................................       1     2             6   Don’t know
+       IntRsn_YouTube
+
+                                                                                        C3. In the past 12 months, not counting times
+B12. Have you sent a text message to or
+                                                                                            you went to an emergency room, how
+     received a text message from a doctor or
+                                                                                            many times did you go to a doctor, nurse,
+     other health care professional within the
+                                                                                            or other health professional to get care for
+     last 12 months? TextFromDoctor
+                                                                                            yourself? FreqGoProvider
+        1    Yes
+                                                                                             0   None      GO TO C7 on the next page
+        2 No
+                                                                                             1   1 time
+        3    Don’t know
+                                                                                             2   2 times
+                                                                                             3   3 times
+                                                                                             4   4 times
+                                                                                             5   5-9 times
+                                                                                             6   10 or more times
+
+
+
+
+                                                                                                                                       55346
+
+
+                                                                                    5
+C4. The following questions are about your                                  C6. In the last 12 months, when getting care
+    communication with all doctors, nurses, or                                  for a medical problem, was there a time
+    other health professionals you saw during                                   when you...
+    the past 12 months.
+                                                                                                                                             Yes   No
+
+       How often did they do                                                 a. Had to bring an X-ray, MRI, or other
+       each of the following?                                                   type of test result with you to the
+                                                                                appointment?............................................ 1           2
+                                                                                 ProbCare_BringTest
+ a. Give you the chance to ask all                                           b. Had to wait for test results longer than
+    the health-related questions you                                            you thought reasonable?.......................... 1                  2
+    had................................................ 1   2   3   4
+                                                                                 ProbCare_WaitLong
+     ChanceAskQuestions                                                      c. Had to redo a test or procedure
+ b. Give the attention you needed to
+                                                                    4           because the earlier test results were
+    your feelings and emotions........... 1                 2   3
+     FeelingsAddressed                                                          not available?...........................................    1       2
+                                                                                 ProbCare_RedoTest
+ c. Involve you in decisions about
+                                                                             d. Had to provide your medical history
+    your health care as much as you
+                                                                    4           again because your chart could not
+    wanted........................................... 1     2   3
+     InvolvedDecisions                                                          be found?.................................................   1       2
+ d. Make sure you understood the                                                 ProbCare_ProvideHist
+    things you needed to do to take
+    care of your health........................ 1           2   3   4
+     UnderstoodNextSteps
+                                                                            C7. Are you currently covered by any of the
+ e. Explain things in a way you                                                 following types of health insurance or
+    could understand.......................... 1            2   3   4           health coverage plans?
+     ExplainedClearly
+ f. Spend enough time with you........ 1                    2   3   4                                                                        Yes   No
+     SpentEnoughTime
+ g. Help you deal with feelings of                                           a. Insurance through a current or former
+    uncertainty about your health or                                            employer or union....................................        1       2
+    health care.................................... 1       2   3   4
+                                                                                 HealthIns_InsuranceEmp
+     HelpUncertainty                                                         b. Insurance purchased directly from an
+                                                                                insurance company..................................          1       2
+C5. Overall, how would you rate the quality of                                   HealthIns_InsurancePriv
+                                                                             c. Medicare, for people 65 and older, or
+    health care you received in the past 12                                     people with certain disabilities.................            1       2
+    months? QualityCare                                                          HealthIns_Medicare
+                                                                             d. Medicaid, Medical Assistance, or any
+      1    Excellent                                                            kind of government-assistance plan for
+      2    Very good                                                            those with low incomes or a disability......                 1       2
+                                                                                 HealthIns_Medicaid
+      3    Good                                                              e. TRICARE or other military health care.....                   1       2
+                                                                                 HealthIns_Tricare
+      4    Fair
+                                                                             f. VA (including those who have ever used
+      5    Poor                                                                 or enrolled for VA health care).................             1       2
+                                                                                 HealthIns_VA
+                                                                             g. Indian Health Service...............................         1       2
+                                                                                 HealthIns_IHS
+                                                                             h. Any other type of health insurance or
+                                                                                health coverage plan (Specify)................               1       2
+                                                                                 HealthIns_Other
+
+                                                                                                                HealthIns_Other_OS
+
+
+
+
+                                                                                                                                             55346
+
+
+                                                                        6
+               D: Medical Records
+
+Next, we are going to ask you some questions                   D6. How many times did you access your
+about your medical records. Medical records are                    online medical record in the last 12
+defined as medical history, such as laboratory                     months? AccessOnlineRecord
+test results, clinical notes, and current list of                    0   0   GO TO D7 below
+medications.
+                                                                     1 1 to 2 times
+D1. Do any of your doctors or other health care                      2   3 to 5 times                 GO TO D8
+    providers maintain your medical records in a
+                                                                     3   6 to 9 times                 on the next page
+    computerized system?
+                          ProviderMaintainEMR2                      4    10 or more times
+    1   Yes
+    2   No
+    3   Don’t Know                                             D7. Why have you not accessed your medical
+                                                                   record online? Is it because…
+
+D2. How confident are you that safeguards                                                                                      Yes   No
+    (including the use of technology) are in place to
+                                                                a. You prefer to speak to your health care
+    protect your medical records from being seen                   provider directly?...................................... 1          2
+    by people who aren’t permitted to see them?                     NotAccessed_SpeakDirectly
+                                   ConfidentInfoSafe            b. You do not have a way to access the
+    1   Very confident                                             website?................................................... 1       2
+                                                                    NotAccessed_NoInternet
+    2   Somewhat confident                                      c. You did not have a need to use your
+    3   Not confident                                              online medical record?............................. 1               2
+                                                                    NotAccessed_NoNeed
+                                                                d. You were concerned about the privacy
+D3. Have you ever kept information from your                       or security of the website that had your
+                                                                   medical records?...................................... 1            2
+    health care provider because you were                           NotAccessed_ConcernedPrivacy
+    concerned about the privacy or security of                  e. You don’t have an online medical
+    your medical record? WithheldInfoPrivacy                       record?...................................................... 1     2
+                                                                    NotAccessed_NoRecord
+    1   Yes                                                     f. Other (Specify).......................................... 1         2
+    2   No                                                                                   NotAccessed_Other
+                                                                                             NotAccessed_Other_OS
+
+D4. Have you ever been offered online access to
+    your medical records by your health care
+    provider or health insurer?
+                               EverOfferedAccessRec
+    1   Yes
+    2   No    GO TO E1 on the next page
+    3   Don’t Know       GO TO E1 on the next page                  If you have not accessed any medical
+                                                                         records in the last 12 months,
+                                                                           go to E1 on the next page.
+D5. Who offered you online access to your
+    medical records?                                                                 Otherwise, go to D8
+    Mark all that apply.
+    1 Health care provider WhoOffered_HCP
+    1 Health insurer WhoOffered_Insurer
+                                     WhoOffered_Other
+    1   Something else – Specify     WhoOffered_Other_OS
+
+                           WhoOffered_Cat
+                                                                                                                               55346
+
+
+                                                           7
+D8. In the past 12 months, have you used your                                     D11. In general, how useful is your online medical
+    online medical record to...                                                        record for monitoring your health?
+                                                                                                                    UsefulOnlineMedRec
+                                                                   Yes   No            1   Very useful
+                                                                                       2 Somewhat useful
+  a. Request refill of medications?....................... 1             2
+      RecordsOnline_RefillMeds                                                         3   Not very useful
+  b. Fill out forms or paperwork related to your                                       4   Not at all useful
+     health care?................................................... 1   2
+      RecordsOnline_Paperwork                                                          5   I do not use my online medical record to
+  c. Request correction of inaccurate                                                      monitor my health
+     information?................................................... 1   2
+      RecordsOnline_RequestCorrection
+  d. Securely message health care provider
+     and staff (for example, e-mail)?..................... 1             2
+      RecordsOnline_MessageHCP                                                             E: BeliefsE: Caregiving
+                                                                                                     About  Cigarette Claims
+  e. Download your health information to your
+     computer or mobile device, such as a cell
+     phone or tablet?............................................. 1     2        E1. Are you currently caring for or making health
+      RecordsOnline_DownloadHealth
+  f. Add health information to share with your                                        care decisions for someone with a medical,
+     health care provider, such as health                                             behavioral, disability, or other condition?
+     concerns, symptoms, and side effects?........ 1                     2
+      RecordsOnline_AddHealthInfo                                                     Mark all that apply.
+  g. Help you make a decision about how to                                             1 Yes, a child/children Caregiving_Child
+     treat an illness or condition?.........................        1    2
+      RecordsOnline_MakeDecision                                                       1   Yes, a spouse/partner Caregiving_Spouse
+                                                                                       1   Yes, a parent/parents Caregiving_Parent
+D9. Do any of your online medical records include                                      1 Yes, another family member Caregiving_AnotherFam
+    the following types of medical information?                                        1   Yes, a friend or other non-relative Caregiving_Friend
+                                                                                       1 No      GO TO E11 on page 10 Caregiving_No
+                                                                      Don't
+                                                            Yes    No know                                                CaregivingWho_Cat
+
+  a. List of health/medical problems........... 1                  2     3        E2. Do you provide any of this care professionally
+      RecordsOnline_HealthProbs
+  b. Allergy list............................................. 1   2     3            as part of a job (for example, as a nurse or
+      RecordsOnline_Allergies
+  c. Summaries of your office visit.............. 1                2     3
+                                                                                      professional home health aide)?
+      RecordsOnline_VisitSummary                                                                                   Caregiving_Professional
+  d. Clinical notes........................................ 1      2     3             1   Yes
+      RecordsOnline_ClinNotes
+  e. Immunization or vaccination history.... 1                     2     3             2   No
+      RecordsOnline_Immunizations
+
+
+D10. Have you electronically sent your medical
+     information to….?
+                                                                   Yes   No
+
+  a. Another health care provider?....................... 1              2
+      ESent_AnotherHCP
+  b. A family member or another person
+     involved with your care?................................ 1          2
+      ESent_Family
+  c. A service or app that can help manage
+     and store your health information?................ 1                2
+      ESent_HealthApp
+
+
+
+
+                                                                                                                                55346
+
+
+                                                                              8
+E3. Please think about the individual for whom                E6. Think about the individual for whom you are
+    you are currently providing the most care.                    currently providing the most care. Where
+                                                                  does your care recipient live currently?
+    Please check all conditions for which you                                                   Caregiving_Reside
+    have provided care for this person.                           1 In your household
+                                                                  2   Within 20 minutes of your home
+    Mark all that apply.
+                                                                  3 20 to 59 minutes from your home
+    1   Cancer
+        Caregiving_Cancer                                         4   1 to 2 hours from your home
+    1   Alzheimer’s, confusion, dementia,
+                                                                  5   More than 2 hours away from your home
+        forgetfulness
+        Caregiving_Alzheimers
+    1   Orthopedic/Musculoskeletal Issues
+        (examples: back problems, broken bones,               E7. Think about the individual for whom you are
+        arthritis, mobility problems, can’t get around,
+                                                                  currently providing the most care. Do you
+        feeble, unsteady, falling)
+        Caregiving_OrthoMusc                                      help your care recipient with any of the
+    1 Mental health/behavioral/substance
+        abuse issues
+                                                                  following activities?
+        (examples: mental illness, emotional problems,            Mark all that apply.
+        depression, anxiety, substance/drug/alcohol
+         abuse)                                                   1   Getting in and out of beds and chairs
+        Caregiving_MentalHealth                                       Caregiving_BedsChairs
+    1   Chronic conditions                                        1   Getting dressed
+        (examples: high blood pressure/hypertension,                  Caregiving_Dressing
+                                                                  1 Getting to and from the toilet
+        diabetes, heart disease, heart attack, lung                   Caregiving_Toilet
+        disease, emphysema, Chronic Obstructive                   1 Dealing with incontinence or diapers
+                                                                      Caregiving_Incontinence
+        Pulmonary Disease (COPD), Parkinson’s)                    1 Bathing/Personal care
+        Caregiving_ChronicCond                                        Caregiving_Bathing
+    1   Neurological/developmental Issues                         1 Preparing meals
+        (examples: brain damage or injury,                            Caregiving_MealPrep
+                                                                  1 Feeding him/her
+        developmental or intellectual disorder, mental                Caregiving_Feeding
+        retardation, Down syndrome, stroke)                       1   Managing finances such as paying bills or
+        Caregiving_NeuroDev                                           filling out insurance claims
+    1   Acute conditions                                              Caregiving_Finances
+        Caregiving_AcuteCond                                      1 Grocery shopping or other shopping
+    1   Aging/aging related health issues not listed                  Caregiving_Shopping
+        in the other categories above Caregiving_Aging            1   Housework
+                                                                      Caregiving_Housework
+    1 Other – Specify         Caregiving_Other                    1 Transportation (driving him/her or arranging
+                              Caregiving_Other_OS                     transportation)
+    1   Not sure/don’t know Caregiving_NotSure                        Caregiving_Transportation
+                               CaregivingCond_Cat                     CaregivingActivities_Cat
+                                                              E8. Think about the individual for whom you are
+E4. Think about the individual for whom you are                   currently providing the most care. Do you
+    currently providing the most care. About how                  help your care recipient with any of the
+    many hours per week do you spend in an                        following activities?
+    average week providing care?
+                  Hours spent providing                           Mark all that apply.
+                  care per week                                   1   Performing medical/nursing tasks (for example,
+    Caregiving_HoursPerWeek2                                          giving medicine, changing bandages, managing
+                                                                      side effects or symptoms)
+E5. Think about the individual for whom you are                       Caregiving_MedTasks
+    currently providing the most care. About how                  1 Communicating with health care professionals
+                                                                     like doctors, nurses, or social workers about
+    long have you been providing care for this                       his/her care
+    person? Your best estimate is fine.                             Caregiving_CommunicateHCP
+                                                                  1 Arranging for outside services such as nurses,
+                              Caregiving_HowLong
+    1   Less than 30 days                                           home care aides, Meals on Wheels, or other
+    2   1 to 6 months                                               community services
+                                                                      Caregiving_ArrangeSvcs
+    3   7 months to 2 years                                       1 Spending time with him/her and providing
+                                                                      companionship or emotional support
+    4   3 to 5 years                                                  Caregiving_SpendTime
+    5   More than 5 years                                             Caregiving_MedAct_Cat
+                                                                                                              55346
+
+
+                                                          9
+E9. Think about the individual for whom you are                E11. Medical/nursing tasks include activities
+    currently providing the most care. How many                     such as administering medicine, changing
+    times did you access your care recipient’s                      bandages, or managing side effects or
+    online medical record in the last 12 months?                    symptoms.
+                            Caregiving_AccessMedRec
+      0   None
+                                                                         If you had to learn how to do a
+      1   1 to 2 times                                                   medical/nursing task to assist someone,
+       2 3 to 5 times                                                    how would you prefer to learn?
+      3   6 to 9 times
+                                                                         Mark all that apply.
+      4   10 or more times
+                                                                          1    In-person instruction
+                                                                               CaregiverTraining_InPerson
+                                                                          1    Hotline or 24-hr phone number to call with
+E10.The next few questions are about you as a                                  questions
+    caregiver. Have you ever needed and/or                                     CaregiverTraining_Hotline
+                                                                          1    Reading material: pamphlet or book
+    received any of the following care support                               CaregiverTraining_ReadingMat
+                                                                           1 Online video instruction
+    services?                                                                CaregiverTraining_OnlineVideo
+                                                                           1 Virtual: have a qualified person provide me
+                                                                               with live instruction over the internet
+                                                                               CaregiverTraining_Virtual
+                                                                               CaregiverTraining_Cat
+
+
+ a. Training on how to perform
+    medical/nursing tasks (for                                                            F: Palliative Care
+    example, giving medicine,
+    changing bandages, managing
+    side effects or symptoms)................ 1       2   3    F1. How would you describe your level of
+    Caregiver_MedTrain
+ b. Help in getting access to services                             knowledge about palliative care?
+    such as nurses, home care                                                            KnowledgePalliativeCare
+    aides, Meals on Wheels or other                                       1   I’ve never heard of it  GO TO G1 on the next page
+    community services.......................... 1    2   3               2 I know a little bit about palliative care
+     Caregiver_AccessHelp
+ c. Short-term or long-term breaks                                        3 I know what palliative care is and could explain
+    for caregivers (respite care)............. 1      2   3                    it to someone else
+    Caregiver_RespiteCare
+ d. Support groups for caregivers.......... 1         2   3
+    Caregiver_SupportGroup                                     F2 To me, the goal of palliative care is to…
+ e. Individual counseling to help
+    cope with giving care........................ 1   2   3
+    Caregiver_Counseling
+
+
+
+
+                                                                   a. Help friends and family
+                                                                      to cope with a patient’s
+                                                                      illness..................................... 1   2   3     4     5
+                                                                        PCGoal_HelpFamCope
+                                                                   b. Offer social and emotional
+                                                                      support................................... 1     2   3     4     5
+                                                                        PCGoal_SocEmotSupport
+                                                                   c. Manage pain and other
+                                                                      physical symptoms................ 1              2   3     4     5
+                                                                        PCGoal_ManageSymptoms
+                                                                   d. Give patients more time at
+                                                                      the end of life......................... 1       2   3     4     5
+                                                                        PCGoal_MoreTime
+
+
+
+                                                                                                                               55346
+
+
+                                                              10
+F3. Imagine you had a strong need to get                  F5. How much do you agree or disagree with the
+    information about palliative care. Where                  following statements about palliative care?
+    would you go first to get information?
+                            PCStrongNeedInfo
+    Mark only one.
+    1    Printed materials (for example, newspapers,
+         magazines)                                           a. Accepting palliative care
+     2   Health care provider (doctor, nurse, social             means giving up...................           1   2   3     4     5
+         worker)                                                  PCMeansGivingUp
+                                                              b. It is a doctor’s obligation to
+     3   Conversations with people you trust (friends,           inform all patients with cancer
+         relatives, or co-workers)                               about the option of palliative
+    4    Internet (Google or another search engine,              care....................................... 1    2   3     4     5
+         WebMD or another medical website)                        PCObligatedToInform
+                                                              c. If you accept palliative care,
+    5    Social Media (Facebook, Instagram, Twitter)             you must stop other
+         PCStrongNeedInfo_IMP                                    treatments............................. 1        2   3     4     5
+                                                                  PCStopTreatments
+F4. Imagine you had a strong need to get                      d. Palliative care is the same
+                                                                 as hospice care..................... 1           2   3     4     5
+    information about palliative care. Which of                   PCHospiceCare
+    the following would you most trust as a                   e. When I think of “palliative
+                                                                 care,” I automatically think
+    source of information about palliative care?                 of death................................     1   2   3     4     5
+                               PCTrustInfo                        PCThinkDeath
+    Mark only one.
+    1    Printed materials (for example, newspapers,
+         magazines)
+     2   Health care provider (doctor, nurse, social
+         worker)                                                               G: Your Overall Health
+     3   Conversations with people you trust (friends,
+         relatives, or co-workers)                        G1. In general, would you say your health is...
+    4    Internet (Google or another search engine,                                                         GeneralHealth
+         WebMD or another medical website)                         1    Excellent,
+    5    Social Media (Facebook, Instagram, Twitter)               2 Very good,
+                                                                   3 Good,
+         PCTrustInfo_IMP                                           4    Fair, or
+                                                                   5 Poor?
+
+
+                                                          G2. Overall, how confident are you about your
+                                                              ability to take good care of your health?
+                                                                   1 Completely confident                   OwnAbilityTakeCareHealth
+
+                                                                   2 Very confident
+                                                                    3 Somewhat confident
+                                                                   4    A little confident
+                                                                   5 Not confident at all
+
+
+
+
+                                                                                                                          55346
+
+
+                                                         11
+G3. Has a doctor or other health professional                            G7. Now we are going to ask you about other
+    ever told you that you had any of the                                    people in your life. Please respond to each
+    following medical conditions:                                            item by marking one box per row.
+                                                           Yes     No
+
+ a. Diabetes or high blood sugar?...................... 1          2
+     MedConditions_Diabetes
+ b. High blood pressure or hypertension?.......... 1               2
+     MedConditions_HighBP
+ c. A heart condition such as heart attack,                                  a. Is there anyone you can count
+    angina, or congestive heart failure?.............          1   2            on to provide you with
+     MedConditions_HeartCondition                                               emotional support when you
+ d. Chronic lung disease, asthma,                                               need it – such as talking
+    emphysema, or chronic bronchitis?.............. 1              2            over problems or helping
+     MedConditions_LungDisease
+ e. Arthritis or rheumatism?................................ 1     2            you make difficult
+     MedConditions_Arthritis                                                    decisions?................................ 1     2   3   4   5
+ f. Depression or anxiety disorder?................... 1           2             EmotionalSupport2
+     MedConditions_Depression                                                b. Do you have friends or family
+                                                                                members that you talk to
+                                                                                about your health?................... 1          2   3   4   5
+G4. About how tall are you without shoes?                                        TalkHealthFriends2
+                                                                             c. Do you have someone to
+            Feet      and                    Inches                             prepare your meals if you are
+                                                                                unable to do it yourself?.......... 1            2   3   4   5
+                                                                                 HelpPreparingMeals
+     Height_Feet; Height_Inches                                              d. Do you have someone to
+                                                                                take you to the doctor if you
+G5. About how much do you weigh, in pounds,                                     need it?.................................... 1   2   3   4   5
+    without shoes?                                                               HelpTransportDoctor
+                                                                             e. Do you have someone to
+                                                                                help with your daily chores if
+                        Pounds          Weight
+                                                                                you are sick?............................ 1      2   3   4   5
+                                                                                  HelpDailyChores2
+                                                                             f. Do you have someone to run
+                                                                                errands if you need it?............. 1           2   3   4   5
+G6. Over the past 2 weeks, how often have                                        HelpRunErrands
+    you been bothered by any of the following
+    problems?
+                                                                         G8. Are you deaf or do you have serious difficulty
+                                                                             hearing? Deaf
+                                                                                  1 Yes
+                                                                                  2 No
+
+
+ a. Little interest or pleasure in
+    doing things............................ 1        2   3        4
+     LittleInterest
+ b. Feeling down, depressed, or
+    hopeless.................................    1    2    3       4
+     Hopeless
+  c. Feeling nervous, anxious, or
+     on edge..................................   1    2    3       4
+     Nervous
+ d. Not being able to stop or
+    control worrying......................       1    2    3       4
+     Worrying
+
+
+
+
+                                                                                                                                     55346
+
+
+                                                                        12
+                 H: Health and Nutrition
+
+H1. How much do you think that each of the                                       H5. About how many calories do you think a
+    following can influence whether or not a                                         man/woman of your age and physical activity
+    person will develop cancer?                                                      needs to consume a day to maintain your
+                                                                                     current weight? AverageCaloriesPerDay
+
+                                                                                                      Calories
+
+ a. Being overweight or obese....... 1                 2        3       4
+     InfluenceCancer_Obesity                                                         8   Don’t know AverageCaloriesPerDay_DK
+ b. Eating healthy food................... 1           2        3       4
+  InfluenceCancer_EatingHealthy
+ c. Exercising regularly..................      1      2        3       4
+                                                                                 H6. These are examples of one drink of alcohol:
+     InfluenceCancer_RegExercise
+
+H2. Think about the last time you ordered food
+    in a fast food or sit down restaurant, did
+    you notice calorie information listed next
+    to the food on the menu or menu board?
+                     NoticeCalorieInfoOnMenu
+     1 Yes
+     2 No         GO TO H5 in the next column
+
+
+H3. Thinking about the last time you noticed                                         During the past 30 days, how many days per
+    calorie information on the menu or menu                                          week did you have at least one drink of any
+    board, how easy or difficult to understand                                       alcoholic beverage?
+    was the calorie information?                                                                      DrinkDaysPerWeek
+                                      UnderstandCalorieInfo
+     1 Very easy                                                                          Days per week
+      2 Somewhat easy
+                                                                                           (If 0 then go to I1 on the next page)
+     3 Somewhat difficult
+     4    Very difficult
+                                                                                 H7. During the past 30 days, on the days when
+                                                                                     you drank, about how many drinks did you
+H4. Thinking about the last time you noticed                                         drink on average?
+    calorie information on the menu or menu                                                         DrinksPerDay
+    board, how did the calorie information change                                             Average drinks per day
+    what you were thinking of ordering?
+                                                                Yes     No
+
+ a. I ordered something with fewer calories......                   1       2
+     CalorieInfo_FewerCalories
+ b. I ordered something with more calories....... 1                         2
+     CalorieInfo_MoreCalories
+ c. I ordered fewer items.................................... 1             2
+     CalorieInfo_FewerItems
+ d. I ordered smaller sizes.................................        1       2
+     CalorieInfo_SmallerSizes
+ e. I ordered more items....................................        1       2
+     CalorieInfo_MoreItems
+ f. I ordered larger sizes...................................       1       2
+     CalorieInfo_LargerSizes
+
+
+
+                                                                                                                             55346
+
+
+                                                                                13
+           I: Physical Activity, Exercise,
+                 and UV Exposure
+
+I1. In a typical week, how many days do you do              I4. During the past 7 days, how much time did
+    any physical activity or exercise of at least               you spend sitting on a typical day at home
+    moderate intensity, such as brisk walking,                  or at work? This may include time spent
+    bicycling at a regular pace, and swimming at                sitting at a desk, visiting friends, reading,
+    a regular pace (do not include weightlifting)?              driving or riding in a car, or sitting or lying
+         None
+                                                                down to watch television.
+     0           GO TO I3 below                                                        AverageTimeSitting
+     1   1 day per week      TimesModerateExercise
+                                                                            Hours per day
+    2    2 days per week
+     3   3 days per week
+    4    4 days per week                                    I5. In the past 12 months, how many times have
+    5    5 days per week                                        you used a tanning bed or booth?
+     6   6 days per week                                                                    TimesUsedTanningBed
+                                                                               Times
+     7   7 days per week
+
+
+I2. On the days that you do any physical activity           I6. On warm sunny days, how often do you
+    or exercise of at least moderate intensity,                 spend time in the sun in order to get a tan?
+    how long do you typically do these activities?              1   Often
+                                                                                       SpendTimeInSunTanning
+
+                                                                2   Sometimes
+                  Minutes per day
+                                                                3   Rarely
+    HowLongModerateExerciseMinutes                              4   Never
+                                                                5 Don’t go out on sunny days
+I3. In a typical week, outside of your job or work
+    around the house, how many days do you
+    do leisure-time physical activities specifically        I7. During the past 12 months, has a physician
+    designed to strengthen your muscles such                    or other health care provider talked to you
+    as lifting weights or circuit training (do not              about reducing your exposure to the sun or
+    include cardio exercise such as walking,                    indoor tanning devices such as sunlamps,
+    biking, or swimming)?                                       sunbeds, or tanning booths to reduce the
+     0   None
+                   TimesStrengthTraining                        risk for skin cancer?
+                                                                    Yes            HCPAdvisedLimitingSun
+     1   1 day per week                                         1
+    2    2 days per week                                        2   No
+     3   3 days per week
+     4   4 days per week                                    I8. After several months of not being in the sun
+    5    5 days per week                                        very much, if you went out in the sun for an
+    6    6 days per week                                        hour without sunscreen, a hat or protective
+    7    7 days per week                                        clothing, which one of these best describes
+                                                                what would happen to your skin?
+                                                                                             SunEffectAfter1Hour
+                                                                1   Get a severe sunburn with blisters
+                                                                2   Have a moderate sunburn with peeling
+                                                                3   Burn mildly with some or no tanning
+                                                                4   Turn darker without sunburn
+                                                                5   Nothing would happen to my skin
+                                                                                                          55346
+
+
+                                                       14
+               J: Tobacco Products
+
+J1. Have you smoked at least 100 cigarettes in      J6. In the past 6 months, have you seen
+    your entire life? Smoke100                          messages in newspapers or on television that
+                                                        say that a Federal Court has ordered tobacco
+    1   Yes
+                                                        companies to make statements about the
+    2   No     GO TO J3 below
+                                                        dangers of smoking cigarettes?
+                                                                     SeenFederalCourtTobaccoMessages
+                                                        1   Yes
+J2. How often do you now smoke cigarettes?              2 No      GO TO K1 on the next page
+                              SmokeNow
+    1   Every day
+    2   Some days
+                                                    J7. Which of the following messages have you
+    3 Not at all
+                                                        seen?
+                                                        Mark all that apply.
+J3. New types of cigarettes are now available
+    called electronic cigarettes or e-cigarettes        1 That a Federal Court has ordered tobacco
+                                                            companies to make statements about the
+    (also known as vape-pens, hookah pens,                  health effects of smoking.
+    e-hookahs, or e-vaporizers). These products             TobaccoMessages_HESmoking
+    deliver nicotine through a vapor. Compared          1 That a Federal Court has ordered tobacco
+    to smoking cigarettes, would you say that               companies to make statements about the
+    electronic cigarettes are…                              health effects of secondhand smoke.
+                                ElecCigLessHarm             TobaccoMessages_HESecondhand
+    1   Much less harmful,                              1   That a Federal Court has ordered tobacco
+    2   Less harmful,                                       companies to make statements about the
+                                                            addictiveness of smoking and nicotine.
+    3   Just as harmful,
+                                                          TobaccoMessages_Addictiveness
+    4   More harmful,                                   1 That a Federal Court has ordered tobacco
+    5   Much more harmful, or                               companies to make statements about how
+                                                            cigarettes are designed to enhance the
+    7   I don’t know
+                                                            delivery of nicotine.
+                                                            TobaccoMessages_EnhanceDelivery
+                                                        1   That a Federal Court has ordered tobacco
+J4. Have you ever used an e-cigarette, even                 companies to make statements about low tar
+    one or two times?                                       and light cigarettes being just as harmful as
+                       UsedECigEver                         regular cigarettes.
+    1 Yes
+    2   No                                                  TobaccoMessages_LowTarLight
+               GO TO J6 in the next column
+                                                            TobaccoMessages_Cat
+
+J5. Do you now use an e-cigarette every day,
+    some days, or not at all?
+                             UseECigNow
+    1   Every day
+    2   Some days
+    3   Not at all
+
+
+
+
+                                                                                                  55346
+
+
+                                                   15
+              K: Screening for Cancer                                          L: HPV Awareness
+
+K1. Are you male or female?                            L1. Have you ever heard of HPV? HPV stands
+    1   Male
+                                GenderC                    for Human Papillomavirus. It is not HIV,
+                 GO TO K4 below
+                                                           HSV, or herpes. HeardHPV
+    2   Female
+                                                                1   Yes
+                                                                2 No        GO TO L3 below
+K2. How long ago did you have your most recent
+    Pap test to check for cervical cancer?
+    1   A year ago or less
+                                  WhenPapTest          L2. Do you think HPV can cause…
+    2   More than 1, up to 2 years ago                                                                                        Not
+                                                                                                                Yes   No      sure
+    3   More than 2, up to 3 years ago
+    4   More than 3, up to 5 years ago                     a. Cervical Cancer?.............................. 1         2       3
+                                                               HPVCauseCancer_Cervical
+    5   More than 5 years ago                              b. Penile Cancer?.................................    1     2       3
+                                                               HPVCauseCancer_Penile
+    6   I have never had a Pap test                        c. Anal Cancer?.................................... 1       2       3
+                                                               HPVCauseCancer_Anal
+                                                           d. Oral Cancer?.................................... 1       2       3
+K3. When did you have your most recent                         HPVCauseCancer_Oral
+    mammogram to check for breast cancer,
+    if ever? WhenMammogram                             L3. A vaccine to prevent HPV infection is
+                                                           available and is called the HPV shot,
+    1   A year ago or less                                 cervical cancer vaccine, GARDASIL®,
+    2   More than 1, up to 2 years ago                     or Cervarix®.
+    3   More than 2, up to 3 years ago
+    4   More than 3, up to 5 years ago                         Before today, have you ever heard of the
+    5   More than 5 years ago                                  cervical cancer vaccine or HPV shot?
+                                                                                        HeardHPVVaccine2
+    6   I have never had a mammogram                            1   Yes
+                                                                2   No
+K4. There are a few different tests to check
+    for colon cancer. These tests include:             L4. Including yourself, is anyone in your
+    A colonoscopy – For this test, a tube is               immediate family between the ages of
+    inserted into your rectum and you are given            9 and 27 years old?
+    medication that may make you feel sleepy.                  1    Yes
+                                                                                       FamBetween9and27
+
+    After the procedure, you need someone to                    2   No      GO TO M1 on the next page
+    drive you home.
+    A sigmoidoscopy – For this test, you are
+    awake when the tube is inserted into your          L5. In the last 12 months, has a doctor or
+    rectum. After the test you can drive yourself          health care professional recommended
+    home.                                                  that you or someone in your immediate
+                                                           family get an HPV shot or vaccine?
+    A stool blood test – For this test, you collect                                     RecommendHPVShot
+    a stool sample at home, and then provide it to              1   Yes
+    a doctor or lab for testing                                 2   No
+                                                                3 I don't know
+    Have you ever had one of these tests to check
+    for colon cancer?
+                      EverTestedColonCa
+    1   Yes
+    2   No                                                                                                            55346
+
+
+                                                      16
+              M: Your Cancer History
+
+M1. Have you ever been diagnosed as having                   M4. How worried are you about getting cancer
+    cancer? EverHadCancer                                        again? FreqWorryCancerAgain
+    1   Yes                                                      1   Not at all
+    2   No     GO TO N1 on the next page                         2   Slightly
+                                                                 3   Somewhat
+
+M2. What type of cancer did you have?                            4   Moderately
+                                                                 5   Extremely
+    Mark all that apply.
+    1   Bladder cancer CaBladder
+                                                             M5. How easy is it for you to imagine yourself
+    1   Bone cancer CaBone
+                                                                 developing cancer again in the future?
+    1   Breast cancer CaBreast                                                             ImagineCancerAgain
+                                                                 1 Extremely difficult
+    1   Cervical cancer (cancer of the cervix) CaCervical
+                                                                 2 Somewhat difficult
+    1 Colon cancer CaColon
+                                                                 3 Neither difficult nor easy
+    1   Endometrial cancer (cancer of the uterus)
+                               CaEndometrial                     4 Somewhat easy
+    1   Head and neck cancer CaHeadNeck
+                                                                 5 Extremely easy
+    1   Leukemia/Blood cancer CaLeukemia
+    1 Liver cancer CaLiver
+    1   Lung cancer CaLung
+    1   Lymphoma (Hodgkin’s) CaHodgkins
+    1   Lymphoma (Non-Hodgkin’s) CaNonHodgkin
+     1 Melanoma CaMelanoma
+                                                                 If you have been diagnosed as having
+                                                                      cancer then please go to N3
+    1 Oral cancer CaOral
+                                                                           on the next page.
+    1 Ovarian cancer CaOvarian
+    1 Pancreatic cancer CaPancreatic
+    1   Pharyngeal (throat) cancer CaPharyngeal
+    1   Prostate cancer CaProstate
+    1   Rectal cancer CaRectal
+    1   Renal (kidney) cancer CaRenal
+    1   Skin cancer, non-melanoma CaSkin
+    1   Stomach cancer CaStomach
+    1   Other – Specify    CaOther
+                           CaOther_OS
+          Cancer_Cat
+
+
+M3. At what age were you first told that you had
+    cancer? WhenDiagnosedCancer
+
+                 Age
+
+
+
+
+                                                                                                       55346
+
+
+                                                            17
+                N: Beliefs About Cancer
+
+Think about cancer in general when answering                          N4. The following questions ask about your
+the questions in this section.                                            knowledge about cancer in your family. By
+                                                                          family we mean your first and second
+N1. How worried are you about getting cancer?                             degree biological relatives; that is, your
+     1    Not at all
+                                      FreqWorryCancer                     grandparents, parents, brothers and
+                                                                          sisters, children, aunts and uncles, nieces
+      2   Slightly
+                                                                          and nephews.
+     3    Somewhat
+      4   Moderately                                                      A family cancer history is a record of the
+     5    Extremely
+                                                                          cancers in your family. This includes
+                                                                          knowing if you have no history of cancers
+                                                                          in your family.
+N2. How easy is it for you to imagine yourself                            How well do you know your family’s cancer
+    developing cancer in the future?                                      history? FamiliarFamilyCancer
+                                           ImagineCancer
+      1   Extremely difficult                                              1 Very well
+      2 Somewhat difficult                                                 2 Well
+      3    Neither difficult nor easy                                      3   Somewhat
+      4 Somewhat easy                                                      4 A little
+      5    Extremely easy                                                  5   Not at all
+
+
+N3. How much do you agree or disagree with                            N5. Have you ever had a discussion about your
+    each of the following statements?                                     family cancer history with any of the
+                                                                          following people? If there is no cancer in
+                                                                          your family, and you have discussed this,
+                                                                          please include that.
+                                                                          Mark all that apply.
+ a. It seems like everything causes
+    cancer.......................................... 1   2   3   4        1    Your biological mother FamilyCancer_Mother
+      EverythingCauseCancer
+ b. There’s not much you can do to                                        1    Your biological father FamilyCancer_Father
+    lower your chances of getting                                         1 Your biological sister(s) FamilyCancer_Sister
+    cancer.......................................... 1   2   3   4
+                                                                          1    Your biological brother(s) FamilyCancer_Brother
+      PreventNotPossible
+ c. There are so many different                                           1 Your biological children FamilyCancer_Children
+    recommendations about
+    preventing cancer, it's hard to
+                                                                          1    Other biological family members
+                                                                                                     FamilyCancer_OthFam
+    know which ones to follow...........            1    2   3   4        1 A health care provider FamilyCancer_HCP
+     TooManyRecommendations
+                                                                          1    I have not had discussions with any of these
+                                                                               people FamilyCancer_None
+                                                                                        FamilyCancer_Cat
+
+
+
+
+                                                                                                                     55346
+
+
+                                                                     18
+N6. Many medical forms ask you questions              O3. Have you ever served on active duty in the
+    about cancer in your family. How confident            U.S. Armed Forces, military Reserves or
+    are you that you could complete a summary             National Guard? Active duty does not
+    of your family cancer history on a medical            include training in the Reserves or National
+    form? ConfidentFamilyHistory                          Guard, but DOES include activation, for
+    1   Completely confident
+                                                          example, for the Persian Gulf War.
+                                                                                         ActiveDutyArmedForces
+    2   Very confident                                    1    Yes, now on active duty
+    3   Somewhat confident                                2 Yes, on active duty in the last 12 months but
+                                                            not now
+    4   A little confident
+                                                          3 Yes, on active duty in the past, but not in the
+    5   Not confident at all                                last 12 months
+                                                          4 No, training for Reserves or
+                                                            National Guard only                   GO TO O5
+N7. Have any of your family members ever had                                                       below
+                                                          5 No, never served in the military
+    cancer? FamilyEverHadCancer
+    1   Yes
+    2 No                                              O4. In the past 12 months, have you received
+    4   Not sure                                          some or all of your health care from a VA
+                                                          hospital or clinic? ReceivedCareVA
+                                                          1    Yes, all of my health care
+                                                          2    Yes, some of my health care
+          O: You and Your Household                       3    No, no VA health care received
+
+O1. What is your age? Age
+                                                      O5. What is your marital status?
+                                                                                    MaritalStatus
+                   Years old                              Mark only one.
+                                                           1 Married
+                                                          2    Living as married
+O2. What is your current occupational status?              3 Divorced
+                             OccupationStatus
+    Mark only one.                                         4   Widowed
+    1   Employed Employed                                  5   Separated
+    2   Unemployed UnEmployed                              6   Single, never been married
+    3 Homemaker Homemaker
+    4   Student Student                               O6. What is the highest grade or level of
+    5   Retired Retired                                   schooling you completed?
+    6   Disabled Disabled                                 1    Less than 8 years
+                                                                                         Education
+    91 Other – Specify         OccupationStatus_OS
+                                                           2   8 through 11 years
+                               OtherOcc                    3   12 years or completed high school
+                               MultiOcc
+                                                           4   Post high school training other than college
+                                                               (vocational or technical)
+                                                          5    Some college
+                                                           6   College graduate
+                                                          7    Postgraduate
+
+
+
+
+                                                                                                      55346
+
+
+                                                     19
+O7. Were you born in the United States?                           O11. What is your race? One or more categories
+     1       Yes
+                                         BornInUSA                     may be selected.
+                     GO TO O9 below
+     2       No                                                        Mark all that apply.
+                                                                        1   White White
+                                                                        1 Black or African American Black
+O8. In what year did you come to live in the
+    United States? YearCameToUSA                                        1   American Indian or Alaska Native AmerInd
+                                                                        1 Asian Indian AsInd
+                           Year                                         1   Chinese Chinese
+                                                                        1 Filipino Filipino
+                                                                        1   Japanese Japanese
+O9. How well do you speak English?                                      1   Korean Korean
+                            SpeakEnglish                                1   Vietnamese Vietnamese
+    1        Very well
+     2       Well                                                       1   Other Asian OthAsian
+     3       Not well                                                   1   Native Hawaiian Hawaiian
+    4        Not at all                                                 1 Guamanian or Chamorro Guamanian
+                                                                        1   Samoan Samoan
+                                                                        1   Other Pacific Islander OthPacIsl
+O10. Are you of Hispanic, Latino/a, or Spanish                                         Race_Cat2
+     origin? One or more categories may be
+     selected.                                                    O12. Do you think of yourself as…
+                                                                                          SexualOrientation
+     Mark all that apply.                                              1    Heterosexual, or straight
+                                                                        2 Homosexual, or gay or lesbian
+         1    No, not of Hispanic, Latino/a, or Spanish origin
+              NotHisp
+         1 Yes, Mexican, Mexican American, Chicano/a
+                                                                        3   Bisexual
+           Mexican                                                     91 Something else – Specify
+         1 Yes, Puerto Rican
+           PuertoRican
+         1 Yes, Cuban
+           Cuban                                                                    SexualOrientation_OS
+         1 Yes, another Hispanic, Latino/a, or Spanish origin
+           OtherHisp
+                                                                                    SexualOrientation_I
+           Hisp_Cat
+                                                                  O13. Including yourself, how many people live in
+                                                                       your household? TotalHousehold
+
+                                                                                  Number of people
+
+
+
+
+                                                                                                               55346
+
+
+                                                                 20
+O14. Starting with yourself, please mark the sex,               O17. Thinking about members of your family
+     and write in the age and month of birth for                     living in this household, what is your
+     each adult 18 years of age or older living at                   combined annual income, meaning the
+     this address.                                                   total pre-tax income from all sources
+                                                  Month Born         earned in the past year? IncomeRanges
+                          Sex         Age          (01-12)
+                                                                      1   $0 to $9,999
+                      1 Male
+          SELF                        SelfAge      SelfMOB            2 $10,000 to $14,999
+                      2 Female
+     SelfGender                                                       3   $15,000 to $19,999
+
+          Adult 2 1 Male                                                  $20,000 to $34,999
+                                    HHAdultAge2 HHAdultMOB2           4
+                      2 Female                                        5   $35,000 to $49,999
+     HHAdultGender2
+                                                                      6   $50,000 to $74,999
+          Adult 3
+                      1 Male        HHAdultAge3 HHAdultMOB3
+                                                                      7 $75,000 to $99,999
+                      2 Female
+     HHAdultGender3                                                   8 $100,000 to $199,999
+               1 Male               HHAdultAge4 HHAdultMOB4               $200,000 or more
+          Adult 4                                                     9
+               2 Female
+     HHAdultGender4
+
+          Adult 5
+                      1 Male        HHAdultAge5 HHAdultMOB5     O18. About how long did it take you to complete
+                      2 Female                                       the survey?
+     HHAdultGender5
+                                                                     Write a number in one box below.
+O15. How many children under the age of 18 live
+                                                                               Minutes             Hours
+     in your household? ChildrenInHH
+                                                                      MailSurveyTimeMin
+                                                                      MailSurveyTimeHrs
+                    Number of children under 18
+                                                                O19. At which of the following types of addresses
+                                                                     does your household currently receive
+                                                                     residential mail?
+O16. Do you currently rent or own your home?
+      1    Own
+                                 RentOrOwn                           Mark all that apply.
+      2    Rent                                                       1   A street address with a house or building number
+                                                                          TypeOfAddressA
+      3    Occupied without paying monetary rent                      1 An address with a rural route number
+                                                                        TypeOfAddressB
+                                                                      1 A U.S. post office box (P.O. Box)
+                                                                        TypeOfAddressC
+                                                                      1 A commercial mailbox establishment (such as
+                                                                          Mailboxes R Us, and Mail Boxes Etc.® )
+                                                                          TypeOfAddressD
+
+
+
+
+                                                                                                              55346
+
+
+                                                               21
+                               Thank you!
+
+Please return this questionnaire in the postage-paid envelope within 2 weeks.
+
+If you have lost the envelope, mail the completed questionnaire to:
+
+HINTS Study, TC 1046F
+Westat
+1600 Research Boulevard
+Rockville, MD 20850
+

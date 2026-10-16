@@ -1,0 +1,171 @@
+{
+  "scope": "Structural registry preflight only; no imputation or focal analysis executed.",
+  "design_representation": "four race indicators + PPPCQ + other covariates + standardized log weight + reference-coded VAR_STRATUM",
+  "rank_tolerance": "max(n,p) * float64_eps * largest_singular_value",
+  "superseded_psu_fixed_effect_diagnostic": "Counts all-one English-proficiency PSU cells only; no imputation or effect estimate.",
+  "branches": {
+    "require_7_of_7": {
+      "frame_n": 2611,
+      "superseded_psu_cell_count": 100,
+      "superseded_psu_cells_all_english_very_well": 19,
+      "targets": {
+        "age_years": {
+          "observed_target_n": 2583,
+          "columns": 13,
+          "rank": 13,
+          "rank_tolerance": 1.1321989230232381e-10,
+          "smallest_singular_value": 6.681684541640263,
+          "full_rank": true,
+          "pass": true
+        },
+        "female": {
+          "observed_target_n": 2588,
+          "columns": 13,
+          "rank": 13,
+          "rank_tolerance": 1.7335164868843627e-09,
+          "smallest_singular_value": 5.523665936945559,
+          "full_rank": true,
+          "complete_separation": false,
+          "quasi_complete_separation": false,
+          "complete_margin": -0.0,
+          "quasi_margin_sum": 0.0,
+          "pass": true
+        },
+        "college_graduate": {
+          "observed_target_n": 2593,
+          "columns": 13,
+          "rank": 13,
+          "rank_tolerance": 1.7399005006474979e-09,
+          "smallest_singular_value": 5.636906119321085,
+          "full_rank": true,
+          "complete_separation": false,
+          "quasi_complete_separation": false,
+          "complete_margin": -0.0,
+          "quasi_margin_sum": 0.0,
+          "pass": true
+        },
+        "married_or_partnered": {
+          "observed_target_n": 2593,
+          "columns": 13,
+          "rank": 13,
+          "rank_tolerance": 1.7399572283040565e-09,
+          "smallest_singular_value": 5.379647125341183,
+          "full_rank": true,
+          "complete_separation": false,
+          "quasi_complete_separation": false,
+          "complete_margin": -0.0,
+          "quasi_margin_sum": 0.0,
+          "pass": true
+        },
+        "currently_employed": {
+          "observed_target_n": 2599,
+          "columns": 13,
+          "rank": 13,
+          "rank_tolerance": 1.74594008497018e-09,
+          "smallest_singular_value": 5.592023197824093,
+          "full_rank": true,
+          "complete_separation": false,
+          "quasi_complete_separation": false,
+          "complete_margin": -0.0,
+          "quasi_margin_sum": 0.0,
+          "pass": true
+        },
+        "english_very_well": {
+          "observed_target_n": 2595,
+          "columns": 13,
+          "rank": 13,
+          "rank_tolerance": 1.7400953513904147e-09,
+          "smallest_singular_value": 5.954050187218621,
+          "full_rank": true,
+          "complete_separation": false,
+          "quasi_complete_separation": false,
+          "complete_margin": -0.0,
+          "quasi_margin_sum": 0.0,
+          "pass": true
+        }
+      }
+    },
+    "require_at_least_4_of_7": {
+      "frame_n": 2661,
+      "superseded_psu_cell_count": 100,
+      "superseded_psu_cells_all_english_very_well": 19,
+      "targets": {
+        "age_years": {
+          "observed_target_n": 2633,
+          "columns": 13,
+          "rank": 13,
+          "rank_tolerance": 1.1647583169531525e-10,
+          "smallest_singular_value": 6.751202909409771,
+          "full_rank": true,
+          "pass": true
+        },
+        "female": {
+          "observed_target_n": 2636,
+          "columns": 13,
+          "rank": 13,
+          "rank_tolerance": 1.7850574837730737e-09,
+          "smallest_singular_value": 5.572730302240738,
+          "full_rank": true,
+          "complete_separation": false,
+          "quasi_complete_separation": false,
+          "complete_margin": -0.0,
+          "quasi_margin_sum": 0.0,
+          "pass": true
+        },
+        "college_graduate": {
+          "observed_target_n": 2643,
+          "columns": 13,
+          "rank": 13,
+          "rank_tolerance": 1.7935525536133227e-09,
+          "smallest_singular_value": 5.6862007218076025,
+          "full_rank": true,
+          "complete_separation": false,
+          "quasi_complete_separation": false,
+          "complete_margin": -0.0,
+          "quasi_margin_sum": 0.0,
+          "pass": true
+        },
+        "married_or_partnered": {
+          "observed_target_n": 2641,
+          "columns": 13,
+          "rank": 13,
+          "rank_tolerance": 1.7915178614157087e-09,
+          "smallest_singular_value": 5.4281566759649325,
+          "full_rank": true,
+          "complete_separation": false,
+          "quasi_complete_separation": false,
+          "complete_margin": -0.0,
+          "quasi_margin_sum": 0.0,
+          "pass": true
+        },
+        "currently_employed": {
+          "observed_target_n": 2649,
+          "columns": 13,
+          "rank": 13,
+          "rank_tolerance": 1.7996535830071184e-09,
+          "smallest_singular_value": 5.6523287846832435,
+          "full_rank": true,
+          "complete_separation": false,
+          "quasi_complete_separation": false,
+          "complete_margin": -0.0,
+          "quasi_margin_sum": 0.0,
+          "pass": true
+        },
+        "english_very_well": {
+          "observed_target_n": 2645,
+          "columns": 13,
+          "rank": 13,
+          "rank_tolerance": 1.7937512248667697e-09,
+          "smallest_singular_value": 5.9937309631720685,
+          "full_rank": true,
+          "complete_separation": false,
+          "quasi_complete_separation": false,
+          "complete_margin": -0.0,
+          "quasi_margin_sum": 0.0,
+          "pass": true
+        }
+      }
+    }
+  },
+  "all_checks_pass": true
+}
