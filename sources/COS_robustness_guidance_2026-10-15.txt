@@ -1,0 +1,163 @@
+﻿Part I — What a robustness study is
+1.1 The sequence
+A robustness study starts from a single statistical result in a published paper, assigned to you. You rebuild the analysis from its source data, identify the decisions in it that could reasonably have gone another way, choose the five you judge most likely to matter for this result, and run every combination of those five. With two options on each that is 32 specifications; a third option on one dimension makes it 48.
+One combination takes the original authors' choice on all five at once. That is the baseline specification: the analysis as the article describes it, with nothing varied. Mark it in your results file.
+Your baseline may land close to the published figures or some distance from them. Either is a result. Do not adjust the pipeline to bring it closer.
+You write the plan before you run anything, in a shared document. Two reviewers comment on it, you respond and revise, and an editor decides. Once the editor approves it, it is registered, and you run it as approved rather than revising it in light of what you find.
+1.2 Three standing rules
+Rebuild the analysis from the source data. Do not start from an analytic file the authors provide. A cleaned file has decisions already built into it — how the sample was drawn, how a scale was scored, how missingness was handled — and those are decisions you need to be able to vary.
+Consult author materials freely where they exist — replication code, data documentation, appendices, supplements. Use them to get the baseline right, not to generate your alternatives: what the authors' code happens to make visible is not the test of what was reasonably open. They cannot replace the rebuild either; the pipeline is yours, written from source, whatever informed it. Record in the preregistration what you consulted and what it settled.
+Use whatever software suits the study. Open software is preferred. Submit your code alongside your results.
+1.3 Which alternatives belong in a plan
+An alternative belongs in the plan if it is a reasonable decision for this research question — one a researcher addressing the same question with the same data could have arrived at.
+The source data must contain what the alternative requires and the study design must permit it, but that is a minimum condition rather than the test. Much of what the data would tolerate is not a decision anyone would reasonably make.
+The alternatives are peers of the original authors' choice, not corrections of it. A robustness study is not a critique of the original analysis and not a search for errors. Where a genuine error comes to light, note it in the results template; the alternatives declared here are decisions that were reasonably open at that point in the analysis.
+An alternative does not qualify where it is:
+Not a reasonable choice for this question. An estimator inappropriate to the outcome's distribution, a scale scoring no one uses, a covariate that is plainly a collider or a consequence of the exposure, or anything else the data would tolerate but no researcher addressing this question would have chosen.
+A change of question rather than of method. An alternative estimating something other than the focal result. Which population is studied and which construct is the outcome are fixed; how that construct is measured is open.
+Unsupported by the data or design. An alternative requiring information the source does not contain, or incompatible with how the study was conducted.
+Only a rescaling. An option that multiplies the outcome by a constant, or recenters a predictor, changes the coefficient and leaves the p-value untouched. It is not an alternative decision; it is the same decision in different units.
+1.4 What counts as a decision
+A decision documented clearly in the article is still a decision. If the authors report scoring a scale as the mean of five items, and another scoring would have been reasonable for this question, that alternative belongs in the plan. Do not confine yourself to the points where the article was unclear.
+Decisions you had to make yourself are also open. Where the article was silent and you had to choose in order to build the pipeline at all, that choice is as open to variation as one the authors documented. On such a dimension, the baseline takes whichever option you read the article as implying.
+Part II — The nine dimensions
+Every study addresses the same nine dimensions, whatever the paper. Where your pipeline contains a consequential decision that none of the nine covers, declare it as a paper-specific addition (2.3). The five you vary are drawn from the nine and any additions.
+2.1 The four statuses
+Record a status for every one of the nine, whether or not you vary it.
+Status
+	What it claims
+	What it carries
+	Varied
+	More than one reasonable option was open, and this is one of the five you are testing.
+	The options, each described
+	Set aside
+	More than one reasonable option was open, but you judged this less consequential than the five you chose.
+	A reason, in a sentence
+	No alternative available
+	The decision is present, but only one option was reasonably open.
+	A written justification
+	Not applicable
+	There was nothing to decide.
+	A brief reason
+	
+
+Choose the five where you think this result is most likely to prove sensitive, not the five that are easiest to vary. Note as well that five is the targeted number of dimensions to vary, but analysts should be responsive to their study’s specific context. If, for example, only four dimensions could be reasonably varied or if a sixth dimension is needed, analysts should feel free to do so.
+Not applicable does not mean the article failed to mention the decision, and does not mean the decision was obvious. It means the data lack the thing the decision operates on. This is uncommon. Common cases:
+Dimension
+	Not applicable where
+	d02 Missing data
+	No missing values in any analysis variable
+	d03 Outcome / d04 Predictor
+	The variable is a single directly recorded item with no construction step — an administrative record, a randomized assignment indicator
+	d05 Categorization
+	No continuous variable enters the pipeline, so there is no cutpoint to choose
+	d09 Weights
+	The source contains no weight variable
+	
+
+The table lists the common cases, not all of them. Wherever you mark a dimension not applicable, say what the data lack.
+Sample construction, estimation, and inference nearly always involve a decision, so d01, d07, and d08 are rarely not applicable. Where you are not varying them, the status is usually set aside or no alternative available.
+A dimension is not limited to two options. Where a third was reasonably open, list it and justify it like any other.
+2.2 The dimensions
+Each entry lists alternatives that sometimes come up, as illustrations. What belongs in your plan is whatever your pipeline actually supports.
+d01 — Analytic sample construction
+Who ends up in the analysis. Eligibility filters, attention-check and data-quality exclusions, outlier rules, requiring complete data on other variables, follow-up requirements in longitudinal data.
+Sometimes varied: keeping vs. dropping flagged respondents; different outlier rules, or none; wider or narrower eligibility windows; balanced vs. unbalanced panel.
+Does not include the population the focal result is about, which is fixed.
+d02 — How missing data are handled
+Where an article says nothing about this, most software has dropped incomplete cases by default. An undocumented default is still a decision. Silence in the article does not make this dimension not applicable.
+Sometimes varied: complete cases vs. multiple imputation; FIML vs. listwise in SEM; what goes into the imputation model; whether auxiliary variables are included.
+d03 — How the outcome is built
+Which items make up a scale, how it is scored, subscale vs. total, reverse-coding, standardization, what happens to partially complete scales.
+Sometimes varied: total vs. subscale; a different published scoring for the same instrument; unweighted vs. factor-weighted; dropping items that overlap with another construct in play; prorating vs. dropping respondents who skipped items.
+d04 — How the main predictor is built
+The same decisions, applied to the predictor in the focal result.
+Sometimes varied: continuous vs. categorical; a different reference category; a different composite; a different recoding of ordinal responses.
+d05 — Cutpoints and categories
+Turning continuous measures into categories, or choosing where to cut — for the outcome, the predictor, or a control variable. Where to cut and how many groups, as distinct from how the measure is built, which is d03 and d04.
+Sometimes varied: keeping it continuous; different cutpoints, clinical vs. sample-derived; tertiles vs. quartiles vs. median split; collapsing categories or keeping them all.
+d06 — Which control variables are used
+Which variables the model adjusts for, and how each is measured.
+Sometimes varied: minimal vs. full adjustment; adding a control the literature suggests and the article omits; removing one that sits downstream of the exposure; measuring a control a different way.
+d07 — The model and its functional form
+The estimator fitted, and the shape the relationship is assumed to take.
+Sometimes varied: linear probability vs. logistic for a binary outcome; ordinal vs. collapsed-binary logistic; Poisson vs. negative binomial for counts; adding or dropping non-linear terms in the predictor; OLS vs. robust regression.
+d08 — Clustering, nesting, and standard errors
+How repeated or grouped observations are handled, and how standard errors are calculated. Articles often do not discuss this even where the data are clustered or repeated.
+Sometimes varied: random intercept vs. clustered standard errors vs. GEE; clustering at a different level; robust vs. model-based standard errors; bootstrap.
+d09 — Survey weights and complex design
+Whether weights, stratification, and PSU structure are applied.
+Silence in the article is not evidence that weighting is inapplicable. Articles using secondary survey data often do not mention weights even where the data carry them. Where the data provide a scheme, applying it is a reasonable alternative.
+Sometimes varied: unweighted vs. weighted; weights alone vs. the full complex-design specification; a different weight variable where several are supplied.
+2.3 Paper-specific additions
+Declare an addition where your pipeline contains a decision none of the nine covers and you are varying it. An addition counts as one of your five, so varying one leaves four to draw from the nine.
+Ones that come up:
+* Mediation and moderation. Where the focal result is an indirect effect or an interaction: mediator ordering, bootstrap specification, where covariates sit on the paths.
+* Measurement models. Where the pipeline runs SEM, CFA, or latent variable methods: factor structure, which indicators load where, constraints.
+* Record linkage and merge rules. Rare, but decisive where they apply.
+* Aggregation of repeated observations. For panel and diary data. Note that which waves the original analyzed is fixed — analyzing different waves is a replication, not a robustness check.
+* Spatial specification. Neighbor definitions and distance weighting, where a spatial model is used.
+2.4 Not in scope
+Multiple-comparison correction. Adding or removing a correction changes the focal result's significance according to how many other tests the paper ran, which is not a question about this result.
+Data vintage. Use the vintage contemporaneous with the original analysis where it can be retrieved, the current one otherwise, and record the version and access date either way. It is not varied.
+Part III — Running a study
+3.1 The specifications
+Once the plan is approved, work out every combination of your five decisions, run the analysis under each, and record one row per combination.
+Where two options cannot be run together — one makes the other undefined — or do not make logical sense together, declare that in the preregistration and leave those combinations out. The file then has fewer rows than the full set, and the missing ones are those you declared.
+3.2 What to record
+One row per specification, with these columns. The full definitions are in the Results File Specification; this is the shape.
+Which option each varied decision took
+	one column per dimension
+	Whether this row is the baseline
+	one column
+	The estimate, its standard error, the test statistic, the effect size, the p-value, and the number of observations
+	eleven columns
+	Whether the model estimated, and if not, what went wrong
+	two columns
+	What produced the standard error, where it was not the fitting command
+	three columns
+	
+
+Three things to get right.
+Record whether the model converged, and report no estimate where it did not. A model that fails to converge still returns numbers, and they look ordinary: finite, plausibly sized, often highly significant. Nothing about reading them off the output tells you the fit failed. Check, and mark the row as failed rather than filling in an estimate.
+The number of observations is the number the model used. Not the rows in your dataset, not the sum of any weights. Where cases were dropped for missing data, or a subset taken, the analytic N is what remained.
+Name the focal term exactly. The focal term is the predictor whose coefficient is the focal result — the row of the coefficient table you are recording. If a factor level drops out under some specification, the term you want may not be there at all, and that row is recorded as failed rather than reporting whatever sits nearby.
+Failed specifications stay in the file, with their reason.
+3.3 Standard errors you compute yourself
+If your study recomputes standard errors after fitting — bootstrapping, clustering, a heteroskedasticity correction, a survey design — record what you did in the three columns provided: the procedure in words, the grouping it used, and how many groups or resamples.
+Describe it so that a reader knows what was done. Not "robust" but "cluster-robust, CR1, by municipality". Not "bootstrap" but "nonparametric bootstrap, 1000 resamples, resampled by household".
+Leave the three columns blank where the fitting command produced the standard errors itself.
+3.4 Submission
+For review: the preregistration and your code. The preregistration describes the focal result and where it appears, the pipeline you built, the five decisions you are varying with their options, the dimensions you are not varying with your reasons, and the values the article reports.
+After approval: the preregistration is registered, and you run it as approved.
+At completion: your results file, your code as run, and the results template.
+Part IV — Assessing a plan
+You are given editing access to the analyst's preregistration document, along with their code, the assigned focal result, and the original article. Reading the code is optional, but an option's description and its implementation can differ, and only the code will show that.
+Comment in the document, against the text each comment concerns. The analyst replies and revises there, the other reviewer's comments are visible to you as yours are to them, and the editor decides in the same place.
+The review does not evaluate the original paper, and does not assess whether its result is likely to hold up.
+4.1 Are the alternatives reasonable?
+For each option proposed, the question is whether a researcher addressing this research question with these data could reasonably have made that decision. An option need not be the best available, the most common in the field, or the one the reviewer would have chosen. Section 1.3 sets out the ways an alternative fails to qualify.
+For dimensions that are not varied, the three statuses make different claims.
+Set aside is assessed in 4.2.
+No alternative available says the decision was present but that only one option was open.
+Not applicable says there was nothing to decide. It holds only where the data lack whatever the decision would have operated on. Section 2.1 lists the usual cases; others are possible, but the reason must point to something absent from the data, not to something the article left unsaid.
+Two dimensions share a trap, in that the article's silence can look like inapplicability. On d09, silence about weighting is not evidence that weighting is inapplicable: the test is whether the source provides a weight variable. On d02, an article that describes no missing data handling procedure has still made a choice, since most software drops incomplete cases by default.
+Justifications rest on the data or the design. A justification appealing to what the results are expected to show is inadequate whatever it concludes.
+4.2 Are these the right five?
+Five decisions are varied out of the nine dimensions and any additions. The analyst has claimed that those five are where the result is most likely to prove sensitive, and that the ones set aside matter less.
+Assess that claim. A dimension set aside with a thin reason, where the article's own description suggests the decision was consequential, is the thing to catch. So is the reverse: a dimension varied because it is easy to vary rather than because it is likely to matter.
+4.3 Is anything missing?
+Missing dimensions. Does the pipeline contain a consequential decision that appears nowhere, neither among the nine dimensions nor among the paper-specific additions? Section 2.3 lists the ones that come up.
+Missing options. Where a dimension is varied, is there a further alternative that was reasonably open and has not been included? Where several distinct options were available — a cutpoint, a set of scale items, a merge key — two may understate the latitude the original authors had.
+Too many options. A third option on one dimension makes 48 specifications rather than 32. Not prohibitive, but it should be there because a third option was genuinely open, not because the analyst could not choose between two.
+4.4 Does the plan target the right result?
+The focal result. Does the estimate the analyst describes match the one assigned? Check the table or figure reference, the panel, model, row, and column. Articles frequently report the same predictor across several models, and the assignment names one of them.
+The quantity. Does the analyst's account of what is estimated, on what scale, and in which direction match the article?
+The pipeline. Does the pipeline description correspond to the analysis that produced this particular result? An article may contain a measurement model, a mediation analysis, and a regression; the declared dimensions should belong to whichever of these produces the focal result.
+4.5 Commenting and deciding
+Anchor each comment to the text it concerns — the option, the status, the sentence describing the pipeline — rather than collecting them at the end. Say what the problem is and what would resolve it, so the analyst can act without a further exchange.
+Where you agree with a comment the other reviewer has already left, say so rather than repeating it. Where you disagree, say that too: the editor decides on the strength of what is in the document.
+When you have finished, record your recommendation at the foot of the document.
+Accept. The plan can be registered as submitted.
+Request changes. Specific and addressable problems, each already raised as a comment in the text. This is the expected outcome for a plan with gaps.
+Reject. The plan is not salvageable through revision: the focal result has been misidentified, or the pipeline described is not the one that produced it.

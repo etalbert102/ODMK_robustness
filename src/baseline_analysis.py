@@ -70,11 +70,6 @@ def jackknife_summary(full: float, replicates: np.ndarray, df: int = JK_DF) -> d
     }
 
 
-def wls_beta(y: np.ndarray, x: np.ndarray, weights: np.ndarray) -> np.ndarray:
-    xtw = x.T * weights
-    return np.linalg.solve(xtw @ x, xtw @ y)
-
-
 def recode_positive(series: pd.Series) -> pd.Series:
     return series.where(series > 0).astype(float)
 
@@ -111,21 +106,6 @@ def make_derived(df: pd.DataFrame) -> pd.DataFrame:
         out["recent_provider_visit"] | out["communication_followup_observed"]
     )
 
-    # Literal reconstruction of the six covariates named in the Methods text.
-    # Every non-substantive HINTS code remains missing rather than being folded
-    # into the binary reference category.
-    out["age_years"] = out["age"].where(out["age"].between(18, 120)).astype(float)
-    out["female"] = out["genderc"].map({1: 0.0, 2: 1.0})
-    out["college_graduate"] = out["education"].map(
-        {1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 1.0, 7: 1.0}
-    )
-    out["married_or_partnered"] = out["maritalstatus"].map(
-        {1: 1.0, 2: 1.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 0.0}
-    )
-    out["currently_employed"] = out["employed"].map({1: 1.0, 2: 0.0})
-    out["english_very_well"] = out["speakenglish"].map(
-        {1: 1.0, 2: 0.0, 3: 0.0, 4: 0.0}
-    )
     return out
 
 
@@ -159,55 +139,6 @@ def table2_reproduction(df: pd.DataFrame, replicate_cols: list[str]) -> tuple[pd
     contrast["contrast"] = "Non-Hispanic Asian minus non-Hispanic White"
     contrast["analytic_n"] = len(analytic)
     return pd.DataFrame(rows), contrast
-
-
-def model1_reconstruction(df: pd.DataFrame, replicate_cols: list[str]) -> tuple[pd.DataFrame, dict]:
-    covariates = [
-        "age_years",
-        "female",
-        "college_graduate",
-        "married_or_partnered",
-        "currently_employed",
-        "english_very_well",
-    ]
-    needed = ["pppcq_complete7", "race5", *covariates, "person_finwt0", *replicate_cols]
-    analytic = df.loc[df[needed].notna().all(axis=1) & df["race5"].isin(RACE_LABELS)].copy()
-
-    columns = ["intercept", "black", "hispanic", "asian", "other", *covariates]
-    x = np.column_stack(
-        [
-            np.ones(len(analytic)),
-            (analytic["race5"] == 2).astype(float),
-            (analytic["race5"] == 3).astype(float),
-            (analytic["race5"] == 4).astype(float),
-            (analytic["race5"] == 5).astype(float),
-            *[analytic[name].to_numpy(float) for name in covariates],
-        ]
-    )
-    y = analytic["pppcq_complete7"].to_numpy(float)
-    full_beta = wls_beta(y, x, analytic["person_finwt0"].to_numpy(float))
-    replicate_beta = np.vstack(
-        [wls_beta(y, x, analytic[col].to_numpy(float)) for col in replicate_cols]
-    )
-
-    rows = []
-    for index, name in enumerate(columns):
-        summary = jackknife_summary(full_beta[index], replicate_beta[:, index])
-        rows.append({"term": name, **summary})
-
-    diagnostics = {
-        "analytic_n": len(analytic),
-        "complete_outcome_and_race_n": int(
-            (df["pppcq_complete7"].notna() & df["race5"].isin(RACE_LABELS)).sum()
-        ),
-        "covariates": covariates,
-        "reference_group": "Non-Hispanic White",
-        "interpretation": (
-            "Literal complete-case reconstruction of the six-covariate model described in the "
-            "article Methods; it is a diagnostic because the table note lists only four covariates."
-        ),
-    }
-    return pd.DataFrame(rows), diagnostics
 
 
 def cronbach_alpha_complete(df: pd.DataFrame) -> float:
@@ -316,12 +247,6 @@ def main() -> None:
         "hhid",
         "freqgoprovider",
         "raceethn5",
-        "age",
-        "genderc",
-        "education",
-        "maritalstatus",
-        "employed",
-        "speakenglish",
         "person_finwt0",
         "var_stratum",
         "var_cluster",
@@ -339,7 +264,6 @@ def main() -> None:
 
     df = make_derived(raw)
     table2, contrast = table2_reproduction(df, replicate_cols)
-    model1, model1_diagnostics = model1_reconstruction(df, replicate_cols)
     qa = build_qa(df, replicate_cols, data_hash)
 
     # Published anchors are used only to validate the baseline reconstruction.
@@ -373,17 +297,14 @@ def main() -> None:
             {"stage": "At least one valid C4 communication response", "n": qa["any_valid_communication_item_n"]},
             {"stage": "All seven PCC items valid", "n": int(df["pppcq_complete7"].notna().sum())},
             {"stage": "All seven PCC items valid and RaceEthn5 valid", "n": qa["complete7_with_valid_race_n"]},
-            {"stage": "Six-covariate complete-case diagnostic", "n": model1_diagnostics["analytic_n"]},
         ]
     )
 
     table2.to_csv(outputs / "table2_reproduction.csv", index=False)
-    model1.to_csv(outputs / "table3_model1_reconstruction.csv", index=False)
     exclusion_flow.to_csv(outputs / "exclusion_flow.csv", index=False)
     (outputs / "qa_checks.json").write_text(json.dumps(qa, indent=2) + "\n")
     summary = {
         "table2_asian_minus_white": contrast,
-        "table3_model1_reconstruction": model1_diagnostics,
         "guardrail": "No robustness alternatives were executed by this program.",
     }
     (outputs / "baseline_summary.json").write_text(json.dumps(summary, indent=2) + "\n")
@@ -400,18 +321,6 @@ def main() -> None:
         "communication_followup_observed",
         "recent_provider_visit",
         "c4_module_eligible",
-        "age",
-        "age_years",
-        "genderc",
-        "female",
-        "education",
-        "college_graduate",
-        "maritalstatus",
-        "married_or_partnered",
-        "employed",
-        "currently_employed",
-        "speakenglish",
-        "english_very_well",
         "person_finwt0",
         "var_stratum",
         "var_cluster",
@@ -421,7 +330,7 @@ def main() -> None:
         processed / "odmk_baseline_derived.csv.gz", index=False, compression="gzip"
     )
 
-    print(json.dumps({"qa": qa, "asian_minus_white": contrast, "model1": model1_diagnostics}, indent=2))
+    print(json.dumps({"qa": qa, "asian_minus_white": contrast}, indent=2))
 
 
 if __name__ == "__main__":

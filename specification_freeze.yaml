@@ -1,51 +1,51 @@
 paper_id: ODMK
-frozen_on: "2026-10-14"
-status: "conditionally_frozen_pending_cos_focal_confirmation"
-revision: 6
+frozen_on: "2026-10-15"
+status: "proposed_pending_cos_review"
+revision: 7
 revision_note: >-
-  Final-inspection revision: distinguishes the fixed C4 target population from
-  d03-dependent observed scoring coverage, states the bounded survey-MICE
-  limitation explicitly, and adds pre-2021 half-scale and fractional-logit
-  methodological support. No dimension, option, or specification count changed.
+  Replaces the conditional Table 3 Model 1 design after the COS sourcing sheet
+  became available. The assigned result is the Table 2 descriptive PPPCQ mean
+  comparison between Asian and non-Hispanic White respondents. The adjusted
+  model, covariate-missingness, age-form, and fractional-logit dimensions from
+  revision 6 are retired. No alternative effect estimate was run in making
+  this revision.
 
 focal_published_result:
-  table_model: "Table 3, Model 1"
-  quantity: "Non-Hispanic Asian indicator relative to non-Hispanic White"
-  published_estimate: -0.264
-  published_se: 0.12
-  published_p_display: "p < .05"
-  validation_anchor: >-
-    Table 2 race-specific weighted means, reconstructed exactly from the public
-    source data; Table 2 is not an additional multiverse branch.
-  assignment_contingency: >-
-    No COS sourcing-sheet file was available locally. If COS identifies Table 2
-    rather than Table 3 Model 1 as the assigned statistic, version this registry
-    before executing any alternative cell. Until COS confirms the focal table,
-    this registry is conditionally frozen and no alternative cell may be run.
+  source: "COS available-papers sheet, paper ID ODMK"
+  table_model: "Table 2, PPPCQ column"
+  claim: >-
+    Asian respondents had lower mean perceived patient-provider communication
+    quality than non-Hispanic White respondents.
+  published_asian_mean: 3.11
+  published_asian_se: 0.10
+  published_asian_ci: [2.90, 3.33]
+  published_white_mean: 3.45
+  published_white_se: 0.02
+  published_white_ci: [3.39, 3.49]
+  published_difference_printed: false
+  derived_baseline_difference: -0.32961721731883653
+  derived_baseline_difference_se_jk1: 0.10974269373470233
+  direction: "Asian minus non-Hispanic White"
+  note: >-
+    The article inferred a group difference from the displayed marginal
+    confidence intervals. The robustness results will record both weighted
+    group means and their direct Asian-minus-White contrast. The direct
+    contrast is derived from the published-baseline reconstruction, not printed
+    in the article.
 
 focal_estimand: >-
-  HINTS-population-average, covariate-standardized non-Hispanic Asian minus
-  non-Hispanic White difference in the seven-item PPPCQ mean, reported on the
-  1-4 scale, for the fixed C4 module population. Observed analytic coverage of
-  that target population follows the selected d03 outcome-completeness rule;
-  no PPPCQ item or score is imputed.
+  Difference between the survey-weighted population mean PPPCQ score for
+  non-Hispanic Asian adults and the corresponding mean for non-Hispanic White
+  adults in the intended HINTS 5 Cycle 2 patient-provider communication module
+  population, on the 1-4 scale. Each registered option is an operational choice
+  about membership, measurement, race-category construction, or survey
+  variance for this same descriptive contrast. No causal interpretation is made.
 
 fixed:
   dataset: "HINTS 5 Cycle 2 public-use release 2024-05-07"
   data_sha256: "a727f1b7a56f293dc2212bb9cc8705cacdc4e57d6d8e5505012b713ecfd1531f"
-  module_population: >-
-    FreqGoProvider in {1,2,3,4,5,6} OR at least one valid C4 response (source
-    value 1-4). The second condition retains answered follow-ups when the filter
-    is -9. This target population is fixed; d03 varies score availability within
-    it rather than redefining substantive eligibility.
-  race_variable: "RaceEthn5"
-  included_race_codes: [1, 2, 3, 4, 5]
-  focal_race: 4
-  reference_race: 1
-  model_race_indicators: [2, 3, 4, 5]
+  unique_id: "HHID"
   point_weight: "PERSON_FINWT0"
-  replicate_weights: "PERSON_FINWT1-PERSON_FINWT50"
-  variance_method: "JK1, coefficient 0.98, 49 complete-data degrees of freedom"
   outcome_items:
     - ChanceAskQuestions
     - FeelingsAddressed
@@ -56,318 +56,216 @@ fixed:
     - HelpUncertainty
   outcome_valid_values: [1, 2, 3, 4]
   outcome_reverse_rule: "5 - source response"
-  random_generator: "NumPy PCG64"
-  random_substreams: >-
-    NumPy SeedSequence(20261013).spawn(2), assigned in order to the 7-of-7 and
-    at-least-4-of-7 d03 branches.
-
-covariate_coding:
-  age_years:
-    source: "Age"
-    valid_rule: "18 <= Age <= 120; otherwise missing"
-  age_group:
-    source_audit_variable: "AgeGrpB"
-    passive_rule: "18-34=1; 35-49=2; 50-64=3; 65-74=4; 75+=5"
-    reference: "18-34"
-  female:
-    source: "GenderC"
-    mapping: "1=0 (male); 2=1 (female); all other values missing"
-  college_graduate:
-    source: "Education"
-    mapping: "1-5=0; 6-7=1; all other values missing"
-  married_or_partnered:
-    source: "MaritalStatus"
-    mapping: "1-2=1; 3-6=0; all other values missing"
-  currently_employed:
-    source: "Employed"
-    mapping: "1=1; 2=0; all other values missing"
-  english_very_well:
-    source: "SpeakEnglish"
-    mapping: "1=1; 2-4=0; all other values missing"
+  outcome_reporting_scale: "1-4"
+  reference_group: >-
+    Non-Hispanic White respondents identified by RaceEthn5=1 under both d04
+    options. The reference is not broadened to any-White identification.
+  no_imputation: >-
+    No race, outcome item, score, routing field, weight, or design variable is
+    imputed in any registered specification.
+  survey_domain_estimation: >-
+    Create each survey design from the full public-use file before applying
+    eligibility, score-availability, or race restrictions. Represent those
+    restrictions as survey domains so that non-domain records and released
+    design units remain available to variance estimation. Never construct a
+    design from a prefiltered Asian-and-White-only file.
 
 dimensions:
-  d02_missing_data:
-    - complete_case_all_six_candidate_covariates
-    - mice_50_all_six_candidate_covariates
+  d01_analytic_sample:
+    baseline: content_confirmed_module
+    options:
+      content_confirmed_module: >-
+        FreqGoProvider in {1,2,3,4,5,6} OR at least one valid C4 response.
+        This follows the NCI edit rule that a missing filter remains missing
+        when a follow-up was answered.
+      observed_positive_filter_only: >-
+        Require FreqGoProvider in {1,2,3,4,5,6}. Do not use answered follow-up
+        content to repair or override a missing routing filter.
   d03_outcome_construction:
-    - require_7_of_7_valid_items
-    - require_at_least_4_of_7_valid_items
-  d05_age_functional_form:
-    - linear_age_years
-    - agegrpb_18_34_35_49_50_64_65_74_75_plus
+    baseline: require_7_of_7_valid_items
+    options:
+      require_7_of_7_valid_items: >-
+        Reverse-score and equally average all seven items only when all seven
+        source responses are valid.
+      require_at_least_4_of_7_valid_items: >-
+        Reverse-score and equally average the available items when at least
+        four of the same seven source responses are valid. No item is imputed.
+  d04_main_predictor_construction:
+    baseline: official_mutually_exclusive_raceethn5
+    options:
+      official_mutually_exclusive_raceethn5: >-
+        Asian is RaceEthn5=4 and White is RaceEthn5=1. Multiracial
+        non-Hispanic respondents remain in RaceEthn5=5 (Other).
+      inclusive_nonhispanic_any_asian_identification: >-
+        Asian is Hisp_Cat=10 and at least one of AsInd, Chinese, Filipino,
+        Japanese, Korean, Vietnamese, or OthAsian equals 1, including
+        respondents who also selected another race. White remains RaceEthn5=1.
+  d08_variance_estimation:
+    baseline: official_jk1_replicate_weights
+    options:
+      official_jk1_replicate_weights: >-
+        Use PERSON_FINWT1-PERSON_FINWT50, JK1 coefficient 0.98, and 49
+        denominator degrees of freedom.
+      taylor_linearization: >-
+        Use PERSON_FINWT0 with VAR_STRATUM and VAR_CLUSTER and 98 denominator
+        degrees of freedom, following the HINTS 5 Cycle 2 analytics guidance.
+
+fixed_dimension_statuses:
+  d02_missing_data:
+    status: set_aside
+    reason: >-
+      Partial outcome-item missingness is handled transparently by d03. Item-level
+      multiple imputation would add an extensive, unvalidated response model and
+      overlaps the registered scale-completeness decision. Race imputation is not
+      used for a focal comparison defined by self-identified race/ethnicity.
+  d05_cutpoints_categories:
+    status: not_applicable
+    reason: >-
+      The focal outcome remains continuous on 1-4 and no continuous predictor or
+      control variable is categorized. The count of valid scale items belongs to
+      d03 rather than an outcome cutpoint.
   d06_control_variables:
-    - core_age_gender
-    - full_age_gender_education_marital_employment_english
-  d07_model:
-    - survey_weighted_linear
-    - survey_weighted_fractional_logit_average_marginal_contrast
+    status: no_alternative_available
+    reason: >-
+      Table 2 reports unadjusted survey-weighted means. Adding controls would
+      replace the assigned marginal mean contrast with an adjusted contrast.
+  d07_model_functional_form:
+    status: no_alternative_available
+    reason: >-
+      Direct design-weighted group means are the assigned quantity. A weighted
+      linear model with group indicators is algebraically equivalent, while
+      ordinal, median, or robust-location models estimate different quantities.
+  d09_survey_weights:
+    status: no_alternative_available
+    reason: >-
+      PERSON_FINWT0 is required for the same national population target.
+      Unweighted means target the realized respondent sample, not that population.
 
-sample_frames:
-  base: >-
-    Start from the fixed C4 module population, require RaceEthn5 in {1,2,3,4,5},
-    and require a valid PPPCQ score under the selected d03 rule. The resulting
-    difference in records is observed scoring coverage, not a change in the
-    population of scientific interest. FreqGoProvider remains available for QA.
-  complete_case: >-
-    From the d03-specific base frame, require valid age_years, female,
-    college_graduate, married_or_partnered, currently_employed, and
-    english_very_well. Use this same record set for both d05 options, both d06
-    options, and both d07 options.
-  mice: >-
-    Use every record in the d03-specific base frame and impute all six candidate
-    covariates. Use this same record set for both d05 options, both d06 options,
-    and both d07 options.
-  invariance_check: >-
-    Within each d02-by-d03 branch, record identifiers and full/replicate weights
-    must be identical across d05, d06, and d07 cells.
+cell_construction:
+  order:
+    - d01_analytic_sample
+    - d03_outcome_construction
+    - d04_main_predictor_construction
+    - d08_variance_estimation
+  expected_specifications: 16
+  distinct_point_estimate_constructions: 8
+  full_factorial: true
+  baseline_cell:
+    d01_analytic_sample: content_confirmed_module
+    d03_outcome_construction: require_7_of_7_valid_items
+    d04_main_predictor_construction: official_mutually_exclusive_raceethn5
+    d08_variance_estimation: official_jk1_replicate_weights
+  point_estimate_invariance: >-
+    The d08 choice must not change either weighted group mean or their
+    difference, because both options use PERSON_FINWT0 for point estimation.
 
-analysis_models:
-  common_terms: >-
-    Intercept plus indicators for RaceEthn5 codes 2, 3, 4, and 5; no race-by-
-    covariate interactions and no other interaction terms.
-  core_terms: "selected age representation plus female"
-  full_terms: >-
-    selected age representation, female, college_graduate,
-    married_or_partnered, currently_employed, and english_very_well
-  linear: "weighted least squares with identity link on PPPCQ 1-4"
-  fractional_logit: >-
-    Fractional-response logit mean model on z=(PPPCQ-1)/3, retaining z=0 and
-    z=1. Estimate it from the explicit probability-weighted Bernoulli
-    quasi-score defined below; do not pass HINTS weights to a generic GLM as
-    frequency weights or variance weights.
+estimands_and_outputs:
+  asian_mean: "sum(w_i*y_i)/sum(w_i) among records in the selected Asian group"
+  white_mean: "sum(w_i*y_i)/sum(w_i) among records with RaceEthn5=1"
+  focal_difference: "asian_mean - white_mean"
+  required_per_cell:
+    - asian_mean
+    - white_mean
+    - asian_minus_white_difference
+    - standard_error_of_difference
+    - confidence_interval_95
+    - test_statistic
+    - denominator_degrees_of_freedom
+    - two_sided_p_value
+    - unweighted_asian_n
+    - unweighted_white_n
+    - weighted_asian_denominator
+    - weighted_white_denominator
+    - all_option_labels
+    - success_or_failure_reason
 
-fractional_logit_estimator:
-  mean: "mu_i = expit(x_i' beta)"
-  score: "U(beta) = sum_i w_i*x_i*(z_i-mu_i) = 0"
-  information: >-
-    I(beta) = sum_i w_i*mu_i*(1-mu_i)*x_i*x_i'. Solve the score by deterministic
-    damped-Newton iteration under failure_policy for the full weight and
-    separately for every replicate weight.
-  weight_rule: >-
-    Use raw released PERSON_FINWT0 or PERSON_FINWTr as probability weights.
-    Ignore model-based covariance, residual degrees of freedom, likelihood,
-    deviance, AIC, and likelihood-ratio tests; uncertainty comes only from JK1
-    replicate contrasts.
+variance_algorithms:
+  jk1:
+    full_estimate: "theta_0 from PERSON_FINWT0"
+    replicate_estimates: "theta_r from PERSON_FINWTr for r=1,...,50"
+    variance: "0.98 * sum_r((theta_r-theta_0)^2)"
+    degrees_of_freedom: 49
+  taylor:
+    design: >-
+      Stratified two-PSU design using VAR_STRATUM and VAR_CLUSTER, with
+      PERSON_FINWT0 as the probability weight.
+    estimator: >-
+      Linearize each weighted ratio mean and their difference; compute the
+      stratum-within-PSU variance using the released public design fields.
+    degrees_of_freedom: 98
 
-standardized_contrast:
-  category_evaluation_designs: >-
-    For every record in the fixed cell frame, construct two descriptive design
-    rows with the race-indicator block coded once as non-Hispanic Asian and once
-    as non-Hispanic White while leaving covariates unchanged. This is regression
-    standardization across observed category labels, not an intervention on race.
-  full_sample: >-
-    Fit with PERSON_FINWT0 and compute
-    sum[PERSON_FINWT0_i*(pred_Asian_i-pred_White_i)]/sum(PERSON_FINWT0_i).
-  replicate: >-
-    For replicate r, refit with PERSON_FINWTr and use PERSON_FINWTr to average
-    that replicate's prediction differences. Do not average predictions with
-    PERSON_FINWT0 inside a replicate.
-  output_scale: >-
-    OLS remains on 1-4. Multiply the fractional-logit prediction contrast by 3
-    to return it to 1-4.
-  estimator_symmetry: >-
-    Use the prediction algorithm for both estimators even though the OLS
-    contrast equals the Asian coefficient when interactions are absent.
-
-imputation:
-  datasets: 50
-  frame: "selected d03 base frame"
-  targets_in_visit_order:
-    - age_years
-    - female
-    - college_graduate
-    - married_or_partnered
-    - currently_employed
-    - english_very_well
-  never_impute:
-    - FreqGoProvider_or_other_routing_fields
-    - race_ethnicity
-    - PPPCQ_items
-    - PPPCQ_score
-    - weights
-    - survey_design_variables
-  predictors: >-
-    Four RaceEthn5 indicators, PPPCQ score constructed under selected d03, all
-    candidate covariates other than the current target, standardized
-    log(PERSON_FINWT0), and reference-coded categorical VAR_STRATUM; main effects
-    only. Do not include VAR_CLUSTER or stratum-by-cluster fixed effects in the
-    conditional imputation models. Clustering enters the analysis-stage
-    uncertainty calculation through the 50 official JK1 replicate weights.
-  survey_design_scope: >-
-    Log full weight and categorical stratum provide a bounded representation of
-    unequal selection and stratification in the imputation models. This is not a
-    claim of complete design-congeniality: PSU clustering is handled by JK1 at
-    analysis rather than by a 100-level fixed effect that caused separation in
-    binary conditional models during structural preflight. JK1 does not recover
-    within-PSU dependence omitted from the conditional imputation models; this
-    limitation is accepted as the bounded peer implementation.
-  design_matrix_rank_gate: >-
-    Before any stochastic draw, build every target-specific conditional-model
-    matrix on its observed-target rows after deterministic initialization. Each
-    matrix must have numerical rank equal to its column count. Define numerical
-    rank by singular values greater than
-    max(n,p)*float64_epsilon*largest_singular_value; log all singular values and
-    the resulting tolerance. Abort the entire MICE branch for that d03 rule if
-    any matrix is deficient; do not remove a term after inspecting results.
-  binary_separation_gate: >-
-    Before any random draw, test every binary target-specific design for complete
-    and quasi-complete separation with the bounded linear-program certificates
-    implemented in src/preflight_registry.py. Also require the unpenalized logit
-    fit to converge with finite coefficients and a finite positive-definite
-    observed-information matrix. Abort that d03 MICE branch on failure; do not
-    merge levels, delete predictors, or add a penalty.
-  log_weight_standardization: >-
-    Within each d03 MICE frame, subtract the unweighted mean of
-    log(PERSON_FINWT0) and divide by its unweighted population standard deviation
-    (ddof=0); hold this transformation fixed across all cycles and imputations.
-  initialization: >-
-    Observed median for age_years and observed mode for each binary target.
-  no_missing_target_rule: >-
-    Retain a target with no missing values as a predictor but skip its update.
-  burn_in_cycles: 20
-  cycles_between_saved_datasets: 5
-  age_method: >-
-    Conventional type-1 predictive mean matching by unweighted OLS. On the
-    observed-target rows fit beta_hat and SSE with df_resid=n_obs-p. Draw
-    sigma2_draw=SSE/ChiSquare(df_resid), then draw
-    beta_draw~Normal(beta_hat, sigma2_draw*(X'X)^(-1)). For every missing case,
-    compare its prediction X_mis*beta_draw with each observed donor prediction
-    X_obs*beta_hat. Order donors by absolute distance and then ascending HHID;
-    take the first five, including deterministic HHID resolution of a fifth-place
-    tie, and select one uniformly with the registered PCG64 substream. Donors are
-    restricted to observed age values.
-  binary_method: >-
-    Fit an unpenalized logistic conditional model by the registered damped-Newton
-    solver. Draw beta_draw from Normal(beta_hat, inverse observed information)
-    and draw each missing binary value independently from Bernoulli(expit(X*beta_draw))
-    using the registered PCG64 substream.
-  grouped_age_method: >-
-    Passively derive 18-34, 35-49, 50-64, 65-74, and 75+ from each completed
-    age_years value; do not impute AgeGrpB independently.
-  pooling: >-
-    Within each imputation calculate the full and 50 replicate standardized
-    contrasts and JK1 variance. For M=50, let qbar be the mean contrast, Ubar the
-    mean JK1 within-imputation variance, B the sample variance (denominator M-1)
-    of the contrasts, and T=Ubar+(1+1/M)*B. Set lambda=(1+1/M)*B/T,
-    nu_old=(M-1)/(lambda^2), nu_obs=((49+1)/(49+3))*49*(1-lambda), and
-    nu_BR=(1/nu_old+1/nu_obs)^(-1). Treat nu_old as infinity when lambda=0 and
-    use min(nu_BR,49) only as a floating-point safeguard. Report qbar, sqrt(T),
-    and a two-sided t interval/test using that degrees of freedom. If Ubar or T
-    is nonpositive/nonfinite, fail the branch.
-
-software:
-  python: "3.13.16"
-  requirements_file: "requirements_multiverse.txt"
-  packages:
-    numpy: "2.4.4"
-    pandas: "3.0.2"
-    scipy: "1.17.1"
-    statsmodels: "0.15.0"
-    pyyaml: "6.0.3"
-  lock_status: >-
-    requirements_multiverse.txt pins direct dependencies but is not a transitive
-    lock. Before execution, resolve all transitive packages under Python 3.13.16,
-    write requirements_multiverse.lock with distribution hashes, archive its
-    SHA-256 plus interpreter/platform metadata, and execute only from that lock.
-
-determinism_and_tests:
-  row_order: >-
-    Sort ascending by HHID before spawning random substreams, initialization,
-    imputation, fitting, prediction, or output. Assert HHID is nonmissing and
-    unique; the public file has 3,504 distinct identifiers.
-  pre_execution_tests:
-    - observed_valid_age_passive_bands_equal_AgeGrpB
-    - baseline_JK1_anchors_match_archived_outputs
-    - OLS_standardized_contrast_equals_Asian_coefficient_without_interactions
-    - multiplying_every_analysis_weight_by_a_positive_constant_leaves_point_estimates_unchanged
-    - Asian_and_White_evaluation_rows_update_the_entire_race_indicator_block
-    - reordered_input_produces_identical_outputs_after_HHID_sort
-    - every_target_specific_imputation_design_matrix_is_full_rank
-    - no_binary_imputation_design_has_complete_or_quasi_complete_separation
-    - conditional_logit_fits_have_finite_coefficients_and_positive_definite_information
-    - Barnard_Rubin_pooling_matches_hand_calculated_fixture
-
-psychometric_diagnostics:
-  outputs:
-    - seven_item_missing_pattern_counts_overall_and_by_RaceEthn5
-    - scoring_eligibility_counts_and_weighted_coverage_by_RaceEthn5_under_each_d03_rule
-    - item_specific_missingness_counts_and_weighted_rates_by_RaceEthn5
-  use_rule: >-
-    These are construct-coverage diagnostics only. They may not be used to add,
-    remove, or modify a registered specification.
+structural_anchors:
+  source_rows: 3504
+  content_confirmed_module_n: 2993
+  observed_positive_filter_n: 2961
+  complete_7_n_content_confirmed: 2871
+  complete_7_official_asian_n_content_confirmed: 105
+  complete_7_inclusive_asian_n_content_confirmed: 122
+  complete_7_white_n_content_confirmed: 1703
+  inclusive_asian_additional_multiracial_n_full_source: 21
+  note: >-
+    These are membership and missingness counts only. No alternative outcome
+    mean or Asian-minus-White effect was calculated during revision 7 design.
 
 failure_policy:
-  preprocessing: >-
-    Apart from standardized log(PERSON_FINWT0) in MICE, retain registered
-    variable forms and assert full-rank design matrices before fitting.
-  starting_values: >-
-    OLS and PMM OLS are solved directly. Use a zero vector for each MICE
-    conditional-logistic model and the custom fractional-logit quasi-score.
-  convergence: "maximum 1000 iterations; tolerance 1e-10"
-  nonlinear_solver: >-
-    Use Newton updates from the registered zero vector with deterministic
-    backtracking step halving. Try step factors 1, 1/2, ..., 2^-20 and accept the
-    first finite step that reduces the Euclidean score norm. Converge only when
-    max(abs(score))/max(1,sum(weights)) <= 1e-10, taking unit weights for MICE
-    conditional logits and the current full/replicate probability weight for
-    fractional logit. IRLS is not a distinct retry.
-  retry: "No algorithm substitution or same-model retry is permitted."
-  terminal_failure: >-
-    If no acceptable step exists or convergence is not reached within 1,000
-    iterations, mark and report the affected imputation or registered cell as
-    failed. Do not drop variables, merge categories, add a penalty, substitute
-    an estimator, or inspect the focal result to choose a repair.
-  failure_scope: >-
-    Failure to construct any one of the 50 datasets invalidates the entire MICE
-    branch for that d03 rule. A later model-fit failure invalidates only that
-    registered cell, but the failed cell remains in the 32-cell report.
-  hard_fail_conditions:
-    - invalid_or_missing_imputed_values
-    - missing_or_nonfinite_predictions
-    - nonpositive_full_sample_weights
-    - negative_replicate_weights
-    - fewer_than_50_finite_replicate_contrasts
-    - rank_deficient_design_matrix
-    - complete_or_quasi_complete_separation_in_binary_imputation_model
-    - nonfinite_or_nonpositive_definite_logistic_information_matrix
+  - Do not change a registered inclusion, scoring, race, or variance rule after inspecting an effect.
+  - Do not merge race categories or substitute an unregistered estimator when a cell is sparse.
+  - Stop before effect estimation if the full analytic survey domain does not preserve both public strata and all 50 released clusters within each stratum; do not assess this by filtering to focal-group records first.
+  - Failed cells remain in the results file with the reason and no focal estimate.
 
-expected_specifications: 32
-reporting_structure: >-
-  Attempt and list all 32 cells, but make d06 the interpretive facet: report a
-  16-cell demographic-core panel and a 16-cell fuller socioeconomic/language-
-  standardized panel. Do not calculate a single pooled robustness rate, median,
-  range, or preferred conclusion across both d06 frames. Report unweighted focal
-  group counts and design-based SEs/intervals with every cell.
-prohibited:
-  - require_observed_FreqGoProvider_when_valid_C4_responses_are_present
-  - impute_eligibility_or_routing_filter
-  - impute_race_ethnicity
-  - impute_pppcq_items_or_score
-  - unweighted_point_estimation
-  - unweighted_standardization
-  - change_race_categories
-  - drop_or_reweight_pppcq_domains
-  - vary_variance_estimator_in_primary_multiverse
-  - change_analysis_records_across_d05_d06_d07_within_a_d02_d03_branch
-  - choose_models_or_repairs_by_effect_direction_interval_or_p_value
+execution_gates:
+  - "source SHA-256 equals the registered canonical hash"
+  - "required schema is present and HHID is unique and nonmissing"
+  - "published-baseline analytic N equals 2611"
+  - "each displayed baseline race/ethnicity mean is within 0.011 of the article"
+  - "exactly 50 replicate weights are present"
+  - "Taylor design contains two strata and 50 released clusters per stratum (98 design degrees of freedom)"
+  - "the registry expands to exactly 16 cells and 8 distinct point-estimate constructions"
+  - "d08 paired cells have identical point estimates"
 
-diagnostic_quarantine:
-  baseline_authorized: >-
-    Published-baseline reconstruction, item-completeness counts, route-consistency
-    counts, and structural rank/separation checks are authorized diagnostics.
-  inspected_during_review: >-
-    A strict FreqGoProvider-in-1-to-6 route restriction was inspected to diagnose
-    a documentation/code contradiction. It would retain 2,589 of the 2,611
-    complete-seven valid-race records; 22 have valid C4 data and missing filter
-    values. Any nonbaseline descriptive or effect result encountered during that
-    check is quarantined, is not reported, and did not select or modify a
-    robustness dimension.
-  not_executed: >-
-    No imputed, core-adjusted, grouped-age, fractional-logit, or crossed
-    registered cell has been executed.
+execution_provenance:
+  required:
+    - source_data_hash
+    - registry_revision
+    - code_commit
+    - language_and_runtime_version
+    - package_versions
+    - ai_system_and_use_date
+    - researcher_approval_record
+    - cell_manifest_with_status_and_failure_reason
 
-execution_guard: >-
-  No alternative cell is authorized by the baseline script. Implement and run
-  the 32-cell Cartesian product only after COS confirms the focal table, this
-  registry is accepted or versioned in response to review, the transitive hash
-  lock is archived, and every pre-execution test passes.
+software_plan:
+  baseline_crosscheck: "Python explicit weighted means and JK1 formula"
+  production: "R survey package; exact R/package versions frozen before alternatives"
+  jk1_design: >-
+    Supplied PERSON_FINWT0 and PERSON_FINWT1-PERSON_FINWT50 as combined
+    weights; variance centered on the full-sample estimate; scale 0.98; df 49.
+  taylor_design: >-
+    PERSON_FINWT0 with VAR_STRATUM and VAR_CLUSTER; nested public design; df 98.
+  domain_rule: >-
+    Construct the survey design on the full source file, then apply sample,
+    score availability, and racial group membership as domains.
+
+reporting:
+  attempt_and_list_all_cells: true
+  primary_display: "4 by 4 table or equivalent specification plot showing all 16 cells"
+  prohibited_summaries:
+    - significance_only_robustness_rate
+    - post_result_preferred_specification
+    - pooled_claim_that_ignores_estimate_magnitude_and_uncertainty
+  interpretation: >-
+    Describe how the magnitude and uncertainty of the Asian-minus-White mean
+    difference vary across peer choices. Do not treat p<.05 as the definition
+    of robustness.
+
+preanalysis_guard:
+  allowed_before_cos_approval:
+    - published_baseline_reconstruction
+    - source_hash_and_schema_checks
+    - membership_and_missingness_counts
+    - verification_of_race_source_logic
+    - design_structure_checks_that_do_not_estimate_group_outcomes
+  forbidden_before_cos_approval:
+    - any_nonbaseline_group_mean
+    - any_nonbaseline_asian_minus_white_difference
+    - any_selection_or_revision_based_on_nonbaseline_effects

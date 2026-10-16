@@ -10,19 +10,5 @@
     "contrast": "Non-Hispanic Asian minus non-Hispanic White",
     "analytic_n": 2611
   },
-  "table3_model1_reconstruction": {
-    "analytic_n": 2527,
-    "complete_outcome_and_race_n": 2611,
-    "covariates": [
-      "age_years",
-      "female",
-      "college_graduate",
-      "married_or_partnered",
-      "currently_employed",
-      "english_very_well"
-    ],
-    "reference_group": "Non-Hispanic White",
-    "interpretation": "Literal complete-case reconstruction of the six-covariate model described in the article Methods; it is a diagnostic because the table note lists only four covariates."
-  },
   "guardrail": "No robustness alternatives were executed by this program."
 }

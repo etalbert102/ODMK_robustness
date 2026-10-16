@@ -1,0 +1,63 @@
+﻿Guidelines for Robustness Analysts and Reviewers
+
+
+This is a living document that may be updated periodically.
+Last updated: October 12, 2026
+Overview        2
+Key Project Details        2
+Contact Info        2
+Compensation        2
+Process and Timeline        2
+Sign Up Process        2
+Preregistration        2
+Preregister on the OSF        3
+Outcome Reporting        3
+Steps for Submitting Outcomes        3
+Links & Resources        4
+________________
+
+
+Overview
+We have an extensive guidance document for you to reference during your robustness study.
+
+
+Please read this document carefully and in its entirety. We can help clarify things if you have any questions. 
+Key Project Details
+Contact Info
+Please direct all questions and project updates to Ella Boycan or Ashleigh Blersch at replications@cos.io. Ella and Ashleigh will also be in touch on a regular basis to help track your progress.
+Compensation
+Robustness studies are conducted with underlying source data, and researchers will be compensated with $750 USD per completed robustness study. Compensation will be awarded upon completion of the robustness study. You will be sent an acknowledgement of honorarium to complete and sign.
+Authorship Opportunity
+By participating in this initiative, you will have the opportunity to contribute to the overarching paper led by COS. 
+Source Data Definition
+When authors don’t share data files, unit-level data can often be reconstructed from public, secondary data sources in cases where the original authors relied on secondary data for their study. These source data reproductions should rely on the same secondary sources (e.g. OECD data, European Social Survey data) that the original authors used, and most often analysts will need to reconstruct code to both clean the data and analyze it based on documentation from the paper and supporting information.
+Process and Timeline
+Sign Up Process
+If you are interested in pursuing a robustness study, follow the below steps:
+1. Look over the listed papers here.
+2. After finding a study that you would like to pursue, email replications@cos.io a brief proposal detailing your planned analytical approach and methodology based on the guidance document. 
+   1. Subject Line: [Paper ID] Robustness Proposal
+Preregistration
+Once the scientific lead has accepted your analysis plan, you may begin work on a preregistration draft using this template. 
+
+
+After your preregistration draft has been completed, it will be reviewed by two reviewers. Once approved by the two reviewers, you will preregister this analysis plan on the OSF using the instructions below:
+Preregister on the OSF
+1. Click Add a Registration
+2. For "Do you have content for registration in an existing OSF project?" click No.
+3. For "Which type of registration would you like to create?" choose the Open Ended Preregistration option and click Create Draft
+4. Copy over all information from your preregistration draft into the Description text box.
+5. Once all the information is entered, go to the Review portion of the registration and click Register.
+Outcome Reporting
+Outcome reports must be delivered to COS (replications@cos.io) by December 1, 2026.
+Steps for Submitting Outcomes
+* Record your outcomes using this reporting template.
+* Send your outcome report to replications@cos.io: 
+   * Report Format: .pdf or .docx
+   * Subject Line: [Paper ID] Outcome Reproducibility Report
+* Include all outputs generated from your reproduction, these will be added to a folder for the scientific lead to access while reviewing your outcome report
+________________
+Links & Resources
+   * Robustness guidance
+   * Study Sourcing Sheet
+   * Robustness (source data) ACKNOWLEDGEMENT OF HONORARIUM

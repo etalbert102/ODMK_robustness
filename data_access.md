@@ -11,7 +11,7 @@ The baseline uses the public HINTS 5 Cycle 2 Stata bundle currently distributed 
 
 The downloaded ZIP has SHA-256 `f204a161868056e243a3583ec343e3f4e4eb0b430a100e4d0e61996551a8b6ea`. The unmodified Stata member used in the analysis has SHA-256 `a727f1b7a56f293dc2212bb9cc8705cacdc4e57d6d8e5505012b713ecfd1531f`.
 
-The current release is dated 2024-05-07. This matters because NCI's remediation page records removal of weighting-process variables not intended for analysis. The methodology report documents production hot-deck fields including `Age_I`, `GenderC_I`, `Education_I`, and `MaritalStatus_I`, but those `_I` fields are not present in the current Stata file. They are not treated as author analytic imputations. It remains unknown whether the authors used any derived field available in the release they analyzed, so public-release drift is an explicit possible contributor to the Table 3 mismatch. The final person weight, 50 replicate weights, and design variables required here remain present.
+The current release is dated 2024-05-07. NCI's remediation page records removal of weighting-production variables not intended for analysis. Those release changes do not prevent the Table 2 reconstruction: the final-person weight, 50 replicate weights, public stratum and cluster fields, race source items, routing item, and seven PPPCQ items remain present.
 
 ## Required files
 
@@ -25,6 +25,16 @@ The NCI bundle contains all required HINTS materials:
 - `HINTS 5 Cycle 2 History Document.pdf` — derived-variable history and release changes.
 
 The source ledger in [`sources/source_manifest.csv`](sources/source_manifest.csv) records every copy, link, and checksum used. The article-access note is [`sources/ODMK_article_access_note.md`](sources/ODMK_article_access_note.md).
+
+## COS assignment materials
+
+The project invitation supplied three public Google files, archived on 2026-10-15:
+
+- `COS_available_papers_2026-10-15.csv` — the sourcing sheet; the ODMK row assigns the Table 2 Asian and non-Hispanic White PPPCQ means and confidence intervals;
+- `COS_general_workflow_2026-10-15.txt` — the project workflow; and
+- `COS_robustness_guidance_2026-10-15.txt` — the analyst and reviewer guidance.
+
+The sourcing sheet links the article copy archived as `sources/ODMK_COS_source.pdf`. Its SHA-256 is recorded in the source manifest.
 
 ## Re-acquisition
 
@@ -58,9 +68,11 @@ The public file provides:
 
 NCI recommends the 50 replicate weights for inference from one HINTS cycle, with JK coefficient 0.98 and 49 denominator degrees of freedom. NCI also documents Taylor linearization as a supported alternative using the final weight, `VAR_STRATUM`, and `VAR_CLUSTER`, with 98 denominator degrees of freedom for HINTS 5 Cycle 2. The final and replicate weights incorporate selection, nonresponse, and calibration adjustments; a weight-only robust standard error does not reconstruct that design.
 
+The survey design must be created before applying eligibility, outcome-availability, or focal-race restrictions. Those restrictions are implemented as survey domains so that non-domain records, strata, and public clusters remain available to variance estimation.
+
 ## Access status and cost
 
-The HINTS data and documentation are publicly obtainable and require no restricted-data application. Acquisition is therefore low risk and low cost. The article's version of record is paywalled, but an author-uploaded full-text page was available for inspection. If COS requires an archived publisher PDF in the submission package, the submitter should add a lawfully accessed copy; that is not needed to run the reconstruction.
+The HINTS data and documentation are publicly obtainable and require no restricted-data application. Acquisition is therefore low risk and low cost. The publisher version of the article is paywalled, but COS supplied an OSF-hosted article copy with the sourcing sheet; that copy is preserved in `sources/`.
 
 ## Data preservation rule
 

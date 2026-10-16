@@ -1,171 +1,105 @@
 {
-  "scope": "Structural registry preflight only; no imputation or focal analysis executed.",
-  "design_representation": "four race indicators + PPPCQ + other covariates + standardized log weight + reference-coded VAR_STRATUM",
-  "rank_tolerance": "max(n,p) * float64_eps * largest_singular_value",
-  "superseded_psu_fixed_effect_diagnostic": "Counts all-one English-proficiency PSU cells only; no imputation or effect estimate.",
-  "branches": {
-    "require_7_of_7": {
-      "frame_n": 2611,
-      "superseded_psu_cell_count": 100,
-      "superseded_psu_cells_all_english_very_well": 19,
-      "targets": {
-        "age_years": {
-          "observed_target_n": 2583,
-          "columns": 13,
-          "rank": 13,
-          "rank_tolerance": 1.1321989230232381e-10,
-          "smallest_singular_value": 6.681684541640263,
-          "full_rank": true,
-          "pass": true
-        },
-        "female": {
-          "observed_target_n": 2588,
-          "columns": 13,
-          "rank": 13,
-          "rank_tolerance": 1.7335164868843627e-09,
-          "smallest_singular_value": 5.523665936945559,
-          "full_rank": true,
-          "complete_separation": false,
-          "quasi_complete_separation": false,
-          "complete_margin": -0.0,
-          "quasi_margin_sum": 0.0,
-          "pass": true
-        },
-        "college_graduate": {
-          "observed_target_n": 2593,
-          "columns": 13,
-          "rank": 13,
-          "rank_tolerance": 1.7399005006474979e-09,
-          "smallest_singular_value": 5.636906119321085,
-          "full_rank": true,
-          "complete_separation": false,
-          "quasi_complete_separation": false,
-          "complete_margin": -0.0,
-          "quasi_margin_sum": 0.0,
-          "pass": true
-        },
-        "married_or_partnered": {
-          "observed_target_n": 2593,
-          "columns": 13,
-          "rank": 13,
-          "rank_tolerance": 1.7399572283040565e-09,
-          "smallest_singular_value": 5.379647125341183,
-          "full_rank": true,
-          "complete_separation": false,
-          "quasi_complete_separation": false,
-          "complete_margin": -0.0,
-          "quasi_margin_sum": 0.0,
-          "pass": true
-        },
-        "currently_employed": {
-          "observed_target_n": 2599,
-          "columns": 13,
-          "rank": 13,
-          "rank_tolerance": 1.74594008497018e-09,
-          "smallest_singular_value": 5.592023197824093,
-          "full_rank": true,
-          "complete_separation": false,
-          "quasi_complete_separation": false,
-          "complete_margin": -0.0,
-          "quasi_margin_sum": 0.0,
-          "pass": true
-        },
-        "english_very_well": {
-          "observed_target_n": 2595,
-          "columns": 13,
-          "rank": 13,
-          "rank_tolerance": 1.7400953513904147e-09,
-          "smallest_singular_value": 5.954050187218621,
-          "full_rank": true,
-          "complete_separation": false,
-          "quasi_complete_separation": false,
-          "complete_margin": -0.0,
-          "quasi_margin_sum": 0.0,
-          "pass": true
-        }
-      }
-    },
-    "require_at_least_4_of_7": {
-      "frame_n": 2661,
-      "superseded_psu_cell_count": 100,
-      "superseded_psu_cells_all_english_very_well": 19,
-      "targets": {
-        "age_years": {
-          "observed_target_n": 2633,
-          "columns": 13,
-          "rank": 13,
-          "rank_tolerance": 1.1647583169531525e-10,
-          "smallest_singular_value": 6.751202909409771,
-          "full_rank": true,
-          "pass": true
-        },
-        "female": {
-          "observed_target_n": 2636,
-          "columns": 13,
-          "rank": 13,
-          "rank_tolerance": 1.7850574837730737e-09,
-          "smallest_singular_value": 5.572730302240738,
-          "full_rank": true,
-          "complete_separation": false,
-          "quasi_complete_separation": false,
-          "complete_margin": -0.0,
-          "quasi_margin_sum": 0.0,
-          "pass": true
-        },
-        "college_graduate": {
-          "observed_target_n": 2643,
-          "columns": 13,
-          "rank": 13,
-          "rank_tolerance": 1.7935525536133227e-09,
-          "smallest_singular_value": 5.6862007218076025,
-          "full_rank": true,
-          "complete_separation": false,
-          "quasi_complete_separation": false,
-          "complete_margin": -0.0,
-          "quasi_margin_sum": 0.0,
-          "pass": true
-        },
-        "married_or_partnered": {
-          "observed_target_n": 2641,
-          "columns": 13,
-          "rank": 13,
-          "rank_tolerance": 1.7915178614157087e-09,
-          "smallest_singular_value": 5.4281566759649325,
-          "full_rank": true,
-          "complete_separation": false,
-          "quasi_complete_separation": false,
-          "complete_margin": -0.0,
-          "quasi_margin_sum": 0.0,
-          "pass": true
-        },
-        "currently_employed": {
-          "observed_target_n": 2649,
-          "columns": 13,
-          "rank": 13,
-          "rank_tolerance": 1.7996535830071184e-09,
-          "smallest_singular_value": 5.6523287846832435,
-          "full_rank": true,
-          "complete_separation": false,
-          "quasi_complete_separation": false,
-          "complete_margin": -0.0,
-          "quasi_margin_sum": 0.0,
-          "pass": true
-        },
-        "english_very_well": {
-          "observed_target_n": 2645,
-          "columns": 13,
-          "rank": 13,
-          "rank_tolerance": 1.7937512248667697e-09,
-          "smallest_singular_value": 5.9937309631720685,
-          "full_rank": true,
-          "complete_separation": false,
-          "quasi_complete_separation": false,
-          "complete_margin": -0.0,
-          "quasi_margin_sum": 0.0,
-          "pass": true
-        }
-      }
-    }
+  "scope": "Structural registry preflight only. No nonbaseline outcome mean, racial contrast, standard error, confidence interval, or p-value was calculated.",
+  "paper_id": "ODMK",
+  "registry_revision": 7,
+  "registered_dimensions": [
+    "d01_analytic_sample",
+    "d03_outcome_construction",
+    "d04_main_predictor_construction",
+    "d08_variance_estimation"
+  ],
+  "registered_specifications": 16,
+  "distinct_point_estimate_constructions": 8,
+  "structural_anchors": {
+    "source_rows": 3504,
+    "content_confirmed_module_n": 2993,
+    "observed_positive_filter_n": 2961,
+    "complete_7_n_content_confirmed": 2871,
+    "complete_7_official_asian_n_content_confirmed": 105,
+    "complete_7_inclusive_asian_n_content_confirmed": 122,
+    "complete_7_white_n_content_confirmed": 1703,
+    "inclusive_asian_additional_multiracial_n_full_source": 21
   },
+  "race_checks": {
+    "official_asian_subset_of_inclusive_asian": true,
+    "inclusive_asian_disjoint_from_official_white": true,
+    "official_asian_n_full_source": 138,
+    "inclusive_asian_n_full_source": 159,
+    "additional_multiracial_asian_n_full_source": 21
+  },
+  "taylor_design_checks": {
+    "strata_n": 2,
+    "clusters_per_stratum": {
+      "5_2_HM": 50,
+      "5_2_LM": 50
+    },
+    "design_degrees_of_freedom": 98
+  },
+  "membership_cells_excluding_d08_duplicate": [
+    {
+      "d01": "content_confirmed_module",
+      "d03": "require_7_of_7_valid_items",
+      "d04": "official_mutually_exclusive_raceethn5",
+      "eligible_n_all_races": 2871,
+      "asian_n": 105,
+      "white_n": 1703
+    },
+    {
+      "d01": "content_confirmed_module",
+      "d03": "require_7_of_7_valid_items",
+      "d04": "inclusive_nonhispanic_any_asian_identification",
+      "eligible_n_all_races": 2871,
+      "asian_n": 122,
+      "white_n": 1703
+    },
+    {
+      "d01": "content_confirmed_module",
+      "d03": "require_at_least_4_of_7_valid_items",
+      "d04": "official_mutually_exclusive_raceethn5",
+      "eligible_n_all_races": 2940,
+      "asian_n": 105,
+      "white_n": 1739
+    },
+    {
+      "d01": "content_confirmed_module",
+      "d03": "require_at_least_4_of_7_valid_items",
+      "d04": "inclusive_nonhispanic_any_asian_identification",
+      "eligible_n_all_races": 2940,
+      "asian_n": 122,
+      "white_n": 1739
+    },
+    {
+      "d01": "observed_positive_filter_only",
+      "d03": "require_7_of_7_valid_items",
+      "d04": "official_mutually_exclusive_raceethn5",
+      "eligible_n_all_races": 2841,
+      "asian_n": 102,
+      "white_n": 1692
+    },
+    {
+      "d01": "observed_positive_filter_only",
+      "d03": "require_7_of_7_valid_items",
+      "d04": "inclusive_nonhispanic_any_asian_identification",
+      "eligible_n_all_races": 2841,
+      "asian_n": 119,
+      "white_n": 1692
+    },
+    {
+      "d01": "observed_positive_filter_only",
+      "d03": "require_at_least_4_of_7_valid_items",
+      "d04": "official_mutually_exclusive_raceethn5",
+      "eligible_n_all_races": 2908,
+      "asian_n": 102,
+      "white_n": 1728
+    },
+    {
+      "d01": "observed_positive_filter_only",
+      "d03": "require_at_least_4_of_7_valid_items",
+      "d04": "inclusive_nonhispanic_any_asian_identification",
+      "eligible_n_all_races": 2908,
+      "asian_n": 119,
+      "white_n": 1728
+    }
+  ],
   "all_checks_pass": true
 }

@@ -5,7 +5,7 @@
   "hhid_nonmissing": true,
   "hhid_unique": true,
   "hhid_sort_monotonic": true,
-  "column_count_after_derivation": 464,
+  "column_count_after_derivation": 458,
   "replicate_weight_count": 50,
   "all_full_weights_positive": true,
   "all_replicate_weights_nonnegative": true,

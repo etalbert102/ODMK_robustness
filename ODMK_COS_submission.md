@@ -2,7 +2,7 @@
 
 ## Recommended proposal in one paragraph
 
-For ODMK, I propose 32 robustness analyses covering every combination of five reasonable decisions. This bounded multiverse asks how sensitive the estimated Asian–White disparity is to a small set of defensible analytical choices that researchers could have made before seeing the results, while holding the population, racial comparison, communication construct, and survey design fixed. The purpose is not to find a specification that makes the published result disappear. Each analysis estimates the average adjusted difference in patient-provider communication quality between non-Hispanic Asian and non-Hispanic White respondents in the fixed 2018 HINTS 5 Cycle 2 patient-provider communication population. Subject to COS confirmation, the focal published result is Table 3 Model 1; the exactly reconstructed Table 2 means check the data and measures. No alternative analysis will run before that confirmation. The five decisions are: require all seven communication items or at least four valid items to calculate the same seven-item mean (d03); exclude records with missing covariates or use 50-dataset multiple imputation by chained equations (MICE) for covariates only (d02); adjust for age and gender or for the full published covariate set (d06); model age in years or with the official five HINTS age groups (d05); and use survey-weighted linear regression or fractional logit, a model suited to outcomes bounded between 0 and 1 (d07). Both models report the same weighted average adjusted difference on the original 1–4 scale. The target population, race coding, outcome content, population weights, jackknife repeated replication (JK1) inference, and Asian-minus-White comparison remain fixed. The results will show how the estimated magnitude and uncertainty vary across these peer choices. They will be presented in separate 16-analysis panels for the two adjustment approaches, not reduced to a single robustness rate or significance-based verdict.
+We propose 16 prespecified analyses of the Table 2 finding that Asian respondents reported lower perceived patient-provider communication quality (PPPCQ) than non-Hispanic White respondents. We will reconstruct the result from the original HINTS 5 Cycle 2 data and vary four reasonable choices. These concern eligibility for the communication questions (d01), the number of answered items needed to calculate PPPCQ (d03), the treatment of multiracial Asian identities (d04), and how uncertainty is calculated (d08). The first three choices define eight group comparisons; two uncertainty methods for each produce 16 analyses. The communication domains, 1–4 scale, White comparison group, population weight, and target population remain fixed. We will report both means and their difference, focusing on its size and uncertainty rather than statistical significance. We propose four rather than five dimensions because the remaining candidates would change the assigned question or duplicate an included choice.
 
 ## Paper and focal result
 
@@ -10,140 +10,160 @@ For ODMK, I propose 32 robustness analyses covering every combination of five re
 
 **Citation:** Kim, H.-S., Kim, H. J., and Juon, H.-S. (2021). “Racial/Ethnic Disparities in Patient-Provider Communication and the Role of E-Health Use.” *Journal of Health Communication*, 26(3), 194–203. <https://doi.org/10.1080/10810730.2021.1919248>.
 
-The assigned substantive finding is that non-Hispanic Asian respondents reported lower perceived patient-provider communication quality (PPPCQ) than non-Hispanic White respondents. I treat the adjusted Asian indicator in Table 3 Model 1 as the focal published statistic: −0.264 (SE 0.12, displayed as `p < .05`), with non-Hispanic White as the reference group.
+The COS sourcing sheet assigns the Table 2 comparison: Asian mean 3.11 (SE 0.10; 95% CI 2.90–3.33) versus non-Hispanic White mean 3.45 (SE 0.02; 95% CI 3.39–3.49). The authors interpret the confidence intervals as showing lower PPPCQ among Asian respondents. The article does not report the difference between the two means or its standard error.
 
-Table 2 presents the direct descriptive comparison: Asian mean 3.11 (SE 0.10; 95% CI 2.90–3.33) versus White mean 3.45 (SE 0.02; 95% CI 3.39–3.49). Exact reproduction checks the source data, outcome, race coding, and survey-design implementation; these means are not another robustness analysis.
+For consistent reporting, each analysis will show both weighted means and the Asian mean minus the non-Hispanic White mean on the 1–4 PPPCQ scale. A negative difference means that the Asian mean is lower. This keeps the focus on Table 2 rather than replacing it with the adjusted coefficient from Table 3.
 
-The COS sourcing sheet was not among the supplied or local materials. The companion registry is provisionally locked until COS confirms that Table 3 Model 1 is the intended focal result. If COS identifies Table 2 alone, I will revise and reapprove the registry before running any alternative analysis.
+The reconstructed baseline gives an Asian mean of 3.1161 and a White mean of 3.4457. Their difference is −0.3296 (JK1 SE 0.1097; 95% CI −0.5502 to −0.1091). The difference is calculated from the reconstructed means; it was not reported in the article.
 
 ## Data source and feasibility
 
-HINTS 5 Cycle 2 is publicly obtainable from the US National Cancer Institute and requires no restricted-data application. The reconstruction uses the 3,504-record public-use Stata file from the 2024-05-07 bundle. Required materials are:
+HINTS 5 Cycle 2 is publicly available from the US National Cancer Institute and requires no restricted-data application. The analysis uses the 3,504-record Stata file from the 2024-05-07 public bundle. Required materials are:
 
 - the public-use respondent file;
-- the public codebook/data dictionary;
-- the annotated English survey instrument and archived Spanish instrument;
+- the public codebook and data dictionary;
+- the annotated English and Spanish survey instruments;
 - the methodology and sampling report;
-- the analytics recommendations for final weights, replicate weights, JK1 coefficient, and degrees of freedom; and
-- the history document and NCI remediation notice.
+- the analytics recommendations for final weights, replicate weights, JK1, Taylor linearization, and degrees of freedom;
+- the history document and NCI remediation notice;
+- the COS available-papers sheet and robustness guidance; and
+- the COS-linked copy of the ODMK article.
 
-The raw file is preserved unchanged and verified by SHA-256. Source URLs, provenance, and checksums are recorded in `sources/source_manifest.csv`. No public author analysis code or supplementary analysis file was located.
+The raw respondent file is preserved unchanged and verified by SHA-256. Source URLs, provenance, and checksums are recorded in `sources/source_manifest.csv`. No public author analysis code or supplementary analysis file was located.
 
 ## Baseline reconstruction
 
-The fixed patient-provider communication module population includes respondents with `FreqGoProvider` in 1–6, plus respondents who answered at least one C4 item even though the routing filter is missing. This follows NCI's editing rule that a missing filter remains missing when a respondent answered a follow-up question. The fixed population contains 2,993 respondents. The outcome-scoring decision changes which of these respondents receive a score; it does not redefine the target population.
+The patient-provider communication questions comprise seven C4 items: opportunity to ask questions, attention to feelings, involvement in decisions, understanding next steps, clear explanations, sufficient time, and help with uncertainty. Source responses 1–4 are reverse-scored as `5 − response` and equally averaged, so higher values indicate better communication on a 1–4 scale.
 
-The baseline pipeline:
+The baseline reconstruction:
 
-1. treats C4 responses 1–4 as valid and all negative codes as missing;
-2. reverse-scores `ChanceAskQuestions`, `FeelingsAddressed`, `InvolvedDecisions`, `UnderstoodNextSteps`, `ExplainedClearly`, `SpentEnoughTime`, and `HelpUncertainty` as `5 − response`;
-3. averages the seven items on the 1–4 scale, requiring all seven for the reconstructed baseline;
-4. uses official `RaceEthn5` codes 1–5, with non-Hispanic White as reference and non-Hispanic Asian as the focal group; and
-5. uses `PERSON_FINWT0` for point estimates and `PERSON_FINWT1`–`PERSON_FINWT50` for JK1 variance, with coefficient 0.98 and 49 degrees of freedom.
+1. includes respondents with `FreqGoProvider` in 1–6 or at least one valid C4 response when the routing filter is missing, following NCI's editing rule for answered follow-ups;
+2. requires all seven C4 items to be valid;
+3. uses official `RaceEthn5=4` for non-Hispanic Asian and `RaceEthn5=1` for non-Hispanic White;
+4. uses `PERSON_FINWT0` for the two weighted means; and
+5. uses `PERSON_FINWT1`–`PERSON_FINWT50` for JK1 variance, with coefficient 0.98 and 49 denominator degrees of freedom.
 
-Requiring seven valid items and valid race gives `N = 2,611` and reproduces all five Table 2 group means and intervals within display precision. The reconstructed Asian-minus-White difference is −0.3296 (JK1 SE 0.1097; 95% CI −0.5502 to −0.1091). Thirty respondents with all seven items have a missing routing filter; 22 also have valid race. Requiring an observed routing filter would reduce the sample to 2,589. That result is recorded only as a diagnostic and is not a robustness option.
+The survey design will be created before limiting the analysis to eligible respondents or the two focal groups. The code will mark who belongs in each analysis rather than first deleting everyone else. This preserves the full survey structure needed to calculate uncertainty correctly.
 
-The direct adjusted reconstruction uses the six covariates named in the Methods—age in years, gender, college graduation, married/living as married, current employment, and speaking English very well—and excludes records missing any of them. It yields `N = 2,527` and an Asian coefficient of −0.2333 (JK1 SE 0.1324), rather than the published −0.264 (SE 0.12). I do not change reasonable coding decisions merely to force a match. The discrepancy may reflect undocumented treatment of missing covariates, a conflict between the Methods and the Table 3 note, or differences between the data release used by the authors and the current public file.
+Under the baseline eligibility rule, 2,993 respondents belong to the communication-question population. Requiring all seven items and valid `RaceEthn5` produces the article's Table 2 analytic `N = 2,611` across all five race/ethnicity categories and reproduces every published group mean and interval within display precision. The two focal groups contain 105 Asian and 1,703 non-Hispanic White respondents.
+
+The article does not state how many completed items were required or how it handled respondents who answered C4 despite a missing routing response. Requiring all seven items and retaining answered follow-ups reproduces the displayed Table 2 values and sample size. We therefore use that rule as the baseline while clearly labeling it as an inference.
 
 ## Proposed robustness dimensions
 
-### 1. d06 — Control variables
+The dimensions are listed in order of methodological importance.
 
-**Baseline/full option:** age, gender, college graduation, married/living as married, current employment, and speaking English very well, matching the Methods.
+### 1. d04 — Race/ethnicity construction
 
-**Peer alternative:** a demographic core of age and gender.
+**Baseline:** Use the official mutually exclusive `RaceEthn5` categories. Asian is `RaceEthn5=4`; non-Hispanic White is `RaceEthn5=1`. Non-Hispanic multiracial respondents remain in “Other.”
 
-**Justification and mechanism:** The core model estimates the group difference after adjusting for basic demographics. The full model also adjusts for socioeconomic, household, employment, and language characteristics. English proficiency and related characteristics may be part of the processes through which racialized social position is associated with communication, so neither adjustment approach is treated as uniquely correct. Differences in group composition and in how these characteristics relate to communication scores can affect the adjusted comparison; no direction is predicted.
+**Reasonable alternative:** Define non-Hispanic Asian as `Hisp_Cat=10` plus selection of at least one Asian checkbox—`AsInd`, `Chinese`, `Filipino`, `Japanese`, `Korean`, `Vietnamese`, or `OthAsian`—including respondents who also selected another race. Keep the comparison group fixed at `RaceEthn5=1`.
 
-**Implementation and risk:** Age takes the form selected under d05. Within each d02×d03 combination, both d06 models use the same records: complete-case analysis requires all six covariates even for the core model, and MICE imputes all six before either model is fitted. Both estimates are adjusted descriptive differences, not causal effects, and appear in separate 16-analysis panels.
+**Why reasonable:** The survey allows respondents to select more than one race. Researchers can therefore use either the official mutually exclusive category or an inclusive “any Asian identification” category while still asking the same Asian-versus-non-Hispanic-White question. The inclusive rule adds 21 non-Hispanic multiracial Asian respondents in the full source file; it does not combine Asian respondents with a broad minority category.
 
-### 2. d03 — Outcome construction
+**Why it may matter:** The definition determines whose experiences contribute to the Asian mean. Because the Asian group is small, adding multiracial Asian respondents could affect the estimate. We do not predict a direction.
 
-**Baseline option:** average the seven reverse-scored items only when all seven are valid.
+**Risk and safeguard:** This option uses a broader definition of the Asian group. Both definitions will be labeled clearly, the White group will remain fixed, and no claims will be made about specific national-origin groups.
 
-**Peer alternative:** average the same seven items when at least four are valid.
+### 2. d01 — Eligible sample
 
-**Justification and mechanism:** The all-seven rule is inferred from the exact reproduction. Requiring at least half of the items allows limited item nonresponse without changing the outcome's content, weighting, or scale. The 2001 EORTC QLQ-C30 scoring manual provides a pre-ODMK general precedent for calculating a multi-item scale when at least half of its items are answered; it does not validate this rule specifically for PPPCQ. A later HINTS 5 Cycle 2 study found that these items measure a common concept and used four valid items, but it postdates ODMK and is not treated as validation of the threshold. Item completion may relate to respondent characteristics or communication experience, affecting who receives a score without changing the target population.
+**Baseline:** Include respondents with `FreqGoProvider` in 1–6 or at least one valid C4 response when the filter is missing. This answered-follow-up rule gives 2,993 respondents.
 
-**Implementation and risk:** Valid responses are 1–4. The respondent mean is calculated only when the selected threshold is met and remains on the 1–4 scale. Missingness patterns and weighted coverage will be reported overall and by race, but cannot change the rule. Only 69 source respondents have four to six valid items, so this option is scientifically meaningful but likely to affect few respondents. No PPPCQ item or score is imputed.
+**Reasonable alternative:** Require an observed positive routing response, `FreqGoProvider` in 1–6, without using answered C4 items to resolve a missing filter. This gives 2,961 module respondents before outcome and race requirements.
 
-### 3. d02 — Missing-covariate treatment
+**Why reasonable:** Both rules aim to identify respondents reporting on communication with providers during the previous 12 months. The baseline follows NCI's rule for retaining answered follow-up questions; the alternative follows the recorded routing response literally. An analyst reconstructing eligibility could reasonably choose either rule before examining racial differences.
 
-**Baseline option:** a common complete-case frame requiring valid values for all six candidate covariates for both d06 models.
+**Why it may matter:** Thirty respondents with all seven items have a missing routing response, including three respondents in the official Asian group. Including or excluding them changes who contributes to the group means.
 
-**Peer alternative:** multiple imputation by chained equations (MICE), using 50 completed datasets, for the six covariates only.
+**Risk and safeguard:** The strict rule may discard useful answers, while the baseline infers eligibility from answered follow-up questions. Neither rule will be described as correcting the other.
 
-**Justification and mechanism:** Complete-case analysis is transparent but excludes anyone missing a covariate. MICE is reasonable when reporting may depend on race, PPPCQ, the survey design, and other observed characteristics. The options can differ if covariate reporting—and thus complete-case inclusion—is associated with race, language, socioeconomic position, or reported communication.
+### 3. d03 — PPPCQ scoring
 
-**Implementation:** Records are sorted by unique `HHID`, and fixed random seeds are assigned to the two d03 options. Each imputation model includes race, the PPPCQ score from the selected d03 option, the other candidate covariates, the standardized log final weight, and survey stratum. Age uses predictive mean matching with five possible donors; binary variables use standard logistic-regression imputation. The procedure uses 20 initial cycles and saves 50 completed datasets at five-cycle intervals. Age groups are recalculated from each imputed age. Race, routing fields, PPPCQ items and scores, weights, and survey-design variables are never imputed. The exact algorithms, tie-breaking rules, technical checks, random-number streams, and Barnard–Rubin rules for combining multiple-imputation results are fixed in `specification_freeze.yaml` revision 6.
+**Baseline:** Equally average the seven reverse-scored items only when all seven are valid.
 
-**Risk:** This practical, bounded imputation model does not reproduce every survey-design feature during imputation. Adding fixed effects for all 100 stratum-by-primary-sampling-unit (PSU) cells caused separation in the binary imputation models. Analysis-stage JK1 retains the released variance design but cannot restore similarity among respondents in the same sampling cluster that the imputation model omits. PSU random-effects or Bayesian imputation would add another large family of decisions, so they are set aside rather than used as unregistered repairs.
+**Reasonable alternative:** Equally average the available items when at least four of the same seven are valid. Do not fill in missing items.
 
-### 4. d07 — Model and functional form
+**Why reasonable:** The all-seven rule reproduces the displayed Table 2 values and sample size. A common approach for multi-item scales is to calculate a score when at least half of the items were answered. A later HINTS 5 Cycle 2 study used a minimum of four responses for this same seven-item measure. That study shows that the rule is workable for this measure; it does not show that the original authors used it. A 2001 scoring manual provides an earlier general precedent for the half-scale rule.
 
-**Baseline option:** probability-weighted linear regression of the 1–4 score.
+**Why it may matter:** Item completion may be related to communication experiences or respondent characteristics. The alternative gives scores to some respondents who answered four to six items, using only their answered items. It keeps the same seven communication domains and the same 1–4 scale. Sixty-nine respondents have four to six valid items, so this is a limited but meaningful choice.
 
-**Peer alternative:** probability-weighted fractional logit, a model for outcomes bounded between 0 and 1, applied to `z = (PPPCQ − 1)/3` and retaining boundary values.
+**Risk and safeguard:** Calculating a score from answered items assumes those items still represent the same communication construct. We will report item completion and weighted coverage overall and for both focal groups, but those checks cannot be used to change the four-item rule.
 
-**Justification and mechanism:** Linear regression matches the paper and directly reports a mean difference. Fractional logit is an established model for bounded responses, including scores at either endpoint (Papke and Wooldridge, 1996), and is relevant because many PPPCQ scores are near the upper limit. The two models may fit scores near that limit and across respondent characteristics differently.
+### 4. d08 — Standard errors and confidence intervals
 
-**Implementation and risk:** Both models report the same weighted average adjusted Asian-minus-White difference on the 1–4 scale. For the full and replicate weights, Asian and White predictions are calculated over the same covariate distribution and averaged with the weight used for that fit. Fractional logit uses JK1 replicate differences for uncertainty; its model-based covariance, likelihood summaries, and raw coefficients are not used for comparison. Exact estimation details are fixed in the registry.
+**Baseline:** Use all 50 official replicate weights with JK1 coefficient 0.98 and 49 denominator degrees of freedom.
 
-### 5. d05 — Age functional form
+**Reasonable alternative:** Use Taylor linearization with `PERSON_FINWT0`, `VAR_STRATUM`, `VAR_CLUSTER`, and 98 denominator degrees of freedom, as documented for HINTS 5 Cycle 2.
 
-**Baseline option:** age entered linearly in years.
+**Why reasonable:** NCI documents both methods for this survey. JK1 matches the paper's description and uses the released replicate weights. Taylor linearization is an official alternative that uses the public stratum and cluster fields.
 
-**Peer alternative:** official `AgeGrpB` categories: 18–34, 35–49, 50–64, 65–74, and 75+, with 18–34 as reference.
+**Why it may matter:** Because the Asian group is small, the two methods may produce different standard errors and confidence intervals. They must produce identical group means because both use `PERSON_FINWT0` for those estimates.
 
-**Justification and mechanism:** The article names age but does not report its form. Both representations were available in the source data before analysis. Racial/ethnic groups may differ in age composition, and the relationship between age and PPPCQ may be nonlinear.
+**Risk and safeguard:** This dimension changes only how uncertainty is calculated, not the mean difference itself. Automated checks will require identical point estimates under both methods. If a Taylor analysis fails, it will be reported as failed rather than repaired with an unregistered method.
 
-**Implementation and risk:** Age appears in both d06 adjustment approaches. Under MICE, age is imputed in years and the categories are recalculated using the official boundaries. No cut points chosen after examining the data and no category merging are permitted. Categories lose information about differences within each band and may reduce precision, but they are an official representation specified in advance.
+## Why four dimensions rather than five
 
-## Dimensions considered but not varied
+COS guidance treats five dimensions as a target rather than a quota and permits fewer when the study supports fewer genuine choices. We did not add a fifth dimension because the remaining candidates would answer a different question, duplicate an included choice, or add weakly supported assumptions:
 
-- **d01 analytic sample:** The C4 module population is fixed. d03 alone governs observed score availability. E-health, language, usual-care-source, or narrower visit restrictions would change the population or question.
-- **d04 main predictor:** `RaceEthn5`, the five mutually exclusive categories, the Asian focal group, and White reference are fixed. Collapsing Asian respondents changes the assigned question; changing the reference only relabels the same model.
-- **d08 clustering and variance:** JK1 is fixed because it matches the authors and carries the released replicate-weight calibration. Taylor linearization is supported but changes an inference approximation rather than the point estimate.
-- **d09 survey weights:** Final-person weighting is fixed. An unweighted analysis does not represent the same national target under the unequal-probability HINTS design.
-- **Other rejected options:** pure rescaling, sum versus mean under an identical completeness rule, outcome dichotomization, six-item or factor-weighted outcomes, ordinal models, weight-only robust errors, and one-covariate-at-a-time adjustment are cosmetic, insufficiently supported, redundant, or change the focal quantity.
+- **d02 missing data:** d03 already addresses partial outcome data with an established scale-specific rule. Item-level multiple imputation would overlap that choice and require a new response model with no PPPCQ-specific support. Race is not imputed.
+- **d05 cutpoints/categories:** the focal mean remains continuous, and no continuous predictor or control is categorized.
+- **d06 controls:** Table 2 is an unadjusted mean comparison. Adding controls would change it to an adjusted comparison.
+- **d07 model/form:** weighted regression with only group indicators would produce the same means. Ordinal, median, or robust-location models would answer different questions.
+- **d09 weights:** unweighted means describe the respondents in the file rather than the same national population. Weight trimming or recalibration would require unsupported new rules.
 
-## Specification count and reporting
+We also rejected changes that would only alter the units or answer a different question, including sum instead of mean scoring under the same completion rule, changing the reference label, splitting the outcome into categories, dropping communication domains, and changing the significance threshold.
 
-The five binary dimensions yield `2 × 2 × 2 × 2 × 2 = 32` analyses. Every analysis will be attempted and listed, including failures under the registered policy. Results will appear in one 16-analysis demographic-core panel and one 16-analysis panel using the fuller socioeconomic and language adjustment. Each result will include the Asian-minus-White estimate, design-based SE and 95% interval, unweighted focal-group counts, and option labels. No pooled robustness rate, median, range, or preferred conclusion will combine the two d06 interpretations. Statistical significance will not determine inclusion or emphasis.
+## Number of analyses and reporting
+
+The four two-option dimensions yield `2 × 2 × 2 × 2 = 16` analyses: eight ways of defining the sample, outcome, and Asian group, each paired with two methods for calculating uncertainty. Every analysis will be attempted and listed, including any failures. For each one, we will report the weighted Asian and White means, their difference, its standard error and 95% confidence interval, the test statistic, degrees of freedom, two-sided p-value, unweighted group sizes, weighted denominators, and the options used.
+
+We will compare the size and uncertainty of the Asian-minus-White difference across all 16 analyses. Statistical significance will not determine which analyses are included, emphasized, or preferred. The article's group-specific confidence intervals will be shown for context, but the same direct difference will be used throughout.
 
 ## Software and reproducibility
 
-The raw source file remains unchanged. The Python baseline pipeline verifies the file checksum, required variables, 3,504-row count, fixed `HHID` ordering, valid outcome range, race frequencies, positive weights, 50 replicate weights, analytic sample sizes, and published Table 2 values. The future analysis program must read `specification_freeze.yaml` revision 6 and run every combination rather than allowing models to be selected by hand.
+The raw source file will remain unchanged. The existing Python reconstruction checks the source-data fingerprint, required fields, 3,504-row count, unique `HHID`, valid outcome ranges, race frequencies, weights, 50 replicate weights, sample sizes, and the published Table 2 values. This explicit JK1 calculation will remain an independent check of the baseline.
 
-Before execution, exact Python package versions and dependencies will be locked and verified with hashes. Tests cover row-order and weight-rescaling invariance; model rank, separation, and information matrices; linear-regression standardization; construction of race comparison records and age groups; JK1 baseline reproduction; and the Barnard–Rubin rules for combining estimates across imputed datasets. Numerical failures may not be repaired by dropping variables, merging categories, adding a penalty, substituting an estimator, or inspecting the focal estimate. Failed analyses remain visible.
+The 16 analyses will be estimated with R's `survey` package. The R and package versions will be fixed before any alternative result is calculated. JK1 will use the final weight and all 50 supplied replicate weights, coefficient 0.98, and 49 degrees of freedom. Taylor linearization will use `PERSON_FINWT0`, `VAR_STRATUM`, and `VAR_CLUSTER`, with 98 degrees of freedom. Both methods will start from the full survey design and then identify the respondents belonging in each analysis.
 
-AI may assist with code generation, testing, repetitive model enumeration, and documentation. The scientific decisions are fixed by the human-approved registry; AI output may not add or remove specifications based on estimates, intervals, or p-values.
+The analysis program must read `specification_freeze.yaml` revision 7 and generate all 16 combinations automatically. For each analysis, it will record the options used, the source-data fingerprint, eligible and focal-group counts, weighted denominators, variance method, degrees of freedom, completion status, and any reason for failure.
+
+Before producing robustness results, the program must confirm that:
+
+- the source file and required fields match the archived version;
+- the baseline sample size is 2,611 and each displayed baseline mean is within 0.011 of the article;
+- all 50 replicate weights are present;
+- the Taylor design matches the HINTS documentation; and
+- the program generates exactly 16 analyses.
+
+Other automated checks cover data order, race coding, scoring rules, group overlap, and positive weights. They also verify preservation of the full survey design, baseline reproduction, Taylor degrees of freedom, identical point estimates across the two uncertainty methods, and visible reporting of failed analyses. A failed analysis may not be repaired by changing its population, race groups, outcome rule, or method after seeing the result.
+
+AI may assist with code generation, testing, repetitive enumeration, and documentation. The analysis record will identify the AI system and date of use, the code and environment versions, the checks run, and any manual edits. The researcher will approve all scientific choices, verify the generated code and outputs, and remain responsible for the final analysis. AI output may not add or remove analyses based on estimates, intervals, or p-values.
 
 ## Pre-analysis declaration
 
-Only the published-baseline reconstruction and technical checks needed to identify and verify the pipeline have been run. Candidate item-count rules were checked to identify the published baseline. A strict routing-filter restriction was inspected only to diagnose a contradiction between the documentation and code; any nonbaseline effect encountered in that check is kept separate, not reported, and not used. The model-rank and separation checks estimated no focal effects. No imputed, core-adjusted, grouped-age, fractional-logit, or other analysis from the registered 32-analysis set has been run. Any change requested by COS will be recorded in a new registry version before the affected alternatives are run.
+Only the published Table 2 baseline and the structural checks needed to reconstruct it have been run. Before the COS sourcing sheet was available, we examined the adjusted Table 3 model; revision 7 removes that design, and Table 3 is not an alternative in this proposal. We used membership and missingness counts only to confirm that the proposed choices can be implemented. We have not calculated any alternative group mean, Asian-minus-White difference, standard error, confidence interval, or p-value. Any change requested by COS will be recorded before the affected analyses are run.
 
 ## Methodological references
 
-- Barnard, J., and Rubin, D. B. (1999). Small-sample degrees of freedom with multiple imputation. *Biometrika*, 86(4), 948–955. <https://doi.org/10.1093/biomet/86.4.948>.
+- Center for Open Science. *Analytical Robustness Study: Guidance for Analysts and Reviewers*. Supplied project guidance, accessed 2026-10-15.
 - Fayers, P. M., Aaronson, N. K., Bjordal, K., Groenvold, M., Curran, D., and Bottomley, A. (2001). *The EORTC QLQ-C30 Scoring Manual*, 3rd ed. <https://www.eortc.org/app/uploads/sites/2/2018/02/SCmanual.pdf>.
 - Moser, R. P., Trivedi, N., Murray, A., Jensen, R. E., Willis, G., and Blake, K. D. (2022). Patient-Centered Communication (PCC) scale: Psychometric analysis and validation of a health survey measure. *PLOS ONE*, 17(12), e0279725. <https://doi.org/10.1371/journal.pone.0279725>.
-- Papke, L. E., and Wooldridge, J. M. (1996). Econometric methods for fractional response variables with an application to 401(k) plan participation rates. *Journal of Applied Econometrics*, 11(6), 619–632. <https://doi.org/10.1002/(SICI)1099-1255(199611)11:6%3C619::AID-JAE418%3E3.0.CO;2-1>.
-- White, I. R., Royston, P., and Wood, A. M. (2011). Multiple imputation using chained equations: Issues and guidance for practice. *Statistics in Medicine*, 30(4), 377–399. <https://doi.org/10.1002/sim.4067>.
-- Zhou, H., Elliott, M. R., and Raghunathan, T. E. (2016). Multiple imputation in two-stage cluster samples using the weighted finite population Bayesian bootstrap. <https://pubmed.ncbi.nlm.nih.gov/28781418/>.
+- National Cancer Institute. *HINTS 5 Cycle 2 Analytics Recommendations*. Public survey-analysis guidance.
+- Lumley, T. (2010). *Complex Surveys: A Guide to Analysis Using R*. Wiley.
+- Westat. (2018). *Health Information National Trends Survey 5 (HINTS 5), Cycle 2 Methodology Report*.
 
 ## Companion submission files
 
-- `specification_freeze.yaml` (revision 6)
+- `specification_freeze.yaml` (revision 7)
 - `baseline_analysis.md`
 - `dimension_audit.md`
 - `reviewer_red_team.md`
+- `DAAF_review.md`
 - `data_access.md`
 - `sources/source_manifest.csv`
 - `src/baseline_analysis.py`
 - `src/preflight_registry.py`
 - `outputs/table2_reproduction.csv`
-- `outputs/table3_model1_reconstruction.csv`
 - `outputs/exclusion_flow.csv`
 - `outputs/qa_checks.json`
 - `outputs/registry_preflight.json`
