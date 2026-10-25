@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "odmk-robustness"
+version = "0.1.0"
+description = "Preregistered bounded-multiverse analysis for HINTS 5 Cycle 2 paper ODMK"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy==2.4.4",
+  "pandas==3.0.2",
+  "PyYAML==6.0.3",
+  "scipy==1.17.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.0.3",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+testpaths = ["tests"]

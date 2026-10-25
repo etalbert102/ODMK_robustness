@@ -78,7 +78,7 @@ The alternatives below are peer analytical choices, not corrections to the origi
 
 The four binary dimensions yield `2 × 2 × 2 × 2 = 16` analyses. For each, we will report the weighted Asian and White means, the Asian-minus-White difference, its standard error and 95% confidence interval, the two-sided p-value, group sizes, and the selected options. Interpretation will emphasize the size and uncertainty of the difference rather than whether individual specifications cross a significance threshold.
 
-The analyses will be generated programmatically in R using the `survey` package, with the released HINTS final and design weights. Each survey design will be created from the full public-use file before restricting to the relevant analytical domain. Code, package versions, and specification labels will be retained so that all 16 analyses can be reproduced. Only the published baseline and structural feasibility checks have been run; no proposed alternative result has been calculated.
+The analyses will be generated programmatically in Python using explicit, tested survey formulas and the released HINTS final and design weights. Each estimator will retain the full public-use file before applying the relevant analytical domain. Code, package versions, and specification labels will be retained so that all 16 analyses can be reproduced. Only the published baseline and structural feasibility checks have been run; no proposed alternative result has been calculated.
 
 ## Key methodological sources
 

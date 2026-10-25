@@ -1,8 +1,8 @@
-# Python structural-preflight environment (run under Python 3.14.4 in the
-# current archive). Production robustness estimation is planned in R's survey
-# package after COS approval; its exact environment will be frozen before any
-# nonbaseline effect is calculated.
+# Python production environment. The same pinned packages are used for the
+# archived baseline, structural preflight, synthetic multiverse tests, and the
+# approval-gated production analysis.
 numpy==2.4.4
 pandas==3.0.2
 scipy==1.17.1
 PyYAML==6.0.3
+pytest==9.0.3

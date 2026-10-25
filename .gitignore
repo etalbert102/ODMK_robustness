@@ -4,10 +4,16 @@ venv/
 __pycache__/
 *.py[cod]
 .DS_Store
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
 
 # Reacquirable respondent-level data and generated row-level data
 data_raw/
 data_processed/
+outputs/registered_baseline/
+outputs/multiverse/
 
 # Canonical NCI data bundle is publicly reacquirable via data_access.md
 sources/HINTS5_Cycle2_STATA_20240507.zip

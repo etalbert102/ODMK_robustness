@@ -1,8 +1,9 @@
-# ODMK bounded-multiverse proposal
+# ODMK bounded-multiverse analysis
 
-This repository reconstructs the COS-assigned Table 2 racial/ethnic difference in perceived patient-provider communication quality (PPPCQ) from the original 2018 HINTS 5 Cycle 2 public-use file. It defines a proposed 16-specification robustness design for the Asian-versus-non-Hispanic-White weighted mean comparison.
+This repository reconstructs the COS-assigned Table 2 racial/ethnic difference in perceived patient-provider communication quality (PPPCQ) from the original 2018 HINTS 5 Cycle 2 public-use file. It also implements the proposed 16-specification robustness design for the Asian-versus-non-Hispanic-White weighted mean comparison.
 
-The published baseline is reproduced. No alternative specification has been run.
+The published baseline is reproduced. The full engine has been tested with
+synthetic data, but no alternative specification has been run on HINTS data.
 
 ## Quick result
 
@@ -37,6 +38,10 @@ COS treats five dimensions as a target, not a quota. A fifth is not added becaus
 - [`specification_freeze.yaml`](specification_freeze.yaml) — revision 7 machine-readable registry.
 - [`src/baseline_analysis.py`](src/baseline_analysis.py) — reproducible published-baseline pipeline.
 - [`src/preflight_registry.py`](src/preflight_registry.py) — structural checks only; it estimates no alternative effects.
+- [`src/odmk/`](src/odmk/) — reusable Python package implementing data construction, both survey estimators, execution gates, and validation.
+- [`manifests/specification_manifest.csv`](manifests/specification_manifest.csv) — deterministic 16-cell manifest.
+- [`docs/analysis_contract.md`](docs/analysis_contract.md) — ownership rules and execution boundary.
+- [`docs/survey_estimators.md`](docs/survey_estimators.md) — exact JK1 and Taylor formulas.
 - [`sources/source_manifest.csv`](sources/source_manifest.csv) — source URLs, provenance, and checksums.
 
 ## Directory structure
@@ -45,10 +50,16 @@ COS treats five dimensions as a target, not a quota. A fifth is not added becaus
 ODMK_robustness/
 ├── data_raw/          # ignored by Git; unmodified public-use respondent file
 ├── data_processed/    # ignored by Git; generated row-level audit data
-├── outputs/           # generated baseline and structural QA records
+├── docs/              # implementation contract and estimator documentation
+├── manifests/         # generated, deterministic specification manifest
+├── outputs/           # baseline QA and, after approval, multiverse results
 ├── sources/           # primary documents, source ledger, and search-aid text
-├── src/               # baseline and structural-preflight code
+├── src/odmk/          # reusable analysis package
+├── tests/             # synthetic unit tests and optional real-baseline test
 ├── submission/        # finalized submission package and checksum
+├── config/execution.yaml
+├── pyproject.toml
+├── Makefile
 ├── ODMK_COS_submission.md
 ├── baseline_analysis.md
 ├── data_access.md
@@ -57,23 +68,58 @@ ODMK_robustness/
 └── specification_freeze.yaml
 ```
 
-## Reproduce the permitted baseline checks
+## Set up and verify the pre-approval repository
 
 Python 3.14.4 was used for the archived baseline run. From this directory:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python3 -m pip install -r requirements.txt
-python3 src/baseline_analysis.py
-python3 src/preflight_registry.py
+make setup
+make verify-preapproval
 ```
 
-The baseline program verifies the canonical data SHA-256, 3,504 source rows, unique/nonmissing `HHID`, deterministic sorting, required fields, 50 replicate weights, weight validity, PPPCQ range, exact `RaceEthn5` frequencies, focal `N = 2,611`, and agreement with all five published Table 2 means and intervals.
+This generates the manifest, runs the test suite, reproduces the legacy baseline,
+runs the registered baseline through the production engine, and performs the
+structural preflight. The real-data test is skipped automatically when the
+public-use file has not been placed in `data_raw/`.
 
-The structural preflight verifies registry revision 7, the four binary dimensions, the 16-cell Cartesian product, eight point-estimate constructions, routing counts, score-coverage counts, official and inclusive Asian membership, focal-group disjointness, and survey-design structure. It computes no alternative group mean or contrast. The production analysis will create the survey design before applying eligibility or racial-group domains so subgroup estimation does not discard design units.
+The baseline checks verify the canonical data SHA-256, 3,504 source rows,
+unique/nonmissing `HHID`, deterministic sorting, required fields, 50 replicate
+weights, weight validity, PPPCQ range, exact `RaceEthn5` frequencies, focal
+`N = 2,611`, and agreement with the published Table 2 means and intervals.
 
-Production robustness estimation is planned in R's `survey` package after COS approval, with the exact R and package versions frozen before any nonbaseline effect is calculated. The explicit Python JK1 reconstruction remains an independent baseline check.
+The structural preflight verifies registry revision 7, the four binary dimensions, the 16-cell Cartesian product, eight point-estimate constructions, routing counts, score-coverage counts, official and inclusive Asian membership, focal-group disjointness, and survey-design structure. It computes no alternative group mean or contrast. The production engine represents eligibility and racial-group membership as domains on the complete source frame so subgroup estimation does not discard design units.
+
+## Approval-gated production run
+
+Python implements both registered variance choices directly. Exact versions
+are pinned in `pyproject.toml` and `requirements_multiverse.txt`. Before a
+production run:
+
+1. record COS and researcher approval in `config/execution.yaml`;
+2. record the unchanged `specification_freeze.yaml` SHA-256 as
+   `approved_registry_sha256` in that file;
+3. commit the approval configuration so the worktree is clean; and
+4. run `make multiverse`.
+
+The command refuses to open the source data unless approval metadata, the
+approved registry checksum, the explicit confirmation flag, and the
+clean-worktree check all pass. The scientific registry remains unchanged after
+approval. Before the command calculates any alternative, it must reproduce the
+frozen focal baseline,
+`N = 2,611`, and all five published Table 2 group means. It then writes all 16
+registered cells, including explicit records for any failed cell, under
+`outputs/multiverse/`. Final validation also requires every result row to
+match its frozen manifest identity and options exactly. The complete artifact
+set is built in a staging directory and published together, so an interrupted
+write cannot leave a mixed production result set. Output destinations must be
+children of this repository's `outputs/` directory. An existing destination is
+replaceable only when it carries the runner's ownership marker.
+
+The complete engine is tested on synthetic data. It refuses to accept the
+canonical HINTS hash under synthetic scope, which prevents that test route
+from bypassing the approval gate.
 
 ## Source notes
 

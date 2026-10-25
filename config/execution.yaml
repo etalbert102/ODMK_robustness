@@ -1,0 +1,22 @@
+analysis_id: "ODMK-table2-bounded-multiverse"
+
+approval:
+  cos_status: "pending"
+  cos_approved_at: null
+  cos_approval_record: null
+  approved_registry_sha256: null
+  researcher_status: "pending"
+  researcher_name: "Eli Talbert"
+  researcher_approved_at: null
+
+provenance:
+  ai_system: "OpenAI Codex"
+  ai_use_date: "2026-10-25"
+  ai_role: >-
+    Code generation, testing, debugging, documentation, and repetitive
+    implementation. The researcher owns and approves all scientific choices.
+
+execution_policy:
+  before_cos_approval: "baseline_and_structural_checks_only"
+  after_cos_approval: "all_16_registered_cells"
+  require_clean_git_for_multiverse: true

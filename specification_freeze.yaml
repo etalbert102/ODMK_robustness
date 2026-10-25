@@ -1,6 +1,6 @@
 paper_id: ODMK
 frozen_on: "2026-10-15"
-status: "proposed_pending_cos_review"
+status: "frozen_for_execution"
 revision: 7
 revision_note: >-
   Replaces the conditional Table 3 Model 1 design after the COS sourcing sheet
@@ -227,6 +227,7 @@ execution_provenance:
   required:
     - source_data_hash
     - registry_revision
+    - registry_sha256
     - code_commit
     - language_and_runtime_version
     - package_versions
@@ -236,12 +237,17 @@ execution_provenance:
 
 software_plan:
   baseline_crosscheck: "Python explicit weighted means and JK1 formula"
-  production: "R survey package; exact R/package versions frozen before alternatives"
+  production: >-
+    Python with explicit, tested survey formulas; exact Python and package
+    versions are pinned before alternatives.
   jk1_design: >-
-    Supplied PERSON_FINWT0 and PERSON_FINWT1-PERSON_FINWT50 as combined
-    weights; variance centered on the full-sample estimate; scale 0.98; df 49.
+    Use PERSON_FINWT0 for each group mean and PERSON_FINWT1-PERSON_FINWT50
+    for the corresponding replicate means; center variance on the full-sample
+    estimate; scale 0.98; df 49.
   taylor_design: >-
-    PERSON_FINWT0 with VAR_STRATUM and VAR_CLUSTER; nested public design; df 98.
+    Linearize the two weighted ratio means and their difference, aggregate the
+    influence values by VAR_STRATUM and VAR_CLUSTER, and use the standard
+    stratified multicluster variance with df 98.
   domain_rule: >-
     Construct the survey design on the full source file, then apply sample,
     score availability, and racial group membership as domains.

@@ -21,7 +21,7 @@ cos_score_supplement,COS_SCORE_Robustness_2026_Supplement.pdf,d9555b5435708a55f4
 cos_benchmark_page,https://www.cos.io/benchmarking-llm-agents-on-scientific-tasks,,Center for Open Science,Current benchmark overview,Link only; exact ODMK protocol/template not public at time checked
 cos_top_guidelines,https://www.cos.io/initiatives/top-guidelines,,Center for Open Science,Multiverse/preregistration context,Link only
 daaf_review_framework,https://github.com/DAAF-Contribution-Community/daaf/tree/4c5fc85138451a30a174b714fea18457b0d3f7a0,,DAAF Contribution Community,Internal reproducibility and survey-domain review framework,"Version 3.0.2; commit 4c5fc85138451a30a174b714fea18457b0d3f7a0; COS guidance remains controlling"
-r_survey_package,https://cran.r-project.org/package=survey,,Thomas Lumley and contributors,Planned production complex-survey implementation,Exact R and package versions will be frozen before any alternative effect is calculated
+r_survey_package,https://cran.r-project.org/package=survey,,Thomas Lumley and contributors,Independent reference for validating the Python Taylor-linearization estimator,R survey 4.5 generated the frozen reference fixture in tests/reference/taylor_survey_reference.R; production analyses use Python
 hints_data_page,https://hints.cancer.gov/data/download-data.aspx,,National Cancer Institute,Official public data portal,Link only
 hints_materials_page,https://hints.cancer.gov/data/survey-instruments.aspx,,National Cancer Institute,Official instrument/methodology portal,Link only
 hints_remediation_page,https://hints.cancer.gov/data/data-remediation.aspx,,National Cancer Institute,Documents post-release data remediation,Link only
