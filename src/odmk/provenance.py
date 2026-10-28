@@ -19,6 +19,8 @@ def build_metadata(
     config: dict[str, Any],
     scope: str,
 ) -> dict[str, Any]:
+    """Build the run-level record of data, registry, code, software, and approval."""
+
     packages = {}
     for distribution in ("numpy", "pandas", "PyYAML", "scipy"):
         packages[distribution] = importlib.metadata.version(distribution)

@@ -1,6 +1,6 @@
 # Implementation status
 
-Status as of 2026-10-25: the preregistered analysis is implemented and ready
+Status as of 2026-10-28: the preregistered analysis is implemented and ready
 for COS review, but production execution remains locked.
 
 ## Implemented
@@ -21,8 +21,7 @@ for COS review, but production execution remains locked.
 
 ## Verification completed
 
-- The original independent Python baseline still reproduces Table 2.
-- The registered production estimator reproduces the same baseline contrast,
+- The registered production estimator reproduces the Table 2 baseline contrast,
   standard error, sample counts, and group means.
 - Synthetic tests execute all 16 cells and confirm that d08 changes uncertainty
   only, not point estimates.

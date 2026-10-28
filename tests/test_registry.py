@@ -2,7 +2,11 @@ import copy
 
 import pytest
 
-from odmk.constants import DIMENSION_ORDER
+from odmk.constants import (
+    DIMENSION_ORDER,
+    POINT_ESTIMATE_DIMENSIONS,
+    VARIANCE_DIMENSION,
+)
 from odmk.exceptions import RegistryError
 from odmk.registry import build_manifest, load_registry, validate_registry
 from odmk.utils import project_root
@@ -24,6 +28,15 @@ def test_every_point_construction_has_both_variance_options() -> None:
     manifest = build_manifest(registry)
     counts = manifest.groupby("point_estimate_id")["d08_variance_estimation"].nunique()
     assert counts.eq(2).all()
+
+
+def test_point_estimate_dimensions_are_named_independently_of_variance() -> None:
+    assert DIMENSION_ORDER == (*POINT_ESTIMATE_DIMENSIONS, VARIANCE_DIMENSION)
+    assert POINT_ESTIMATE_DIMENSIONS == (
+        "d01_analytic_sample",
+        "d03_outcome_construction",
+        "d04_main_predictor_construction",
+    )
 
 
 def test_registry_rejects_unknown_lifecycle_status() -> None:

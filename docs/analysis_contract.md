@@ -37,6 +37,11 @@ with each, producing 16 cells.
 Downstream code consumes these owners and does not re-derive their facts from
 labels, row order, or prose.
 
+In code, `POINT_ESTIMATE_DIMENSIONS` names d01, d03, and d04 explicitly. The
+d08 variance choice is stored separately because it must not change either
+weighted group mean or their difference. Point-estimate IDs are therefore
+constructed from named dimensions rather than their positions in a row.
+
 ## Pre-approval guard
 
 Before COS approval, real HINTS execution is limited to the published baseline

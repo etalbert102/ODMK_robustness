@@ -23,12 +23,38 @@ from odmk.validation import (
 
 def main() -> None:
     root = project_root()
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--data", type=Path, default=root / "data_raw/hints5_cycle2_public.dta")
-    parser.add_argument("--registry", type=Path, default=root / "specification_freeze.yaml")
-    parser.add_argument("--config", type=Path, default=root / "config/execution.yaml")
-    parser.add_argument("--output-dir", type=Path, default=root / "outputs/multiverse")
-    parser.add_argument("--confirm-approved", action="store_true")
+    parser = argparse.ArgumentParser(
+        description="Run all 16 registered ODMK cells after every approval gate passes."
+    )
+    parser.add_argument(
+        "--data",
+        type=Path,
+        default=root / "data_raw/hints5_cycle2_public.dta",
+        help="Hash-locked HINTS 5 Cycle 2 Stata file.",
+    )
+    parser.add_argument(
+        "--registry",
+        type=Path,
+        default=root / "specification_freeze.yaml",
+        help="Frozen YAML scientific registry.",
+    )
+    parser.add_argument(
+        "--config",
+        type=Path,
+        default=root / "config/execution.yaml",
+        help="Operational approval and provenance metadata.",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=root / "outputs/multiverse",
+        help="Application-owned destination beneath the repository outputs directory.",
+    )
+    parser.add_argument(
+        "--confirm-approved",
+        action="store_true",
+        help="Explicitly confirm that recorded COS and researcher approvals are current.",
+    )
     args = parser.parse_args()
 
     # The approval and clean-worktree checks deliberately occur before source

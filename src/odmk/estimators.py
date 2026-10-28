@@ -40,6 +40,8 @@ def _inference(estimate: float, variance: float, df: int) -> dict[str, float]:
 def estimate_jk1(
     df: pd.DataFrame, y: np.ndarray, asian: np.ndarray, white: np.ndarray
 ) -> dict[str, float]:
+    """Estimate weighted group means and their contrast with official JK1 weights."""
+
     full_weights = df["person_finwt0"].to_numpy(float)
     asian_mean, asian_denominator = _weighted_mean(y, full_weights, asian)
     white_mean, white_denominator = _weighted_mean(y, full_weights, white)
@@ -108,6 +110,8 @@ def _taylor_variance(df: pd.DataFrame, influence: np.ndarray) -> tuple[float, in
 def estimate_taylor(
     df: pd.DataFrame, y: np.ndarray, asian: np.ndarray, white: np.ndarray
 ) -> dict[str, float]:
+    """Estimate the same quantities with full-frame Taylor linearization."""
+
     weights = df["person_finwt0"].to_numpy(float)
     asian_mean, asian_denominator = _weighted_mean(y, weights, asian)
     white_mean, white_denominator = _weighted_mean(y, weights, white)

@@ -28,11 +28,15 @@ ASIAN_CHECKBOXES = (
 )
 REPLICATE_WEIGHTS = tuple(f"person_finwt{i}" for i in range(1, 51))
 
-DIMENSION_ORDER = (
+POINT_ESTIMATE_DIMENSIONS = (
     "d01_analytic_sample",
     "d03_outcome_construction",
     "d04_main_predictor_construction",
-    "d08_variance_estimation",
+)
+VARIANCE_DIMENSION = "d08_variance_estimation"
+DIMENSION_ORDER = (
+    *POINT_ESTIMATE_DIMENSIONS,
+    VARIANCE_DIMENSION,
 )
 
 RESULT_COLUMNS = (

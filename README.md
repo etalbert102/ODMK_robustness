@@ -28,28 +28,50 @@ COS treats five dimensions as a target, not a quota. A fifth is not added becaus
 
 ## Deliverables
 
-- [`ODMK_COS_submission.md`](ODMK_COS_submission.md) — concise standalone submission copy.
-- [`ODMK_robustness_proposal.md`](ODMK_robustness_proposal.md) — proposal copy retained under the originally requested filename.
+- [`ODMK_COS_robustness_proposal.docx`](ODMK_COS_robustness_proposal.docx) — primary concise COS submission file.
+- [`ODMK_COS_brief_proposal.md`](ODMK_COS_brief_proposal.md) — editable Markdown source for the concise submission.
+- [`ODMK_COS_submission.md`](ODMK_COS_submission.md) — longer methodological record.
+- [`ODMK_robustness_proposal.md`](ODMK_robustness_proposal.md) — identical longer record retained under the originally requested filename.
 - [`baseline_analysis.md`](baseline_analysis.md) — focal result, reconstruction, source inferences, and unresolved ambiguities.
 - [`data_access.md`](data_access.md) — public acquisition instructions and checksums.
 - [`dimension_audit.md`](dimension_audit.md) — d01–d09 audit.
 - [`reviewer_red_team.md`](reviewer_red_team.md) — skeptical review of the revised design.
 - [`DAAF_review.md`](DAAF_review.md) — improvements adopted after review against DAAF 3.0.2.
 - [`specification_freeze.yaml`](specification_freeze.yaml) — revision 7 machine-readable registry.
-- [`src/baseline_analysis.py`](src/baseline_analysis.py) — reproducible published-baseline pipeline.
-- [`src/preflight_registry.py`](src/preflight_registry.py) — structural checks only; it estimates no alternative effects.
 - [`src/odmk/`](src/odmk/) — reusable Python package implementing data construction, both survey estimators, execution gates, and validation.
+- [`src/run_registered_baseline.py`](src/run_registered_baseline.py) — baseline-only entry point through the registered package.
+- [`src/run_multiverse.py`](src/run_multiverse.py) — approval-gated entry point for all 16 registered cells.
 - [`manifests/specification_manifest.csv`](manifests/specification_manifest.csv) — deterministic 16-cell manifest.
 - [`docs/analysis_contract.md`](docs/analysis_contract.md) — ownership rules and execution boundary.
 - [`docs/survey_estimators.md`](docs/survey_estimators.md) — exact JK1 and Taylor formulas.
 - [`sources/source_manifest.csv`](sources/source_manifest.csv) — source URLs, provenance, and checksums.
+
+## Reviewer orientation: which code is authoritative?
+
+The registered production path is:
+
+```text
+specification_freeze.yaml
+        ↓
+src/odmk/registry.py ──→ deterministic 16-cell manifest
+        ↓
+src/odmk/data.py ──→ registered variables and analytic domains
+        ↓
+src/odmk/engine.py ──→ src/odmk/estimators.py
+        ↓
+src/odmk/validation.py ──→ results and validation records
+```
+
+`src/run_registered_baseline.py` runs only the registered baseline through that
+path. `src/run_multiverse.py` is the approval-gated entry point for all 16
+cells. There is no second executable implementation: the frozen registry and
+`src/odmk/` own all active analysis behavior.
 
 ## Directory structure
 
 ```text
 ODMK_robustness/
 ├── data_raw/          # ignored by Git; unmodified public-use respondent file
-├── data_processed/    # ignored by Git; generated row-level audit data
 ├── docs/              # implementation contract and estimator documentation
 ├── manifests/         # generated, deterministic specification manifest
 ├── outputs/           # baseline QA and, after approval, multiverse results
@@ -76,20 +98,38 @@ Python 3.14.4 was used for the archived baseline run. From this directory:
 python3 -m venv .venv
 source .venv/bin/activate
 make setup
+make verify-code
+```
+
+`make verify-code` needs no respondent data: it checks the pinned environment,
+generates the deterministic manifest, and runs the synthetic and repository
+tests. To run the baseline and structural checks, first follow the acquisition
+steps in [`data_access.md`](data_access.md) so that the unmodified file is at
+`data_raw/hints5_cycle2_public.dta`, then run:
+
+```bash
 make verify-preapproval
 ```
 
-This generates the manifest, runs the test suite, reproduces the legacy baseline,
-runs the registered baseline through the production engine, and performs the
-structural preflight. The real-data test is skipped automatically when the
-public-use file has not been placed in `data_raw/`.
+The full command repeats the code checks and runs the registered baseline. That
+run validates the source structure, frozen membership anchors, complete survey
+design, focal result, and all five published Table 2 means before publishing a
+baseline artifact set. The optional real-data pytest is skipped when the
+public-use file is absent, but the `baseline` Make target requires it;
+therefore `make verify-preapproval` is intentionally a data-required command.
 
 The baseline checks verify the canonical data SHA-256, 3,504 source rows,
 unique/nonmissing `HHID`, deterministic sorting, required fields, 50 replicate
 weights, weight validity, PPPCQ range, exact `RaceEthn5` frequencies, focal
-`N = 2,611`, and agreement with the published Table 2 means and intervals.
+`N = 2,611`, all five published Table 2 means, and the focal JK1 uncertainty.
 
-The structural preflight verifies registry revision 7, the four binary dimensions, the 16-cell Cartesian product, eight point-estimate constructions, routing counts, score-coverage counts, official and inclusive Asian membership, focal-group disjointness, and survey-design structure. It computes no alternative group mean or contrast. The production engine represents eligibility and racial-group membership as domains on the complete source frame so subgroup estimation does not discard design units.
+The registered baseline verifies registry revision 7, the four binary
+dimensions, the 16-cell Cartesian product, eight point-estimate constructions,
+routing and score-coverage anchors, official and inclusive Asian membership,
+focal-group disjointness, and survey-design structure. It computes no
+alternative group mean or contrast. The production engine represents
+eligibility and racial-group membership as domains on the complete source
+frame so subgroup estimation does not discard design units.
 
 ## Approval-gated production run
 
@@ -121,9 +161,30 @@ The complete engine is tested on synthetic data. It refuses to accept the
 canonical HINTS hash under synthetic scope, which prevents that test route
 from bypassing the approval gate.
 
+## Environment files
+
+- `requirements-lock.txt` is the complete reproducible installation lock used
+  by `make setup` and continuous integration.
+- `pyproject.toml` declares the installable package and its direct runtime
+  dependencies.
+- `requirements.txt` is the minimal direct runtime dependency list for tools
+  that expect that conventional filename.
+- `requirements_multiverse.txt` is the human-readable direct analysis and test
+  environment retained with the preregistration materials.
+- `src/odmk/environment.py` enforces the frozen Python and direct-package
+  versions before an approved production run.
+
+The repeated direct versions are deliberate reviewable assertions. When an
+environment changes, update all five records together and rerun the tests; do
+not edit only one file.
+
 ## Source notes
 
 The public HINTS bundle, COS sheet and guidance, and COS-linked article are archived or recorded in `sources/`. The current HINTS release is dated 2024-05-07. No public author analysis code or supplementary analysis file was located. See [`sources/README.md`](sources/README.md).
+
+The directories under `submission/` are immutable submission snapshots and
+contain duplicated copies by design. Review the active implementation at the
+repository root and in `src/odmk/`, not the copies inside those archives.
 
 ## Interpretation guardrails
 

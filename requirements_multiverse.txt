@@ -1,6 +1,6 @@
 # Python production environment. The same pinned packages are used for the
-# archived baseline, structural preflight, synthetic multiverse tests, and the
-# approval-gated production analysis.
+# registered baseline, structural validation, synthetic multiverse tests, and
+# the approval-gated production analysis.
 numpy==2.4.4
 pandas==3.0.2
 scipy==1.17.1

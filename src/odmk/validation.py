@@ -43,6 +43,8 @@ SUCCESS_NUMERIC_COLUMNS = (
 
 
 def validate_result_schema(results: pd.DataFrame) -> None:
+    """Require exact result columns and internally consistent cell estimates."""
+
     if tuple(results.columns) != RESULT_COLUMNS:
         raise ODMKError("Results do not match the frozen output schema")
     if results["specification_id"].duplicated().any():
@@ -154,6 +156,8 @@ def validate_full_results(
     expected_source_hash: str | None = None,
     expected_taylor_df: int | None = None,
 ) -> dict[str, object]:
+    """Match all 16 rows to the manifest and summarize paired d08 invariance."""
+
     validate_result_schema(results)
     if len(results) != 16 or set(results["specification_id"]) != set(manifest["specification_id"]):
         raise ODMKError("Full output must contain every one of the 16 registered cells")
@@ -277,6 +281,8 @@ def validate_published_table2_anchors(df: pd.DataFrame) -> dict[str, object]:
 
 
 def validate_real_baseline(results: pd.DataFrame) -> dict[str, object]:
+    """Require the single registered cell to match frozen baseline anchors."""
+
     validate_result_schema(results)
     if len(results) != 1 or results.iloc[0]["status"] != "success":
         raise ODMKError("Registered baseline must produce one successful cell")

@@ -13,18 +13,23 @@ from .constants import (
     DIMENSION_ORDER,
     EXPECTED_DATA_SHA256,
     FROZEN_REGISTRY_STATUS,
+    POINT_ESTIMATE_DIMENSIONS,
     REGISTRY_REVISION,
 )
 from .exceptions import RegistryError
 
 
 def load_registry(path: Path) -> dict[str, Any]:
+    """Load the YAML registry and enforce every frozen structural invariant."""
+
     registry = yaml.safe_load(path.read_text(encoding="utf-8"))
     validate_registry(registry)
     return registry
 
 
 def validate_registry(registry: dict[str, Any]) -> None:
+    """Reject a registry that differs from the approved ODMK design contract."""
+
     if registry.get("paper_id") != "ODMK":
         raise RegistryError("Registry paper_id must be ODMK")
     if registry.get("revision") != REGISTRY_REVISION:
@@ -53,17 +58,28 @@ def validate_registry(registry: dict[str, Any]) -> None:
 
 
 def build_manifest(registry: dict[str, Any]) -> pd.DataFrame:
+    """Expand the four binary decisions into stable, baseline-first cell IDs.
+
+    The three named point-estimate dimensions define eight estimands. The
+    variance dimension creates two inferential cells for each estimand.
+    """
+
     dimensions = registry["dimensions"]
     option_lists = [list(dimensions[name]["options"]) for name in DIMENSION_ORDER]
     baseline = registry["cell_construction"]["baseline_cell"]
     combinations = list(product(*option_lists))
-    combinations.sort(key=lambda values: tuple(values[i] != baseline[name] for i, name in enumerate(DIMENSION_ORDER)))
+    combinations.sort(
+        key=lambda values: tuple(
+            values[index] != baseline[name]
+            for index, name in enumerate(DIMENSION_ORDER)
+        )
+    )
 
-    point_keys: dict[tuple[str, str, str], str] = {}
+    point_keys: dict[tuple[str, ...], str] = {}
     rows: list[dict[str, str | bool]] = []
     for index, values in enumerate(combinations, start=1):
         options = dict(zip(DIMENSION_ORDER, values, strict=True))
-        point_key = values[:3]
+        point_key = tuple(options[name] for name in POINT_ESTIMATE_DIMENSIONS)
         if point_key not in point_keys:
             point_keys[point_key] = f"ODMK-P{len(point_keys) + 1:02d}"
         rows.append(

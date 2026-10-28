@@ -50,6 +50,8 @@ def _failed(cell: pd.Series, error: Exception) -> dict[str, object]:
 
 
 def estimate_cell(df: pd.DataFrame, cell: pd.Series) -> dict[str, object]:
+    """Estimate one manifest row and return the frozen result-schema fields."""
+
     y, asian, white = cell_arrays(df, cell)
     if asian.sum() == 0 or white.sum() == 0:
         raise CellEstimationError("Both focal groups must contain at least one observation")
@@ -79,6 +81,14 @@ def run_manifest(
     source_hash: str,
     production_authorized: bool = False,
 ) -> pd.DataFrame:
+    """Run the cells permitted by ``scope`` while enforcing provenance guards.
+
+    ``baseline`` selects only the frozen baseline, ``synthetic`` permits all
+    cells only on noncanonical data, and ``approved`` requires authorization
+    returned by the production gate. Expected cell-level failures are retained
+    as explicit rows; contract or authorization failures stop the run.
+    """
+
     attached_hash = df.attrs.get("source_sha256")
     if attached_hash is not None and attached_hash != source_hash:
         raise ODMKError("The supplied source hash does not match the data-frame provenance")

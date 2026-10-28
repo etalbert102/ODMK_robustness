@@ -23,10 +23,14 @@ OUTPUT_OWNERSHIP_CONTENT = "ODMK generated analysis output; safe to replace.\n"
 
 
 def project_root() -> Path:
+    """Return the repository root derived from the installed source location."""
+
     return Path(__file__).resolve().parents[2]
 
 
 def sha256_file(path: Path) -> str:
+    """Return a streaming SHA-256 digest for ``path``."""
+
     digest = hashlib.sha256()
     with path.open("rb") as handle:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
@@ -39,6 +43,8 @@ def utc_now() -> str:
 
 
 def atomic_write_text(path: Path, text: str) -> None:
+    """Replace a text file atomically after a complete temporary write."""
+
     path.parent.mkdir(parents=True, exist_ok=True)
     descriptor, temporary = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
     try:
@@ -51,6 +57,8 @@ def atomic_write_text(path: Path, text: str) -> None:
 
 
 def write_json(path: Path, value: Any) -> None:
+    """Write strict, sorted, indented JSON through the atomic text helper."""
+
     atomic_write_text(path, json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n")
 
 
@@ -119,6 +127,8 @@ def git_value(root: Path, *args: str) -> str:
 
 
 def git_state(root: Path) -> dict[str, Any]:
+    """Return the current commit and dirtiness, or nulls when Git is unavailable."""
+
     try:
         commit = git_value(root, "rev-parse", "HEAD")
         porcelain = git_value(root, "status", "--porcelain")

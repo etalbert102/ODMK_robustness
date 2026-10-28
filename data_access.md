@@ -41,6 +41,8 @@ The sourcing sheet links the article copy archived as `sources/ODMK_COS_source.p
 From the project root:
 
 ```bash
+mkdir -p sources data_raw
+
 curl -L --fail --retry 2 \
   'https://hints.cancer.gov/dataset/HINTS-5_Cycle2_STATA_20240507.zip' \
   -o sources/HINTS5_Cycle2_STATA_20240507.zip
@@ -56,7 +58,8 @@ shasum -a 256 sources/HINTS5_Cycle2_STATA_20240507.zip \
   data_raw/hints5_cycle2_public.dta
 ```
 
-`src/baseline_analysis.py` also refuses to run when the data hash differs, unless the analyst explicitly reviews a newer release and passes `--allow-hash-mismatch`.
+The registered reader in `src/odmk/data.py` requires the frozen canonical hash
+and does not expose a production override.
 
 ## Survey design fields
 
@@ -76,4 +79,4 @@ The HINTS data and documentation are publicly obtainable and require no restrict
 
 ## Data preservation rule
 
-`data_raw/hints5_cycle2_public.dta` is never edited. All recoding is performed in `src/baseline_analysis.py`; the derived audit file is written to `data_processed/odmk_baseline_derived.csv.gz`. Generated estimates and QA records go to `outputs/`.
+`data_raw/hints5_cycle2_public.dta` is never edited. The registered baseline and production analysis construct every frozen concept in `src/odmk/data.py` while retaining the complete source frame. Generated estimates, validation records, and provenance go to application-owned directories under `outputs/`.

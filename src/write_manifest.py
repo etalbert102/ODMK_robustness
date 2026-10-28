@@ -12,9 +12,21 @@ from odmk.utils import project_root
 
 def main() -> None:
     root = project_root()
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--registry", type=Path, default=root / "specification_freeze.yaml")
-    parser.add_argument("--output", type=Path, default=root / "manifests/specification_manifest.csv")
+    parser = argparse.ArgumentParser(
+        description="Expand the frozen registry without opening respondent data."
+    )
+    parser.add_argument(
+        "--registry",
+        type=Path,
+        default=root / "specification_freeze.yaml",
+        help="Frozen YAML scientific registry.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=root / "manifests/specification_manifest.csv",
+        help="Destination for the deterministic 16-cell CSV manifest.",
+    )
     args = parser.parse_args()
     manifest = build_manifest(load_registry(args.registry))
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -24,4 +36,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

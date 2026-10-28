@@ -113,7 +113,8 @@ Within the full source file, 69 respondents have four to six valid items. The d0
 
 ## Automated baseline checks
 
-`src/baseline_analysis.py` verifies:
+`src/run_registered_baseline.py`, through the shared `src/odmk/` package,
+verifies:
 
 - the canonical data SHA-256;
 - 3,504 rows and unique, nonmissing `HHID`;
@@ -123,9 +124,14 @@ Within the full source file, 69 respondents have four to six valid items. The d0
 - the seven-item PPPCQ range;
 - official `RaceEthn5` frequencies;
 - focal analytic `N = 2,611`; and
-- agreement with all five published Table 2 means and intervals.
+- agreement with all five published Table 2 means and the focal JK1 uncertainty;
+- revision 7 registry structure and the 16-cell Cartesian product;
+- routing and scoring-coverage anchors;
+- official and inclusive Asian membership and focal-group disjointness; and
+- the complete Taylor design structure.
 
-`src/preflight_registry.py` checks the revision 7 registry, routing frames, scoring coverage, official and inclusive Asian membership, focal-group disjointness, the full Taylor design structure, the eight point-estimate constructions, and the 16-cell Cartesian product without calculating any nonbaseline group mean or effect.
+The runner selects only the registered baseline cell. These checks therefore
+calculate no nonbaseline group mean or effect.
 
 ## Remaining ambiguities
 

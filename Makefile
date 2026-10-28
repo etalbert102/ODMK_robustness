@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: setup environment manifest baseline preflight test verify-preapproval multiverse
+.PHONY: setup environment manifest baseline test verify-code verify-preapproval multiverse
 
 setup:
 	$(PYTHON) -m pip install -r requirements-lock.txt
@@ -13,16 +13,14 @@ manifest:
 	$(PYTHON) src/write_manifest.py
 
 baseline:
-	$(PYTHON) src/baseline_analysis.py
 	$(PYTHON) src/run_registered_baseline.py
-
-preflight:
-	$(PYTHON) src/preflight_registry.py
 
 test:
 	$(PYTHON) -m pytest
 
-verify-preapproval: environment manifest test baseline preflight
+verify-code: environment manifest test
+
+verify-preapproval: verify-code baseline
 
 multiverse:
 	$(PYTHON) src/run_multiverse.py --confirm-approved

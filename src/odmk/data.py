@@ -32,6 +32,13 @@ REQUIRED_COLUMNS = {
 
 
 def read_canonical_hints(path: Path, *, allow_hash_mismatch: bool = False) -> tuple[pd.DataFrame, str]:
+    """Read, normalize, validate, and deterministically order the HINTS file.
+
+    Returns the complete 3,504-row frame and its SHA-256. The hash is also
+    attached to ``DataFrame.attrs`` so later execution cannot silently pair a
+    frame with different provenance.
+    """
+
     data_hash = sha256_file(path)
     if data_hash != EXPECTED_DATA_SHA256 and not allow_hash_mismatch:
         raise DataValidationError(
@@ -46,6 +53,8 @@ def read_canonical_hints(path: Path, *, allow_hash_mismatch: bool = False) -> tu
 
 
 def validate_source(df: pd.DataFrame, *, require_canonical_rows: bool = True) -> None:
+    """Validate fields and design weights required by every registered cell."""
+
     missing = sorted(REQUIRED_COLUMNS.difference(df.columns))
     if missing:
         raise DataValidationError(f"Required source columns absent: {missing}")
@@ -63,6 +72,12 @@ def validate_source(df: pd.DataFrame, *, require_canonical_rows: bool = True) ->
 
 
 def derive_analysis_fields(raw: pd.DataFrame) -> pd.DataFrame:
+    """Construct the two scores, two eligibility rules, and focal race groups.
+
+    The returned frame retains every source record. Eligibility and race are
+    Boolean domain indicators; no row is filtered at this stage.
+    """
+
     df = raw.copy()
     reversed_items: list[str] = []
     for item in PCC_ITEMS:
@@ -91,6 +106,8 @@ def derive_analysis_fields(raw: pd.DataFrame) -> pd.DataFrame:
 
 
 def validate_canonical_structure(df: pd.DataFrame, registry: dict) -> dict[str, object]:
+    """Match the complete derived frame to frozen membership and design anchors."""
+
     pairs = df[["var_stratum", "var_cluster"]].drop_duplicates()
     clusters = df.groupby("var_stratum", observed=True)["var_cluster"].nunique().to_dict()
     if len(clusters) != 2 or sorted(clusters.values()) != [50, 50]:
@@ -129,6 +146,13 @@ def validate_canonical_structure(df: pd.DataFrame, registry: dict) -> dict[str, 
 
 
 def cell_arrays(df: pd.DataFrame, cell: pd.Series) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Return one cell's outcome and full-frame Asian and White domains.
+
+    The outcome array has one value per source record. The two Boolean arrays
+    combine the selected eligibility, score-availability, and race rules while
+    preserving the full survey frame for variance estimation.
+    """
+
     sample_name = cell["d01_analytic_sample"]
     if sample_name == "content_confirmed_module":
         sample = df["content_confirmed_module"]

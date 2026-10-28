@@ -12,12 +12,16 @@ from .utils import git_state
 
 
 def load_execution_config(path: Path) -> dict[str, Any]:
+    """Load operational approval metadata; this file owns no scientific options."""
+
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
 
 def assert_production_approved(
     config: dict[str, Any], *, root: Path, confirmed: bool, registry_sha256: str
 ) -> dict[str, Any]:
+    """Return authorization only after approval, registry, and Git gates pass."""
+
     if not confirmed:
         raise ApprovalError("Production requires the explicit --confirm-approved flag")
     approval = config.get("approval", {})

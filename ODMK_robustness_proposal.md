@@ -121,7 +121,7 @@ We will compare the size and uncertainty of the Asian-minus-White difference acr
 
 ## Software and reproducibility
 
-The raw source file will remain unchanged. The existing Python reconstruction checks the source-data fingerprint, required fields, 3,504-row count, unique `HHID`, valid outcome ranges, race frequencies, weights, 50 replicate weights, sample sizes, and the published Table 2 values. This explicit JK1 calculation will remain an independent check of the baseline.
+The raw source file will remain unchanged. The registered Python pipeline checks the source-data fingerprint, required fields, 3,504-row count, unique `HHID`, valid outcome ranges, race frequencies, weights, 50 replicate weights, sample sizes, and the published Table 2 values before it can run any alternative.
 
 The 16 analyses will be estimated in Python with explicit, tested survey formulas. The Python and package versions will be fixed before any alternative result is calculated. JK1 will use the final weight and all 50 supplied replicate weights, coefficient 0.98, and 49 degrees of freedom. Taylor linearization will use `PERSON_FINWT0`, `VAR_STRATUM`, and `VAR_CLUSTER`, with 98 degrees of freedom. Both methods will retain the full survey design and then identify the respondents belonging in each analysis.
 
@@ -161,9 +161,8 @@ Only the published Table 2 baseline and the structural checks needed to reconstr
 - `DAAF_review.md`
 - `data_access.md`
 - `sources/source_manifest.csv`
-- `src/baseline_analysis.py`
-- `src/preflight_registry.py`
+- `src/run_registered_baseline.py`
+- `src/odmk/`
 - `outputs/table2_reproduction.csv`
 - `outputs/exclusion_flow.csv`
 - `outputs/qa_checks.json`
-- `outputs/registry_preflight.json`

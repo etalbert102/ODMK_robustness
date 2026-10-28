@@ -17,11 +17,33 @@ from odmk.validation import validate_published_table2_anchors, validate_real_bas
 
 def main() -> None:
     root = project_root()
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--data", type=Path, default=root / "data_raw/hints5_cycle2_public.dta")
-    parser.add_argument("--registry", type=Path, default=root / "specification_freeze.yaml")
-    parser.add_argument("--config", type=Path, default=root / "config/execution.yaml")
-    parser.add_argument("--output-dir", type=Path, default=root / "outputs/registered_baseline")
+    parser = argparse.ArgumentParser(
+        description="Run only the frozen baseline through the registered production engine."
+    )
+    parser.add_argument(
+        "--data",
+        type=Path,
+        default=root / "data_raw/hints5_cycle2_public.dta",
+        help="Hash-locked HINTS 5 Cycle 2 Stata file.",
+    )
+    parser.add_argument(
+        "--registry",
+        type=Path,
+        default=root / "specification_freeze.yaml",
+        help="Frozen YAML scientific registry.",
+    )
+    parser.add_argument(
+        "--config",
+        type=Path,
+        default=root / "config/execution.yaml",
+        help="Operational approval and provenance metadata recorded with the baseline.",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=root / "outputs/registered_baseline",
+        help="Application-owned destination beneath the repository outputs directory.",
+    )
     args = parser.parse_args()
 
     registry_hash = sha256_file(args.registry)

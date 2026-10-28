@@ -18,6 +18,8 @@ EXPECTED_PACKAGES = {
 
 
 def assert_frozen_environment() -> dict[str, object]:
+    """Require the exact interpreter and direct-package versions frozen for analysis."""
+
     observed_python = platform.python_version()
     mismatches = []
     if observed_python != EXPECTED_PYTHON:
@@ -31,4 +33,3 @@ def assert_frozen_environment() -> dict[str, object]:
     if mismatches:
         raise ODMKError("Frozen environment mismatch: " + "; ".join(mismatches))
     return {"python": observed_python, "packages": observed_packages}
-
