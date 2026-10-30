@@ -31,22 +31,23 @@ REQUIRED_COLUMNS = {
 }
 
 
-def read_canonical_hints(path: Path, *, allow_hash_mismatch: bool = False) -> tuple[pd.DataFrame, str]:
+def read_canonical_hints(path: Path) -> tuple[pd.DataFrame, str]:
     """Read, normalize, validate, and deterministically order the HINTS file.
 
     Returns the complete 3,504-row frame and its SHA-256. The hash is also
     attached to ``DataFrame.attrs`` so later execution cannot silently pair a
-    frame with different provenance.
+    frame with different provenance. This production reader accepts only the
+    frozen public-use file; synthetic tests construct data frames directly.
     """
 
     data_hash = sha256_file(path)
-    if data_hash != EXPECTED_DATA_SHA256 and not allow_hash_mismatch:
+    if data_hash != EXPECTED_DATA_SHA256:
         raise DataValidationError(
             f"Source SHA-256 is {data_hash}, expected {EXPECTED_DATA_SHA256}"
         )
     raw = pd.read_stata(path, convert_categoricals=False)
     raw.columns = [column.lower() for column in raw.columns]
-    validate_source(raw, require_canonical_rows=not allow_hash_mismatch)
+    validate_source(raw, require_canonical_rows=True)
     ordered = raw.sort_values("hhid", kind="mergesort").reset_index(drop=True)
     ordered.attrs["source_sha256"] = data_hash
     return ordered, data_hash
@@ -79,6 +80,10 @@ def derive_analysis_fields(raw: pd.DataFrame) -> pd.DataFrame:
     """
 
     df = raw.copy()
+
+    # Outcome construction: reverse all seven source items so that larger
+    # values consistently mean better communication, then create both frozen
+    # completion rules without imputing an item.
     reversed_items: list[str] = []
     for item in PCC_ITEMS:
         name = f"{item}_reversed"
@@ -91,12 +96,17 @@ def derive_analysis_fields(raw: pd.DataFrame) -> pd.DataFrame:
     df["pppcq_complete7"] = mean_available.where(df["pcc_valid_item_count"].eq(7))
     df["pppcq_atleast4"] = mean_available.where(df["pcc_valid_item_count"].ge(4))
 
+    # Sample construction: one rule uses the recorded visit response only; the
+    # other also recognizes an answered follow-up as evidence that the person
+    # reached the communication module.
     df["recent_provider_visit"] = df["freqgoprovider"].isin((1, 2, 3, 4, 5, 6))
     df["communication_followup_observed"] = df["pcc_valid_item_count"].gt(0)
     df["content_confirmed_module"] = (
         df["recent_provider_visit"] | df["communication_followup_observed"]
     )
 
+    # Group construction: White remains the official mutually exclusive group
+    # under both options. Only the Asian-group definition varies.
     df["official_asian"] = df["raceethn5"].eq(4)
     df["inclusive_asian"] = (
         df["hisp_cat"].eq(10) & df[list(ASIAN_CHECKBOXES)].eq(1).any(axis=1)
@@ -153,6 +163,8 @@ def cell_arrays(df: pd.DataFrame, cell: pd.Series) -> tuple[np.ndarray, np.ndarr
     preserving the full survey frame for variance estimation.
     """
 
+    # Translate the frozen registry labels into the derived columns above. The
+    # explicit branches make every permitted option visible to a code reviewer.
     sample_name = cell["d01_analytic_sample"]
     if sample_name == "content_confirmed_module":
         sample = df["content_confirmed_module"]

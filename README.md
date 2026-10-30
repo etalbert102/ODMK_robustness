@@ -5,22 +5,48 @@ This repository reconstructs the COS-assigned Table 2 racial/ethnic difference i
 The published baseline is reproduced. The full engine has been tested with
 synthetic data, but no alternative specification has been run on HINTS data.
 
+## Code reviewer quick start
+
+The active implementation is at the repository root; dated directories under
+`submission/` are archived snapshots. A short review can follow this order:
+
+1. [`specification_freeze.yaml`](specification_freeze.yaml) defines the four
+   frozen choices and their 16 combinations.
+2. [`src/odmk/data.py`](src/odmk/data.py) constructs eligibility, PPPCQ scores,
+   and the two Asian-group definitions from the source variables.
+3. [`src/odmk/estimators.py`](src/odmk/estimators.py) implements the two survey
+   standard-error methods.
+4. [`src/odmk/engine.py`](src/odmk/engine.py) runs one or all registered
+   combinations without changing a failed combination after seeing its result.
+5. [`src/run_multiverse.py`](src/run_multiverse.py) enforces approval and
+   baseline checks before any alternative can run.
+
+[`docs/code_review_guide.md`](docs/code_review_guide.md) maps every frozen
+choice to its implementation and tests. The single command `make verify-code`
+checks the environment, regenerates the 16-row manifest, and runs the test suite
+without using respondent data.
+
 ## Quick result
 
 Using all seven communication items, official `RaceEthn5`, the final-person weight, and 50 JK1 replicate weights gives `N = 2,611` across the five published race/ethnicity groups. The reconstructed non-Hispanic Asian mean is 3.1161 and the non-Hispanic White mean is 3.4457, reproducing the article's displayed 3.11 and 3.45. Their derived direct difference is −0.3296 (SE 0.1097; 95% CI −0.5502 to −0.1091).
 
 The COS sourcing sheet assigns the Table 2 means and confidence intervals. Table 3 Model 1 is not the focal result and is not part of registry revision 7.
 
-## Proposed universe
+## Proposed analysis set
 
-Four binary decisions yield 16 fully crossed specifications. d01, d03, and d04
-produce eight distinct point-estimate constructions; d08 evaluates each with
-two variance estimators:
+Four choices with two options each yield 16 analyses. The labels d01, d03, d04,
+and d08 come from the COS robustness framework. The first three choices produce
+eight versions of the Asian-versus-White comparison; the final choice calculates
+the uncertainty around each comparison in two accepted ways:
 
-- **d01 analytic sample:** content-confirmed C4 eligibility versus a literal positive routing filter;
-- **d03 outcome construction:** require all seven items versus at least four valid items;
-- **d04 race construction:** official mutually exclusive non-Hispanic Asian versus inclusive non-Hispanic any-Asian identification; and
-- **d08 variance estimation:** official JK1 replicate weights versus Taylor linearization.
+- **d01 eligible sample:** include people whose answers show that they reached
+  the communication questions, or require a recorded provider visit;
+- **d03 PPPCQ scoring:** require all seven communication items, or require at
+  least four;
+- **d04 Asian-group definition:** use the official mutually exclusive category,
+  or include any non-Hispanic respondent who selected an Asian identity; and
+- **d08 standard errors:** use the official JK1 replicate weights, or Taylor
+  linearization.
 
 Fixed features include the seven communication domains, the 1–4 outcome scale, the non-Hispanic White reference, `PERSON_FINWT0` point weighting, the national population target, and the Asian-minus-White direction.
 
@@ -46,7 +72,7 @@ COS treats five dimensions as a target, not a quota. A fifth is not added becaus
 - [`docs/survey_estimators.md`](docs/survey_estimators.md) — exact JK1 and Taylor formulas.
 - [`sources/source_manifest.csv`](sources/source_manifest.csv) — source URLs, provenance, and checksums.
 
-## Reviewer orientation: which code is authoritative?
+## Which code is authoritative?
 
 The registered production path is:
 
@@ -120,25 +146,23 @@ baseline artifact set. The optional real-data pytest is skipped when the
 public-use file is absent, but the `baseline` Make target requires it;
 therefore `make verify-preapproval` is intentionally a data-required command.
 
-Continuous integration runs both layers separately: the ordinary job exercises
-the synthetic suite and coverage threshold, while a second job downloads the
-public NCI bundle, verifies both registered SHA-256 hashes, runs the actual
-baseline command, checks its three published artifacts, and requires the
-canonical baseline regression test to run rather than skip. Third-party GitHub
-actions are pinned to full commit hashes.
+Continuous integration runs two sets of checks. The first uses synthetic data
+and enforces the coverage threshold. The second downloads the public NCI data,
+verifies both file checksums, runs the same baseline command a researcher would
+run, checks its three output files, and requires the real-data baseline test to
+complete. Third-party GitHub actions are pinned to full commit hashes.
 
 The baseline checks verify the canonical data SHA-256, 3,504 source rows,
 unique/nonmissing `HHID`, deterministic sorting, required fields, 50 replicate
 weights, weight validity, PPPCQ range, exact `RaceEthn5` frequencies, focal
 `N = 2,611`, all five published Table 2 means, and the focal JK1 uncertainty.
 
-The registered baseline verifies registry revision 7, the four binary
-dimensions, the 16-cell Cartesian product, eight point-estimate constructions,
-routing and score-coverage anchors, official and inclusive Asian membership,
-focal-group disjointness, and survey-design structure. It computes no
-alternative group mean or contrast. The production engine represents
-eligibility and racial-group membership as domains on the complete source
-frame so subgroup estimation does not discard design units.
+The registered baseline verifies registry revision 7, all 16 combinations of
+the four choices, the expected sample and scoring counts, both Asian-group
+definitions, nonoverlapping Asian and White groups, and the survey design. It
+does not calculate an alternative group mean or difference. Eligibility and
+racial-group membership are applied while retaining the complete source file,
+as required for correct survey standard errors.
 
 ## Approval-gated production run
 
@@ -160,18 +184,18 @@ frozen focal baseline,
 `N = 2,611`, and all five published Table 2 group means. It then writes all 16
 registered cells, including explicit records for any failed cell, under
 `outputs/multiverse/`. Final validation also requires every result row to
-match its frozen manifest identity and options exactly. The complete artifact
-set is built in a staging directory and published together, so an interrupted
-write cannot leave a mixed production result set. Output destinations must be
-children of this repository's `outputs/` directory. An existing destination is
-replaceable only when it carries the runner's ownership marker.
+match its frozen manifest identity and options exactly. All output files are
+built in a temporary directory and moved into place together, so an interrupted
+write cannot mix files from different runs. Output destinations must be inside
+this repository's `outputs/` directory. The runner replaces an existing
+directory only when a marker confirms that an earlier ODMK run created it.
 
-The complete engine is tested on synthetic data through the real environment,
-approval, clean-Git, registry-checksum, provenance, and publication boundaries;
-only canonical-data reading and canonical-data anchors are replaced. It refuses
-to accept the canonical HINTS hash under synthetic scope, which prevents that
-test route from bypassing the approval gate. Independent fixtures generated by
-R `survey` 4.5 verify both the JK1 and Taylor variance implementations.
+The complete engine is tested on synthetic data using the real environment,
+approval, clean-Git, registry-checksum, run-record, and output-writing code.
+Only the real-data reader and real-data baseline checks are replaced. Synthetic
+mode refuses the canonical HINTS file hash, so it cannot bypass the approval
+gate for real data. Independent examples generated with R `survey` 4.5 verify
+both standard-error implementations.
 
 ## Environment files
 

@@ -15,14 +15,15 @@ expands the registry into a deterministic 16-row manifest.
 - The survey design is built on all 3,504 records before any analytic domain
   is selected.
 
-## Varied facts
+## Choices that vary
 
-The registry varies d01 eligibility, d03 item-completion scoring, d04 Asian
-category construction, and d08 variance estimation. The first three choices
-create eight point-estimate constructions. JK1 and Taylor inference are paired
-with each, producing 16 cells.
+The registry varies who is eligible (d01), how many answered items are required
+for PPPCQ (d03), who belongs to the Asian group (d04), and how standard errors
+are calculated (d08). The first three choices create eight versions of the
+Asian-versus-White comparison. JK1 and Taylor standard errors are calculated for
+each version, producing 16 result rows.
 
-## Fact ownership
+## Where each rule lives
 
 - `specification_freeze.yaml` owns option names, baselines, algorithms, and
   required outputs.
@@ -34,8 +35,8 @@ with each, producing 16 cells.
 - `config/execution.yaml` owns operational approval metadata only. It cannot
   change a scientific option.
 
-Downstream code consumes these owners and does not re-derive their facts from
-labels, row order, or prose.
+Other modules read these rules from their authoritative location rather than
+guessing them from labels, row order, or prose.
 
 In code, `POINT_ESTIMATE_DIMENSIONS` names d01, d03, and d04 explicitly. The
 d08 variance choice is stored separately because it must not change either
@@ -67,10 +68,10 @@ recorded estimates, standard errors, and degrees of freedom. Point-estimate
 invariance is reported as verified only when both variance cells succeed for
 all eight point-estimate constructions.
 
-Both variance paths calculate influence or replicate estimates from the full
-3,504-row frame. Analytic membership is represented by Boolean domains, so
-records and design units outside a focal group contribute zeros rather than
-being discarded before the design calculation.
+Both standard-error methods retain all 3,504 source records while calculating
+replicate or linearized estimates. True/false membership indicators identify
+the records in each analysis. Records outside a focal group contribute zeros
+instead of being discarded before the survey calculation.
 
 ## Failure policy
 

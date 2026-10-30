@@ -45,6 +45,7 @@ SUCCESS_NUMERIC_COLUMNS = (
 def validate_result_schema(results: pd.DataFrame) -> None:
     """Require exact result columns and internally consistent cell estimates."""
 
+    # Row identity and success/failure records.
     if tuple(results.columns) != RESULT_COLUMNS:
         raise ODMKError("Results do not match the frozen output schema")
     if results["specification_id"].duplicated().any():
@@ -65,6 +66,8 @@ def validate_result_schema(results: pd.DataFrame) -> None:
     if results.loc[failed, list(SUCCESS_NUMERIC_COLUMNS)].notna().any().any():
         raise ODMKError("Failed cells cannot retain focal estimates")
 
+    # Point estimates must remain on the registered scale and use the frozen
+    # Asian-minus-White direction.
     if not results.loc[successful, "asian_mean"].between(1, 4).all():
         raise ODMKError("Successful Asian means must remain on the registered 1-4 scale")
     if not results.loc[successful, "white_mean"].between(1, 4).all():
@@ -83,6 +86,8 @@ def validate_result_schema(results: pd.DataFrame) -> None:
     if not results.loc[successful, "denominator_degrees_of_freedom"].gt(0).all():
         raise ODMKError("Denominator degrees of freedom must be positive")
 
+    # Recalculate every interval, test statistic, and p-value from the reported
+    # estimate, standard error, and degrees of freedom.
     successful_rows = results.loc[successful]
     critical = stats.t.ppf(
         0.975, successful_rows["denominator_degrees_of_freedom"].to_numpy(float)
@@ -140,6 +145,8 @@ def validate_result_schema(results: pd.DataFrame) -> None:
         raise ODMKError(
             "two_sided_p_value is inconsistent with the test statistic and degrees of freedom"
         )
+
+    # Counts and weighted denominators must describe nonempty focal groups.
     for column in ("unweighted_asian_n", "unweighted_white_n"):
         values = results.loc[successful, column]
         if not (values.gt(0) & values.eq(np.floor(values))).all():
@@ -156,25 +163,37 @@ def validate_full_results(
     expected_source_hash: str | None = None,
     expected_taylor_df: int | None = None,
 ) -> dict[str, object]:
-    """Match all 16 rows to the manifest and summarize paired d08 invariance."""
+    """Match all 16 rows to the registry manifest and check variance-method pairs."""
 
     validate_result_schema(results)
-    if len(results) != 16 or set(results["specification_id"]) != set(manifest["specification_id"]):
+    if len(results) != 16 or set(results["specification_id"]) != set(
+        manifest["specification_id"]
+    ):
         raise ODMKError("Full output must contain every one of the 16 registered cells")
+
+    # Each result must retain the exact ID and four choices assigned before the
+    # analysis ran.
     identity_columns = [
         "specification_id",
         "point_estimate_id",
         "is_baseline",
         *DIMENSION_ORDER,
     ]
-    observed_identity = results[identity_columns].sort_values("specification_id").reset_index(drop=True)
-    expected_identity = manifest[identity_columns].sort_values("specification_id").reset_index(drop=True)
+    observed_identity = (
+        results[identity_columns].sort_values("specification_id").reset_index(drop=True)
+    )
+    expected_identity = (
+        manifest[identity_columns].sort_values("specification_id").reset_index(drop=True)
+    )
     if not observed_identity.equals(expected_identity):
         raise ODMKError("A result row does not match its frozen manifest identity and options")
     if not results["paper_id"].eq("ODMK").all():
         raise ODMKError("Every result row must identify paper ODMK")
     if not results["registry_revision"].eq(REGISTRY_REVISION).all():
         raise ODMKError(f"Every result row must identify registry revision {REGISTRY_REVISION}")
+
+    # Preserve the source-data identity and a machine-readable copy of every
+    # option label in each row.
     if expected_source_hash is not None and not results["source_data_sha256"].eq(
         expected_source_hash
     ).all():
@@ -190,6 +209,7 @@ def validate_full_results(
         if recorded_options != expected_options:
             raise ODMKError("all_option_labels does not match the registered option columns")
 
+    # Enforce the degrees of freedom registered for each standard-error method.
     successful = results["status"].eq("success")
     jk1 = successful & results["d08_variance_estimation"].eq(
         "official_jk1_replicate_weights"
@@ -204,6 +224,8 @@ def validate_full_results(
             raise ODMKError(
                 f"Successful Taylor cells must use {expected_taylor_df} degrees of freedom"
             )
+    # The two standard-error methods must give the same means and difference
+    # for each of the eight sample/score/group constructions.
     successes = results.loc[successful]
     checked_pairs = 0
     for _, registered_pair in results.groupby("point_estimate_id"):

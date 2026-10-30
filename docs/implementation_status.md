@@ -1,6 +1,6 @@
 # Implementation status
 
-Status as of 2026-10-28: the preregistered analysis is implemented and ready
+Status as of 2026-10-30: the preregistered analysis is implemented and ready
 for COS review, but production execution remains locked.
 
 ## Implemented

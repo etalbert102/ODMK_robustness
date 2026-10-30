@@ -46,15 +46,20 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    # 1. Freeze the scientific instructions before opening respondent data.
     registry_hash = sha256_file(args.registry)
     registry = load_registry(args.registry)
     manifest = build_manifest(registry)
+
+    # 2. Reconstruct and validate only the single published-baseline cell.
     raw, data_hash = read_canonical_hints(args.data)
     derived = derive_analysis_fields(raw)
     structure = validate_canonical_structure(derived, registry)
     results = run_manifest(derived, manifest, scope="baseline", source_hash=data_hash)
     validation = validate_real_baseline(results)
     published_table2 = validate_published_table2_anchors(derived)
+
+    # 3. Record provenance and publish the complete baseline artifact set.
     config = load_execution_config(args.config)
     metadata = build_metadata(
         root=root,

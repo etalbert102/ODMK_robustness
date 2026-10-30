@@ -62,8 +62,8 @@ def parse_args(root: Path) -> argparse.Namespace:
 def execute_registered_multiverse(args: argparse.Namespace, *, root: Path) -> int:
     """Execute the gated workflow and atomically publish its four artifacts."""
 
-    # The approval and clean-worktree checks deliberately occur before source
-    # data are opened or any registered effect can be calculated.
+    # 1. Freeze the instructions and verify approval before opening source data
+    # or calculating any registered effect.
     registry_hash = sha256_file(args.registry)
     registry = load_registry(args.registry)
     config = load_execution_config(args.config)
@@ -75,19 +75,21 @@ def execute_registered_multiverse(args: argparse.Namespace, *, root: Path) -> in
         registry_sha256=registry_hash,
     )
 
+    # 2. Read the exact public file and construct every registered field once.
     manifest = build_manifest(registry)
     raw, data_hash = read_canonical_hints(args.data)
     derived = derive_analysis_fields(raw)
     structure = validate_canonical_structure(derived, registry)
 
-    # These are execution gates, not post-hoc diagnostics. Confirm the complete
-    # published Table 2 reconstruction before calculating any alternative cell.
+    # 3. Reproduce the published result before calculating any alternative.
+    # These are execution gates, not post-hoc diagnostics.
     baseline_results = run_manifest(
         derived, manifest, scope="baseline", source_hash=data_hash
     )
     focal_baseline = validate_real_baseline(baseline_results)
     published_table2 = validate_published_table2_anchors(derived)
 
+    # 4. Run all frozen combinations and verify them against the manifest.
     results = run_manifest(
         derived,
         manifest,
@@ -110,6 +112,7 @@ def execute_registered_multiverse(args: argparse.Namespace, *, root: Path) -> in
         scope="approved",
     )
 
+    # 5. Write all result and provenance files together as one complete set.
     with staged_output_directory(args.output_dir, allowed_root=root / "outputs") as staging:
         results.to_csv(staging / "results.csv", index=False)
         manifest.to_csv(staging / "cell_manifest.csv", index=False)

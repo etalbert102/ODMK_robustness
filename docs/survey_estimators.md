@@ -43,10 +43,12 @@ The stratum contributions are summed. The released design has two strata and
 degrees of freedom. No finite-population correction is applied because none is
 provided in the registered public-use design.
 
-The implementation is independently checked against the frozen output of R
-`survey` 4.5 on a weighted, stratified domain-estimation fixture. The reference
-script is `tests/reference/taylor_survey_reference.R`; R is not a production
-dependency.
+Both implementations are independently checked against frozen output from R
+`survey` 4.5. `tests/reference/jk1_survey_reference.R` checks weighted group
+means and their direct contrast with 50 combined replicate weights.
+`tests/reference/taylor_survey_reference.R` checks the same quantities in a
+weighted, stratified survey example. R is used only to create these reference
+values and is not required to run the analysis.
 
 ## Enforced checks
 

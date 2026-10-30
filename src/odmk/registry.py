@@ -68,6 +68,9 @@ def build_manifest(registry: dict[str, Any]) -> pd.DataFrame:
     option_lists = [list(dimensions[name]["options"]) for name in DIMENSION_ORDER]
     baseline = registry["cell_construction"]["baseline_cell"]
     combinations = list(product(*option_lists))
+
+    # Put the all-baseline combination first, then order the remaining rows by
+    # which choices differ from baseline. This makes stable IDs reproducible.
     combinations.sort(
         key=lambda values: tuple(
             values[index] != baseline[name]
@@ -79,6 +82,9 @@ def build_manifest(registry: dict[str, Any]) -> pd.DataFrame:
     rows: list[dict[str, str | bool]] = []
     for index, values in enumerate(combinations, start=1):
         options = dict(zip(DIMENSION_ORDER, values, strict=True))
+
+        # d08 changes only uncertainty, so its two rows share one point-estimate
+        # ID. The other three choices define the eight distinct comparisons.
         point_key = tuple(options[name] for name in POINT_ESTIMATE_DIMENSIONS)
         if point_key not in point_keys:
             point_keys[point_key] = f"ODMK-P{len(point_keys) + 1:02d}"
