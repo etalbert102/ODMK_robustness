@@ -1,12 +1,15 @@
 from argparse import Namespace
+import json
 from pathlib import Path
+import subprocess
 
 import pandas as pd
 import pytest
+import yaml
 
 import run_multiverse
 from odmk.exceptions import ApprovalError, ODMKError
-from odmk.utils import OUTPUT_OWNERSHIP_MARKER, project_root
+from odmk.utils import OUTPUT_OWNERSHIP_MARKER, project_root, sha256_file
 
 
 def _arguments(tmp_path: Path) -> Namespace:
@@ -20,13 +23,39 @@ def _arguments(tmp_path: Path) -> Namespace:
     )
 
 
-def _patch_approved_synthetic_run(monkeypatch, synthetic_raw) -> None:
-    monkeypatch.setattr(run_multiverse, "assert_frozen_environment", lambda: {})
-    monkeypatch.setattr(
-        run_multiverse,
-        "assert_production_approved",
-        lambda *args, **kwargs: {"authorized": True},
+def _approved_arguments(tmp_path: Path) -> Namespace:
+    arguments = _arguments(tmp_path)
+    registry_hash = sha256_file(arguments.registry)
+    config = {
+        "approval": {
+            "cos_status": "approved",
+            "cos_approved_at": "2026-11-01",
+            "cos_approval_record": "record/synthetic-integration-test",
+            "approved_registry_sha256": registry_hash,
+            "researcher_status": "approved",
+            "researcher_name": "Integration test",
+            "researcher_approved_at": "2026-11-01",
+        },
+        "provenance": {"fixture": True},
+        "execution_policy": {"require_clean_git_for_multiverse": True},
+    }
+    arguments.config = tmp_path / "execution.yaml"
+    arguments.config.write_text(yaml.safe_dump(config, sort_keys=False), encoding="utf-8")
+    subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
+    subprocess.run(
+        ["git", "config", "user.email", "tests@example.invalid"],
+        cwd=tmp_path,
+        check=True,
     )
+    subprocess.run(
+        ["git", "config", "user.name", "ODMK tests"], cwd=tmp_path, check=True
+    )
+    subprocess.run(["git", "add", "execution.yaml"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "commit", "-qm", "fixture"], cwd=tmp_path, check=True)
+    return arguments
+
+
+def _patch_synthetic_canonical_boundaries(monkeypatch, synthetic_raw) -> None:
     monkeypatch.setattr(
         run_multiverse,
         "read_canonical_hints",
@@ -50,11 +79,6 @@ def _patch_approved_synthetic_run(monkeypatch, synthetic_raw) -> None:
         run_multiverse,
         "validate_published_table2_anchors",
         lambda frame: {"all_checks_pass": True},
-    )
-    monkeypatch.setattr(
-        run_multiverse,
-        "build_metadata",
-        lambda **kwargs: {"scope": "approved", "fixture": True},
     )
 
 
@@ -82,7 +106,8 @@ def test_pending_approval_blocks_before_source_data_are_opened(
 def test_failed_baseline_gate_prevents_approved_cells(
     tmp_path: Path, monkeypatch, synthetic_raw
 ) -> None:
-    _patch_approved_synthetic_run(monkeypatch, synthetic_raw)
+    arguments = _approved_arguments(tmp_path)
+    _patch_synthetic_canonical_boundaries(monkeypatch, synthetic_raw)
     scopes = []
     real_run_manifest = run_multiverse.run_manifest
 
@@ -100,8 +125,6 @@ def test_failed_baseline_gate_prevents_approved_cells(
         "validate_real_baseline",
         fail_baseline,
     )
-    arguments = _arguments(tmp_path)
-
     with pytest.raises(ODMKError, match="baseline gate failed"):
         run_multiverse.execute_registered_multiverse(arguments, root=tmp_path)
 
@@ -112,7 +135,8 @@ def test_failed_baseline_gate_prevents_approved_cells(
 def test_approved_synthetic_orchestration_publishes_complete_artifact_set(
     tmp_path: Path, monkeypatch, synthetic_raw
 ) -> None:
-    _patch_approved_synthetic_run(monkeypatch, synthetic_raw)
+    arguments = _approved_arguments(tmp_path)
+    _patch_synthetic_canonical_boundaries(monkeypatch, synthetic_raw)
     scopes = []
     real_run_manifest = run_multiverse.run_manifest
 
@@ -121,8 +145,6 @@ def test_approved_synthetic_orchestration_publishes_complete_artifact_set(
         return real_run_manifest(*args, **kwargs)
 
     monkeypatch.setattr(run_multiverse, "run_manifest", record_scope)
-    arguments = _arguments(tmp_path)
-
     completed = run_multiverse.execute_registered_multiverse(arguments, root=tmp_path)
 
     assert completed == 16
@@ -136,5 +158,10 @@ def test_approved_synthetic_orchestration_publishes_complete_artifact_set(
     }
     results = pd.read_csv(arguments.output_dir / "results.csv")
     manifest = pd.read_csv(arguments.output_dir / "cell_manifest.csv")
+    metadata = json.loads((arguments.output_dir / "run_metadata.json").read_text())
     assert len(results) == len(manifest) == 16
     assert results["status"].eq("success").all()
+    assert metadata["scope"] == "approved"
+    assert metadata["registry_sha256"] == sha256_file(arguments.registry)
+    assert metadata["approval"]["cos_status"] == "approved"
+    assert metadata["git"]["dirty"] is False

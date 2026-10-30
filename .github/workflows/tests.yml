@@ -11,8 +11,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.14.4"
           cache: pip
@@ -29,8 +29,8 @@ jobs:
     env:
       ODMK_REQUIRE_CANONICAL_DATA: "1"
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.14.4"
           cache: pip
@@ -42,7 +42,8 @@ jobs:
       - name: Acquire and verify canonical public data
         run: |
           mkdir -p sources data_raw
-          curl -L --fail --retry 3 \
+          curl -L --fail --retry 3 --retry-all-errors --retry-delay 2 \
+            --connect-timeout 30 --max-time 300 \
             'https://hints.cancer.gov/dataset/HINTS-5_Cycle2_STATA_20240507.zip' \
             -o sources/HINTS5_Cycle2_STATA_20240507.zip
           echo 'f204a161868056e243a3583ec343e3f4e4eb0b430a100e4d0e61996551a8b6ea  sources/HINTS5_Cycle2_STATA_20240507.zip' | sha256sum -c -
@@ -50,4 +51,9 @@ jobs:
             'hints5_cycle2_public.dta' -d data_raw
           echo 'a727f1b7a56f293dc2212bb9cc8705cacdc4e57d6d8e5505012b713ecfd1531f  data_raw/hints5_cycle2_public.dta' | sha256sum -c -
       - name: Reproduce the registered canonical baseline
-        run: python -m pytest -q tests/test_real_baseline.py
+        run: |
+          python src/run_registered_baseline.py
+          test -s outputs/registered_baseline/results.csv
+          test -s outputs/registered_baseline/validation.json
+          test -s outputs/registered_baseline/run_metadata.json
+          python -m pytest -q tests/test_real_baseline.py

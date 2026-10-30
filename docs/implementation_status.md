@@ -28,12 +28,16 @@ for COS review, but production execution remains locked.
 - A hand-calculated two-stratum example verifies the Taylor variance formula.
 - A weighted, stratified domain fixture independently generated with R
   `survey` 4.5 verifies both Taylor group estimates and the contrast.
+- A combined-replicate-weight fixture independently generated with R `survey`
+  4.5 verifies JK1 group estimates, standard errors, and their direct contrast.
 - Tests cover registry structure, outcome scoring, routing, race definitions,
-  approval failures, data-scope protection, failed-cell retention, inferential
-  consistency, and transactional output publication.
+  approval failures and clean-worktree success, data-scope protection,
+  failed-cell retention, inferential consistency, real approval/provenance
+  orchestration, and transactional output publication.
 - The suite enforces at least 80% branch-aware coverage. CI separately acquires
-  the public HINTS file, verifies its checksums, and requires the canonical
-  baseline regression test.
+  the public HINTS file, verifies its checksums, executes the actual baseline
+  entry point and artifact publication, and requires the canonical baseline
+  regression test. GitHub actions are commit-pinned.
 
 ## Deliberately not completed
 

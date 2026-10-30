@@ -120,6 +120,43 @@ def test_dirty_git_worktree_blocks_approved_production(tmp_path: Path) -> None:
         )
 
 
+def test_clean_git_worktree_allows_approved_production(tmp_path: Path) -> None:
+    subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
+    subprocess.run(
+        ["git", "config", "user.email", "tests@example.invalid"],
+        cwd=tmp_path,
+        check=True,
+    )
+    subprocess.run(
+        ["git", "config", "user.name", "ODMK tests"], cwd=tmp_path, check=True
+    )
+    tracked = tmp_path / "tracked.txt"
+    tracked.write_text("clean\n", encoding="utf-8")
+    subprocess.run(["git", "add", "tracked.txt"], cwd=tmp_path, check=True)
+    subprocess.run(["git", "commit", "-qm", "fixture"], cwd=tmp_path, check=True)
+    config = {
+        "approval": {
+            "cos_status": "approved",
+            "cos_approved_at": "2026-11-01",
+            "cos_approval_record": "record/example",
+            "approved_registry_sha256": "a" * 64,
+            "researcher_status": "approved",
+            "researcher_approved_at": "2026-11-01",
+        },
+        "execution_policy": {"require_clean_git_for_multiverse": True},
+    }
+
+    authorization = assert_production_approved(
+        config,
+        root=tmp_path,
+        confirmed=True,
+        registry_sha256="a" * 64,
+    )
+
+    assert authorization["git"]["dirty"] is False
+    assert authorization["git"]["commit"]
+
+
 @pytest.mark.parametrize(
     "missing_field",
     ["cos_approved_at", "cos_approval_record", "researcher_approved_at"],

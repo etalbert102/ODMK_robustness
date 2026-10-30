@@ -36,6 +36,42 @@ def test_jk1_matches_hand_calculation() -> None:
     assert result["denominator_degrees_of_freedom"] == 49
 
 
+def test_jk1_matches_r_survey_replicate_weight_reference() -> None:
+    """Match the frozen output of tests/reference/jk1_survey_reference.R."""
+
+    identifiers = np.arange(1, 9, dtype=float)
+    full_weights = np.array([1.2, 0.9, 1.6, 1.1, 1.4, 0.8, 1.3, 1.0])
+    y = np.array([1, 3, 4, 2, 2, 4, 3, 1], dtype=float)
+    groups = np.array(["A", "A", "A", "W", "W", "W", "O", "A"])
+    analytic = np.array([True, True, False, True, True, True, True, False])
+    frame = pd.DataFrame({"person_finwt0": full_weights})
+    for replicate_number, column in enumerate(REPLICATE_WEIGHTS, start=1):
+        frame[column] = full_weights * (
+            1
+            + 0.08 * np.sin(identifiers * replicate_number / 7)
+            + 0.03 * np.cos((identifiers + replicate_number) / 5)
+        )
+
+    result = estimate_jk1(
+        frame,
+        y,
+        analytic & (groups == "A"),
+        analytic & (groups == "W"),
+    )
+
+    expected = {
+        "asian_mean": 1.857142857142857,
+        "asian_mean_se": 0.259612979402644,
+        "white_mean": 2.484848484848485,
+        "white_mean_se": 0.171716093055452,
+        "asian_minus_white_difference": -0.627705627705628,
+        "standard_error_of_difference": 0.319941982753962,
+    }
+    for field, value in expected.items():
+        assert math.isclose(result[field], value, rel_tol=0, abs_tol=1e-12)
+    assert result["denominator_degrees_of_freedom"] == 49
+
+
 def test_taylor_linearization_matches_hand_calculation() -> None:
     rows = []
     asian_values = [1.0, 3.0, 2.0, 4.0]
