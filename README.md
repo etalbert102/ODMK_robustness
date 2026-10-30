@@ -56,8 +56,11 @@ COS treats five dimensions as a target, not a quota. A fifth is not added becaus
 
 - [`ODMK_COS_robustness_proposal.docx`](ODMK_COS_robustness_proposal.docx) — primary concise COS submission file.
 - [`ODMK_COS_brief_proposal.md`](ODMK_COS_brief_proposal.md) — editable Markdown source for the concise submission.
-- [`ODMK_COS_submission.md`](ODMK_COS_submission.md) — longer methodological record.
-- [`ODMK_robustness_proposal.md`](ODMK_robustness_proposal.md) — identical longer record retained under the originally requested filename.
+- [`ODMK_COS_submission.md`](ODMK_COS_submission.md) — canonical Markdown source for the longer methodological record.
+- [`ODMK_robustness_proposal.md`](ODMK_robustness_proposal.md) — byte-identical compatibility copy retained under the originally requested filename.
+- [`ODMK_robustness_proposal.docx`](ODMK_robustness_proposal.docx) — formatted copy of the longer methodological record.
+- [`ODMK_preregistration.docx`](ODMK_preregistration.docx) — completed COS preregistration draft for the post-proposal review workflow.
+- [`preregistration_template.docx`](preregistration_template.docx) — unfilled source template retained for provenance.
 - [`baseline_analysis.md`](baseline_analysis.md) — focal result, reconstruction, source inferences, and unresolved ambiguities.
 - [`data_access.md`](data_access.md) — public acquisition instructions and checksums.
 - [`dimension_audit.md`](dimension_audit.md) — d01–d09 audit.
@@ -100,7 +103,7 @@ ODMK_robustness/
 ├── data_raw/          # ignored by Git; unmodified public-use respondent file
 ├── docs/              # implementation contract and estimator documentation
 ├── manifests/         # generated, deterministic specification manifest
-├── outputs/           # baseline QA and, after approval, multiverse results
+├── outputs/           # documented legacy QA plus generated baseline/results directories
 ├── sources/           # primary documents, source ledger, and search-aid text
 ├── src/odmk/          # reusable analysis package
 ├── tests/             # synthetic unit tests and optional real-baseline test
