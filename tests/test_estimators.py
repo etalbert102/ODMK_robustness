@@ -3,7 +3,37 @@ import math
 import numpy as np
 import pandas as pd
 
-from odmk.estimators import estimate_taylor
+from odmk.constants import REPLICATE_WEIGHTS
+from odmk.estimators import estimate_jk1, estimate_taylor
+
+
+def test_jk1_matches_hand_calculation() -> None:
+    """Two changed replicates give a contrast variance of 0.98 * (1 + 1)."""
+
+    frame = pd.DataFrame(
+        {
+            "person_finwt0": [1.0, 1.0, 1.0, 1.0],
+            "y": [1.0, 3.0, 2.0, 4.0],
+            "group": ["A", "A", "W", "W"],
+        }
+    )
+    for column in REPLICATE_WEIGHTS:
+        frame[column] = frame["person_finwt0"]
+    frame[REPLICATE_WEIGHTS[0]] = [2.0, 0.0, 1.0, 1.0]
+    frame[REPLICATE_WEIGHTS[1]] = [1.0, 1.0, 2.0, 0.0]
+
+    y = frame["y"].to_numpy(float)
+    asian = frame["group"].eq("A").to_numpy()
+    white = frame["group"].eq("W").to_numpy()
+    result = estimate_jk1(frame, y, asian, white)
+
+    assert result["asian_mean"] == 2.0
+    assert result["white_mean"] == 3.0
+    assert result["asian_minus_white_difference"] == -1.0
+    assert math.isclose(result["asian_mean_se"], math.sqrt(0.98))
+    assert math.isclose(result["white_mean_se"], math.sqrt(0.98))
+    assert math.isclose(result["standard_error_of_difference"], 1.4)
+    assert result["denominator_degrees_of_freedom"] == 49
 
 
 def test_taylor_linearization_matches_hand_calculation() -> None:

@@ -44,3 +44,46 @@ def test_registry_rejects_unknown_lifecycle_status() -> None:
     registry["status"] = "unknown"
     with pytest.raises(RegistryError, match="Registry status"):
         validate_registry(registry)
+
+
+@pytest.mark.parametrize(
+    ("corruption", "message"),
+    [
+        ("paper_id", "paper_id"),
+        ("revision", "revision"),
+        ("data_hash", "data hash"),
+        ("dimension_order", "Dimensions must appear"),
+        ("option_count", "must have two options"),
+        ("construction_order", "Cell-construction order"),
+        ("cell_count", "16 cells"),
+        ("point_count", "eight point-estimate"),
+        ("not_factorial", "full factorial"),
+    ],
+)
+def test_registry_rejects_each_frozen_contract_violation(corruption, message) -> None:
+    registry = copy.deepcopy(load_registry(project_root() / "specification_freeze.yaml"))
+    if corruption == "paper_id":
+        registry["paper_id"] = "OTHER"
+    elif corruption == "revision":
+        registry["revision"] = 999
+    elif corruption == "data_hash":
+        registry["fixed"]["data_sha256"] = "0" * 64
+    elif corruption == "dimension_order":
+        registry["dimensions"] = dict(reversed(list(registry["dimensions"].items())))
+    elif corruption == "option_count":
+        registry["dimensions"]["d01_analytic_sample"]["options"].pop(
+            "observed_positive_filter_only"
+        )
+    elif corruption == "construction_order":
+        registry["cell_construction"]["order"] = list(reversed(DIMENSION_ORDER))
+    elif corruption == "cell_count":
+        registry["cell_construction"]["expected_specifications"] = 8
+    elif corruption == "point_count":
+        registry["cell_construction"]["distinct_point_estimate_constructions"] = 4
+    elif corruption == "not_factorial":
+        registry["cell_construction"]["full_factorial"] = False
+    else:  # pragma: no cover - the parameter table owns the valid cases
+        raise AssertionError(f"Unknown corruption case: {corruption}")
+
+    with pytest.raises(RegistryError, match=message):
+        validate_registry(registry)

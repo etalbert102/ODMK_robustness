@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 import pytest
@@ -14,6 +15,8 @@ def test_canonical_registered_baseline_when_data_are_available() -> None:
     root = project_root()
     data_path = root / "data_raw/hints5_cycle2_public.dta"
     if not data_path.exists():
+        if os.environ.get("ODMK_REQUIRE_CANONICAL_DATA") == "1":
+            pytest.fail("Canonical public-use file is required for this test run")
         pytest.skip("Canonical public-use file is not installed")
     registry = load_registry(root / "specification_freeze.yaml")
     manifest = build_manifest(registry)

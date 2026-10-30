@@ -49,6 +49,22 @@ def test_synthetic_scope_rejects_canonical_hash(synthetic_derived) -> None:
         )
 
 
+def test_engine_rejects_hash_that_differs_from_frame_provenance(
+    synthetic_derived,
+) -> None:
+    frame = synthetic_derived.copy()
+    frame.attrs["source_sha256"] = "attached-fixture-hash"
+    manifest = build_manifest(load_registry(project_root() / "specification_freeze.yaml"))
+
+    with pytest.raises(ODMKError, match="does not match the data-frame provenance"):
+        run_manifest(
+            frame,
+            manifest,
+            scope="synthetic",
+            source_hash="different-fixture-hash",
+        )
+
+
 def test_baseline_scope_runs_only_one_cell(synthetic_derived) -> None:
     registry = load_registry(project_root() / "specification_freeze.yaml")
     manifest = build_manifest(registry)
@@ -65,6 +81,23 @@ def test_approved_scope_requires_production_authorization(synthetic_derived) -> 
         run_manifest(
             synthetic_derived, manifest, scope="approved", source_hash="synthetic-fixture"
         )
+
+
+def test_engine_records_actual_cell_failure(synthetic_derived) -> None:
+    frame = synthetic_derived.copy()
+    frame["official_white"] = False
+    manifest = build_manifest(load_registry(project_root() / "specification_freeze.yaml"))
+
+    results = run_manifest(
+        frame, manifest, scope="baseline", source_hash="synthetic-fixture"
+    )
+
+    assert len(results) == 1
+    row = results.iloc[0]
+    assert row["status"] == "failed"
+    assert row["failure_category"] == "CellEstimationError"
+    assert "Both focal groups" in row["failure_reason"]
+    assert np.isnan(row["asian_minus_white_difference"])
 
 
 def test_validation_retains_failed_registered_cell(synthetic_derived) -> None:
@@ -144,6 +177,45 @@ def test_validation_rejects_changed_focal_term(synthetic_derived) -> None:
     )
     results.loc[0, "focal_term"] = "wrong focal term"
     with pytest.raises(ODMKError, match="frozen focal-term"):
+        validate_full_results(results, manifest)
+
+
+def test_validation_rejects_wrong_source_hash(synthetic_derived) -> None:
+    registry = load_registry(project_root() / "specification_freeze.yaml")
+    manifest = build_manifest(registry)
+    results = run_manifest(
+        synthetic_derived, manifest, scope="synthetic", source_hash="synthetic-fixture"
+    )
+
+    with pytest.raises(ODMKError, match="wrong source-data hash"):
+        validate_full_results(
+            results, manifest, expected_source_hash="different-synthetic-fixture"
+        )
+
+
+def test_validation_rejects_duplicate_specification_id(synthetic_derived) -> None:
+    registry = load_registry(project_root() / "specification_freeze.yaml")
+    manifest = build_manifest(registry)
+    results = run_manifest(
+        synthetic_derived, manifest, scope="synthetic", source_hash="synthetic-fixture"
+    )
+    results.loc[1, "specification_id"] = results.loc[0, "specification_id"]
+
+    with pytest.raises(ODMKError, match="Specification IDs must be unique"):
+        validate_full_results(results, manifest)
+
+
+def test_validation_rejects_failed_row_that_retains_estimates(synthetic_derived) -> None:
+    registry = load_registry(project_root() / "specification_freeze.yaml")
+    manifest = build_manifest(registry)
+    results = run_manifest(
+        synthetic_derived, manifest, scope="synthetic", source_hash="synthetic-fixture"
+    )
+    results.loc[0, "status"] = "failed"
+    results.loc[0, "failure_category"] = "CellEstimationError"
+    results.loc[0, "failure_reason"] = "fixture failure"
+
+    with pytest.raises(ODMKError, match="cannot retain focal estimates"):
         validate_full_results(results, manifest)
 
 

@@ -103,8 +103,10 @@ make verify-code
 
 `make verify-code` needs no respondent data: it checks the pinned environment,
 generates the deterministic manifest, and runs the synthetic and repository
-tests. To run the baseline and structural checks, first follow the acquisition
-steps in [`data_access.md`](data_access.md) so that the unmodified file is at
+tests. The test target enforces at least 80% branch-aware coverage across the
+active analysis package and production runner. To run the baseline and
+structural checks, first follow the acquisition steps in
+[`data_access.md`](data_access.md) so that the unmodified file is at
 `data_raw/hints5_cycle2_public.dta`, then run:
 
 ```bash
@@ -117,6 +119,11 @@ design, focal result, and all five published Table 2 means before publishing a
 baseline artifact set. The optional real-data pytest is skipped when the
 public-use file is absent, but the `baseline` Make target requires it;
 therefore `make verify-preapproval` is intentionally a data-required command.
+
+Continuous integration runs both layers separately: the ordinary job exercises
+the synthetic suite and coverage threshold, while a second job downloads the
+public NCI bundle, verifies both registered SHA-256 hashes, and requires the
+canonical baseline test to run rather than skip.
 
 The baseline checks verify the canonical data SHA-256, 3,504 source rows,
 unique/nonmissing `HHID`, deterministic sorting, required fields, 50 replicate

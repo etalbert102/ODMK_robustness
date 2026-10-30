@@ -21,8 +21,9 @@ from odmk.validation import (
 )
 
 
-def main() -> None:
-    root = project_root()
+def parse_args(root: Path) -> argparse.Namespace:
+    """Parse production paths and the explicit approval confirmation flag."""
+
     parser = argparse.ArgumentParser(
         description="Run all 16 registered ODMK cells after every approval gate passes."
     )
@@ -55,7 +56,11 @@ def main() -> None:
         action="store_true",
         help="Explicitly confirm that recorded COS and researcher approvals are current.",
     )
-    args = parser.parse_args()
+    return parser.parse_args()
+
+
+def execute_registered_multiverse(args: argparse.Namespace, *, root: Path) -> int:
+    """Execute the gated workflow and atomically publish its four artifacts."""
 
     # The approval and clean-worktree checks deliberately occur before source
     # data are opened or any registered effect can be calculated.
@@ -120,7 +125,14 @@ def main() -> None:
             },
         )
         write_json(staging / "run_metadata.json", metadata)
-    print(f"Completed {len(results)} registered cells in {args.output_dir}")
+    return len(results)
+
+
+def main() -> None:
+    root = project_root()
+    args = parse_args(root)
+    completed = execute_registered_multiverse(args, root=root)
+    print(f"Completed {completed} registered cells in {args.output_dir}")
 
 
 if __name__ == "__main__":

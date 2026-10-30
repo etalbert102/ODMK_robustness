@@ -16,7 +16,7 @@ baseline:
 	$(PYTHON) src/run_registered_baseline.py
 
 test:
-	$(PYTHON) -m pytest
+	$(PYTHON) -m pytest --cov=odmk --cov=run_multiverse --cov-branch --cov-report=term-missing
 
 verify-code: environment manifest test
 

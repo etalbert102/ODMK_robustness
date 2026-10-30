@@ -31,6 +31,9 @@ for COS review, but production execution remains locked.
 - Tests cover registry structure, outcome scoring, routing, race definitions,
   approval failures, data-scope protection, failed-cell retention, inferential
   consistency, and transactional output publication.
+- The suite enforces at least 80% branch-aware coverage. CI separately acquires
+  the public HINTS file, verifies its checksums, and requires the canonical
+  baseline regression test.
 
 ## Deliberately not completed
 

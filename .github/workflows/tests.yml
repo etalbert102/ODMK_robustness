@@ -22,4 +22,32 @@ jobs:
           python -m pip install -r requirements-lock.txt
           python -m pip install -e . --no-deps
       - name: Run synthetic and repository tests
-        run: python -m pytest
+        run: make test
+
+  canonical-baseline:
+    runs-on: ubuntu-latest
+    env:
+      ODMK_REQUIRE_CANONICAL_DATA: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14.4"
+          cache: pip
+          cache-dependency-path: requirements-lock.txt
+      - name: Install locked environment
+        run: |
+          python -m pip install -r requirements-lock.txt
+          python -m pip install -e . --no-deps
+      - name: Acquire and verify canonical public data
+        run: |
+          mkdir -p sources data_raw
+          curl -L --fail --retry 3 \
+            'https://hints.cancer.gov/dataset/HINTS-5_Cycle2_STATA_20240507.zip' \
+            -o sources/HINTS5_Cycle2_STATA_20240507.zip
+          echo 'f204a161868056e243a3583ec343e3f4e4eb0b430a100e4d0e61996551a8b6ea  sources/HINTS5_Cycle2_STATA_20240507.zip' | sha256sum -c -
+          unzip -j sources/HINTS5_Cycle2_STATA_20240507.zip \
+            'hints5_cycle2_public.dta' -d data_raw
+          echo 'a727f1b7a56f293dc2212bb9cc8705cacdc4e57d6d8e5505012b713ecfd1531f  data_raw/hints5_cycle2_public.dta' | sha256sum -c -
+      - name: Reproduce the registered canonical baseline
+        run: python -m pytest -q tests/test_real_baseline.py

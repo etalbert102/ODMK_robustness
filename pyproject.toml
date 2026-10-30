@@ -17,6 +17,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
   "pytest==9.0.3",
+  "pytest-cov==7.1.0",
 ]
 
 [tool.setuptools.packages.find]
@@ -25,3 +26,7 @@ where = ["src"]
 [tool.pytest.ini_options]
 addopts = "-ra --strict-markers"
 testpaths = ["tests"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
