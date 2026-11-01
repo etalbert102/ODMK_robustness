@@ -27,7 +27,9 @@ results from HINTS.
 5. `src/odmk/engine.py` — runs one analysis and controls which analyses are
    allowed before and after approval.
 6. `src/odmk/validation.py` — checks the reproduced baseline and result files.
-7. `src/run_multiverse.py` — approval gates and end-to-end production order.
+7. `src/odmk/reporting.py` — creates the registered 4 by 4 display and coverage
+   diagnostics.
+8. `src/run_multiverse.py` — approval gates and end-to-end production order.
 
 ## Frozen choices and their implementations
 
@@ -55,7 +57,8 @@ that each JK1/Taylor pair has identical means and differences.
 5. reproduce the registered baseline and all five published Table 2 means;
 6. run all 16 registered combinations;
 7. check every result against the prespecified 16-row analysis list; and
-8. write the complete result set and run record together.
+8. create the registered display and completion/coverage reports; and
+9. write the complete result set and run record together.
 
 The approval checks occur before the source data are opened. The baseline checks
 occur before any alternative comparison is calculated.

@@ -54,6 +54,21 @@ only for complete verification and is otherwise null.
 The run-level record also includes Python and package versions, AI use, approval
 information, whether Git had uncommitted changes, and the UTC execution time.
 
+## Reviewer-facing reports
+
+An approved run also writes:
+
+- `specification_table.md`, the registered 4 by 4 display of all 16 Asian-minus-
+  White differences and confidence intervals;
+- `item_completion_distribution.csv`, the weighted distribution of zero through
+  seven valid PPPCQ items under each eligibility rule, overall and for the
+  registered focal-group definitions; and
+- `scoring_coverage.csv`, the unweighted and weighted coverage of the 7-of-7 and
+  at-least-4-of-7 scoring rules for the same samples and groups.
+
+Failed analyses remain visible in the 4 by 4 display with their registered ID
+and failure reason.
+
 The results file is written only by an approved production run. Pre-approval
 baseline output uses the same fields but contains only `ODMK-01`. Each complete
 file set is written in a temporary directory and moved into place together, so

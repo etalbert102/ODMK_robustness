@@ -3,6 +3,7 @@ from pathlib import Path
 
 import pytest
 
+from odmk.constants import REPLICATE_WEIGHTS
 from odmk.data import derive_analysis_fields, read_canonical_hints, validate_canonical_structure
 from odmk.engine import run_manifest
 from odmk.registry import build_manifest, load_registry
@@ -33,3 +34,9 @@ def test_canonical_registered_baseline_when_data_are_available() -> None:
     changed.loc[changed["raceethn5"].eq(1), "pppcq_complete7"] += 0.1
     with pytest.raises(ODMKError, match="mean failed"):
         validate_published_table2_anchors(changed)
+
+    changed_replicates = derived.copy()
+    for column in REPLICATE_WEIGHTS:
+        changed_replicates[column] = changed_replicates["person_finwt0"]
+    with pytest.raises(ODMKError, match="se failed"):
+        validate_published_table2_anchors(changed_replicates)

@@ -12,6 +12,8 @@ import yaml
 from .constants import (
     DIMENSION_ORDER,
     EXPECTED_DATA_SHA256,
+    FROZEN_BASELINE_CELL,
+    FROZEN_DIMENSION_OPTIONS,
     FROZEN_REGISTRY_STATUS,
     POINT_ESTIMATE_DIMENSIONS,
     REGISTRY_REVISION,
@@ -44,8 +46,17 @@ def validate_registry(registry: dict[str, Any]) -> None:
     for name in DIMENSION_ORDER:
         definition = dimensions[name]
         options = definition.get("options", {})
-        if len(options) != 2 or definition.get("baseline") not in options:
-            raise RegistryError(f"{name} must have two options including its baseline")
+        expected_options = FROZEN_DIMENSION_OPTIONS[name]
+        if tuple(options) != expected_options:
+            raise RegistryError(
+                f"{name} options must equal the frozen revision-{REGISTRY_REVISION} choices: "
+                f"{expected_options}"
+            )
+        expected_baseline = FROZEN_BASELINE_CELL[name]
+        if definition.get("baseline") != expected_baseline:
+            raise RegistryError(
+                f"{name} baseline must equal the frozen choice {expected_baseline!r}"
+            )
     construction = registry.get("cell_construction", {})
     if tuple(construction.get("order", ())) != DIMENSION_ORDER:
         raise RegistryError("Cell-construction order differs from the dimension order")
@@ -55,6 +66,10 @@ def validate_registry(registry: dict[str, Any]) -> None:
         raise RegistryError("Registry must specify eight point-estimate constructions")
     if not construction.get("full_factorial"):
         raise RegistryError("Registry must request a full factorial")
+    if construction.get("baseline_cell") != FROZEN_BASELINE_CELL:
+        raise RegistryError(
+            f"Baseline cell must equal the frozen revision-{REGISTRY_REVISION} baseline"
+        )
 
 
 def build_manifest(registry: dict[str, Any]) -> pd.DataFrame:

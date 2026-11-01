@@ -12,7 +12,9 @@ from scipy import stats
 from .constants import (
     DIMENSION_ORDER,
     FOCAL_TERM,
+    JK1_COEFFICIENT,
     JK1_DF,
+    REPLICATE_WEIGHTS,
     REGISTRY_REVISION,
     RESULT_COLUMNS,
 )
@@ -260,45 +262,71 @@ def validate_full_results(
 
 
 def validate_published_table2_anchors(df: pd.DataFrame) -> dict[str, object]:
-    """Check the published five-group baseline before any alternatives run."""
+    """Check all published five-group means, JK1 SEs, and intervals."""
 
-    expected_means = {
-        1: 3.45,
-        2: 3.49,
-        3: 3.27,
-        4: 3.11,
-        5: 3.33,
+    expected = {
+        1: {"mean": 3.45, "se": 0.02, "ci_low": 3.39, "ci_high": 3.49},
+        2: {"mean": 3.49, "se": 0.05, "ci_low": 3.38, "ci_high": 3.59},
+        3: {"mean": 3.27, "se": 0.04, "ci_low": 3.17, "ci_high": 3.37},
+        4: {"mean": 3.11, "se": 0.10, "ci_low": 2.90, "ci_high": 3.33},
+        5: {"mean": 3.33, "se": 0.20, "ci_low": 2.91, "ci_high": 3.75},
     }
     analytic = (
         df["content_confirmed_module"]
         & df["pppcq_complete7"].notna()
-        & df["raceethn5"].isin(expected_means)
+        & df["raceethn5"].isin(expected)
     )
     analytic_n = int(analytic.sum())
     if analytic_n != 2611:
         raise ODMKError(f"Published Table 2 analytic N changed: {analytic_n} != 2611")
 
-    observed_means: dict[str, float] = {}
-    for code, expected in expected_means.items():
-        domain = analytic & df["raceethn5"].eq(code)
-        denominator = float(df.loc[domain, "person_finwt0"].sum())
+    display_tolerance = 0.011
+    critical = float(stats.t.ppf(0.975, JK1_DF))
+    outcome = df["pppcq_complete7"].to_numpy(float)
+    observed_groups: dict[str, dict[str, float]] = {}
+    for code, published in expected.items():
+        domain = (analytic & df["raceethn5"].eq(code)).to_numpy(bool)
+        full_weights = df["person_finwt0"].to_numpy(float)
+        denominator = float(full_weights[domain].sum())
         if not math.isfinite(denominator) or denominator <= 0:
             raise ODMKError(f"Published Table 2 race code {code} has no weighted denominator")
-        observed = float(
-            (df.loc[domain, "person_finwt0"] * df.loc[domain, "pppcq_complete7"]).sum()
-            / denominator
-        )
-        if abs(observed - expected) > 0.011:
-            raise ODMKError(
-                f"Published Table 2 mean failed for race code {code}: "
-                f"{observed:.6f} vs {expected:.2f}"
+        mean = float((full_weights[domain] * outcome[domain]).sum() / denominator)
+        replicate_means = []
+        for column in REPLICATE_WEIGHTS:
+            replicate_weights = df[column].to_numpy(float)
+            replicate_denominator = float(replicate_weights[domain].sum())
+            if not math.isfinite(replicate_denominator) or replicate_denominator <= 0:
+                raise ODMKError(
+                    f"Published Table 2 race code {code} has an invalid replicate denominator"
+                )
+            replicate_means.append(
+                float(
+                    (replicate_weights[domain] * outcome[domain]).sum()
+                    / replicate_denominator
+                )
             )
-        observed_means[str(code)] = observed
+        variance = JK1_COEFFICIENT * float(
+            np.sum((np.asarray(replicate_means) - mean) ** 2)
+        )
+        standard_error = math.sqrt(variance)
+        observed = {
+            "mean": mean,
+            "se": standard_error,
+            "ci_low": mean - critical * standard_error,
+            "ci_high": mean + critical * standard_error,
+        }
+        for statistic, published_value in published.items():
+            if abs(observed[statistic] - published_value) > display_tolerance:
+                raise ODMKError(
+                    f"Published Table 2 {statistic} failed for race code {code}: "
+                    f"{observed[statistic]:.6f} vs {published_value:.2f}"
+                )
+        observed_groups[str(code)] = observed
     return {
         "all_checks_pass": True,
         "analytic_n_all_five_groups": analytic_n,
-        "weighted_means_by_raceethn5": observed_means,
-        "display_tolerance": 0.011,
+        "jk1_by_raceethn5": observed_groups,
+        "display_tolerance": display_tolerance,
     }
 
 

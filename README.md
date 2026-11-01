@@ -206,7 +206,9 @@ approval. Before the command calculates any alternative, it must reproduce the
 frozen baseline,
 `N = 2,611`, and all five published Table 2 group means. It then writes all 16
 registered analyses, including a row and explanation for any failure, under
-`outputs/multiverse/`. Final validation also requires every result row to
+`outputs/multiverse/`. The same output set includes the registered 4 by 4
+specification display and the item-completion and scoring-coverage diagnostics.
+Final validation also requires every result row to
 match its prespecified ID and options exactly. All output files are
 built in a temporary directory and moved into place together, so an interrupted
 write cannot mix files from different runs. Output destinations must be inside

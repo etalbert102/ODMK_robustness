@@ -124,7 +124,8 @@ verifies:
 - the seven-item PPPCQ range;
 - official `RaceEthn5` frequencies;
 - focal analytic `N = 2,611`; and
-- agreement with all five published Table 2 means and the focal JK1 uncertainty;
+- agreement with all five published Table 2 means, JK1 standard errors, and
+  confidence intervals, plus the focal direct-contrast uncertainty;
 - revision 7 registry structure and the 16-cell Cartesian product;
 - routing and scoring-coverage anchors;
 - official and inclusive Asian membership and focal-group disjointness; and

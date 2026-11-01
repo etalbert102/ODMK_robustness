@@ -15,6 +15,8 @@ production execution remains locked.
 - a retained row and explanation for any failed analysis, with no substitution
   after results are seen;
 - stable CSV result files and JSON records describing each run;
+- the registered 4 by 4 result display and item-completion and scoring-coverage
+  diagnostics for reviewer use;
 - required COS and researcher approvals, explicit command-line confirmation,
   the approved registry fingerprint, and no uncommitted Git changes; and
 - all output files written together, with safeguards against replacing files

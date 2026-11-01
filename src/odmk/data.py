@@ -97,12 +97,18 @@ def derive_analysis_fields(raw: pd.DataFrame) -> pd.DataFrame:
     df["pppcq_atleast4"] = mean_available.where(df["pcc_valid_item_count"].ge(4))
 
     # Sample construction: one rule uses the recorded visit response only; the
-    # other also recognizes an answered follow-up as evidence that the person
-    # reached the communication module.
+    # other also recognizes an answered follow-up when the routing response is
+    # explicitly missing. A recorded zero is never overridden by follow-up
+    # content.
     df["recent_provider_visit"] = df["freqgoprovider"].isin((1, 2, 3, 4, 5, 6))
+    df["provider_visit_response_missing"] = df["freqgoprovider"].eq(-9)
     df["communication_followup_observed"] = df["pcc_valid_item_count"].gt(0)
     df["content_confirmed_module"] = (
-        df["recent_provider_visit"] | df["communication_followup_observed"]
+        df["recent_provider_visit"]
+        | (
+            df["provider_visit_response_missing"]
+            & df["communication_followup_observed"]
+        )
     )
 
     # Group construction: White remains the official mutually exclusive group

@@ -39,6 +39,31 @@ DIMENSION_ORDER = (
     VARIANCE_DIMENSION,
 )
 
+# Exact revision-7 analysis choices. These constants prevent a modified YAML
+# file from relabeling an alternative as the published baseline before the
+# baseline-only runner opens respondent data.
+FROZEN_DIMENSION_OPTIONS = {
+    "d01_analytic_sample": (
+        "content_confirmed_module",
+        "observed_positive_filter_only",
+    ),
+    "d03_outcome_construction": (
+        "require_7_of_7_valid_items",
+        "require_at_least_4_of_7_valid_items",
+    ),
+    "d04_main_predictor_construction": (
+        "official_mutually_exclusive_raceethn5",
+        "inclusive_nonhispanic_any_asian_identification",
+    ),
+    "d08_variance_estimation": (
+        "official_jk1_replicate_weights",
+        "taylor_linearization",
+    ),
+}
+FROZEN_BASELINE_CELL = {
+    name: options[0] for name, options in FROZEN_DIMENSION_OPTIONS.items()
+}
+
 RESULT_COLUMNS = (
     "paper_id",
     "registry_revision",

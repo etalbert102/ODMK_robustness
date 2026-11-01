@@ -31,5 +31,7 @@ That generated directory is ignored by Git because the files are reproducible
 from the public HINTS source file.
 
 After COS and researcher approval, `make multiverse` will write the 16 registered
-analyses under `outputs/multiverse/`. That command remains blocked while the
-approval record in `config/execution.yaml` is pending.
+analyses under `outputs/multiverse/`, together with the 4 by 4 specification
+table, item-completion distribution, scoring-coverage table, validation record,
+and run metadata. That command remains blocked while the approval record in
+`config/execution.yaml` is pending.

@@ -2,7 +2,12 @@ import numpy as np
 import pytest
 
 from odmk.constants import PCC_ITEMS, REPLICATE_WEIGHTS
-from odmk.data import cell_arrays, read_canonical_hints, validate_source
+from odmk.data import (
+    cell_arrays,
+    derive_analysis_fields,
+    read_canonical_hints,
+    validate_source,
+)
 from odmk.exceptions import DataValidationError
 from odmk.registry import build_manifest, load_registry
 from odmk.utils import project_root
@@ -25,6 +30,18 @@ def test_content_confirmation_retains_answered_followup_with_missing_filter(synt
     repaired = ~df["recent_provider_visit"] & df["communication_followup_observed"]
     assert repaired.any()
     assert df.loc[repaired, "content_confirmed_module"].all()
+
+
+def test_content_confirmation_does_not_override_recorded_zero(synthetic_raw) -> None:
+    frame = synthetic_raw.copy()
+    frame.loc[0, "freqgoprovider"] = 0
+
+    derived = derive_analysis_fields(frame)
+
+    assert derived.loc[0, "communication_followup_observed"]
+    assert not derived.loc[0, "recent_provider_visit"]
+    assert not derived.loc[0, "provider_visit_response_missing"]
+    assert not derived.loc[0, "content_confirmed_module"]
 
 
 def test_inclusive_asian_adds_multiracial_without_changing_white(synthetic_derived) -> None:

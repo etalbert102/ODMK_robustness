@@ -39,6 +39,11 @@ each version, producing 16 result rows.
 Other modules read these rules from their authoritative location rather than
 guessing them from labels, row order, or prose.
 
+Before respondent data are opened, the registry loader also requires the exact
+revision-7 option names, each dimension's published-baseline choice, and the
+complete four-part baseline cell. A changed alternative cannot be relabeled as
+the baseline-only analysis.
+
 In code, `POINT_ESTIMATE_DIMENSIONS` names d01, d03, and d04 explicitly. The
 d08 standard-error choice is stored separately because it must not change
 either weighted group mean or their difference. The ID for each comparison is
@@ -85,6 +90,9 @@ or standard-error method after seeing a failure.
 Each run first writes its complete file set to a temporary directory. It
 replaces the prior output only after every file is written. If writing fails,
 the earlier complete output remains intact.
+An approved run includes the 16-row results, the 4 by 4 specification display,
+and the item-completion and scoring-coverage diagnostics promised in the
+proposal.
 The destination must be below the repository's `outputs/` directory. The
 runner refuses to replace an existing directory unless its ownership marker
 shows that the directory was created by an earlier ODMK run.

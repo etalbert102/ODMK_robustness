@@ -153,14 +153,28 @@ def test_approved_synthetic_orchestration_publishes_complete_artifact_set(
         OUTPUT_OWNERSHIP_MARKER,
         "results.csv",
         "cell_manifest.csv",
+        "specification_table.md",
+        "item_completion_distribution.csv",
+        "scoring_coverage.csv",
         "validation.json",
         "run_metadata.json",
     }
     results = pd.read_csv(arguments.output_dir / "results.csv")
     manifest = pd.read_csv(arguments.output_dir / "cell_manifest.csv")
+    item_completion = pd.read_csv(
+        arguments.output_dir / "item_completion_distribution.csv"
+    )
+    scoring_coverage = pd.read_csv(arguments.output_dir / "scoring_coverage.csv")
+    specification_table = (arguments.output_dir / "specification_table.md").read_text()
     metadata = json.loads((arguments.output_dir / "run_metadata.json").read_text())
     assert len(results) == len(manifest) == 16
     assert results["status"].eq("success").all()
+    assert len(item_completion) == 64
+    assert len(scoring_coverage) == 16
+    assert all(
+        specification_id in specification_table
+        for specification_id in results["specification_id"]
+    )
     assert metadata["scope"] == "approved"
     assert metadata["registry_sha256"] == sha256_file(arguments.registry)
     assert metadata["approval"]["cos_status"] == "approved"

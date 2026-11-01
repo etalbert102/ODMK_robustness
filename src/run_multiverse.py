@@ -13,6 +13,12 @@ from odmk.environment import assert_frozen_environment
 from odmk.exceptions import ODMKError
 from odmk.provenance import build_metadata
 from odmk.registry import build_manifest, load_registry
+from odmk.reporting import (
+    build_item_completion_distribution,
+    build_scoring_coverage,
+    build_specification_display,
+    specification_display_markdown,
+)
 from odmk.utils import project_root, sha256_file, staged_output_directory, write_json
 from odmk.validation import (
     validate_full_results,
@@ -60,7 +66,7 @@ def parse_args(root: Path) -> argparse.Namespace:
 
 
 def execute_registered_multiverse(args: argparse.Namespace, *, root: Path) -> int:
-    """Execute the gated workflow and atomically publish its four artifacts."""
+    """Execute the gated workflow and atomically publish its result artifacts."""
 
     # 1. Freeze the instructions and verify approval before opening source data
     # or calculating any registered effect.
@@ -103,6 +109,9 @@ def execute_registered_multiverse(args: argparse.Namespace, *, root: Path) -> in
         expected_source_hash=data_hash,
         expected_taylor_df=int(structure["design_df"]),
     )
+    specification_display = build_specification_display(results)
+    item_completion = build_item_completion_distribution(derived)
+    scoring_coverage = build_scoring_coverage(derived)
     metadata = build_metadata(
         root=root,
         registry=registry,
@@ -116,6 +125,11 @@ def execute_registered_multiverse(args: argparse.Namespace, *, root: Path) -> in
     with staged_output_directory(args.output_dir, allowed_root=root / "outputs") as staging:
         results.to_csv(staging / "results.csv", index=False)
         manifest.to_csv(staging / "cell_manifest.csv", index=False)
+        (staging / "specification_table.md").write_text(
+            specification_display_markdown(specification_display), encoding="utf-8"
+        )
+        item_completion.to_csv(staging / "item_completion_distribution.csv", index=False)
+        scoring_coverage.to_csv(staging / "scoring_coverage.csv", index=False)
         write_json(
             staging / "validation.json",
             {
