@@ -25,6 +25,8 @@ synthetic data, but no alternative specification has been run on HINTS data.
 - **Reproduce the published baseline:** follow
   [Set up and verify](#set-up-and-verify-the-pre-approval-repository) and
   [`data_access.md`](data_access.md).
+- **Cross-check the baseline independently in R:** follow
+  [Independent R baseline verification](#independent-r-baseline-verification).
 - **Run the approved multiverse:** follow
   [Approval-gated production run](#approval-gated-production-run) only after COS
   and researcher approval are recorded.
@@ -37,6 +39,7 @@ synthetic data, but no alternative specification has been run on HINTS data.
 - [Repository artifacts](#repository-artifacts)
 - [Authoritative code and directory structure](#which-code-is-authoritative)
 - [Set up and verify](#set-up-and-verify-the-pre-approval-repository)
+- [Independent R baseline verification](#independent-r-baseline-verification)
 - [Approval-gated production run](#approval-gated-production-run)
 - [Troubleshooting](#troubleshooting)
 - [Environment files](#environment-files)
@@ -140,6 +143,7 @@ that are not well supported for this measure.
 - [`docs/analysis_contract.md`](docs/analysis_contract.md) — ownership rules and execution boundary.
 - [`docs/survey_estimators.md`](docs/survey_estimators.md) — exact JK1 and Taylor formulas.
 - [`docs/output_schema.md`](docs/output_schema.md) — exact result, metadata, and reviewer-report fields.
+- [`verification/independent_r_baseline.R`](verification/independent_r_baseline.R) — independent baseline-only reconstruction with R `survey`.
 - [`sources/source_manifest.csv`](sources/source_manifest.csv) — source URLs, history, and checksums.
 
 ## Which code is authoritative?
@@ -160,8 +164,9 @@ src/odmk/validation.py ──→ results and validation records
 
 `src/run_registered_baseline.py` runs only the registered baseline through that
 path. `src/run_multiverse.py` is the approval-gated entry point for all 16
-cells. There is no second executable implementation: the frozen registry and
-`src/odmk/` own all active analysis behavior.
+cells. The frozen registry and `src/odmk/` remain the only implementation of the
+multiverse. The separate R script reconstructs only the published baseline for
+cross-language verification and cannot run a robustness alternative.
 
 ## Directory structure
 
@@ -174,6 +179,7 @@ ODMK_robustness/
 ├── sources/           # primary documents, source ledger, and search-aid text
 ├── src/odmk/          # reusable analysis package
 ├── tests/             # synthetic unit tests and optional real-baseline test
+├── verification/      # independent R reconstruction of the published baseline
 ├── submission/        # finalized submission package and checksum
 ├── config/execution.yaml
 ├── pyproject.toml
@@ -221,14 +227,32 @@ output files. The optional real-data test is skipped when the
 public-use file is absent, but the `baseline` Make target requires it;
 therefore `make verify-preapproval` is intentionally a data-required command.
 
+## Independent R baseline verification
+
+An optional second implementation reads the Stata file directly and rebuilds
+the published baseline with R's `survey` package. It does not import Python
+derived variables and has no code path for any robustness alternative. Install
+R plus the `digest`, `haven`, and `survey` packages, then run:
+
+```bash
+make verify-r-baseline
+```
+
+The command compares all five group counts, means, JK1 standard errors, and
+intervals, plus the focal contrast and its uncertainty. It writes the R results,
+runtime metadata, 30-row comparison audit, and validation summary under
+`outputs/independent_r_baseline/`. See
+[`verification/README.md`](verification/README.md) for the method and outputs.
+
 Continuous integration runs two sets of checks. The first uses synthetic data
 and enforces the coverage threshold. It also checks active Markdown links,
 basic Markdown hygiene, output-schema completeness, and the documented baseline
 values, as well as source-function docstrings and type annotations. The second
 downloads the public NCI data, verifies both file checksums, runs the same
 baseline command a researcher would run, checks its three output files, and
-requires the real-data baseline test to complete. Third-party GitHub actions are
-pinned to full commit hashes.
+requires the real-data baseline test to complete. It also installs R from the
+runner's package repository and requires the independent 30-check baseline
+comparison to pass. Third-party GitHub actions are pinned to full commit hashes.
 
 The baseline checks verify the exact data-file fingerprint, 3,504 source rows,
 unique and present `HHID` values, stable sorting, required fields, 50 replicate
@@ -279,8 +303,9 @@ The complete engine is tested on synthetic data using the real environment,
 approval, clean-Git, registry-checksum, run-record, and output-writing code.
 Only the real-data reader and real-data baseline checks are replaced. Synthetic
 mode refuses the canonical HINTS file hash, so it cannot bypass the approval
-gate for real data. Independent examples generated with R `survey` 4.5 verify
-both standard-error implementations.
+gate for real data. Independent examples generated with R `survey` verify both
+standard-error implementations, and the separate R baseline reconstructs the
+real-data Table 2 result directly from the canonical Stata file.
 
 ## Troubleshooting
 

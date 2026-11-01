@@ -33,6 +33,9 @@ The preregistered analysis is implemented and ready for Center for Open Science
   group means and their difference.
 - A second R `survey` 4.5 example verifies the JK1 group means, standard errors,
   and their difference.
+- A separate R `survey` implementation reads the canonical Stata file directly
+  and independently reproduces all five published group results and the focal
+  contrast. All 30 R-versus-Python checks agree within `1e-9`.
 - Tests cover registry structure, outcome scoring, routing, race definitions,
   approval failures and clean-Git success, protection against running real data
   as synthetic data, retained failure records, internally consistent statistics,

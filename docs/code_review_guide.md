@@ -31,6 +31,8 @@ code paths without producing robustness results from HINTS.
 7. `src/odmk/reporting.py` — creates the registered 4 by 4 display and coverage
    diagnostics.
 8. `src/run_multiverse.py` — approval gates and end-to-end production order.
+9. `verification/independent_r_baseline.R` — separate, baseline-only
+   reconstruction used to cross-check the Python result.
 
 ## Frozen choices and their implementations
 
@@ -78,6 +80,9 @@ prespecified analysis.
   analysis list, and runs all tests without respondent data.
 - `make verify-preapproval` additionally reproduces the single registered
   baseline from the locally acquired public HINTS file.
+- `make verify-r-baseline` independently reconstructs that published baseline
+  from the Stata file with R `survey` and compares 30 counts and statistics with
+  Python. It cannot run a robustness alternative.
 - `make multiverse` remains blocked until the approval record is complete and
   the approved registry hash is recorded.
 

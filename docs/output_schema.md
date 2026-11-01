@@ -117,3 +117,14 @@ Failed analyses remain visible in the 4 by 4 display with their registered ID
 and failure reason. Each complete output set is built in a temporary directory
 and moved into place together, so partial output is never presented as a
 completed run.
+
+## Independent R baseline output
+
+`make verify-r-baseline` writes a separate baseline-only audit under
+`outputs/independent_r_baseline/`. Its `results.csv` contains five group-mean
+rows and one focal-contrast row. `metadata.csv` records the source fingerprint,
+sample size, R/package versions, JK1 coefficient, and degrees of freedom.
+`comparison.csv` contains the R and Python values, absolute difference,
+tolerance, and status for all 30 checks. `validation.json` records the overall
+status and maximum absolute difference. These files are verification artifacts,
+not multiverse results.

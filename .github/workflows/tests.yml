@@ -39,6 +39,10 @@ jobs:
         run: |
           python -m pip install -r requirements-lock.txt
           python -m pip install -e . --no-deps
+      - name: Install independent R baseline dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y r-base r-cran-digest r-cran-haven r-cran-survey
       - name: Acquire and verify canonical public data
         run: |
           mkdir -p sources data_raw
@@ -57,3 +61,10 @@ jobs:
           test -s outputs/registered_baseline/validation.json
           test -s outputs/registered_baseline/run_metadata.json
           python -m pytest -q tests/test_real_baseline.py
+      - name: Cross-check the baseline independently in R
+        run: |
+          make independent-r-baseline
+          test -s outputs/independent_r_baseline/results.csv
+          test -s outputs/independent_r_baseline/metadata.csv
+          test -s outputs/independent_r_baseline/comparison.csv
+          test -s outputs/independent_r_baseline/validation.json

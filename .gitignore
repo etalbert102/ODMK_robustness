@@ -13,6 +13,7 @@ htmlcov/
 data_raw/
 data_processed/
 outputs/registered_baseline/
+outputs/independent_r_baseline/
 outputs/multiverse/
 
 # Canonical NCI data bundle is publicly reacquirable via data_access.md

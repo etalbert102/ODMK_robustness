@@ -131,6 +131,13 @@ verifies:
 - official and inclusive Asian membership and focal-group disjointness; and
 - the complete Taylor design structure.
 
+`make verify-r-baseline` adds a separate end-to-end check. Its R script reads
+the canonical Stata file directly, rebuilds the baseline score and domain, and
+uses R `survey` with the 50 replicate weights. It compares all five group
+counts, means, standard errors, and intervals, plus the focal contrast and its
+uncertainty, with the Python baseline. All 30 comparisons must agree within
+`1e-9`. The R script contains no robustness alternatives.
+
 The runner selects only the registered baseline cell. These checks therefore
 calculate no nonbaseline group mean or effect.
 

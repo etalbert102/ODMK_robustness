@@ -10,7 +10,12 @@ from odmk.constants import RESULT_COLUMNS
 
 ROOT = Path(__file__).resolve().parents[1]
 ACTIVE_MARKDOWN = sorted(
-    [*ROOT.glob("*.md"), *ROOT.glob("docs/*.md"), *ROOT.glob("sources/*.md")]
+    [
+        *ROOT.glob("*.md"),
+        *ROOT.glob("docs/*.md"),
+        *ROOT.glob("sources/*.md"),
+        *ROOT.glob("verification/*.md"),
+    ]
     + [ROOT / "outputs" / "README.md"]
 )
 MARKDOWN_LINK = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")

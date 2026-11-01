@@ -47,12 +47,19 @@ strata and 100 clusters within those strata, so tests and confidence intervals
 use `100 - 2 = 98` denominator degrees of freedom. No finite-population
 correction is applied because the public-use design does not provide one.
 
-Both implementations are independently checked against frozen output from R
-`survey` 4.5. `tests/reference/jk1_survey_reference.R` checks weighted group
+Both Python estimators are checked against frozen output from R `survey` 4.5.
+`tests/reference/jk1_survey_reference.R` checks weighted group
 means and their direct contrast with 50 combined replicate weights.
 `tests/reference/taylor_survey_reference.R` checks the same quantities in a
-weighted, stratified survey example. R is used only to create these reference
-values and is not required to run the analysis.
+weighted, stratified survey example. These small reference scripts create test
+fixtures; R is not required to run the production multiverse.
+
+The baseline has an additional end-to-end cross-check in
+`verification/independent_r_baseline.R`. That script independently reads the
+canonical Stata file, reconstructs the complete-seven PPPCQ score and baseline
+domain, creates the JK1 replicate design in R `survey`, and estimates all five
+group means through `svyglm`. Its 30 counts and statistics must agree with the
+Python baseline within `1e-9`. The script contains no robustness alternatives.
 
 ## Enforced checks
 

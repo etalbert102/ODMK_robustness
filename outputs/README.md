@@ -30,6 +30,11 @@ under `outputs/registered_baseline/`:
 That generated directory is ignored by Git because the files are reproducible
 from the public HINTS source file.
 
+`make verify-r-baseline` writes a separate independent cross-language check
+under `outputs/independent_r_baseline/`. Its R results, runtime metadata,
+30-row R-versus-Python comparison, and validation summary are also ignored
+because they are reproducible from the public file.
+
 After COS and researcher approval, `make multiverse` will write the 16 registered
 analyses under `outputs/multiverse/`, together with the 4 by 4 specification
 table, item-completion distribution, scoring-coverage table, validation record,

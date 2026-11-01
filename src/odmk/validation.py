@@ -347,6 +347,7 @@ def validate_published_table2_anchors(df: pd.DataFrame) -> dict[str, object]:
         )
         standard_error = math.sqrt(variance)
         observed = {
+            "unweighted_n": int(domain.sum()),
             "mean": mean,
             "se": standard_error,
             "ci_low": mean - critical * standard_error,
