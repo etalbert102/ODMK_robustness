@@ -2,7 +2,8 @@
 
 ## Canonical data release
 
-The baseline uses the public HINTS 5 Cycle 2 Stata bundle currently distributed by the US National Cancer Institute (NCI):
+The baseline uses the public Health Information National Trends Survey (HINTS)
+5 Cycle 2 Stata bundle distributed by the US National Cancer Institute (NCI):
 
 - Data portal: <https://hints.cancer.gov/data/download-data.aspx>
 - Canonical bundle: <https://hints.cancer.gov/dataset/HINTS-5_Cycle2_STATA_20240507.zip>

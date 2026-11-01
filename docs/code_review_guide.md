@@ -6,16 +6,17 @@ snapshots.
 
 ## What the program does
 
-The program reconstructs the published Table 2 comparison, then—only after COS
-and researcher approval—runs the 16 combinations defined in
-`specification_freeze.yaml`. The outcome is always the 1–4 PPPCQ score, and the
-reported difference is always the weighted Asian mean minus the weighted
-non-Hispanic White mean.
+The program reconstructs the published Table 2 comparison, then—only after
+Center for Open Science (COS) and researcher approval—runs the 16 combinations
+defined in `specification_freeze.yaml`. The outcome is always the 1–4 perceived
+patient-provider communication quality (PPPCQ) score, and the reported
+difference is always the weighted Asian mean minus the weighted non-Hispanic
+White mean.
 
-Before approval, real HINTS data may be used only to reproduce the published
-baseline and check that the required variables and survey structure are present.
-Made-up test data exercise all 16 code paths without producing robustness
-results from HINTS.
+Before approval, real Health Information National Trends Survey (HINTS) data
+may be used only to reproduce the published baseline and check that the required
+variables and survey structure are present. Made-up test data exercise all 16
+code paths without producing robustness results from HINTS.
 
 ## Suggested review order
 

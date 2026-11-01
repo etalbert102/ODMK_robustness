@@ -1,7 +1,7 @@
 # Implementation status
 
-The preregistered analysis is implemented and ready for COS review, but
-production execution remains locked.
+The preregistered analysis is implemented and ready for Center for Open Science
+(COS) review, but production execution remains locked.
 
 ## Implemented
 
@@ -36,7 +36,8 @@ production execution remains locked.
 - Tests cover registry structure, outcome scoring, routing, race definitions,
   approval failures and clean-Git success, protection against running real data
   as synthetic data, retained failure records, internally consistent statistics,
-  approval and run records, and safe output writing.
+  approval and run records, safe output writing, active Markdown links,
+  output-schema completeness, and documented baseline values.
 - Tests must cover at least 80% of code paths. Continuous integration separately
   downloads the public HINTS file, verifies its fingerprints, runs the real
   baseline command, checks its output files, and requires the real-data baseline

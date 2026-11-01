@@ -7,8 +7,9 @@ combination of choices.
 
 ## Fixed facts
 
-- The main result is the survey-weighted Asian mean minus the
-  non-Hispanic White mean on the 1–4 PPPCQ scale.
+- The main result is the survey-weighted Asian mean minus the non-Hispanic White
+  mean on the 1–4 perceived patient-provider communication quality (PPPCQ)
+  scale.
 - `PERSON_FINWT0` is used to calculate every weighted mean.
 - Non-Hispanic White is always `RaceEthn5=1`.
 - The seven registered communication items, reverse-scoring rule, and no-

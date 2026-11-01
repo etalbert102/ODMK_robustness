@@ -5,7 +5,7 @@
 - **Paper ID:** ODMK
 - **Paper:** Kim, H.-S., Kim, H. J., and Juon, H.-S. (2021), “Racial/Ethnic Disparities in Patient-Provider Communication and the Role of E-Health Use.”
 - **Source data:** 2018 HINTS 5 Cycle 2 public-use respondent file.
-- **COS-assigned finding:** Table 2 reports lower mean perceived patient-provider communication quality (PPPCQ) among Asian respondents than among non-Hispanic White respondents.
+- **Center for Open Science (COS)-assigned finding:** Table 2 reports lower mean perceived patient-provider communication quality (PPPCQ) among Asian respondents than among non-Hispanic White respondents.
 - **Published values:** Asian mean 3.11 (SE 0.10; 95% CI 2.90–3.33) and non-Hispanic White mean 3.45 (SE 0.02; 95% CI 3.39–3.49).
 
 The COS available-papers sheet quotes these Table 2 values directly. Table 3 Model 1 is therefore not the focal result. Its adjusted Asian coefficient was examined earlier only while the assignment was unresolved and is excluded from registry revision 7.
@@ -24,13 +24,13 @@ Both component means remain required outputs. The direction is fixed so a negati
 
 | Race/ethnicity | Full-file n shown in paper | Published mean (SE) | Published 95% CI | Reconstructed analytic n | Reconstructed mean (SE) | Reconstructed 95% CI |
 |---|---:|---:|---:|---:|---:|---:|
-| Non-Hispanic White | 1,983 | 3.45 (0.02) | 3.39–3.49 | 1,703 | 3.4457 (0.0243) | 3.3968–3.4945 |
+| Non-Hispanic White | 1,983 | 3.45 (0.02) | 3.39–3.49 | 1,703 | 3.4457 (0.0242) | 3.3971–3.4944 |
 | Black | 444 | 3.49 (0.05) | 3.38–3.59 | 360 | 3.4908 (0.0531) | 3.3841–3.5976 |
 | Hispanic | 461 | 3.27 (0.04) | 3.17–3.37 | 337 | 3.2753 (0.0488) | 3.1772–3.3735 |
 | Non-Hispanic Asian | 138 | 3.11 (0.10) | 2.90–3.33 | 105 | 3.1161 (0.1068) | 2.9015–3.3307 |
 | Non-Hispanic Other | 125 | 3.33 (0.20) | 2.91–3.75 | 106 | 3.3367 (0.2090) | 2.9166–3.7567 |
 
-The reconstructed analytic counts total `N = 2,611`, matching the sample size shown in the Table 2 notes for the e-health comparisons. Every PPPCQ group mean and interval matches within display precision.
+The reconstructed analytic counts total `N = 2,611`, matching the sample size shown in the Table 2 notes for the e-health comparisons. Every reconstructed mean, standard error, and interval endpoint is within the baseline validation tolerance of 0.011 from the corresponding displayed value. The White lower interval endpoint is 3.3971, which conventionally rounds to 3.40 rather than the published 3.39; it is therefore a close reconstruction, not an exact display match.
 
 The directly reconstructed Asian-minus-White difference is −0.3296 PPPCQ points (JK1 SE 0.1097; 95% CI −0.5502 to −0.1091; `t(49) = −3.004`, two-sided `p = .0042`). This is a derived reporting quantity, not a statistic printed by the authors.
 

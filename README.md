@@ -1,14 +1,47 @@
 # ODMK bounded-multiverse analysis
 
-This repository rebuilds the COS-assigned Table 2 comparison from the original
-2018 HINTS 5 Cycle 2 public-use data. The comparison asks whether the weighted
-mean rating of patient-provider communication quality (PPPCQ) differs between
-Asian and non-Hispanic White respondents. The repository also implements 16
+This repository rebuilds the Center for Open Science (COS)-assigned Table 2
+comparison from the original 2018 Health Information National Trends Survey
+(HINTS 5 Cycle 2) public-use data. The comparison asks whether the weighted mean
+rating of patient-provider communication quality (PPPCQ) differs between Asian
+and non-Hispanic White respondents. The repository also implements 16
 prespecified versions of that comparison. This is a bounded multiverse: a fixed
 set of reasonable choices is analyzed in every combination.
 
 The published baseline is reproduced. The full engine has been tested with
 synthetic data, but no alternative specification has been run on HINTS data.
+
+## Choose your path
+
+- **Review the concise COS proposal:** open
+  [`ODMK_COS_robustness_proposal.docx`](ODMK_COS_robustness_proposal.docx) or
+  its editable source, [`ODMK_COS_brief_proposal.md`](ODMK_COS_brief_proposal.md).
+- **Review the scientific design:** read [`baseline_analysis.md`](baseline_analysis.md),
+  [`dimension_audit.md`](dimension_audit.md), and
+  [`reviewer_red_team.md`](reviewer_red_team.md).
+- **Review the code:** start with
+  [`docs/code_review_guide.md`](docs/code_review_guide.md), then follow its
+  design-to-code-and-test map.
+- **Reproduce the published baseline:** follow
+  [Set up and verify](#set-up-and-verify-the-pre-approval-repository) and
+  [`data_access.md`](data_access.md).
+- **Run the approved multiverse:** follow
+  [Approval-gated production run](#approval-gated-production-run) only after COS
+  and researcher approval are recorded.
+
+## Contents
+
+- [Code reviewer quick start](#code-reviewer-quick-start)
+- [Quick result](#quick-result)
+- [Proposed analysis set](#proposed-analysis-set)
+- [Repository artifacts](#repository-artifacts)
+- [Authoritative code and directory structure](#which-code-is-authoritative)
+- [Set up and verify](#set-up-and-verify-the-pre-approval-repository)
+- [Approval-gated production run](#approval-gated-production-run)
+- [Troubleshooting](#troubleshooting)
+- [Environment files](#environment-files)
+- [Source notes](#source-notes)
+- [Interpretation guardrails](#interpretation-guardrails)
 
 ## Code reviewer quick start
 
@@ -41,7 +74,12 @@ Four terms recur in the code and documentation:
 
 ## Quick result
 
-Using all seven communication items, official `RaceEthn5`, the final-person weight, and 50 JK1 replicate weights gives `N = 2,611` across the five published race/ethnicity groups. The reconstructed non-Hispanic Asian mean is 3.1161 and the non-Hispanic White mean is 3.4457, reproducing the article's displayed 3.11 and 3.45. Their derived direct difference is −0.3296 (SE 0.1097; 95% CI −0.5502 to −0.1091).
+Using all seven communication items, official `RaceEthn5`, the final-person
+weight, and 50 delete-one jackknife (JK1) replicate weights gives `N = 2,611`
+across the five published race/ethnicity groups. The reconstructed
+non-Hispanic Asian mean is 3.1161 and the non-Hispanic White mean is 3.4457,
+closely reproducing the article's displayed 3.11 and 3.45. Their derived direct
+difference is −0.3296 (SE 0.1097; 95% CI −0.5502 to −0.1091).
 
 The COS sourcing sheet assigns the Table 2 means and confidence intervals.
 Table 3 Model 1 is not the assigned result and is not part of registry revision
@@ -61,7 +99,7 @@ the uncertainty around each comparison in two accepted ways:
 - **d04 Asian-group definition:** use the official mutually exclusive category,
   or include any non-Hispanic respondent who selected an Asian identity; and
 - **d08 standard errors:** use the official JK1 replicate weights, or Taylor
-  linearization.
+  linearization based on the released strata and clusters.
 
 Every analysis keeps the same seven communication topics, 1–4 score, White
 comparison group, final population weight (`PERSON_FINWT0`), national target
@@ -72,7 +110,9 @@ A fifth is not added here because the remaining candidates would change the
 question or target population, repeat an included choice, or add assumptions
 that are not well supported for this measure.
 
-## Deliverables
+## Repository artifacts
+
+### COS submission and preregistration
 
 - [`ODMK_COS_robustness_proposal.docx`](ODMK_COS_robustness_proposal.docx) — primary concise COS submission file.
 - [`ODMK_COS_brief_proposal.md`](ODMK_COS_brief_proposal.md) — editable Markdown source for the concise submission.
@@ -81,11 +121,17 @@ that are not well supported for this measure.
 - [`ODMK_robustness_proposal.docx`](ODMK_robustness_proposal.docx) — formatted copy of the longer methodological record.
 - [`ODMK_preregistration.docx`](ODMK_preregistration.docx) — completed COS preregistration draft for the post-proposal review workflow.
 - [`preregistration_template.docx`](preregistration_template.docx) — unfilled source template retained to document its origin.
+
+### Scientific record
+
 - [`baseline_analysis.md`](baseline_analysis.md) — assigned result, reconstruction, source inferences, and unresolved ambiguities.
 - [`data_access.md`](data_access.md) — public acquisition instructions and checksums.
 - [`dimension_audit.md`](dimension_audit.md) — d01–d09 audit.
 - [`reviewer_red_team.md`](reviewer_red_team.md) — skeptical review of the revised design.
 - [`DAAF_review.md`](DAAF_review.md) — improvements adopted after review against DAAF 3.0.2.
+
+### Implementation and provenance
+
 - [`specification_freeze.yaml`](specification_freeze.yaml) — revision 7 machine-readable registry.
 - [`src/odmk/`](src/odmk/) — reusable Python package implementing data construction, both survey estimators, execution gates, and validation.
 - [`src/run_registered_baseline.py`](src/run_registered_baseline.py) — baseline-only entry point through the registered package.
@@ -93,6 +139,7 @@ that are not well supported for this measure.
 - [`manifests/specification_manifest.csv`](manifests/specification_manifest.csv) — repeatable 16-row analysis list.
 - [`docs/analysis_contract.md`](docs/analysis_contract.md) — ownership rules and execution boundary.
 - [`docs/survey_estimators.md`](docs/survey_estimators.md) — exact JK1 and Taylor formulas.
+- [`docs/output_schema.md`](docs/output_schema.md) — exact result, metadata, and reviewer-report fields.
 - [`sources/source_manifest.csv`](sources/source_manifest.csv) — source URLs, history, and checksums.
 
 ## Which code is authoritative?
@@ -141,7 +188,12 @@ ODMK_robustness/
 
 ## Set up and verify the pre-approval repository
 
-Python 3.14.4 was used for the archived baseline run. From this directory:
+### Prerequisites
+
+Use a POSIX-style shell with Git, Make, and Python 3.14.4. The registered checks
+reject a different Python version. `curl`, `unzip`, and either `shasum` or
+`sha256sum` are needed only to reacquire and verify the public data. From this
+directory:
 
 ```bash
 python3 -m venv .venv
@@ -152,9 +204,9 @@ make verify-code
 
 `make verify-code` needs no respondent data. It checks the exact software
 versions, regenerates the same 16-row analysis list, and runs the synthetic and
-repository tests. At least 80% of code paths must be covered by tests. To run
-the baseline and
-structural checks, first follow the acquisition steps in
+repository tests. A successful run reports that every test passed and total
+branch-aware coverage is at least 80%. To run the baseline and structural
+checks, first follow the acquisition steps in
 [`data_access.md`](data_access.md) so that the unmodified file is at
 `data_raw/hints5_cycle2_public.dta`, then run:
 
@@ -170,10 +222,12 @@ public-use file is absent, but the `baseline` Make target requires it;
 therefore `make verify-preapproval` is intentionally a data-required command.
 
 Continuous integration runs two sets of checks. The first uses synthetic data
-and enforces the coverage threshold. The second downloads the public NCI data,
-verifies both file checksums, runs the same baseline command a researcher would
-run, checks its three output files, and requires the real-data baseline test to
-complete. Third-party GitHub actions are pinned to full commit hashes.
+and enforces the coverage threshold. It also checks active Markdown links,
+basic Markdown hygiene, output-schema completeness, and the documented baseline
+values. The second downloads the public NCI data, verifies both file checksums,
+runs the same baseline command a researcher would run, checks its three output
+files, and requires the real-data baseline test to complete. Third-party GitHub
+actions are pinned to full commit hashes.
 
 The baseline checks verify the exact data-file fingerprint, 3,504 source rows,
 unique and present `HHID` values, stable sorting, required fields, 50 replicate
@@ -194,8 +248,13 @@ are pinned in `pyproject.toml` and `requirements_multiverse.txt`. Before a
 production run:
 
 1. record COS and researcher approval in `config/execution.yaml`;
-2. record the unchanged `specification_freeze.yaml` SHA-256 as
-   `approved_registry_sha256` in that file;
+2. calculate the unchanged registry fingerprint with the following command and
+   record its output as `approved_registry_sha256` in that file:
+
+   ```bash
+   python3 -c 'from pathlib import Path; import hashlib; print(hashlib.sha256(Path("specification_freeze.yaml").read_bytes()).hexdigest())'
+   ```
+
 3. commit the approval configuration so the worktree is clean; and
 4. run `make multiverse`.
 
@@ -221,6 +280,28 @@ Only the real-data reader and real-data baseline checks are replaced. Synthetic
 mode refuses the canonical HINTS file hash, so it cannot bypass the approval
 gate for real data. Independent examples generated with R `survey` 4.5 verify
 both standard-error implementations.
+
+## Troubleshooting
+
+- **The environment check rejects Python or a package.** Confirm that
+  `python3 --version` reports 3.14.4, reactivate `.venv`, and rerun `make setup`.
+- **The baseline cannot find the data.** Confirm that the unmodified file is
+  `data_raw/hints5_cycle2_public.dta`; then follow the checksum instructions in
+  [`data_access.md`](data_access.md).
+- **The source-data fingerprint fails.** Remove the incorrect local download,
+  reacquire the canonical bundle, and verify both checksums. Do not bypass the
+  fingerprint check.
+- **The multiverse remains blocked.** Confirm that both approval statuses,
+  dates, the COS approval record, and `approved_registry_sha256` are filled in
+  under `approval` in `config/execution.yaml`. Then commit that file and confirm
+  that `git status --short` prints nothing.
+- **The approved registry fingerprint fails.** Recalculate the fingerprint from
+  the unchanged `specification_freeze.yaml`. If the registry changed after
+  approval, stop and obtain approval for the changed registry rather than
+  replacing the recorded fingerprint.
+- **A registered analysis fails after execution begins.** Do not change its
+  choices. The runner preserves the registered ID and failure reason in
+  `results.csv`; see [`docs/analysis_contract.md`](docs/analysis_contract.md).
 
 ## Environment files
 

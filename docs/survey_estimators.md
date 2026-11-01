@@ -2,7 +2,9 @@
 
 The Python code states each survey formula directly instead of relying on hidden
 software defaults. This lets a reviewer compare the implementation with the
-frozen instructions in `specification_freeze.yaml`.
+frozen instructions in `specification_freeze.yaml`. The two registered methods
+are delete-one jackknife (JK1) replicate-weight inference and Taylor
+linearization.
 
 ## Shared point estimator
 
