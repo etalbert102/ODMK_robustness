@@ -5,39 +5,40 @@ production execution remains locked.
 
 ## Implemented
 
-- deterministic expansion of registry revision 7 into 16 cells and eight
-  point-estimate constructions;
-- canonical-file hashing, schema checks, structural anchors, and design checks;
-- both analytic-sample rules, both scale-completion rules, and both Asian
-  category definitions;
-- final-person weighted group means and the direct Asian-minus-White contrast;
-- official 50-weight JK1 inference and Taylor-linearized inference;
-- explicit records for failed cells without post-result substitutions;
-- stable CSV outputs and JSON run provenance;
-- COS approval, researcher approval, explicit CLI confirmation, and clean-Git
-  production gates, plus an approved-registry checksum gate;
-- transactional publication of each complete output artifact set within the
-  repository output root, with ownership checks before replacement.
+- automatic creation of the same 16 analyses from registry revision 7;
+- checks for the exact source file, required variables, expected sample counts,
+  and survey structure;
+- both eligible-sample rules, both PPPCQ completion rules, and both Asian-group
+  definitions;
+- population-weighted group means and the direct Asian-minus-White difference;
+- official 50-weight JK1 and Taylor standard errors;
+- a retained row and explanation for any failed analysis, with no substitution
+  after results are seen;
+- stable CSV result files and JSON records describing each run;
+- required COS and researcher approvals, explicit command-line confirmation,
+  the approved registry fingerprint, and no uncommitted Git changes; and
+- all output files written together, with safeguards against replacing files
+  that were not created by this program.
 
 ## Verification completed
 
 - The registered production estimator reproduces the Table 2 baseline contrast,
   standard error, sample counts, and group means.
-- Synthetic tests execute all 16 cells and confirm that d08 changes uncertainty
+- Synthetic tests execute all 16 analyses and confirm that d08 changes uncertainty
   only, not point estimates.
 - A hand-calculated two-stratum example verifies the Taylor variance formula.
-- A weighted, stratified domain fixture independently generated with R
-  `survey` 4.5 verifies both Taylor group estimates and the contrast.
-- A combined-replicate-weight fixture independently generated with R `survey`
-  4.5 verifies JK1 group estimates, standard errors, and their direct contrast.
+- An independent example generated with R `survey` 4.5 verifies the Taylor
+  group means and their difference.
+- A second R `survey` 4.5 example verifies the JK1 group means, standard errors,
+  and their difference.
 - Tests cover registry structure, outcome scoring, routing, race definitions,
-  approval failures and clean-worktree success, data-scope protection,
-  failed-cell retention, inferential consistency, real approval/provenance
-  orchestration, and transactional output publication.
-- The suite enforces at least 80% branch-aware coverage. CI separately acquires
-  the public HINTS file, verifies its checksums, executes the actual baseline
-  entry point and artifact publication, and requires the canonical baseline
-  regression test. GitHub actions are commit-pinned.
+  approval failures and clean-Git success, protection against running real data
+  as synthetic data, retained failure records, internally consistent statistics,
+  approval and run records, and safe output writing.
+- Tests must cover at least 80% of code paths. Continuous integration separately
+  downloads the public HINTS file, verifies its fingerprints, runs the real
+  baseline command, checks its output files, and requires the real-data baseline
+  test. GitHub actions are pinned to exact revisions.
 
 ## Deliberately not completed
 

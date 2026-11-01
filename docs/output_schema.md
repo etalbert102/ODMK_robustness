@@ -1,9 +1,9 @@
-# Output schema
+# Output file fields
 
-`outputs/multiverse/results.csv` contains one row per registered cell after an
-approved production run. `manifests/specification_manifest.csv` contains the
-same 16 stable cell identities without results and is safe to generate before
-approval.
+After an approved run, `outputs/multiverse/results.csv` contains one row for each
+of the 16 prespecified analyses. `manifests/specification_manifest.csv` lists
+the same 16 IDs and choices without any results, so it is safe to generate
+before approval.
 
 ## Identity and options
 
@@ -17,17 +17,24 @@ approval.
 - `all_option_labels`, a machine-readable JSON object
 - `focal_term`
 
+`specification_id` identifies one complete analysis, including its
+standard-error method. `point_estimate_id` groups the two rows that use the same
+sample, PPPCQ score, and Asian-group definition but different standard-error
+methods.
+
 ## Status and diagnostics
 
 - `status`: `success` or `failed`
 - `failure_category`
 - `failure_reason`
 
-Failed cells retain their identity and options but have no focal estimates.
-Run validation records how many JK1/Taylor pairs were compared and labels
-point-estimate invariance as `verified`, `partially_verified`, or
-`not_assessed`. The Boolean field is `true` only for complete verification and
-is otherwise null.
+Failed analyses retain their ID and choices but have no main estimates. The
+validation file records how many JK1/Taylor pairs could be compared. It reports
+that point estimates are unchanged only when every comparable pair has the same
+means and Asian-minus-White difference. The status field is `verified` when all
+eight pairs are checked, `partially_verified` when some are checked, and
+`not_assessed` when none can be checked. Its companion Boolean field is `true`
+only for complete verification and is otherwise null.
 
 ## Estimates
 
@@ -35,19 +42,19 @@ is otherwise null.
 - Asian-minus-White difference, standard error, 95% interval, test statistic,
   registered denominator degrees of freedom, and two-sided p-value
 - unweighted Asian and White counts
-- weighted Asian and White denominators
+- sums of the analysis weights for the Asian and White groups
 
-## Provenance
+## Run record
 
 - source-data SHA-256
 - frozen-registry SHA-256
 - registry revision
 - Git commit
 
-Run-level metadata additionally records Python and package versions, AI use,
-approval metadata, dirty-worktree state, and the UTC execution time.
+The run-level record also includes Python and package versions, AI use, approval
+information, whether Git had uncommitted changes, and the UTC execution time.
 
 The results file is written only by an approved production run. Pre-approval
-baseline output uses the same schema but contains only `ODMK-01`. Each complete
-file set is staged and published as a directory so partial output is never
-presented as a completed run.
+baseline output uses the same fields but contains only `ODMK-01`. Each complete
+file set is written in a temporary directory and moved into place together, so
+partial output is never presented as a completed run.

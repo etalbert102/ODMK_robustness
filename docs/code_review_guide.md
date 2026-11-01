@@ -1,8 +1,8 @@
 # Code review guide
 
-This guide traces the frozen analysis choices from the registry to the code and
-tests. It describes the active files at the repository root, not the dated
-submission snapshots.
+This guide shows where each frozen analysis choice is implemented and tested.
+It describes the active files at the repository root, not the dated submission
+snapshots.
 
 ## What the program does
 
@@ -12,18 +12,21 @@ and researcher approval—runs the 16 combinations defined in
 reported difference is always the weighted Asian mean minus the weighted
 non-Hispanic White mean.
 
-Before approval, real HINTS data may be used only for the published baseline and
-structural checks. Synthetic data exercise all 16 code paths without producing
-robustness results from HINTS.
+Before approval, real HINTS data may be used only to reproduce the published
+baseline and check that the required variables and survey structure are present.
+Made-up test data exercise all 16 code paths without producing robustness
+results from HINTS.
 
 ## Suggested review order
 
 1. `specification_freeze.yaml` — scientific choices and fixed features.
-2. `src/odmk/registry.py` — validation and deterministic expansion to 16 rows.
+2. `src/odmk/registry.py` — checks the registry and creates the same 16 rows
+   every time.
 3. `src/odmk/data.py` — source checks and construction of scores and groups.
 4. `src/odmk/estimators.py` — weighted means, JK1, and Taylor formulas.
-5. `src/odmk/engine.py` — one-cell estimation and permitted execution scopes.
-6. `src/odmk/validation.py` — baseline anchors and result consistency checks.
+5. `src/odmk/engine.py` — runs one analysis and controls which analyses are
+   allowed before and after approval.
+6. `src/odmk/validation.py` — checks the reproduced baseline and result files.
 7. `src/run_multiverse.py` — approval gates and end-to-end production order.
 
 ## Frozen choices and their implementations
@@ -44,14 +47,14 @@ that each JK1/Taylor pair has identical means and differences.
 
 `src/run_multiverse.py` performs these steps in order:
 
-1. hash and validate the frozen registry;
+1. fingerprint and check the frozen registry;
 2. verify the exact Python environment;
 3. require recorded COS and researcher approval, explicit command-line
-   confirmation, the approved registry hash, and a clean Git worktree;
+   confirmation, the approved registry fingerprint, and no uncommitted changes;
 4. read and validate the exact public HINTS file;
 5. reproduce the registered baseline and all five published Table 2 means;
 6. run all 16 registered combinations;
-7. validate every result against the frozen manifest; and
+7. check every result against the prespecified 16-row analysis list; and
 8. write the complete result set and run record together.
 
 The approval checks occur before the source data are opened. The baseline checks
@@ -59,16 +62,16 @@ occur before any alternative comparison is calculated.
 
 ## Failure behavior
 
-An expected estimation failure remains in `results.csv` with its registered ID
+An expected calculation failure remains in `results.csv` with its registered ID
 and a reason. The program does not replace it with another sample, score, group
-definition, or standard-error method. A registry, approval, provenance, or
-validation failure stops the run because the requested analysis contract is no
-longer satisfied.
+definition, or standard-error method. A problem with the registry, approval,
+source identity, or result checks stops the run because it no longer matches the
+prespecified analysis.
 
 ## Verification commands
 
-- `make verify-code` checks the environment, regenerates the manifest, and runs
-  all tests without respondent data.
+- `make verify-code` checks the software versions, regenerates the 16-row
+  analysis list, and runs all tests without respondent data.
 - `make verify-preapproval` additionally reproduces the single registered
   baseline from the locally acquired public HINTS file.
 - `make multiverse` remains blocked until the approval record is complete and

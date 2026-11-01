@@ -1,6 +1,11 @@
 # ODMK bounded-multiverse analysis
 
-This repository reconstructs the COS-assigned Table 2 racial/ethnic difference in perceived patient-provider communication quality (PPPCQ) from the original 2018 HINTS 5 Cycle 2 public-use file. It also implements the proposed 16-specification robustness design for the Asian-versus-non-Hispanic-White weighted mean comparison.
+This repository rebuilds the COS-assigned Table 2 comparison from the original
+2018 HINTS 5 Cycle 2 public-use data. The comparison asks whether the weighted
+mean rating of patient-provider communication quality (PPPCQ) differs between
+Asian and non-Hispanic White respondents. The repository also implements 16
+prespecified versions of that comparison. This is a bounded multiverse: a fixed
+set of reasonable choices is analyzed in every combination.
 
 The published baseline is reproduced. The full engine has been tested with
 synthetic data, but no alternative specification has been run on HINTS data.
@@ -26,11 +31,21 @@ choice to its implementation and tests. The single command `make verify-code`
 checks the environment, regenerates the 16-row manifest, and runs the test suite
 without using respondent data.
 
+Four terms recur in the code and documentation:
+
+- **registry:** the frozen YAML file that records the approved choices;
+- **manifest:** the generated 16-row table listing one choice combination per
+  row;
+- **analysis or cell:** one row of that manifest and its result; and
+- **baseline:** the choice combination that most closely reproduces Table 2.
+
 ## Quick result
 
 Using all seven communication items, official `RaceEthn5`, the final-person weight, and 50 JK1 replicate weights gives `N = 2,611` across the five published race/ethnicity groups. The reconstructed non-Hispanic Asian mean is 3.1161 and the non-Hispanic White mean is 3.4457, reproducing the article's displayed 3.11 and 3.45. Their derived direct difference is −0.3296 (SE 0.1097; 95% CI −0.5502 to −0.1091).
 
-The COS sourcing sheet assigns the Table 2 means and confidence intervals. Table 3 Model 1 is not the focal result and is not part of registry revision 7.
+The COS sourcing sheet assigns the Table 2 means and confidence intervals.
+Table 3 Model 1 is not the assigned result and is not part of registry revision
+7.
 
 ## Proposed analysis set
 
@@ -48,20 +63,25 @@ the uncertainty around each comparison in two accepted ways:
 - **d08 standard errors:** use the official JK1 replicate weights, or Taylor
   linearization.
 
-Fixed features include the seven communication domains, the 1–4 outcome scale, the non-Hispanic White reference, `PERSON_FINWT0` point weighting, the national population target, and the Asian-minus-White direction.
+Every analysis keeps the same seven communication topics, 1–4 score, White
+comparison group, final population weight (`PERSON_FINWT0`), national target
+population, and Asian-minus-White direction.
 
-COS treats five dimensions as a target, not a quota. A fifth is not added because covariate adjustment, alternative outcome models, and unweighted analysis would change the Table 2 estimand or population; equivalent weighted regression would be cosmetic; and item-level imputation would overlap d03 while adding weakly anchored assumptions.
+COS asks analysts to consider about five dimensions, but does not require five.
+A fifth is not added here because the remaining candidates would change the
+question or target population, repeat an included choice, or add assumptions
+that are not well supported for this measure.
 
 ## Deliverables
 
 - [`ODMK_COS_robustness_proposal.docx`](ODMK_COS_robustness_proposal.docx) — primary concise COS submission file.
 - [`ODMK_COS_brief_proposal.md`](ODMK_COS_brief_proposal.md) — editable Markdown source for the concise submission.
-- [`ODMK_COS_submission.md`](ODMK_COS_submission.md) — canonical Markdown source for the longer methodological record.
+- [`ODMK_COS_submission.md`](ODMK_COS_submission.md) — main Markdown source for the longer methodological record.
 - [`ODMK_robustness_proposal.md`](ODMK_robustness_proposal.md) — byte-identical compatibility copy retained under the originally requested filename.
 - [`ODMK_robustness_proposal.docx`](ODMK_robustness_proposal.docx) — formatted copy of the longer methodological record.
 - [`ODMK_preregistration.docx`](ODMK_preregistration.docx) — completed COS preregistration draft for the post-proposal review workflow.
-- [`preregistration_template.docx`](preregistration_template.docx) — unfilled source template retained for provenance.
-- [`baseline_analysis.md`](baseline_analysis.md) — focal result, reconstruction, source inferences, and unresolved ambiguities.
+- [`preregistration_template.docx`](preregistration_template.docx) — unfilled source template retained to document its origin.
+- [`baseline_analysis.md`](baseline_analysis.md) — assigned result, reconstruction, source inferences, and unresolved ambiguities.
 - [`data_access.md`](data_access.md) — public acquisition instructions and checksums.
 - [`dimension_audit.md`](dimension_audit.md) — d01–d09 audit.
 - [`reviewer_red_team.md`](reviewer_red_team.md) — skeptical review of the revised design.
@@ -70,10 +90,10 @@ COS treats five dimensions as a target, not a quota. A fifth is not added becaus
 - [`src/odmk/`](src/odmk/) — reusable Python package implementing data construction, both survey estimators, execution gates, and validation.
 - [`src/run_registered_baseline.py`](src/run_registered_baseline.py) — baseline-only entry point through the registered package.
 - [`src/run_multiverse.py`](src/run_multiverse.py) — approval-gated entry point for all 16 registered cells.
-- [`manifests/specification_manifest.csv`](manifests/specification_manifest.csv) — deterministic 16-cell manifest.
+- [`manifests/specification_manifest.csv`](manifests/specification_manifest.csv) — repeatable 16-row analysis list.
 - [`docs/analysis_contract.md`](docs/analysis_contract.md) — ownership rules and execution boundary.
 - [`docs/survey_estimators.md`](docs/survey_estimators.md) — exact JK1 and Taylor formulas.
-- [`sources/source_manifest.csv`](sources/source_manifest.csv) — source URLs, provenance, and checksums.
+- [`sources/source_manifest.csv`](sources/source_manifest.csv) — source URLs, history, and checksums.
 
 ## Which code is authoritative?
 
@@ -82,9 +102,9 @@ The registered production path is:
 ```text
 specification_freeze.yaml
         ↓
-src/odmk/registry.py ──→ deterministic 16-cell manifest
+src/odmk/registry.py ──→ repeatable 16-row analysis list
         ↓
-src/odmk/data.py ──→ registered variables and analytic domains
+src/odmk/data.py ──→ scores, eligibility, and comparison groups
         ↓
 src/odmk/engine.py ──→ src/odmk/estimators.py
         ↓
@@ -102,7 +122,7 @@ cells. There is no second executable implementation: the frozen registry and
 ODMK_robustness/
 ├── data_raw/          # ignored by Git; unmodified public-use respondent file
 ├── docs/              # implementation contract and estimator documentation
-├── manifests/         # generated, deterministic specification manifest
+├── manifests/         # generated 16-row analysis list
 ├── outputs/           # documented legacy QA plus generated baseline/results directories
 ├── sources/           # primary documents, source ledger, and search-aid text
 ├── src/odmk/          # reusable analysis package
@@ -130,10 +150,10 @@ make setup
 make verify-code
 ```
 
-`make verify-code` needs no respondent data: it checks the pinned environment,
-generates the deterministic manifest, and runs the synthetic and repository
-tests. The test target enforces at least 80% branch-aware coverage across the
-active analysis package and production runner. To run the baseline and
+`make verify-code` needs no respondent data. It checks the exact software
+versions, regenerates the same 16-row analysis list, and runs the synthetic and
+repository tests. At least 80% of code paths must be covered by tests. To run
+the baseline and
 structural checks, first follow the acquisition steps in
 [`data_access.md`](data_access.md) so that the unmodified file is at
 `data_raw/hints5_cycle2_public.dta`, then run:
@@ -142,10 +162,10 @@ structural checks, first follow the acquisition steps in
 make verify-preapproval
 ```
 
-The full command repeats the code checks and runs the registered baseline. That
-run validates the source structure, frozen membership anchors, complete survey
-design, focal result, and all five published Table 2 means before publishing a
-baseline artifact set. The optional real-data pytest is skipped when the
+The full command repeats the code checks and runs the registered baseline. It
+checks the source-file structure, expected sample counts, survey design, assigned
+comparison, and all five published Table 2 means before writing the baseline
+output files. The optional real-data test is skipped when the
 public-use file is absent, but the `baseline` Make target requires it;
 therefore `make verify-preapproval` is intentionally a data-required command.
 
@@ -155,10 +175,10 @@ verifies both file checksums, runs the same baseline command a researcher would
 run, checks its three output files, and requires the real-data baseline test to
 complete. Third-party GitHub actions are pinned to full commit hashes.
 
-The baseline checks verify the canonical data SHA-256, 3,504 source rows,
-unique/nonmissing `HHID`, deterministic sorting, required fields, 50 replicate
-weights, weight validity, PPPCQ range, exact `RaceEthn5` frequencies, focal
-`N = 2,611`, all five published Table 2 means, and the focal JK1 uncertainty.
+The baseline checks verify the exact data-file fingerprint, 3,504 source rows,
+unique and present `HHID` values, stable sorting, required fields, 50 replicate
+weights, valid weights, PPPCQ range, exact `RaceEthn5` counts, the 2,611-person
+analysis sample, all five published Table 2 means, and the JK1 standard error.
 
 The registered baseline verifies registry revision 7, all 16 combinations of
 the four choices, the expected sample and scoring counts, both Asian-group
@@ -169,7 +189,7 @@ as required for correct survey standard errors.
 
 ## Approval-gated production run
 
-Python implements both registered variance choices directly. Exact versions
+Python implements both registered standard-error methods directly. Exact versions
 are pinned in `pyproject.toml` and `requirements_multiverse.txt`. Before a
 production run:
 
@@ -179,15 +199,15 @@ production run:
 3. commit the approval configuration so the worktree is clean; and
 4. run `make multiverse`.
 
-The command refuses to open the source data unless approval metadata, the
-approved registry checksum, the explicit confirmation flag, and the
-clean-worktree check all pass. The scientific registry remains unchanged after
+The command refuses to open the source data unless the approval record, approved
+registry fingerprint, explicit confirmation flag, and clean-Git check all pass.
+The scientific registry remains unchanged after
 approval. Before the command calculates any alternative, it must reproduce the
-frozen focal baseline,
+frozen baseline,
 `N = 2,611`, and all five published Table 2 group means. It then writes all 16
-registered cells, including explicit records for any failed cell, under
+registered analyses, including a row and explanation for any failure, under
 `outputs/multiverse/`. Final validation also requires every result row to
-match its frozen manifest identity and options exactly. All output files are
+match its prespecified ID and options exactly. All output files are
 built in a temporary directory and moved into place together, so an interrupted
 write cannot mix files from different runs. Output destinations must be inside
 this repository's `outputs/` directory. The runner replaces an existing

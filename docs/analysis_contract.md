@@ -1,19 +1,20 @@
 # Analysis contract
 
-The production code implements `specification_freeze.yaml` revision 7. The
-registry, not handwritten control flow, owns the scientific options. Every run
-expands the registry into a deterministic 16-row manifest.
+The production code implements `specification_freeze.yaml` revision 7. This
+frozen registry is the authoritative list of scientific choices. The program
+turns it into the same 16-row analysis list every time; each row contains one
+combination of choices.
 
 ## Fixed facts
 
-- The focal quantity is the survey-weighted Asian mean minus the
+- The main result is the survey-weighted Asian mean minus the
   non-Hispanic White mean on the 1–4 PPPCQ scale.
-- `PERSON_FINWT0` is used for every point estimate.
+- `PERSON_FINWT0` is used to calculate every weighted mean.
 - Non-Hispanic White is always `RaceEthn5=1`.
 - The seven registered communication items, reverse-scoring rule, and no-
   imputation rule are fixed.
-- The survey design is built on all 3,504 records before any analytic domain
-  is selected.
+- All 3,504 records are retained while the program identifies which records
+  belong to each analysis. This preserves the full survey design.
 
 ## Choices that vary
 
@@ -25,23 +26,23 @@ each version, producing 16 result rows.
 
 ## Where each rule lives
 
-- `specification_freeze.yaml` owns option names, baselines, algorithms, and
+- `specification_freeze.yaml` defines option names, baselines, algorithms, and
   required outputs.
-- `src/odmk/data.py` owns source validation and derived membership variables.
-- `src/odmk/registry.py` owns deterministic cell enumeration and stable IDs.
-- `src/odmk/estimators.py` owns the JK1 and Taylor survey formulas.
-- `src/odmk/engine.py` owns scope control, estimation, and failed-cell records.
-- `src/odmk/validation.py` owns output invariants and baseline anchors.
-- `config/execution.yaml` owns operational approval metadata only. It cannot
+- `src/odmk/data.py` checks the source and creates scores and group membership.
+- `src/odmk/registry.py` creates the 16 analysis rows and stable IDs.
+- `src/odmk/estimators.py` implements the JK1 and Taylor survey formulas.
+- `src/odmk/engine.py` controls which analyses may run and records failures.
+- `src/odmk/validation.py` checks outputs and the reproduced baseline values.
+- `config/execution.yaml` records operational approval information only. It cannot
   change a scientific option.
 
 Other modules read these rules from their authoritative location rather than
 guessing them from labels, row order, or prose.
 
 In code, `POINT_ESTIMATE_DIMENSIONS` names d01, d03, and d04 explicitly. The
-d08 variance choice is stored separately because it must not change either
-weighted group mean or their difference. Point-estimate IDs are therefore
-constructed from named dimensions rather than their positions in a row.
+d08 standard-error choice is stored separately because it must not change
+either weighted group mean or their difference. The ID for each comparison is
+built from the three named choices rather than their positions in a row.
 
 ## Pre-approval guard
 
@@ -55,36 +56,35 @@ following before it reads the source data:
 4. a recorded SHA-256 matching the unchanged frozen registry; and
 5. a clean Git worktree.
 
-Synthetic tests may exercise all 16 cells, but the engine rejects synthetic
-scope when it receives the canonical HINTS file hash.
+Synthetic tests may exercise all 16 analyses, but the engine rejects synthetic
+mode when it receives the real HINTS file fingerprint.
 
 After approval and before any alternative is calculated, the production
-runner must pass the frozen published-baseline gates: the focal result, the
-2,611-person analytic sample, and all five Table 2 race/ethnicity means. After
-execution, each result row must match the corresponding frozen manifest row,
-including its specification ID, point-estimate ID, baseline flag, and four
-option labels. Inferential fields must be internally consistent with the
-recorded estimates, standard errors, and degrees of freedom. Point-estimate
-invariance is reported as verified only when both variance cells succeed for
-all eight point-estimate constructions.
+runner must reproduce the main result, the 2,611-person sample, and all five
+Table 2 race/ethnicity means. After execution, each result row must match its
+prespecified ID and four option labels. Confidence intervals, test statistics,
+and p-values must agree with the reported estimates, standard errors, and
+degrees of freedom. The program reports that point estimates are unchanged by
+the standard-error method only when both methods succeed for all eight
+comparisons.
 
 Both standard-error methods retain all 3,504 source records while calculating
 replicate or linearized estimates. True/false membership indicators identify
-the records in each analysis. Records outside a focal group contribute zeros
+the records in each analysis. Records outside a comparison group contribute zeros
 instead of being discarded before the survey calculation.
 
 ## Failure policy
 
-Every registered cell is attempted after approval. A failed cell remains in
-the result file with a stable ID, category, and diagnostic. Failed cells carry
-no focal estimate. The code never substitutes a new population, race rule,
-score, or variance method after seeing a failure.
+Every registered analysis is attempted after approval. A failed analysis
+remains in the result file with its stable ID and an explanation. It carries no
+main estimate. The code never substitutes a new population, race rule, score,
+or standard-error method after seeing a failure.
 
 ## Output publication
 
-Each run writes its complete file set to a staging directory. The staging
-directory replaces the prior destination only after every file is written;
-an exception before publication leaves the prior complete output set intact.
+Each run first writes its complete file set to a temporary directory. It
+replaces the prior output only after every file is written. If writing fails,
+the earlier complete output remains intact.
 The destination must be below the repository's `outputs/` directory. The
 runner refuses to replace an existing directory unless its ownership marker
 shows that the directory was created by an earlier ODMK run.
