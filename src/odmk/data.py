@@ -38,6 +38,10 @@ def read_canonical_hints(path: Path) -> tuple[pd.DataFrame, str]:
     attached to ``DataFrame.attrs`` so later execution cannot silently pair a
     frame with different provenance. This production reader accepts only the
     frozen public-use file; synthetic tests construct data frames directly.
+
+    Raises:
+        DataValidationError: If the file fingerprint, row count, identifiers,
+            required columns, weights, or design fields fail validation.
     """
 
     data_hash = sha256_file(path)
@@ -54,7 +58,19 @@ def read_canonical_hints(path: Path) -> tuple[pd.DataFrame, str]:
 
 
 def validate_source(df: pd.DataFrame, *, require_canonical_rows: bool = True) -> None:
-    """Validate fields and design weights required by every registered cell."""
+    """Validate fields and design weights required by every registered cell.
+
+    Args:
+        df: Source frame whose column names have already been normalized to
+            lowercase.
+        require_canonical_rows: Whether to require exactly 3,504 records. Tests
+            may disable only this row-count check for synthetic frames.
+
+    Raises:
+        DataValidationError: If required columns, identifiers, row count,
+            final weights, replicate weights, or Taylor design fields are
+            invalid.
+    """
 
     missing = sorted(REQUIRED_COLUMNS.difference(df.columns))
     if missing:
@@ -75,8 +91,11 @@ def validate_source(df: pd.DataFrame, *, require_canonical_rows: bool = True) ->
 def derive_analysis_fields(raw: pd.DataFrame) -> pd.DataFrame:
     """Construct the two scores, two eligibility rules, and focal race groups.
 
-    The returned frame retains every source record. Eligibility and race are
-    Boolean domain indicators; no row is filtered at this stage.
+    The returned frame retains every source record. It adds seven reverse-coded
+    items, valid-item counts, both PPPCQ scores, both eligibility indicators,
+    the routing diagnostics, and the official/inclusive Asian and official
+    White indicators. Eligibility and race are Boolean survey-domain indicators;
+    no row is filtered and no missing item is imputed at this stage.
     """
 
     df = raw.copy()
@@ -122,7 +141,15 @@ def derive_analysis_fields(raw: pd.DataFrame) -> pd.DataFrame:
 
 
 def validate_canonical_structure(df: pd.DataFrame, registry: dict) -> dict[str, object]:
-    """Match the complete derived frame to frozen membership and design anchors."""
+    """Match the complete derived frame to frozen membership and design anchors.
+
+    Returns a validation record containing ``structural_anchors``,
+    ``clusters_per_stratum``, and ``design_df`` for inclusion in the run output.
+
+    Raises:
+        DataValidationError: If the released design, group relationships, or
+            any registry-defined structural count differs from its frozen value.
+    """
 
     pairs = df[["var_stratum", "var_cluster"]].drop_duplicates()
     clusters = df.groupby("var_stratum", observed=True)["var_cluster"].nunique().to_dict()
@@ -167,6 +194,10 @@ def cell_arrays(df: pd.DataFrame, cell: pd.Series) -> tuple[np.ndarray, np.ndarr
     The outcome array has one value per source record. The two Boolean arrays
     combine the selected eligibility, score-availability, and race rules while
     preserving the full survey frame for variance estimation.
+
+    Raises:
+        DataValidationError: If an option label is not registered, the analytic
+            domain omits a released design unit, or the focal groups overlap.
     """
 
     # Translate the frozen registry labels into the derived columns above. The

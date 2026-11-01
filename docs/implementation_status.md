@@ -37,7 +37,8 @@ The preregistered analysis is implemented and ready for Center for Open Science
   approval failures and clean-Git success, protection against running real data
   as synthetic data, retained failure records, internally consistent statistics,
   approval and run records, safe output writing, active Markdown links,
-  output-schema completeness, and documented baseline values.
+  output-schema completeness, documented baseline values, and complete
+  source-function docstrings and type annotations.
 - Tests must cover at least 80% of code paths. Continuous integration separately
   downloads the public HINTS file, verifies its fingerprints, runs the real
   baseline command, checks its output files, and requires the real-data baseline

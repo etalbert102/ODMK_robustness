@@ -18,7 +18,14 @@ EXPECTED_PACKAGES = {
 
 
 def assert_frozen_environment() -> dict[str, object]:
-    """Require the exact interpreter and direct-package versions frozen for analysis."""
+    """Require the exact interpreter and direct-package versions frozen for analysis.
+
+    Returns the accepted Python and package versions for logging.
+
+    Raises:
+        ODMKError: If Python or any direct analysis package has a different
+            version or cannot be inspected.
+    """
 
     observed_python = platform.python_version()
     mismatches = []

@@ -66,7 +66,19 @@ def parse_args(root: Path) -> argparse.Namespace:
 
 
 def execute_registered_multiverse(args: argparse.Namespace, *, root: Path) -> int:
-    """Execute the gated workflow and atomically publish its result artifacts."""
+    """Execute the gated workflow and atomically publish its result artifacts.
+
+    Approval, registry identity, environment, and clean-Git checks occur before
+    source data are opened. The canonical baseline and all published Table 2
+    anchors must then pass before any alternative cell is estimated.
+
+    Returns:
+        The number of registered result rows written to the approved output set.
+
+    Raises:
+        ODMKError: If an approval, provenance, registry, data, baseline, result,
+            or output-publication invariant fails.
+    """
 
     # 1. Freeze the instructions and verify approval before opening source data
     # or calculating any registered effect.
@@ -146,6 +158,8 @@ def execute_registered_multiverse(args: argparse.Namespace, *, root: Path) -> in
 
 
 def main() -> None:
+    """Parse production arguments, run the approved multiverse, and report its size."""
+
     root = project_root()
     args = parse_args(root)
     completed = execute_registered_multiverse(args, root=root)

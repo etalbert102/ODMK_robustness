@@ -13,6 +13,17 @@ from .exceptions import CellEstimationError
 
 
 def _weighted_mean(y: np.ndarray, weights: np.ndarray, domain: np.ndarray) -> tuple[float, float]:
+    """Return a domain's weighted mean and weight sum.
+
+    ``y``, ``weights``, and the Boolean ``domain`` must be aligned to the same
+    complete source frame. Outcome values must be finite wherever ``domain`` is
+    true; values outside the domain are ignored.
+
+    Raises:
+        CellEstimationError: If the domain's weight sum is nonfinite or not
+            positive.
+    """
+
     denominator = float(np.sum(weights[domain]))
     if not math.isfinite(denominator) or denominator <= 0:
         raise CellEstimationError("A focal group has zero or invalid weighted denominator")
@@ -21,6 +32,16 @@ def _weighted_mean(y: np.ndarray, weights: np.ndarray, domain: np.ndarray) -> tu
 
 
 def _inference(estimate: float, variance: float, df: int) -> dict[str, float]:
+    """Calculate t-based uncertainty statistics for one estimate.
+
+    Returns a dictionary containing ``se``, 95% interval endpoints,
+    ``statistic``, denominator ``df``, and the two-sided ``p_value``. A zero
+    standard error produces NaN test and p-values rather than an infinite test.
+
+    Raises:
+        CellEstimationError: If ``variance`` is negative or nonfinite.
+    """
+
     if not math.isfinite(variance) or variance < 0:
         raise CellEstimationError(f"Variance is invalid: {variance}")
     se = math.sqrt(variance)
@@ -40,7 +61,25 @@ def _inference(estimate: float, variance: float, df: int) -> dict[str, float]:
 def estimate_jk1(
     df: pd.DataFrame, y: np.ndarray, asian: np.ndarray, white: np.ndarray
 ) -> dict[str, float]:
-    """Estimate weighted group means and their contrast with official JK1 weights."""
+    """Estimate group means and their contrast with the official JK1 design.
+
+    Args:
+        df: Complete source frame containing ``PERSON_FINWT0`` and all 50
+            registered replicate weights, normalized to lowercase column names.
+        y: PPPCQ score aligned row-for-row with ``df``.
+        asian: Boolean full-frame domain for the registered Asian group.
+        white: Boolean full-frame domain for the non-Hispanic White group.
+
+    Returns:
+        Result-schema fields for both weighted means, their Asian-minus-White
+        contrast, 95% t intervals, test statistics, 49 denominator degrees of
+        freedom, and the two weighted denominators. Counts are added by the
+        cell engine rather than this function.
+
+    Raises:
+        CellEstimationError: If a full-sample or replicate-weight denominator
+            is nonpositive or nonfinite, or if a calculated variance is invalid.
+    """
 
     full_weights = df["person_finwt0"].to_numpy(float)
     asian_mean, asian_denominator = _weighted_mean(y, full_weights, asian)
@@ -85,6 +124,18 @@ def estimate_jk1(
 
 
 def _taylor_variance(df: pd.DataFrame, influence: np.ndarray) -> tuple[float, int]:
+    """Return the stratified-cluster Taylor variance and design degrees of freedom.
+
+    ``influence`` must contain one linearized value for every row of the full
+    source frame. The calculation sums influence values by released stratum and
+    cluster, applies the within-stratum ``m/(m-1)`` correction, and returns
+    ``clusters - strata`` as the denominator degrees of freedom.
+
+    Raises:
+        CellEstimationError: If any represented stratum has fewer than two
+            released clusters.
+    """
+
     work = pd.DataFrame(
         {
             "stratum": df["var_stratum"].to_numpy(),
@@ -110,7 +161,25 @@ def _taylor_variance(df: pd.DataFrame, influence: np.ndarray) -> tuple[float, in
 def estimate_taylor(
     df: pd.DataFrame, y: np.ndarray, asian: np.ndarray, white: np.ndarray
 ) -> dict[str, float]:
-    """Estimate the same quantities with full-frame Taylor linearization."""
+    """Estimate group means and their contrast with Taylor linearization.
+
+    Args:
+        df: Complete source frame containing the final-person weight and the
+            released ``VAR_STRATUM`` and ``VAR_CLUSTER`` fields.
+        y: PPPCQ score aligned row-for-row with ``df``.
+        asian: Boolean full-frame domain for the registered Asian group.
+        white: Boolean full-frame domain for the non-Hispanic White group.
+
+    Returns:
+        The same result-schema fields returned by :func:`estimate_jk1`, with
+        variances calculated from full-frame linearized values and denominator
+        degrees of freedom equal to released clusters minus strata.
+
+    Raises:
+        CellEstimationError: If a focal weighted denominator is invalid, a
+            stratum has fewer than two clusters, the three calculated design
+            degrees of freedom disagree, or a variance is invalid.
+    """
 
     weights = df["person_finwt0"].to_numpy(float)
     asian_mean, asian_denominator = _weighted_mean(y, weights, asian)

@@ -39,6 +39,8 @@ def sha256_file(path: Path) -> str:
 
 
 def utc_now() -> str:
+    """Return the current UTC time as an ISO 8601 string."""
+
     return datetime.now(timezone.utc).isoformat()
 
 
@@ -63,6 +65,8 @@ def write_json(path: Path, value: Any) -> None:
 
 
 def _remove_path(path: Path) -> None:
+    """Remove an internally validated staging or backup path."""
+
     if path.is_symlink() or path.is_file():
         path.unlink(missing_ok=True)
     elif path.exists():
@@ -71,7 +75,29 @@ def _remove_path(path: Path) -> None:
 
 @contextmanager
 def staged_output_directory(destination: Path, *, allowed_root: Path) -> Iterator[Path]:
-    """Publish a complete, application-owned directory beneath ``allowed_root``."""
+    """Stage and atomically publish an application-owned output directory.
+
+    The yielded temporary directory is on the destination filesystem. After the
+    context exits normally, the helper writes its ownership marker and moves the
+    complete directory into place. An existing destination is replaceable only
+    when it is a marked ODMK output. If publication fails, the previous complete
+    destination is restored and temporary material is removed.
+
+    Args:
+        destination: Final output directory. It must be a strict descendant of
+            ``allowed_root`` and cannot be a symbolic link.
+        allowed_root: Resolved boundary within which output may be published.
+
+    Yields:
+        A new temporary directory into which the caller writes the complete
+        output set.
+
+    Raises:
+        ODMKError: If the destination is outside the allowed root, is a symbolic
+            link or non-directory, or exists without the exact ODMK ownership
+            marker.
+        OSError: If staging, atomic replacement, restoration, or cleanup fails.
+    """
 
     requested_destination = destination.absolute()
     if requested_destination.is_symlink():
@@ -120,6 +146,8 @@ def staged_output_directory(destination: Path, *, allowed_root: Path) -> Iterato
 
 
 def git_value(root: Path, *args: str) -> str:
+    """Run the supplied Git command in ``root`` and return stripped stdout."""
+
     result = subprocess.run(
         ["git", *args], cwd=root, check=True, text=True, capture_output=True
     )

@@ -16,6 +16,8 @@ from odmk.validation import validate_published_table2_anchors, validate_real_bas
 
 
 def main() -> None:
+    """Run, validate, and write only the frozen canonical baseline cell."""
+
     root = project_root()
     parser = argparse.ArgumentParser(
         description="Run only the frozen baseline through the registered production engine."

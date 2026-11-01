@@ -19,7 +19,12 @@ def build_metadata(
     config: dict[str, Any],
     scope: str,
 ) -> dict[str, Any]:
-    """Build the run-level record of data, registry, code, software, and approval."""
+    """Build the run-level record of data, registry, code, software, and approval.
+
+    The returned JSON-ready dictionary records source and registry fingerprints,
+    scope, UTC execution time, Python and package versions, Git state, AI use,
+    and the operational approval block. It contains no respondent-level data.
+    """
 
     packages = {}
     for distribution in ("numpy", "pandas", "PyYAML", "scipy"):

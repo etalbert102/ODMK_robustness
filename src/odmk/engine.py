@@ -24,6 +24,8 @@ Scope = Literal["baseline", "synthetic", "approved"]
 
 
 def _identity(cell: pd.Series) -> dict[str, object]:
+    """Return immutable registry identity fields for one manifest row."""
+
     options = {name: cell[name] for name in DIMENSION_ORDER}
     return {
         "paper_id": "ODMK",
@@ -38,6 +40,8 @@ def _identity(cell: pd.Series) -> dict[str, object]:
 
 
 def _failed(cell: pd.Series, error: Exception) -> dict[str, object]:
+    """Represent an expected cell failure without changing its registered choices."""
+
     row: dict[str, object] = {
         **_identity(cell),
         "status": "failed",
@@ -50,7 +54,17 @@ def _failed(cell: pd.Series, error: Exception) -> dict[str, object]:
 
 
 def estimate_cell(df: pd.DataFrame, cell: pd.Series) -> dict[str, object]:
-    """Estimate one manifest row and return the frozen result-schema fields."""
+    """Estimate one manifest row and return the frozen result-schema fields.
+
+    The function constructs the selected outcome and domains, dispatches only
+    to the registered variance estimator, and appends unweighted group counts.
+
+    Raises:
+        DataValidationError: If the selected sample, score, or group rule
+            violates the frozen data contract.
+        CellEstimationError: If a focal group is empty, the variance option is
+            unknown, or estimation cannot produce a valid registered result.
+    """
 
     y, asian, white = cell_arrays(df, cell)
     if asian.sum() == 0 or white.sum() == 0:
@@ -87,6 +101,23 @@ def run_manifest(
     cells only on noncanonical data, and ``approved`` requires authorization
     returned by the production gate. Expected cell-level failures are retained
     as explicit rows; contract or authorization failures stop the run.
+
+    Args:
+        df: Complete derived source frame. Canonical frames carry their source
+            fingerprint in ``DataFrame.attrs``.
+        manifest: Frozen manifest with one row per registered specification.
+        scope: Execution boundary: ``baseline``, ``synthetic``, or ``approved``.
+        source_hash: Claimed fingerprint for the supplied frame.
+        production_authorized: Truthy only after the production approval gate
+            succeeds; ignored outside approved scope.
+
+    Returns:
+        Result rows in the exact order and columns defined by ``RESULT_COLUMNS``.
+        Expected cell failures remain present with blank estimates and reasons.
+
+    Raises:
+        ODMKError: If provenance, scope, baseline uniqueness, or approved-run
+            authorization violates the analysis contract.
     """
 
     attached_hash = df.attrs.get("source_sha256")

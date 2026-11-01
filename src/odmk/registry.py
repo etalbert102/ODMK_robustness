@@ -30,7 +30,13 @@ def load_registry(path: Path) -> dict[str, Any]:
 
 
 def validate_registry(registry: dict[str, Any]) -> None:
-    """Reject a registry that differs from the approved ODMK design contract."""
+    """Reject a registry that differs from the approved ODMK design contract.
+
+    Raises:
+        RegistryError: If paper identity, revision, status, focal quantity,
+            dimension names or options, baseline choices, fixed survey rules,
+            structural anchors, or required outputs differ from revision 7.
+    """
 
     if registry.get("paper_id") != "ODMK":
         raise RegistryError("Registry paper_id must be ODMK")
@@ -77,6 +83,10 @@ def build_manifest(registry: dict[str, Any]) -> pd.DataFrame:
 
     The three named point-estimate dimensions define eight estimands. The
     variance dimension creates two inferential cells for each estimand.
+
+    Returns:
+        A deterministic baseline-first table with stable specification and
+        point-estimate IDs, all four option columns, and ``is_baseline``.
     """
 
     dimensions = registry["dimensions"]

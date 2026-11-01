@@ -12,7 +12,11 @@ from .utils import git_state
 
 
 def load_execution_config(path: Path) -> dict[str, Any]:
-    """Load operational approval metadata; this file owns no scientific options."""
+    """Load operational approval metadata from YAML.
+
+    The execution file records authorization and provenance only; it cannot add
+    or alter a scientific option in the frozen registry.
+    """
 
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
@@ -20,7 +24,25 @@ def load_execution_config(path: Path) -> dict[str, Any]:
 def assert_production_approved(
     config: dict[str, Any], *, root: Path, confirmed: bool, registry_sha256: str
 ) -> dict[str, Any]:
-    """Return authorization only after approval, registry, and Git gates pass."""
+    """Validate every production gate and return an authorization record.
+
+    Args:
+        config: Parsed execution configuration containing approval metadata and
+            the clean-worktree policy.
+        root: Git repository whose commit and worktree state will be recorded.
+        confirmed: Whether the operator supplied the explicit production
+            confirmation flag.
+        registry_sha256: Fingerprint calculated from the registry about to run.
+
+    Returns:
+        The recorded approval block, validated registry fingerprint, and current
+        Git state. A truthy returned record is required by approved execution.
+
+    Raises:
+        ApprovalError: If explicit confirmation, either approval, approval
+            metadata, registry identity, or the required clean Git state is
+            absent or invalid.
+    """
 
     if not confirmed:
         raise ApprovalError("Production requires the explicit --confirm-approved flag")

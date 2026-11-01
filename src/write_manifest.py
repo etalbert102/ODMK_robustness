@@ -11,6 +11,8 @@ from odmk.utils import project_root
 
 
 def main() -> None:
+    """Regenerate the deterministic 16-row manifest without opening respondent data."""
+
     root = project_root()
     parser = argparse.ArgumentParser(
         description="Expand the frozen registry without opening respondent data."

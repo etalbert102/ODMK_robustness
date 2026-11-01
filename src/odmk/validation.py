@@ -45,7 +45,15 @@ SUCCESS_NUMERIC_COLUMNS = (
 
 
 def validate_result_schema(results: pd.DataFrame) -> None:
-    """Require exact result columns and internally consistent cell estimates."""
+    """Require exact result columns and internally consistent cell estimates.
+
+    The checks cover row identity, success/failure representation, finite values,
+    the registered 1–4 scale and contrast direction, recalculated intervals and
+    tests, positive group counts, and positive weighted denominators.
+
+    Raises:
+        ODMKError: If any result-schema or within-row statistical invariant fails.
+    """
 
     # Row identity and success/failure records.
     if tuple(results.columns) != RESULT_COLUMNS:
@@ -165,7 +173,23 @@ def validate_full_results(
     expected_source_hash: str | None = None,
     expected_taylor_df: int | None = None,
 ) -> dict[str, object]:
-    """Match all 16 rows to the registry manifest and check variance-method pairs."""
+    """Match all 16 rows to the manifest and check variance-method pairs.
+
+    Args:
+        results: Complete registered result table, including retained failures.
+        manifest: Frozen 16-row identity and option table.
+        expected_source_hash: Required source fingerprint when known.
+        expected_taylor_df: Required Taylor denominator degrees of freedom when
+            the released design has been validated.
+
+    Returns:
+        Counts of registered, successful, and failed cells plus the number and
+        status of JK1/Taylor point-estimate invariance comparisons.
+
+    Raises:
+        ODMKError: If schema, manifest identity, provenance, option labels,
+            degrees of freedom, pair structure, or point-estimate invariance fails.
+    """
 
     validate_result_schema(results)
     if len(results) != 16 or set(results["specification_id"]) != set(
@@ -262,7 +286,20 @@ def validate_full_results(
 
 
 def validate_published_table2_anchors(df: pd.DataFrame) -> dict[str, object]:
-    """Check all published five-group means, JK1 SEs, and intervals."""
+    """Check the reconstructed Table 2 means, JK1 SEs, and intervals.
+
+    The baseline domain requires content-confirmed eligibility, all seven PPPCQ
+    items, and a valid official five-category race value. Each reconstructed
+    displayed statistic must be within 0.011 of the published two-decimal value.
+
+    Returns:
+        The analytic count, all five groups' unrounded reconstructed statistics,
+        the display tolerance, and a passing status.
+
+    Raises:
+        ODMKError: If the analytic count, a weighted denominator, or any
+            published-value comparison fails.
+    """
 
     expected = {
         1: {"mean": 3.45, "se": 0.02, "ci_low": 3.39, "ci_high": 3.49},
@@ -331,7 +368,15 @@ def validate_published_table2_anchors(df: pd.DataFrame) -> dict[str, object]:
 
 
 def validate_real_baseline(results: pd.DataFrame) -> dict[str, object]:
-    """Require the single registered cell to match frozen baseline anchors."""
+    """Require the single registered cell to match frozen baseline anchors.
+
+    Returns the exact focal means, contrast, contrast standard error, group
+    counts, and degrees of freedom that were frozen after reconstruction.
+
+    Raises:
+        ODMKError: If the result schema, one-cell success requirement, or any
+            numeric baseline anchor fails.
+    """
 
     validate_result_schema(results)
     if len(results) != 1 or results.iloc[0]["status"] != "success":

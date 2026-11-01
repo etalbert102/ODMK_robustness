@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import re
 from pathlib import Path
 from urllib.parse import unquote
@@ -80,3 +81,44 @@ def test_baseline_table_uses_current_registered_white_estimate() -> None:
 
     assert "3.4457 (0.0242) | 3.3971–3.4944" in baseline
     assert "baseline validation tolerance of 0.011" in baseline
+
+
+def test_source_functions_have_docstrings_and_complete_annotations() -> None:
+    missing_docstrings: list[str] = []
+    missing_annotations: list[str] = []
+    for source in sorted((ROOT / "src").rglob("*.py")):
+        tree = ast.parse(source.read_text(encoding="utf-8"))
+        for function in (
+            node
+            for node in ast.walk(tree)
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+        ):
+            location = f"{source.relative_to(ROOT)}:{function.lineno}:{function.name}"
+            if not ast.get_docstring(function):
+                missing_docstrings.append(location)
+            arguments = [
+                *function.args.posonlyargs,
+                *function.args.args,
+                *function.args.kwonlyargs,
+            ]
+            if function.args.vararg is not None:
+                arguments.append(function.args.vararg)
+            if function.args.kwarg is not None:
+                arguments.append(function.args.kwarg)
+            untyped = [
+                argument.arg
+                for argument in arguments
+                if argument.arg not in {"self", "cls"} and argument.annotation is None
+            ]
+            if untyped or function.returns is None:
+                details = list(untyped)
+                if function.returns is None:
+                    details.append("return")
+                missing_annotations.append(f"{location} ({', '.join(details)})")
+
+    assert not missing_docstrings, "Undocumented source functions:\n" + "\n".join(
+        missing_docstrings
+    )
+    assert not missing_annotations, "Incomplete function annotations:\n" + "\n".join(
+        missing_annotations
+    )

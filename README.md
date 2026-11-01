@@ -224,10 +224,11 @@ therefore `make verify-preapproval` is intentionally a data-required command.
 Continuous integration runs two sets of checks. The first uses synthetic data
 and enforces the coverage threshold. It also checks active Markdown links,
 basic Markdown hygiene, output-schema completeness, and the documented baseline
-values. The second downloads the public NCI data, verifies both file checksums,
-runs the same baseline command a researcher would run, checks its three output
-files, and requires the real-data baseline test to complete. Third-party GitHub
-actions are pinned to full commit hashes.
+values, as well as source-function docstrings and type annotations. The second
+downloads the public NCI data, verifies both file checksums, runs the same
+baseline command a researcher would run, checks its three output files, and
+requires the real-data baseline test to complete. Third-party GitHub actions are
+pinned to full commit hashes.
 
 The baseline checks verify the exact data-file fingerprint, 3,504 source rows,
 unique and present `HHID` values, stable sorting, required fields, 50 replicate

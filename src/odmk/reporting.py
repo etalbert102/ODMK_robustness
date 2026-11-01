@@ -44,6 +44,8 @@ COLUMN_LABELS = {
 
 
 def _ordered_pairs(first: str, second: str) -> list[tuple[str, str]]:
+    """Return the registry-ordered Cartesian product of two dimensions."""
+
     return [
         (left, right)
         for left in FROZEN_DIMENSION_OPTIONS[first]
@@ -52,7 +54,15 @@ def _ordered_pairs(first: str, second: str) -> list[tuple[str, str]]:
 
 
 def build_specification_display(results: pd.DataFrame) -> pd.DataFrame:
-    """Arrange all 16 registered results as the promised 4 by 4 display."""
+    """Arrange all 16 registered results as the promised 4 by 4 display.
+
+    Rows cross sample and PPPCQ scoring; columns cross Asian-group construction
+    and variance method. Successful cells display the contrast and 95% interval,
+    while failed cells display their registered ID and failure reason.
+
+    Raises:
+        ODMKError: If a display position has other than one registered result.
+    """
 
     row_pairs = _ordered_pairs("d01_analytic_sample", "d03_outcome_construction")
     column_pairs = _ordered_pairs(
@@ -99,6 +109,8 @@ def specification_display_markdown(table: pd.DataFrame) -> str:
     """Render the 4 by 4 result table without an optional Markdown dependency."""
 
     def escape(value: object) -> str:
+        """Escape table delimiters and line breaks in one Markdown cell."""
+
         return str(value).replace("|", "\\|").replace("\n", " ")
 
     header = [escape(table.index.name or "Specification"), *map(escape, table.columns)]
@@ -120,6 +132,8 @@ def specification_display_markdown(table: pd.DataFrame) -> str:
 
 
 def _coverage_domains(df: pd.DataFrame) -> dict[str, pd.Series]:
+    """Return the four full-frame group domains used in coverage reports."""
+
     return {
         "all_eligible_respondents": pd.Series(True, index=df.index),
         "official_nonhispanic_asian": df["official_asian"],
@@ -129,6 +143,8 @@ def _coverage_domains(df: pd.DataFrame) -> dict[str, pd.Series]:
 
 
 def _sample_domains(df: pd.DataFrame) -> dict[str, pd.Series]:
+    """Return the two full-frame eligibility domains used in reports."""
+
     return {
         "content_confirmed_module": df["content_confirmed_module"],
         "observed_positive_filter_only": df["recent_provider_visit"],
@@ -136,7 +152,14 @@ def _sample_domains(df: pd.DataFrame) -> dict[str, pd.Series]:
 
 
 def build_item_completion_distribution(df: pd.DataFrame) -> pd.DataFrame:
-    """Report the weighted distribution of zero through seven valid PPPCQ items."""
+    """Report the weighted distribution of zero through seven valid PPPCQ items.
+
+    Returns one row per eligibility rule, reporting group, and valid-item count,
+    with unweighted counts, weighted totals, and within-domain percentages.
+
+    Raises:
+        ODMKError: If an eligibility/group domain has no positive finite weight.
+    """
 
     weights = df["person_finwt0"]
     rows: list[dict[str, object]] = []
@@ -165,7 +188,15 @@ def build_item_completion_distribution(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def build_scoring_coverage(df: pd.DataFrame) -> pd.DataFrame:
-    """Report how much of each eligible group is retained by each scoring rule."""
+    """Report how much of each eligible group is retained by each scoring rule.
+
+    Returns unweighted and weighted denominators and coverage percentages for
+    every eligibility, reporting-group, and PPPCQ completion-rule combination.
+
+    Raises:
+        ODMKError: If an eligibility/group domain has no records or no positive
+            finite weight.
+    """
 
     weights = df["person_finwt0"]
     score_available = {
