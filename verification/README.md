@@ -22,9 +22,11 @@ Install the R packages when needed:
 install.packages(c("digest", "haven", "survey"))
 ```
 
-Package versions are not part of the Python production environment. Each R run
-records its R and package versions in `metadata.csv`, and canonical continuous
-integration installs and runs the same independent check.
+R packages are deliberately not folded into the pinned Python production
+environment. The audit records the exact R and package versions in
+`metadata.csv`, and continuous integration repeats it in a separate
+distribution-provided R environment. This preserves the audit's value as a
+cross-language and cross-environment check while keeping every run traceable.
 
 ## Run the check
 
@@ -42,8 +44,9 @@ implementation and requires agreement within `1e-9` for:
 - the Asian-minus-White difference, standard error, interval, and degrees of
   freedom.
 
-The current implementations agree across all 30 checks; the largest absolute
-difference is approximately `3.1e-14`.
+A passing run must satisfy all 30 comparisons. `validation.json` records the
+observed maximum difference rather than relying on a value copied into the
+documentation.
 
 ## Generated output
 

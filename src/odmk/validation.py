@@ -11,6 +11,7 @@ from scipy import stats
 
 from .constants import (
     DIMENSION_ORDER,
+    EXPECTED_BASELINE_N,
     FOCAL_TERM,
     JK1_COEFFICIENT,
     JK1_DF,
@@ -314,8 +315,11 @@ def validate_published_table2_anchors(df: pd.DataFrame) -> dict[str, object]:
         & df["raceethn5"].isin(expected)
     )
     analytic_n = int(analytic.sum())
-    if analytic_n != 2611:
-        raise ODMKError(f"Published Table 2 analytic N changed: {analytic_n} != 2611")
+    if analytic_n != EXPECTED_BASELINE_N:
+        raise ODMKError(
+            f"Published Table 2 analytic N changed: "
+            f"{analytic_n} != {EXPECTED_BASELINE_N}"
+        )
 
     display_tolerance = 0.011
     critical = float(stats.t.ppf(0.975, JK1_DF))

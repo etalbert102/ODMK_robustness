@@ -231,18 +231,14 @@ therefore `make verify-preapproval` is intentionally a data-required command.
 
 An optional second implementation reads the Stata file directly and rebuilds
 the published baseline with R's `survey` package. It does not import Python
-derived variables and has no code path for any robustness alternative. Install
-R plus the `digest`, `haven`, and `survey` packages, then run:
+derived variables and cannot run a robustness alternative:
 
 ```bash
 make verify-r-baseline
 ```
 
-The command compares all five group counts, means, JK1 standard errors, and
-intervals, plus the focal contrast and its uncertainty. It writes the R results,
-runtime metadata, 30-row comparison audit, and validation summary under
-`outputs/independent_r_baseline/`. See
-[`verification/README.md`](verification/README.md) for the method and outputs.
+See [`verification/README.md`](verification/README.md) for package requirements,
+the 30 comparisons, and the generated audit files.
 
 Continuous integration runs two sets of checks. The first uses synthetic data
 and enforces the coverage threshold. It also checks active Markdown links,
