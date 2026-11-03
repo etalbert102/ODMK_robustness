@@ -10,6 +10,8 @@ No author analysis code, supplementary analysis file, or paper-specific public r
 
 The original COS invitation links are now preserved as the available-papers CSV, general workflow text, and robustness-guidance text. The sourcing sheet identifies the ODMK focal result as the Table 2 Asian-versus-non-Hispanic-White PPPCQ mean comparison. The analyst guidance is the controlling protocol; the archived SCORE robustness supplement remains contextual material.
 
+The blank COS preregistration form is retained under `templates/`; the completed ODMK form remains at the repository root.
+
 The source ledger records the 2001 EORTC QLQ-C30 scoring manual as a general pre-ODMK example of scoring a multi-item scale when at least half the items are answered. It is not treated as validation of PPPCQ or its missing-item behavior. Moser et al. (2022) is later same-instrument evidence, not proof of the original scoring rule.
 
 DAAF 3.0.2 at commit `4c5fc85138451a30a174b714fea18457b0d3f7a0` was used as an internal plan, audit-trail, and complex-survey review lens. It did not replace COS guidance or serve as the analysis runtime. Adopted improvements are recorded in `../DAAF_review.md`.

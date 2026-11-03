@@ -48,8 +48,9 @@ synthetic data, but no alternative specification has been run on HINTS data.
 
 ## Code reviewer quick start
 
-The active implementation is at the repository root; dated directories under
-`submission/` are archived snapshots. A short review can follow this order:
+The active implementation is at the repository root. The ZIP under
+`submission/` is a historical package, not a second code path. A short review
+can follow this order:
 
 1. [`specification_freeze.yaml`](specification_freeze.yaml) defines the four
    frozen choices and their 16 combinations.
@@ -119,11 +120,9 @@ that are not well supported for this measure.
 
 - [`ODMK_COS_robustness_proposal.docx`](ODMK_COS_robustness_proposal.docx) — primary concise COS submission file.
 - [`ODMK_COS_brief_proposal.md`](ODMK_COS_brief_proposal.md) — editable Markdown source for the concise submission.
-- [`ODMK_COS_submission.md`](ODMK_COS_submission.md) — main Markdown source for the longer methodological record.
-- [`ODMK_robustness_proposal.md`](ODMK_robustness_proposal.md) — byte-identical compatibility copy retained under the originally requested filename.
-- [`ODMK_robustness_proposal.docx`](ODMK_robustness_proposal.docx) — formatted copy of the longer methodological record.
+- [`ODMK_robustness_proposal.md`](ODMK_robustness_proposal.md) — longer methodological record retained under the originally requested filename.
 - [`ODMK_preregistration.docx`](ODMK_preregistration.docx) — completed COS preregistration draft for the post-proposal review workflow.
-- [`preregistration_template.docx`](preregistration_template.docx) — unfilled source template retained to document its origin.
+- [`sources/templates/preregistration_template.docx`](sources/templates/preregistration_template.docx) — unfilled source template retained for provenance.
 
 ### Scientific record
 
@@ -180,11 +179,13 @@ ODMK_robustness/
 ├── src/odmk/          # reusable analysis package
 ├── tests/             # synthetic unit tests and optional real-baseline test
 ├── verification/      # independent R reconstruction of the published baseline
-├── submission/        # finalized submission package and checksum
+├── submission/        # one historical submission ZIP and checksum
 ├── config/execution.yaml
 ├── pyproject.toml
 ├── Makefile
-├── ODMK_COS_submission.md
+├── ODMK_COS_brief_proposal.md
+├── ODMK_preregistration.docx
+├── ODMK_robustness_proposal.md
 ├── baseline_analysis.md
 ├── data_access.md
 ├── dimension_audit.md
@@ -346,9 +347,9 @@ not edit only one file.
 
 The public HINTS bundle, COS sheet and guidance, and COS-linked article are archived or recorded in `sources/`. The current HINTS release is dated 2024-05-07. No public author analysis code or supplementary analysis file was located. See [`sources/README.md`](sources/README.md).
 
-The directories under `submission/` are immutable submission snapshots and
-contain duplicated copies by design. Review the active implementation at the
-repository root and in `src/odmk/`, not the copies inside those archives.
+The ZIP under `submission/` is an immutable 2026-10-25 snapshot retained with
+its checksum. It predates later code-review improvements. Review the active
+implementation at the repository root and in `src/odmk/`.
 
 ## Interpretation guardrails
 

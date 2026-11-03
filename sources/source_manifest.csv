@@ -26,3 +26,4 @@ hints_data_page,https://hints.cancer.gov/data/download-data.aspx,,National Cance
 hints_materials_page,https://hints.cancer.gov/data/survey-instruments.aspx,,National Cancer Institute,Official instrument/methodology portal,Link only
 hints_remediation_page,https://hints.cancer.gov/data/data-remediation.aspx,,National Cancer Institute,Documents post-release data remediation,Link only
 eortc_scoring_manual_2001,https://www.eortc.org/app/uploads/sites/2/2018/02/SCmanual.pdf,,EORTC Quality of Life Group / Fayers et al. 2001,"Pre-ODMK general precedent for scoring a multi-item scale from answered items when at least half are complete; not PPPCQ-specific validation",Link only
+cos_preregistration_template,templates/preregistration_template.docx,300b27cdaca87fb15172eece950d4d33ce52f74b057b1254b7e700f7d214ee9e,Locally retained COS project file,Unfilled preregistration form,Original delivery link not recorded
