@@ -1,90 +1,87 @@
-# Code review guide
+# Code review guide and analysis contract
 
-This guide shows where each frozen analysis choice is implemented and tested.
-It describes the active files at the repository root, not the dated submission
-snapshots.
+This guide maps the frozen scientific choices to their implementation, tests,
+and execution safeguards. The active code is at the repository root; the ZIP
+under `submission/` is historical.
 
-## What the program does
+## Fixed contract
 
-The program reconstructs the published Table 2 comparison, then—only after
-Center for Open Science (COS) and researcher approval—runs the 16 combinations
-defined in `specification_freeze.yaml`. The outcome is always the 1–4 perceived
-patient-provider communication quality (PPPCQ) score, and the reported
-difference is always the weighted Asian mean minus the weighted non-Hispanic
-White mean.
+`specification_freeze.yaml` revision 7 is the authoritative list of scientific
+choices. Every analysis estimates the survey-weighted Asian mean minus the
+non-Hispanic White mean on the 1–4 perceived patient-provider communication
+quality (PPPCQ) scale. These features never vary:
 
-Before approval, real Health Information National Trends Survey (HINTS) data
-may be used only to reproduce the published baseline and check that the required
-variables and survey structure are present. Made-up test data exercise all 16
-code paths without producing robustness results from HINTS.
+- seven registered communication items, reverse scoring, and no imputation;
+- `PERSON_FINWT0` for every weighted mean;
+- non-Hispanic White defined as `RaceEthn5=1`; and
+- all 3,504 source records retained while domain indicators identify who
+  contributes to each estimate.
+
+The registry varies d01 eligibility, d03 PPPCQ completion, d04 Asian-group
+membership, and d08 variance estimation. The first three choices produce eight
+point estimates; JK1 and Taylor uncertainty for each produce 16 result rows.
+`config/execution.yaml` records approval only and cannot change these choices.
 
 ## Suggested review order
 
-1. `specification_freeze.yaml` — scientific choices and fixed features.
-2. `src/odmk/registry.py` — checks the registry and creates the same 16 rows
-   every time.
-3. `src/odmk/data.py` — source checks and construction of scores and groups.
-4. `src/odmk/estimators.py` — weighted means, JK1, and Taylor formulas.
-5. `src/odmk/engine.py` — runs one analysis and controls which analyses are
-   allowed before and after approval.
-6. `src/odmk/validation.py` — checks the reproduced baseline and result files.
-7. `src/odmk/reporting.py` — creates the registered 4 by 4 display and coverage
-   diagnostics.
-8. `src/run_multiverse.py` — approval gates and end-to-end production order.
-9. `verification/independent_r_baseline.R` — separate, baseline-only
-   reconstruction used to cross-check the Python result.
+1. `specification_freeze.yaml` — fixed features, choices, and required outputs.
+2. `src/odmk/registry.py` — validates revision 7 and creates stable IDs.
+3. `src/odmk/data.py` — verifies the source and constructs scores and groups.
+4. `src/odmk/estimators.py` — implements weighted means, JK1, and Taylor.
+5. `src/odmk/engine.py` — runs registered analyses and records failures.
+6. `src/odmk/validation.py` — checks baseline and result invariants.
+7. `src/odmk/reporting.py` — creates the 4 by 4 display and diagnostics.
+8. `src/run_multiverse.py` — enforces approval and production order.
+9. `verification/independent_r_baseline.R` — independently checks only the
+   published baseline.
 
-## Frozen choices and their implementations
+## Choice-to-code map
 
-| COS choice | Options in the registry | Implemented in | Main tests |
+| COS choice | Registered options | Implementation | Main tests |
 |---|---|---|---|
-| d01 eligible sample | answered communication content can confirm eligibility; recorded provider visit required | `derive_analysis_fields()` and `cell_arrays()` in `src/odmk/data.py` | `tests/test_data.py` |
-| d03 PPPCQ scoring | all 7 items required; at least 4 of 7 required | `derive_analysis_fields()` and `cell_arrays()` in `src/odmk/data.py` | `tests/test_data.py` |
-| d04 Asian-group definition | official `RaceEthn5=4`; non-Hispanic any-Asian identification | `derive_analysis_fields()` and `cell_arrays()` in `src/odmk/data.py` | `tests/test_data.py` |
+| d01 eligible sample | answered content confirms eligibility; recorded visit required | `derive_analysis_fields()` and `cell_arrays()` in `src/odmk/data.py` | `tests/test_data.py` |
+| d03 PPPCQ scoring | all 7 valid; at least 4 of 7 valid | `derive_analysis_fields()` and `cell_arrays()` in `src/odmk/data.py` | `tests/test_data.py` |
+| d04 Asian group | official `RaceEthn5=4`; non-Hispanic any-Asian identification | `derive_analysis_fields()` and `cell_arrays()` in `src/odmk/data.py` | `tests/test_data.py` |
 | d08 standard errors | official 50-weight JK1; Taylor linearization | `estimate_jk1()` and `estimate_taylor()` in `src/odmk/estimators.py` | `tests/test_estimators.py` and `tests/reference/` |
 
-The first three choices determine who contributes to each weighted mean. They
-produce eight versions of the same Asian-versus-White comparison. The d08 choice
-changes only the standard error and confidence interval, so the code verifies
-that each JK1/Taylor pair has identical means and differences.
+d08 must not change either group mean or their difference. Validation therefore
+requires identical point estimates for each successful JK1/Taylor pair.
 
-## End-to-end execution order
+## Execution safeguards
 
-`src/run_multiverse.py` performs these steps in order:
+Before opening real HINTS data, `src/run_multiverse.py` requires:
 
-1. fingerprint and check the frozen registry;
-2. verify the exact Python environment;
-3. require recorded COS and researcher approval, explicit command-line
-   confirmation, the approved registry fingerprint, and no uncommitted changes;
-4. read and validate the exact public HINTS file;
-5. reproduce the registered baseline and all five published Table 2 means;
-6. run all 16 registered combinations;
-7. check every result against the prespecified 16-row analysis list; and
-8. create the registered display and completion/coverage reports; and
-9. write the complete result set and run record together.
+1. explicit command-line confirmation;
+2. COS and researcher approvals, dates, and an approval record;
+3. the approved SHA-256 of the unchanged registry; and
+4. a clean Git worktree.
 
-The approval checks occur before the source data are opened. The baseline checks
-occur before any alternative comparison is calculated.
+Synthetic tests may exercise all 16 paths, but synthetic mode rejects the
+canonical HINTS fingerprint. After approval, the production runner validates
+the source, reproduces the 2,611-person baseline and all five Table 2 means,
+runs the 16 registered rows, and checks every row against its ID and four option
+labels. Intervals, tests, and p-values are recalculated from the reported
+estimates, standard errors, and degrees of freedom.
 
-## Failure behavior
+## Failure and output policy
 
-An expected calculation failure remains in `results.csv` with its registered ID
-and a reason. The program does not replace it with another sample, score, group
-definition, or standard-error method. A problem with the registry, approval,
-source identity, or result checks stops the run because it no longer matches the
-prespecified analysis.
+A failed registered analysis remains in `results.csv` with its stable ID and
+reason and no focal estimate. The program never substitutes a new population,
+race rule, score, or variance method after observing a failure. A registry,
+approval, source-identity, or validation failure stops the run.
+
+Each complete output set is written to a temporary directory and then moved
+into place. The destination must be under `outputs/`, and an existing directory
+is replaced only if its marker identifies an earlier ODMK run. Approved output
+includes all 16 results, the registered display, and completion and coverage
+diagnostics.
 
 ## Verification commands
 
-- `make verify-code` checks the software versions, regenerates the 16-row
-  analysis list, and runs all tests without respondent data.
-- `make verify-preapproval` additionally reproduces the single registered
-  baseline from the locally acquired public HINTS file.
-- `make verify-r-baseline` independently reconstructs that published baseline
-  from the Stata file with R `survey` and compares 30 counts and statistics with
-  Python. It cannot run a robustness alternative.
+- `make verify-code` checks pinned software, regenerates the manifest, and runs
+  all tests without respondent data.
+- `make verify-preapproval` also reproduces the registered HINTS baseline.
+- `make verify-r-baseline` independently compares 30 R and Python baseline
+  counts and statistics; it cannot run an alternative.
 - `make multiverse` remains blocked until the approval record is complete and
-  the approved registry hash is recorded.
-
-The ordinary test suite uses synthetic data. The real-data test and baseline
-command calculate only the already-published baseline.
+  its registry fingerprint matches.
