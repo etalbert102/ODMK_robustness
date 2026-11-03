@@ -35,7 +35,9 @@ The project invitation supplied three public Google files, archived on 2026-10-1
 - `COS_general_workflow_2026-10-15.txt` — the project workflow; and
 - `COS_robustness_guidance_2026-10-15.txt` — the analyst and reviewer guidance.
 
-The sourcing sheet links the article copy archived as `sources/ODMK_COS_source.pdf`. Its SHA-256 is recorded in the source manifest.
+The sourcing sheet links an OSF-hosted article copy. Its URL and the SHA-256 of
+the inspected local copy are recorded in the source manifest; the article is
+not redistributed by this repository.
 
 ## Re-acquisition
 
@@ -76,8 +78,16 @@ The survey design must be created before applying eligibility, outcome-availabil
 
 ## Access status and cost
 
-The HINTS data and documentation are publicly obtainable and require no restricted-data application. Acquisition is therefore low risk and low cost. The publisher version of the article is paywalled, but COS supplied an OSF-hosted article copy with the sourcing sheet; that copy is preserved in `sources/`.
+The HINTS data and documentation are publicly obtainable and require no
+restricted-data application. Acquisition is therefore low risk and low cost.
+The publisher version of the article is paywalled, but COS supplied an
+OSF-hosted article link with the sourcing sheet. Researchers acquire that copy
+separately; it is not part of the public repository.
 
 ## Data preservation rule
 
-`data_raw/hints5_cycle2_public.dta` is never edited. The registered baseline and production analysis construct every frozen concept in `src/odmk/data.py` while retaining the complete source frame. Generated estimates, validation records, and provenance go to application-owned directories under `outputs/`.
+`data_raw/hints5_cycle2_public.dta` is never edited and remains ignored by Git.
+The downloaded ZIP under `sources/` is ignored as well. The registered baseline
+and production analysis construct every frozen concept in `src/odmk/data.py`
+while retaining the complete source frame. Generated estimates, validation
+records, and provenance go to application-owned directories under `outputs/`.

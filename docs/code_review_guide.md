@@ -1,8 +1,8 @@
 # Code review guide and analysis contract
 
 This guide maps the frozen scientific choices to their implementation, tests,
-and execution safeguards. The active code is at the repository root; the ZIP
-under `submission/` is historical.
+and execution safeguards. The active code is at the repository root; local
+submission archives are excluded from version control.
 
 ## Fixed contract
 

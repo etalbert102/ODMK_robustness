@@ -7,6 +7,7 @@ name = "odmk-robustness"
 version = "0.1.0"
 description = "Preregistered bounded-multiverse analysis for HINTS 5 Cycle 2 paper ODMK"
 requires-python = ">=3.11"
+license = "MIT"
 dependencies = [
   "numpy==2.4.4",
   "pandas==3.0.2",

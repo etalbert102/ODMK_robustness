@@ -76,8 +76,8 @@ Key supporting files are:
   analysis choice.
 
 The frozen registry and `src/odmk/` are the only multiverse implementation. The
-R script reconstructs only the published baseline. The ZIP under `submission/`
-is a checksummed historical snapshot, not an active code path.
+R script reconstructs only the published baseline. Submission archives are not
+part of the repository because they may contain data or third-party materials.
 
 ## Set up and verify
 
@@ -170,10 +170,11 @@ continuous integration. `pyproject.toml`, `requirements.txt`, and
 review, while `src/odmk/environment.py` enforces their exact production
 versions.
 
-Primary HINTS materials, COS guidance, the article, searchable PDF text, and
-their provenance are under `sources/`. The canonical HINTS release is dated
-2024-05-07. No public author analysis code or supplementary analysis file was
-located. See [`sources/README.md`](sources/README.md).
+Redistributable HINTS materials and COS guidance are under `sources/`; the
+source ledger records URLs, checksums, and local-only research materials. The
+canonical HINTS release is dated 2024-05-07. No public author analysis code or
+supplementary analysis file was located. See
+[`sources/README.md`](sources/README.md).
 
 ## Interpretation guardrails
 
@@ -185,3 +186,11 @@ located. See [`sources/README.md`](sources/README.md).
 - Peer alternatives are not corrections to the paper.
 - Robustness is not reduced to whether `p < .05`.
 - No alternative may be added, removed, or revised after seeing its estimate.
+
+## Licensing
+
+Original code, tests, workflows, and configuration are licensed under the
+[`MIT License`](LICENSE). Project-authored proposals and documentation are
+licensed under [`CC BY 4.0`](LICENSE-DOCUMENTATION.md). These licenses do not
+cover third-party publications, data, instruments, or guidance; see
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).

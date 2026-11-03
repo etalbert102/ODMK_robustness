@@ -6,7 +6,15 @@ Kim, H.-S., Kim, H. J., & Juon, H.-S. (2021). Racial/Ethnic Disparities in Patie
 
 ## Full text inspected
 
-The publisher version is paywalled. The COS available-papers sheet links an OSF-hosted copy, archived locally as [`ODMK_COS_source.pdf`](ODMK_COS_source.pdf), SHA-256 `162df2ca09669084cc97a78b5348fd6a5f6354f484b58833856a7dff9ece4573`. The complete article, including Tables 1–3, notes, footnotes, and references, was inspected from this copy. The earlier [author-uploaded ResearchGate page](https://www.researchgate.net/publication/351109589_RacialEthnic_Disparities_in_Patient-Provider_Communication_and_the_Role_of_E-Health_Use) and local [PubMed record](ODMK_PubMed_record.txt) remain recorded for provenance. No PDF was copied from the access-controlled publisher platform.
+The publisher version is paywalled. The COS available-papers sheet links an
+[OSF-hosted copy](https://osf.io/download/5y4nm/), SHA-256
+`162df2ca09669084cc97a78b5348fd6a5f6354f484b58833856a7dff9ece4573`.
+The complete article, including Tables 1–3, notes, footnotes, and references,
+was inspected from a local Git-ignored copy. The public repository does not
+redistribute the PDF or its full-text extraction. The earlier
+[author-uploaded ResearchGate page](https://www.researchgate.net/publication/351109589_RacialEthnic_Disparities_in_Patient-Provider_Communication_and_the_Role_of_E-Health_Use)
+and local [PubMed record](ODMK_PubMed_record.txt) remain recorded for
+provenance. No PDF was copied from the access-controlled publisher platform.
 
 ## Author code and supplements
 

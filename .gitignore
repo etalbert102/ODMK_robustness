@@ -18,3 +18,12 @@ outputs/multiverse/
 
 # Canonical NCI data bundle is publicly reacquirable via data_access.md
 sources/HINTS5_Cycle2_STATA_20240507.zip
+
+# Local research copies that are not redistributed by this repository
+sources/ODMK_COS_source.pdf
+sources/ODMK_COS_source.txt
+sources/COS_SCORE_Robustness_2026_Supplement.pdf
+sources/COS_SCORE_Robustness_2026_Supplement.txt
+
+# Local submission archives may contain data or third-party source material
+submission/

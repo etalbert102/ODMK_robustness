@@ -4,11 +4,22 @@ This directory preserves the primary materials used for the ODMK reconstruction.
 
 The canonical public file is a 2024 remediation release, not necessarily the exact release available to the authors. NCI's methodology report documents demographic hot-deck fields used in weighting production, while the current Stata file does not expose those `_I` variables. The project therefore records release drift as unresolved and does not assume either that the authors used those fields or that NCI performed their analytic missing-data treatment.
 
-The ODMK publisher copy is not openly downloadable. The COS sourcing sheet supplied an OSF-hosted `ODMK.pdf`, preserved here as `ODMK_COS_source.pdf` with its API-reported SHA-256. The DOI, PubMed metadata, and earlier author-uploaded ResearchGate link are also retained. No PDF was copied from an access-controlled publisher platform.
+The ODMK publisher copy is not openly downloadable. The COS sourcing sheet
+supplied an OSF-hosted `ODMK.pdf`; its URL and inspected SHA-256 are recorded in
+the source ledger. The PDF and its full-text extraction are retained only as
+local Git-ignored research materials and are not redistributed. The DOI,
+PubMed metadata, and earlier author-uploaded ResearchGate link remain recorded.
+No PDF was copied from an access-controlled publisher platform.
 
 No author analysis code, supplementary analysis file, or paper-specific public repository was located after searches by exact title, DOI, and author/title combinations on the publisher page, PubMed, Google Scholar-indexed results, GitHub, OSF, and Figshare (last checked 2026-10-13). This is a search result, not proof that no private or unindexed code exists.
 
-The original COS invitation links are now preserved as the available-papers CSV, general workflow text, and robustness-guidance text. The sourcing sheet identifies the ODMK focal result as the Table 2 Asian-versus-non-Hispanic-White PPPCQ mean comparison. The analyst guidance is the controlling protocol; the archived SCORE robustness supplement remains contextual material.
+The original COS invitation links are preserved as the available-papers CSV,
+general workflow text, and robustness-guidance text. The sourcing sheet
+identifies the ODMK focal result as the Table 2
+Asian-versus-non-Hispanic-White PPPCQ mean comparison. The analyst guidance is
+the controlling protocol. The SCORE robustness supplement is contextual; its
+DOI and inspected checksum are recorded, but the PDF and text extraction are
+not redistributed.
 
 The blank COS preregistration form is retained under `templates/`; the completed ODMK form remains at the repository root.
 
