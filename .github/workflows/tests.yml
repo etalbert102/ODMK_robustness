@@ -48,7 +48,9 @@ jobs:
       - name: Install independent R baseline dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y r-base r-cran-digest r-cran-haven r-cran-survey
+          sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            --no-install-recommends \
+            r-base r-cran-digest r-cran-haven r-cran-survey
       - name: Acquire and verify canonical public data
         run: |
           mkdir -p sources data_raw
