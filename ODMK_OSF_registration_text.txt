@@ -1,0 +1,138 @@
+ODMK Robustness Study — Open-Ended Preregistration
+
+1. Paper, analyst, and focal result
+
+Analyst: Eli Talbert
+Paper ID: ODMK
+Date: 2026-10-24
+
+Focal result
+
+Paper ID ODMK: Kim, H.-S., Kim, H. J., and Juon, H.-S. (2021), “Racial/Ethnic Disparities in Patient-Provider Communication and the Role of E-Health Use.” The assigned result is in Table 2, PPPCQ column, Asian and non-Hispanic White rows: Asian mean 3.11 (SE 0.10; 95% CI 2.90–3.33) versus non-Hispanic White mean 3.45 (SE 0.02; 95% CI 3.39–3.49). The article reports lower PPPCQ among Asian respondents.
+
+Analysis that produces the focal result
+
+The unit is a HINTS respondent, and the population is adults in the 2018 HINTS 5 Cycle 2 patient-provider communication module. PPPCQ is the equal-weight mean of seven reverse-scored 1–4 communication items; higher values indicate better communication. The focal predictor is race/ethnicity, comparing Asian with non-Hispanic White respondents. Table 2 is unadjusted, so no covariates enter the analysis. The baseline estimator is the PERSON_FINWT0-weighted mean for each group. Uncertainty uses all 50 JK1 replicate weights, coefficient 0.98, and 49 denominator degrees of freedom. The reported direction is lower PPPCQ among Asian respondents.
+
+Focal estimate
+
+Each specification will report both weighted PPPCQ means and their direct difference (Asian minus non-Hispanic White) on the 1–4 scale. A negative value indicates a lower Asian mean. The reconstructed baseline difference is −0.3296 (JK1 SE 0.1097; 95% CI −0.5502 to −0.1091). The article did not print this direct difference.
+
+2. Data
+
+Data source
+
+National Cancer Institute, 2018 Health Information National Trends Survey, HINTS 5 Cycle 2 public-use respondent file (3,504 records). The analysis uses the NCI Stata bundle dated 2024-05-07, downloaded 2026-10-13. This is a later remediated public release rather than the exact release available to the authors; the remediation removed weighting-production fields not used here. The final weight, 50 replicate weights, public design variables, routing item, race items, and seven PPPCQ items remain available, and the release reproduces the published Table 2 values.
+
+Author materials: No.
+
+No author-provided analysis code, supplementary analysis files, or other author materials were consulted. The published article and NCI HINTS documentation were used as source documentation.
+
+Prior work with this paper or these data: No.
+
+3. Dimensions and statuses
+
+d01 — Analytic sample construction
+Status: Varied.
+
+d02 — Missing data handling
+Status: Set aside.
+Reason: d03 already governs partial outcome-item data. Multiple imputation would overlap that choice and add more assumption-heavy response modeling without PPPCQ-specific guidance; race will not be imputed.
+
+d03 — Outcome operationalization
+Status: Varied.
+
+d04 — Focal predictor operationalization
+Status: Varied.
+
+d05 — Categorization and thresholding
+Status: Not applicable.
+Reason: The focal outcome remains continuous, and no continuous predictor or control is categorized.
+
+d06 — Covariate set
+Status: No alternative available.
+Reason: Adding controls to Table 2’s unadjusted weighted means would change the assigned result to an adjusted comparison.
+
+d07 — Estimator and functional form
+Status: No alternative available.
+Reason: Group-indicator regression reproduces the same direct weighted means; ordinal or median models estimate different quantities.
+
+d08 — Clustering, nesting, and standard errors
+Status: Varied.
+
+d09 — Sampling weights and complex design
+Status: No alternative available.
+Reason: PERSON_FINWT0 is fixed to preserve the same national population target; unweighted estimates describe the respondent sample instead.
+
+Paper-specific additions: None.
+
+4. Dimensions varied and their options
+
+d01 — Analytic sample construction
+
+Original option: orig_content
+
+What it does: Include respondents with FreqGoProvider in 1–6, or with at least one valid communication response when FreqGoProvider is missing. The article is silent; this reading is consistent with NCI leaving a missing filter unreplaced when a follow-up was answered, and it reproduces Table 2.
+
+Alternative option: alt_filter
+
+What it does: Require an observed positive routing response (FreqGoProvider in 1–6); do not use answered follow-ups to resolve a missing routing field.
+
+Why it is reasonable: Both rules target respondents reporting on provider communication in the prior 12 months. A researcher could reasonably follow the recorded routing response literally. Thirty complete-item respondents have a missing routing response, including three in the official Asian group.
+
+d03 — Outcome operationalization
+
+Original option: orig_7of7
+
+What it does: Reverse-score and equally average the seven PPPCQ items only when all seven are valid. The article does not state a threshold; this rule exactly reproduces its Table 2 sample size and displayed estimates.
+
+Alternative option: alt_4of7
+
+What it does: When at least four of the same seven items are valid, reverse-score and equally average the available items. Do not impute missing items.
+
+Why it is reasonable: A later validation study using these HINTS 5 Cycle 2 items calculated the seven-item score with at least four valid responses. This keeps the same domains and 1–4 scale while including respondents with four to six valid items.
+
+d04 — Focal predictor operationalization
+
+Original option: orig_official
+
+What it does: Use the article’s mutually exclusive groups: Asian is RaceEthn5=4 and non-Hispanic White is RaceEthn5=1. Non-Hispanic multiracial respondents remain in Other.
+
+Alternative option: alt_any_asian
+
+What it does: Define non-Hispanic Asian as Hisp_Cat=10 plus at least one Asian checkbox (AsInd, Chinese, Filipino, Japanese, Korean, Vietnamese, or OthAsian), including multiracial selections. Keep White fixed at RaceEthn5=1.
+
+Why it is reasonable: The survey permits multiple race selections. An inclusive any-Asian definition is a reasonable peer choice that retains the Asian-versus-non-Hispanic-White comparison. It adds 21 non-Hispanic multiracial Asian respondents in the source file.
+
+d08 — Clustering, nesting, and standard errors
+
+Original option: orig_jk1
+
+What it does: Use PERSON_FINWT0 for point estimates and all 50 official replicate weights for JK1 variance, with coefficient 0.98 and 49 denominator degrees of freedom.
+
+Alternative option: alt_taylor
+
+What it does: Use Taylor linearization with PERSON_FINWT0, VAR_STRATUM, and VAR_CLUSTER, with 98 denominator degrees of freedom.
+
+Why it is reasonable: NCI documents both methods for HINTS 5 Cycle 2. They target the same population and use the same point weight, so group means and their difference must be identical; only standard errors and confidence intervals may differ.
+
+5. Combinations that cannot be run
+
+All 2 × 2 × 2 × 2 combinations of the four varied dimensions will be run. No combinations are excluded because every option remains defined under every combination.
+
+6. Specification count
+
+Dimensions varied: 4 (d01, d03, d04, d08)
+Combinations before exclusions: 16
+Combinations excluded: 0
+Specifications to be run: 16
+
+7. Notes
+
+Four rather than five dimensions are varied because no defensible fifth choice preserves the same focal quantity without duplicating an included decision. d02 overlaps d03; adding controls, changing the outcome model, or dropping population weights would change the assigned quantity or target population.
+
+The article does not state the valid-item threshold or its treatment of answered communication follow-ups when the routing response is missing. It also does not discuss multiracial Asian classification or print a direct Asian-minus-White contrast. The inferred baseline rules reproduce the Table 2 N=2,611 and displayed means.
+
+Each survey design will be created from the full public-use file before analytic-domain restrictions. Only the published baseline and structural feasibility counts have been run; no proposed alternative result has been calculated.
+
+Registered analysis code: https://github.com/etalbert102/ODMK_robustness, commit 81b74273c6ec39eeaf374c8879c9c705bd219882 (3 November 2026).
