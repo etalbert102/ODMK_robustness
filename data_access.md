@@ -39,6 +39,12 @@ The sourcing sheet links an OSF-hosted article copy. Its URL and the SHA-256 of
 the inspected local copy are recorded in the source manifest; the article is
 not redistributed by this repository.
 
+After COS approved the preregistration, the project coordinators supplied an
+outcome-report template and a results-file specification. Copies downloaded on
+2026-11-09 are retained under `sources/`, together with CSV exports of the
+workbook's codebook, required header, and hypothetical example sheets. Their
+URLs and SHA-256 checksums are recorded in the source ledger.
+
 ## Re-acquisition
 
 From the project root:

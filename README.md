@@ -63,6 +63,8 @@ src/odmk/data.py ──→ scores, eligibility, and groups
 src/odmk/engine.py ──→ src/odmk/estimators.py
         ↓
 src/odmk/validation.py ──→ checked results and records
+        ↓
+src/odmk/cos_reporting.py ──→ COS 29-column submission CSV
 ```
 
 Key supporting files are:
@@ -149,6 +151,11 @@ temporary directory and ownership marker prevent partial or unrelated output
 from being presented as a completed ODMK run. See the
 [`code review guide`](docs/code_review_guide.md) for the enforced contract and
 [`output schema`](docs/output_schema.md) for file details.
+
+After the approved run, `make cos-results` converts the validated native table
+to `submission/results_ODMK.csv`, using the exact 29-column COS schema and the
+option names in the approved preregistration. This is a reporting-only
+transformation; it does not reopen the respondent data or recompute an estimate.
 
 ## Troubleshooting
 

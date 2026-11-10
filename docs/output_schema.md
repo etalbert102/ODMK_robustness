@@ -118,6 +118,23 @@ and failure reason. Each complete output set is built in a temporary directory
 and moved into place together, so partial output is never presented as a
 completed run.
 
+## COS submission CSV
+
+After an approved multiverse run, `make cos-results` writes
+`submission/results_ODMK.csv` with the exact 29 columns supplied in the COS
+Results File Specification. `src/odmk/cos_reporting.py` maps the registered
+option names to `orig_content`, `alt_filter`, `orig_7of7`, `alt_4of7`,
+`orig_official`, `alt_any_asian`, `orig_jk1`, and `alt_taylor` exactly as they
+appear in the approved preregistration.
+
+For this direct two-group contrast, `n_analytic` is the sum of the disjoint
+Asian and non-Hispanic White respondent counts contributing outcomes to the
+focal estimate. Records outside those two survey domains remain in the full
+survey design object for variance estimation but do not contribute an outcome
+to the focal Asian-minus-White difference. The optional COS `se_` fields remain
+blank because the survey standard error is computed as part of the direct
+estimator rather than as a post-fit correction.
+
 ## Independent R baseline output
 
 `make verify-r-baseline` writes a separate baseline-only audit under

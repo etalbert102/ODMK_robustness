@@ -1,17 +1,19 @@
 analysis_id: "ODMK-table2-bounded-multiverse"
 
 approval:
-  cos_status: "pending"
-  cos_approved_at: null
-  cos_approval_record: null
-  approved_registry_sha256: null
-  researcher_status: "pending"
+  cos_status: "approved"
+  cos_approved_at: "2026-11-07"
+  cos_approval_record: >-
+    COS approval email from Ella Boycan and Ashleigh Blersch, received
+    2026-11-07
+  approved_registry_sha256: "d898ea9ead3a7f5991dd8b51ef843da118d3d333fec5eedea22e473566b7e56d"
+  researcher_status: "approved"
   researcher_name: "Eli Talbert"
-  researcher_approved_at: null
+  researcher_approved_at: "2026-11-09"
 
 provenance:
   ai_system: "OpenAI Codex"
-  ai_use_date: "2026-10-25"
+  ai_use_date: "2026-10-25 through 2026-11-09"
   ai_role: >-
     Code generation, testing, debugging, documentation, and repetitive
     implementation. The researcher owns and approves all scientific choices.

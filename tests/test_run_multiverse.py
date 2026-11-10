@@ -94,10 +94,22 @@ def test_pending_approval_blocks_before_source_data_are_opened(
 
     monkeypatch.setattr(run_multiverse, "assert_frozen_environment", lambda: {})
     monkeypatch.setattr(run_multiverse, "read_canonical_hints", fail_if_opened)
+    arguments = _arguments(tmp_path)
+    pending_config = {
+        "approval": {
+            "cos_status": "pending",
+            "researcher_status": "approved",
+        },
+        "execution_policy": {"require_clean_git_for_multiverse": False},
+    }
+    arguments.config = tmp_path / "pending-execution.yaml"
+    arguments.config.write_text(
+        yaml.safe_dump(pending_config, sort_keys=False), encoding="utf-8"
+    )
 
     with pytest.raises(ApprovalError, match="cos_status"):
         run_multiverse.execute_registered_multiverse(
-            _arguments(tmp_path), root=project_root()
+            arguments, root=project_root()
         )
 
     assert opened is False

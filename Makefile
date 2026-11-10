@@ -1,7 +1,7 @@
 PYTHON ?= python3
 RSCRIPT ?= Rscript
 
-.PHONY: setup environment manifest baseline independent-r-baseline test verify-code verify-preapproval verify-r-baseline multiverse
+.PHONY: setup environment manifest baseline independent-r-baseline test verify-code verify-preapproval verify-r-baseline multiverse cos-results
 
 setup:
 	$(PYTHON) -m pip install -r requirements-lock.txt
@@ -30,3 +30,6 @@ verify-r-baseline: baseline independent-r-baseline
 
 multiverse:
 	$(PYTHON) src/run_multiverse.py --confirm-approved
+
+cos-results:
+	$(PYTHON) src/export_cos_results.py

@@ -8,12 +8,13 @@ from odmk.exceptions import ApprovalError
 from odmk.utils import project_root
 
 
-def test_repository_config_blocks_unapproved_production() -> None:
+def test_explicitly_unapproved_config_blocks_production(tmp_path: Path) -> None:
     config = load_execution_config(project_root() / "config/execution.yaml")
+    config["approval"]["cos_status"] = "pending"
     with pytest.raises(ApprovalError, match="cos_status"):
         assert_production_approved(
             config,
-            root=project_root(),
+            root=tmp_path,
             confirmed=True,
             registry_sha256="a" * 64,
         )

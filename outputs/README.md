@@ -35,8 +35,10 @@ under `outputs/independent_r_baseline/`. Its R results, runtime metadata,
 30-row R-versus-Python comparison, and validation summary are also ignored
 because they are reproducible from the public file.
 
-After COS and researcher approval, `make multiverse` will write the 16 registered
+After COS and researcher approval, `make multiverse` writes the 16 registered
 analyses under `outputs/multiverse/`, together with the 4 by 4 specification
 table, item-completion distribution, scoring-coverage table, validation record,
-and run metadata. That command remains blocked while the approval record in
-`config/execution.yaml` is pending.
+and run metadata. `make cos-results` then maps that validated table to the COS
+submission schema at `submission/results_ODMK.csv`. Both generated directories
+are ignored because the files are reproducible from the public source data and
+the committed code.

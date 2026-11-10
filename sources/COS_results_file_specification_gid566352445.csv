@@ -1,0 +1,34 @@
+Robustness Studies — Results File Specification,,,,
+"Submit one CSV file per study (UTF-8, comma-delimited, header row), named results_<paper_id>.csv, with one row per specification and the columns below. The results sheet is the header row to match; the example sheet is a complete file for a hypothetical study.",,,,
+Every row whose status is not ok leaves the estimate columns blank (n_analytic through p_value). A failed specification stays in the file.,,,,
+Leave a cell blank rather than writing zero where a quantity does not exist.,,,,
+,,,,
+Column,Required,Type,Meaning,Allowed values
+paper_id,Yes,text,The ID of the paper you are working on.,
+analyst,Yes,text,Your name.,
+spec_id,Yes,integer,The specification's number.,"1 to N, one per row, no gaps"
+is_baseline,Yes,0 or 1,1 for the specification where every varied decision takes its orig_ option.,Exactly one row is 1
+d01 … d09,Yes,text,"The option this specification used, for each dimension you varied, using the option names from your preregistration exactly. All nine columns are present, in numeric order; those you did not vary are blank throughout.","An option name is its prefix (orig_ or alt_) followed by a short lowercase description with underscores, e.g. orig_exclude_pilot_wave. A bare orig_ or alt_ is not a name"
+a01 …,If used,text,"The same, for any paper-specific additions you varied. After d09.",As for d01 … d09
+n_analytic,When status is ok,integer,"The number of observations the analysis used: not the rows in your dataset, and not the sum of any weights.",
+estimate,When status is ok,number,"The focal estimate, identified by name, on the scale your analysis produces it. For a logistic, Poisson or Cox regression, the log-scale coefficient. Where an option makes the focal estimate multi-valued, the single contrast named in your preregistration.",
+estimate_std,When status is ok,0 or 1,1 if the estimate is standardized.,
+se,When status is ok,number,"The estimate's standard error. For a multi-valued focal estimate, the named contrast's.",
+test_stat,When status is ok,number,"The test statistic for the focal estimate. For a multi-valued focal estimate, the joint test of the whole set, which test_stat_type, df1, df2 and p_value then also describe; estimate divided by se does not reproduce it.",
+test_stat_type,When status is ok,text,The kind of test statistic.,"t, z, F, chi2, other"
+df1,Where one exists,number,"Degrees of freedom, or the numerator degrees of freedom where there are two.",
+df2,Where one exists,number,"The denominator degrees of freedom, where there are two.",
+effect_size,Where one exists,number,"The effect size, such as the odds ratio from a logistic regression. Blank where the estimate is already the effect size.",
+effect_size_measure,With effect_size,text,What effect_size measures.,"OR, RR, HR, IRR, d, r, smd, other"
+p_value,When status is ok,number,The p-value for the focal estimate.,
+status,Yes,text,Whether the specification ran and produced the focal estimate.,"ok: ran and produced the focal estimate
+nonconvergence: the fitting algorithm did not converge
+singular: part of the model could not be estimated (use not_estimable if that part is the focal estimate)
+insufficient_n: too few observations remained
+degenerate: the model reproduces its data exactly, leaving no residual variation
+not_estimable: could not be run, or ran without producing the focal estimate
+other: say what in error_message"
+error_message,Where status is not ok,text,What went wrong.,
+se_procedure,Only if the SE was computed after fitting,text,"Fill the three se_ columns only where your code computed the standard error after fitting the model: clustering, a heteroskedasticity correction, a bootstrap or a survey design applied afterwards. Leave all three blank where the fitting command produced the standard error itself. Here, say what produced it, specifically: not robust but cluster-robust, CR1, by municipality.",
+se_unit,Only if the SE was computed after fitting,text,"The grouping the standard error used, where it has one.",
+se_n_units,Only if the SE was computed after fitting,integer,"How many groups, or how many resamples.",

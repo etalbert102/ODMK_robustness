@@ -23,6 +23,12 @@ not redistributed.
 
 The blank COS preregistration form is retained under `templates/`; the completed ODMK form remains at the repository root.
 
+The COS outcome-report template and results-file workbook supplied after
+preregistration approval are retained here with their exact downloaded
+checksums. The workbook's codebook, required header, and example sheets are
+also preserved as UTF-8 CSV files so the final 29-column submission format is
+auditable without relying on spreadsheet rendering.
+
 The source ledger records the 2001 EORTC QLQ-C30 scoring manual as a general pre-ODMK example of scoring a multi-item scale when at least half the items are answered. It is not treated as validation of PPPCQ or its missing-item behavior. Moser et al. (2022) is later same-instrument evidence, not proof of the original scoring rule.
 
 DAAF 3.0.2 at commit `4c5fc85138451a30a174b714fea18457b0d3f7a0` was used as an internal plan, audit-trail, and complex-survey review lens. It did not replace COS guidance or serve as the analysis runtime. Adopted improvements are recorded in `../DAAF_review.md`.

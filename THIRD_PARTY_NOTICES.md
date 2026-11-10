@@ -12,8 +12,9 @@ documentation. They do not grant rights in the materials listed below.
   extraction are not redistributed; the source ledger records the inspected
   copy's provenance and checksum.
 - **COS materials:** the sourcing sheet, workflow, robustness guidance,
-  preregistration template, and SCORE robustness supplement remain subject to
-  their respective owners' terms. Their inclusion or citation does not place
+  preregistration template, outcome-report template, results-file
+  specification, and SCORE robustness supplement remain subject to their
+  respective owners' terms. Their inclusion or citation does not place
   them under this repository's licenses. The SCORE supplement itself is not
   redistributed.
 - **Moser et al. (2022):** the retained validation article is identified by
