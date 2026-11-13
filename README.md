@@ -6,8 +6,9 @@ Cycle 2). It compares survey-weighted patient-provider communication quality
 (PPPCQ) means for Asian and non-Hispanic White respondents across 16
 prespecified analyses.
 
-The published baseline has been reproduced. Synthetic data test every analysis
-path, but no robustness alternative has been run on HINTS data.
+The published baseline and all 16 approved specifications were run on
+2026-11-13. Every specification estimated lower PPPCQ among Asian respondents;
+the Asian-minus-White difference ranged from −0.3511 to −0.2797.
 
 ## Choose your path
 
@@ -16,6 +17,9 @@ path, but no robustness alternative has been run on HINTS data.
   its editable [`Markdown source`](ODMK_COS_brief_proposal.md); the
   [`extended record`](ODMK_robustness_proposal.md) preserves additional detail.
 - **Preregistration:** [`ODMK_preregistration.docx`](ODMK_preregistration.docx).
+- **Final results:** [`COS-format results`](submission/results_ODMK.csv),
+  [`outcome report`](submission/ODMK_robustness_analysis_report.docx), and
+  [`native run outputs`](outputs/multiverse/).
 - **Scientific design:** [`baseline_analysis.md`](baseline_analysis.md),
   [`dimension_audit.md`](dimension_audit.md), and
   [`reviewer_red_team.md`](reviewer_red_team.md).
@@ -78,8 +82,9 @@ Key supporting files are:
   analysis choice.
 
 The frozen registry and `src/odmk/` are the only multiverse implementation. The
-R script reconstructs only the published baseline. Submission archives are not
-part of the repository because they may contain data or third-party materials.
+R script reconstructs only the published baseline. The final report and
+aggregate result files are committed for review. Raw HINTS records, expanded
+submission archives, and local render files remain outside the repository.
 
 ## Set up and verify
 

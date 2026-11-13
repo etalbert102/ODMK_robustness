@@ -27,18 +27,18 @@ under `outputs/registered_baseline/`:
 - `validation.json`
 - `run_metadata.json`
 
-That generated directory is ignored by Git because the files are reproducible
-from the public HINTS source file.
+The final approved rerun from 2026-11-13 is committed as aggregate audit
+evidence. It is reproducible from the public HINTS source file.
 
 `make verify-r-baseline` writes a separate independent cross-language check
 under `outputs/independent_r_baseline/`. Its R results, runtime metadata,
-30-row R-versus-Python comparison, and validation summary are also ignored
-because they are reproducible from the public file.
+30-row R-versus-Python comparison, and validation summary are committed with
+the final run.
 
 After COS and researcher approval, `make multiverse` writes the 16 registered
 analyses under `outputs/multiverse/`, together with the 4 by 4 specification
 table, item-completion distribution, scoring-coverage table, validation record,
 and run metadata. `make cos-results` then maps that validated table to the COS
-submission schema at `submission/results_ODMK.csv`. Both generated directories
-are ignored because the files are reproducible from the public source data and
-the committed code.
+submission schema at `submission/results_ODMK.csv`. The final aggregate
+outputs and COS deliverables are committed for direct review. No respondent-
+level HINTS data are included.

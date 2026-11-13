@@ -1,0 +1,7 @@
+{
+  "all_checks_pass": true,
+  "comparisons": 30,
+  "guardrail": "Published baseline only; no robustness alternative is implemented.",
+  "maximum_absolute_difference": 3.108624468950438e-14,
+  "tolerance": 1e-09
+}

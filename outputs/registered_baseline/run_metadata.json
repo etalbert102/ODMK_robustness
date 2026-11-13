@@ -1,0 +1,34 @@
+{
+  "ai": {
+    "ai_role": "Code generation, testing, debugging, documentation, and repetitive implementation. The researcher owns and approves all scientific choices.",
+    "ai_system": "OpenAI Codex",
+    "ai_use_date": "2026-10-25 through 2026-11-09"
+  },
+  "approval": {
+    "approved_registry_sha256": "d898ea9ead3a7f5991dd8b51ef843da118d3d333fec5eedea22e473566b7e56d",
+    "cos_approval_record": "COS approval email from Ella Boycan and Ashleigh Blersch, received 2026-11-07",
+    "cos_approved_at": "2026-11-07",
+    "cos_status": "approved",
+    "researcher_approved_at": "2026-11-09",
+    "researcher_name": "Eli Talbert",
+    "researcher_status": "approved"
+  },
+  "executed_at_utc": "2026-11-13T23:38:15.725563+00:00",
+  "git": {
+    "commit": "0e796cbc4457020587c76ad39df906bfc37ecd66",
+    "dirty": false
+  },
+  "package_versions": {
+    "PyYAML": "6.0.3",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "scipy": "1.17.1"
+  },
+  "paper_id": "ODMK",
+  "python_version": "3.14.4",
+  "registry_revision": 7,
+  "registry_sha256": "d898ea9ead3a7f5991dd8b51ef843da118d3d333fec5eedea22e473566b7e56d",
+  "registry_status": "frozen_for_execution",
+  "scope": "baseline",
+  "source_data_sha256": "a727f1b7a56f293dc2212bb9cc8705cacdc4e57d6d8e5505012b713ecfd1531f"
+}

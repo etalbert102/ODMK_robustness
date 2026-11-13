@@ -1,0 +1,71 @@
+{
+  "clusters_per_stratum": {
+    "5_2_HM": 50,
+    "5_2_LM": 50
+  },
+  "design_df": 98,
+  "focal_result": {
+    "all_checks_pass": true,
+    "anchors": {
+      "asian_mean": 3.116125895255402,
+      "asian_minus_white_difference": -0.32961721731883653,
+      "denominator_degrees_of_freedom": 49,
+      "standard_error_of_difference": 0.10974269373470233,
+      "unweighted_asian_n": 105,
+      "unweighted_white_n": 1703,
+      "white_mean": 3.4457431125742386
+    }
+  },
+  "full_table2": {
+    "all_checks_pass": true,
+    "analytic_n_all_five_groups": 2611,
+    "display_tolerance": 0.011,
+    "jk1_by_raceethn5": {
+      "1": {
+        "ci_high": 3.494356461522856,
+        "ci_low": 3.397129763625621,
+        "mean": 3.4457431125742386,
+        "se": 0.024190857874056795,
+        "unweighted_n": 1703
+      },
+      "2": {
+        "ci_high": 3.5975688716783965,
+        "ci_low": 3.384114020466003,
+        "mean": 3.4908414460721997,
+        "se": 0.05310944503807753,
+        "unweighted_n": 360
+      },
+      "3": {
+        "ci_high": 3.3735023364214034,
+        "ci_low": 3.17719709081396,
+        "mean": 3.2753497136176817,
+        "se": 0.04884247227485583,
+        "unweighted_n": 337
+      },
+      "4": {
+        "ci_high": 3.330736994542364,
+        "ci_low": 2.90151479596844,
+        "mean": 3.116125895255402,
+        "se": 0.10679425946427491,
+        "unweighted_n": 105
+      },
+      "5": {
+        "ci_high": 3.756736298384179,
+        "ci_low": 2.9166162090503556,
+        "mean": 3.3366762537172674,
+        "se": 0.2090292699202369,
+        "unweighted_n": 106
+      }
+    }
+  },
+  "structural_anchors": {
+    "complete_7_inclusive_asian_n_content_confirmed": 122,
+    "complete_7_n_content_confirmed": 2871,
+    "complete_7_official_asian_n_content_confirmed": 105,
+    "complete_7_white_n_content_confirmed": 1703,
+    "content_confirmed_module_n": 2993,
+    "inclusive_asian_additional_multiracial_n_full_source": 21,
+    "observed_positive_filter_n": 2961,
+    "source_rows": 3504
+  }
+}
